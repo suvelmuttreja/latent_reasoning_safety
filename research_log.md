@@ -510,3 +510,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   guards. They are intentionally unsubmitted until the `coco_u1` gate passes.
   A config-invariant test freezes all registered matching fields across the
   two branches; Ruff, shell syntax checks, and 36/36 tests pass.
+- 2026-08-27: Final accelerator recheck found no H100 or other >=80GB GPU class
+  on Discovery. A40 and L40S nodes are more numerous but have 48GB, while V100
+  and A100-40GB are smaller; they cannot replace the registered full-AdamW,
+  micro-batch-2 memory measurement without entering the fallback ladder or
+  adding unregistered model parallelism. The already accrued A100-80GB job
+  retains its 2026-08-27 22:04 PDT estimate, whereas a fresh identical
+  test-only submission estimated 2026-08-29. Keep job `11403700`; use A40 for
+  the already queued inference-only in-line gate.
