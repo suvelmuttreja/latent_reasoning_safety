@@ -51,8 +51,8 @@ def run_update(
     *,
     check_gradients: bool,
 ) -> dict[str, float | int | bool]:
-    if len(batches) != accumulation:
-        raise ValueError("one optimizer update requires exactly accumulation micro-batches")
+    if not 1 <= len(batches) <= accumulation:
+        raise ValueError("an optimizer update requires between 1 and accumulation micro-batches")
     optimizer.zero_grad(set_to_none=True)
     losses: list[float] = []
     nonpadding_tokens = 0

@@ -248,7 +248,10 @@ def main() -> None:
             "k_dependence_accuracy_points": evaluations["k6"]["accuracy"]
             - evaluations["k0"]["accuracy"],
             "matched_4b_training_authorized": False,
-            "reason": "public 4B checkpoint key audit and Gate -1 remain pending approval",
+            "reason": (
+                "the 4B memory/throughput preflights and either public or fallback "
+                "in-line Gate -1 must pass first"
+            ),
         },
     }
     (output_dir / "validation_result.json").write_text(json.dumps(result, indent=2) + "\n")

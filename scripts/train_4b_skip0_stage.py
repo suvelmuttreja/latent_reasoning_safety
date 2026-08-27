@@ -1,0 +1,269 @@
+#!/usr/bin/env python3
+"""Train one resumable stage of the self-contained 4B skip0 fallback."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import statistics
+import time
+from pathlib import Path
+
+import pandas as pd
+import torch
+import yaml
+from huggingface_hub import model_info
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+from mats_latent_safety.batching import pad_coconut_records
+from mats_latent_safety.constants import stage_update_count
+from mats_latent_safety.coconut import StandardCoconut, initialize_latent_embeddings
+from mats_latent_safety.data import clean_gsm8k_row
+from mats_latent_safety.fallback import validate_resume
+from mats_latent_safety.hashing import sha256_file, sha256_json
+from mats_latent_safety.runtime import git_revision, slurm_job_id
+from mats_latent_safety.serialization import (
+    build_training_record,
+    ensure_latent_tokens,
+    tokenize_reasoning_example,
+)
+from preflight_4b_cot import optimizer_state_bytes, percentile, run_update
+
+
+TRIGGER_ACK = "persistent-403-fallback-authorized"
+
+
+def load_model(config: dict, tokenizer, markers, device: torch.device) -> StandardCoconut:
+    base = AutoModelForCausalLM.from_pretrained(
+        config["model_id"],
+        revision=config["model_revision"],
+        torch_dtype=torch.bfloat16,
+        attn_implementation=config["attention_implementation"],
+        low_cpu_mem_usage=True,
+    )
+    base.resize_token_embeddings(len(tokenizer))
+    anchor_ids = tokenizer.encode("<<", add_special_tokens=False)
+    if not anchor_ids:
+        raise ValueError("tokenizer produced no anchor token for <<")
+    initialize_latent_embeddings(base, markers, anchor_ids[0])
+    return StandardCoconut(
+        base,
+        latent_token_id=markers["latent"],
+        start_latent_id=markers["start"],
+        end_latent_id=markers["end"],
+        eos_token_id=tokenizer.eos_token_id,
+    ).to(device)
+
+
+def make_grouped_batches(
+    records,
+    groups,
+    *,
+    latent_token_id: int,
+    pad_token_id: int,
+    device: torch.device,
+):
+    return [
+        pad_coconut_records(
+            [records[index] for index in group],
+            latent_token_id=latent_token_id,
+            pad_token_id=pad_token_id,
+            device=device,
+        )
+        for group in groups
+    ]
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="configs/fallback_4b_skip0.yaml")
+    parser.add_argument("--stage", type=int, required=True)
+    parser.add_argument("--gsm-train", required=True)
+    parser.add_argument("--output-root", required=True)
+    parser.add_argument("--resume-dir")
+    parser.add_argument("--acknowledge-fallback-trigger", required=True)
+    args = parser.parse_args()
+    if args.acknowledge_fallback_trigger != TRIGGER_ACK:
+        raise ValueError("the registered approval-latency fallback trigger is not acknowledged")
+
+    config_path = Path(args.config)
+    config = yaml.safe_load(config_path.read_text())
+    if config["submission_status"] != "fallback_trigger_acknowledged":
+        raise ValueError("config remains locked; record and acknowledge the fallback trigger first")
+    if args.stage not in config["stages"]:
+        raise ValueError(f"stage {args.stage} is not registered")
+    if any(config["forbidden_changes"].values()):
+        raise ValueError("a forbidden method change is enabled")
+    if config["micro_batch_size"] * config["gradient_accumulation_steps"] != config[
+        "effective_batch_size"
+    ]:
+        raise ValueError("micro-batch and accumulation do not match effective batch size")
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is required")
+    if model_info(config["model_id"]).sha != config["model_revision"]:
+        raise RuntimeError("resolved base-model revision changed")
+
+    output_dir = Path(args.output_root) / f"stage{args.stage}"
+    if output_dir.exists() and any(output_dir.iterdir()):
+        raise FileExistsError(f"refusing to overwrite non-empty stage directory {output_dir}")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    device = torch.device("cuda")
+    torch.manual_seed(config["seed"])
+    torch.cuda.manual_seed_all(config["seed"])
+    code_revision = git_revision()
+
+    tokenizer = AutoTokenizer.from_pretrained(
+        config["model_id"], revision=config["model_revision"]
+    )
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    markers = ensure_latent_tokens(tokenizer)
+    source_path = Path(args.gsm_train)
+    source = pd.read_parquet(source_path)
+    if len(source) != config["dataset_examples"]:
+        raise ValueError(f"expected {config['dataset_examples']} rows, found {len(source)}")
+    records = []
+    for _, row in source.iterrows():
+        example = clean_gsm8k_row(str(row.question), str(row.answer))
+        tokenized = tokenize_reasoning_example(tokenizer, example)
+        records.append(
+            build_training_record(
+                tokenized,
+                stage=args.stage,
+                marker_ids=markers,
+                c_thought=config["c_thought"],
+                max_stage=config["max_latent_stage"],
+            )
+        )
+    lengths = [len(record["input_ids"]) for record in records]
+    if max(lengths) > config["max_sequence_length"]:
+        raise ValueError("a training record exceeds the frozen maximum sequence length")
+
+    model = load_model(config, tokenizer, markers, device)
+    model.train()
+    optimizer = torch.optim.AdamW(
+        model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"]
+    )
+    previous_updates = 0
+    if args.stage == 1:
+        if args.resume_dir is not None:
+            raise ValueError("stage 1 must begin from exact M0, without a resume directory")
+    else:
+        if args.resume_dir is None:
+            raise ValueError("later stages require --resume-dir")
+        resume = Path(args.resume_dir)
+        metadata = json.loads((resume / "metadata.json").read_text())
+        validate_resume(metadata, config, args.stage)
+        load_result = model.load_state_dict(
+            torch.load(resume / "model_state.pt", map_location=device, weights_only=True),
+            strict=True,
+        )
+        if load_result.missing_keys or load_result.unexpected_keys:
+            raise RuntimeError("strict resume unexpectedly reported key differences")
+        optimizer_state = torch.load(
+            resume / "optimizer_state.pt", map_location="cpu", weights_only=True
+        )
+        optimizer.load_state_dict(optimizer_state)
+        previous_updates = int(metadata["cumulative_optimizer_updates"])
+
+    accumulation = config["gradient_accumulation_steps"]
+    micro_batch = config["micro_batch_size"]
+    update_results = []
+    order_hashes = []
+    torch.cuda.reset_peak_memory_stats()
+    started = time.perf_counter()
+    stage_updates = 0
+    for epoch in range(config["epochs_per_stage"]):
+        order = list(range(len(records)))
+        random.Random(config["seed"] + args.stage * 1000 + epoch).shuffle(order)
+        order_hashes.append(sha256_json(order))
+        microbatches = [
+            order[offset : offset + micro_batch]
+            for offset in range(0, len(order), micro_batch)
+        ]
+        for offset in range(0, len(microbatches), accumulation):
+            groups = microbatches[offset : offset + accumulation]
+            result = run_update(
+                model,
+                optimizer,
+                make_grouped_batches(
+                    records,
+                    groups,
+                    latent_token_id=markers["latent"],
+                    pad_token_id=tokenizer.pad_token_id,
+                    device=device,
+                ),
+                accumulation,
+                check_gradients=(stage_updates + 1) % 50 == 0,
+            )
+            update_results.append(result)
+            stage_updates += 1
+            if stage_updates % 10 == 0:
+                print(
+                    json.dumps(
+                        {
+                            "stage": args.stage,
+                            "epoch": epoch,
+                            "stage_update": stage_updates,
+                            "seconds": result["seconds"],
+                            "loss": result["mean_microbatch_loss"],
+                        }
+                    ),
+                    flush=True,
+                )
+    torch.cuda.synchronize()
+    training_seconds = time.perf_counter() - started
+    expected_updates = stage_update_count(
+        config["dataset_examples"], config["epochs_per_stage"], config["effective_batch_size"]
+    )
+    if stage_updates != expected_updates:
+        raise RuntimeError(f"observed {stage_updates} updates, expected {expected_updates}")
+
+    model_path = output_dir / "model_state.pt"
+    optimizer_path = output_dir / "optimizer_state.pt"
+    torch.save(model.state_dict(), model_path)
+    torch.save(optimizer.state_dict(), optimizer_path)
+    tokenizer.save_pretrained(output_dir / "tokenizer")
+    cumulative_updates = previous_updates + stage_updates
+    seconds = [float(row["seconds"]) for row in update_results]
+    metadata = {
+        "schema_version": 1,
+        "status": "stage_complete_pending_inline_gate" if args.stage == 1 else "stage_complete",
+        "label": config["label"],
+        "model_id": config["model_id"],
+        "model_revision": config["model_revision"],
+        "code_revision": code_revision,
+        "slurm_job_id": slurm_job_id(),
+        "config_sha256": sha256_json(config),
+        "data_sha256": sha256_file(source_path),
+        "completed_stage": args.stage,
+        "k": args.stage * config["c_thought"],
+        "epochs": config["epochs_per_stage"],
+        "stage_optimizer_updates": stage_updates,
+        "cumulative_optimizer_updates": cumulative_updates,
+        "order_sha256_by_epoch": order_hashes,
+        "training_seconds": training_seconds,
+        "mean_update_seconds": statistics.mean(seconds),
+        "median_update_seconds": statistics.median(seconds),
+        "p95_update_seconds": percentile(seconds, 95),
+        "mean_loss": statistics.mean(row["mean_microbatch_loss"] for row in update_results),
+        "examples": sum(int(row["examples"]) for row in update_results),
+        "nonpadding_tokens": sum(int(row["nonpadding_tokens"]) for row in update_results),
+        "supervised_tokens": sum(int(row["supervised_tokens"]) for row in update_results),
+        "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(),
+        "peak_cuda_reserved_bytes": torch.cuda.max_memory_reserved(),
+        "optimizer_state_bytes": optimizer_state_bytes(optimizer),
+        "model_state": str(model_path),
+        "model_state_sha256": sha256_file(model_path),
+        "optimizer_state": str(optimizer_path),
+        "optimizer_state_sha256": sha256_file(optimizer_path),
+        "gate_required_before_next_stage": args.stage == config["gate_after_stage"],
+        "matched_training_authorized": False,
+    }
+    (output_dir / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
+    print(json.dumps(metadata, indent=2))
+
+
+if __name__ == "__main__":
+    main()

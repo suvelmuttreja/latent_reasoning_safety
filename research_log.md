@@ -371,6 +371,43 @@ Response length and transcript-level disagreements must remain foregrounded.
 Next action: do not formalize the full M0 baseline until the common safety
 serialization is selected after the public wrapper audit.
 
+### RUN S1-COCO06-REDUCED — 2026-08-27 (Slurm 11405002)
+
+Question: Does a materially larger reduced-dose 0.6B skip0 curriculum execute
+the exact public batching and complete training-to-evaluation path while the
+4B jobs and weight approval wait?
+Checkpoint / model revision: `Qwen/Qwen3-0.6B` at
+`c1899de289a04d12100db370d81485cdf75e47ca`; regenerable stage checkpoints
+with SHA-256 values recorded in the result
+Git commit(s): `25c91413f1fcefaa5fe068628c6755b95edbd4db`
+Data subset: first 512 clean-GSM8K training examples; frozen 20-example
+calibration subset for endpoint evaluation
+Training seed: 42
+Config: two epochs each at K=`2/4/6`, micro-batch 2 × accumulation 16,
+effective batch 32, 32 optimizer updates/stage, explicitly non-scientific
+Command: `sbatch scripts/slurm/validate_0_6b_reduced.sbatch`
+Active minutes spent: 10
+Expected: all three stages complete with finite loss, stage saves, strict
+reload, and deterministic K=0/K=6 evaluation through the latent-aligned batch
+path.
+Observed: passed in 16m13s on one A40. Each stage processed 512 unique
+examples twice (1,024 presentations). Stage 1/2/3 supervised-token counts were
+`95,900/62,434/36,930`; mean losses were `1.2504/1.2873/0.9868`; stage times
+were `168.9/279.3/385.9s`. Strict final reload had missing/unexpected keys
+`0/0`; peak CUDA allocation was `8,616,187,392` bytes.
+Sanity checks: K=0 and K=6 both executed. K=0 emitted repeated delimiter text
+and hit the 128-token cap; K=6 emitted concise `### <number>` answers and EOS,
+showing a strong behavioral intervention effect. Both scored 0/20 GSM8K, so
+the accuracy K-dependence was zero and 0.6B still does not establish useful
+load-bearing reasoning capability.
+Judge-vs-human audit: not applicable; benign math infrastructure run.
+What changed my belief: the complete curriculum, exact public accumulation,
+latent-aligned micro-batching, stage saves, evaluation, and strict reload all
+work beyond the earlier 32-example smoke. Model scale/capability—not basic
+pipeline plumbing—is now the main unresolved method-validity risk.
+Next action: use the queued 4B preflights, then either public Gate -1 or the
+pre-registered in-line `coco_u1` fallback gate before matched safety training.
+
 ### S1 completion-criterion audit — 2026-08-27
 
 Each criterion uses exactly one requested status.

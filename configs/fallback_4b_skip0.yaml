@@ -1,0 +1,46 @@
+schema_version: 1
+label: self_contained_4b_skip0_approval_latency_fallback
+submission_status: locked_until_registered_48_to_72_hour_trigger
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+seed: 42
+method: standard_open_implementation_coconut_sft_skip0
+public_recipe_source:
+  repo_id: Costco666/qwen3-4b-gsm8k-coconut-skip0-k6
+  revision: fce73e3c256597865272f2e50cf652a5b94f1acf
+  card_path: artifacts/discovery/results/s1/public_cards/qwen3-4b-gsm8k-coconut-skip0-k6-fce73e3c256597865272f2e50cf652a5b94f1acf.md
+dataset_examples: 7473
+c_thought: 2
+max_latent_stage: 3
+stages: [1, 2, 3]
+epochs_per_stage: 2
+micro_batch_size: 2
+gradient_accumulation_steps: 16
+effective_batch_size: 32
+max_sequence_length: 576
+learning_rate: 8.0e-6
+weight_decay: 0.01
+precision: bf16
+attention_implementation: sdpa
+save_only_improve: false
+model_checkpoint_durability_repo: suvelmuttreja/mats-latent-safety-checkpoints
+optimizer_state_storage: scratch_working_file_regenerable_from_durable_stage_model
+gate_after_stage: 1
+gate_inputs:
+  - strict_save_reload
+  - coherence
+  - gsm8k_200
+  - k_dependence
+gate_must_not_use:
+  - strongreject_direction
+  - preferred_safety_outcome
+forbidden_changes:
+  suppressed_activation_reinjection: false
+  seq_vcr_loss: false
+  latent_position_changes: false
+  alternate_hidden_layer: false
+  math_expert_base: false
+  qlora: false
+  lora: false
+  quantized_weights: false
+
