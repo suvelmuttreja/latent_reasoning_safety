@@ -400,3 +400,14 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   for all seven Costco repositories; approval is still pending.
 - 2026-08-27: Matched training is outside S1 and will not start in this
   session.
+- 2026-08-27: The user corrected the earlier treatment of the entire 4B
+  memory/throughput criterion as approval-blocked. M0 is public, so the
+  full-sequence A100-80GB memory preflight and 50-update explicit-CoT timing
+  are access-independent. Slurm `11403700` is queued for that measurement.
+- 2026-08-27: The user explicitly authorized an access-independent 4B
+  stage-1 timing through the self-contained standard open wrapper while Costco
+  approval remains pending. This overrides the kickoff's conservative pause on
+  speculative 4B wrapper work only for infrastructure timing. It is labeled
+  `scientific_use: false`, cannot decide Gate -1, and does not authorize matched
+  training. Slurm `11403992` is queued after `11403700` so the jobs cannot use
+  two A100s concurrently.
