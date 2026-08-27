@@ -6,7 +6,7 @@
 #SBATCH --constraint=a100-80gb
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
-#SBATCH --time=12:00:00
+#SBATCH --time=08:00:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
@@ -15,4 +15,3 @@ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 srun python -u scripts/calibrate_think_budget.py \
   --max-new-tokens 16000 \
   --output "$WORK_ROOT/results/s1/m0_think_calibration.jsonl"
-
