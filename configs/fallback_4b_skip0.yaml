@@ -1,6 +1,10 @@
 schema_version: 1
 label: self_contained_4b_skip0_approval_latency_fallback
-submission_status: locked_until_registered_48_to_72_hour_trigger
+submission_status: fallback_trigger_acknowledged
+fallback_trigger:
+  decision_date: 2026-08-27
+  reason: user_accelerated_due_to_calendar_risk_while_access_remains_http_403
+  scope: begin_real_skip0_branch_from_exact_m0_after_registered_4b_preflights
 model_id: Qwen/Qwen3-4B-Thinking-2507
 model_revision: 768f209d9ea81521153ed38c47d515654e938aea
 seed: 42
@@ -43,4 +47,3 @@ forbidden_changes:
   qlora: false
   lora: false
   quantized_weights: false
-

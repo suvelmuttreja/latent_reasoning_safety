@@ -61,9 +61,11 @@ document the same base, 7,473-example clean GSM8K set, `c_thought=2`,
 `max_latent_stage=3`, two epochs/stage, micro-batch 2 × accumulation 16,
 LR `8e-6`, AdamW/wd `0.01`, and bf16.
 
-If all weight probes still return HTTP 403 at the first working session
-48–72 hours after the requests, use this fallback rather than waiting
-indefinitely:
+The user activated this fallback immediately on 2026-08-27 because the
+remaining calendar risk outweighs the value of waiting for an unbounded
+approval. All weight probes still returned HTTP 403 at activation. Begin the
+access-independent work now rather than waiting for the originally proposed
+48–72-hour checkpoint:
 
 1. Pin the self-contained standard wrapper adapted from
    `facebookresearch/coconut`, with the wassname fork used only as an
@@ -81,6 +83,12 @@ indefinitely:
 5. If Costco access arrives later, compare the self-trained endpoint with the
    public checkpoint as a robustness footnote. The self-trained run is not
    retrospectively relabeled a public reproduction.
+
+If access arrives before the in-line gate is decided, restore the public
+checkpoint triage/key-audit path in parallel. Do not discard or relabel the
+self-trained branch: it remains the matched branch if it obeys the frozen
+configuration, while the public checkpoint supplies the originally intended
+advance validation and comparison anchor.
 
 Launching the CoT branch before the in-line method gate is a deliberate
 calendar-risk trade, not the default. It requires an explicit decision-log

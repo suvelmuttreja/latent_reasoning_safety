@@ -463,3 +463,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
 - 2026-08-27T20:05:13Z: authenticated one-byte probes were repeated after the
   access-independent work; all seven checkpoint repositories still returned
   HTTP 403.
+- 2026-08-27: Before any matched-branch safety result, the user explicitly
+  accelerated the registered approval-latency fallback because there is no
+  calendar slack. The self-contained 4B skip0 stage 1 from exact M0 is now
+  authorized as the real, resumable branch and will run only after the two
+  registered 4B memory/timing preflights pass. Its `coco_u1` endpoint remains
+  subject to the in-line method-validity gate (strict reload, coherence,
+  GSM8K preservation, and K-dependence; never safety direction). If Costco
+  access arrives before that decision, restore public checkpoint triage in
+  parallel and use it as advance validation/robustness evidence rather than
+  discarding or relabeling the self-trained branch.
