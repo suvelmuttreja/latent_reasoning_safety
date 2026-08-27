@@ -19,6 +19,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from mats_latent_safety.coconut import StandardCoconut, initialize_latent_embeddings
 from mats_latent_safety.data import clean_gsm8k_row
 from mats_latent_safety.hashing import sha256_file, sha256_json
+from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import (
     build_coconut_question,
     build_training_record,
@@ -170,6 +171,8 @@ def main() -> None:
         "status": "passed",
         "model_id": config["model_id"],
         "model_revision": revision,
+        "code_revision": git_revision(),
+        "slurm_job_id": slurm_job_id(),
         "method": config["method"],
         "loss": loss_value,
         "training_step_seconds": step_seconds,

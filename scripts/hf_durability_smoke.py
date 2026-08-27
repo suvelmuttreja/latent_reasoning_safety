@@ -13,6 +13,8 @@ from pathlib import Path
 
 from huggingface_hub import HfApi, hf_hub_download
 
+from mats_latent_safety.runtime import git_revision, slurm_job_id
+
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -64,6 +66,8 @@ def main() -> None:
     result = {
         "status": "passed",
         "authenticated_identity": identity,
+        "code_revision": git_revision(),
+        "slurm_job_id": slurm_job_id(),
         "repo_id": args.repo_id,
         "repo_private": info.private,
         "remote_path": remote_path,
@@ -80,4 +84,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import json
 import math
-import os
 import statistics
 import time
 from pathlib import Path
@@ -17,6 +16,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
 
 from mats_latent_safety.hashing import sha256_json, sha256_text
 from mats_latent_safety.parsing import is_incomplete_generation, parse_thinking_response
+from mats_latent_safety.runtime import git_revision, slurm_job_id
 
 
 def load_prompts(manifest_dir: Path) -> list[dict]:
@@ -70,6 +70,7 @@ def main() -> None:
             existing[row["prompt_id"]] = row
 
     generated = []
+    code_revision = git_revision()
     run_start = time.perf_counter()
     total_generated_tokens = 0
     for prompt in prompts:
@@ -118,6 +119,8 @@ def main() -> None:
             "kind": prompt["kind"],
             "model_id": explicit["model_id"],
             "model_revision": explicit["model_revision"],
+            "code_revision": code_revision,
+            "slurm_job_id": slurm_job_id(),
             "raw_serialized_input": serialized,
             "raw_output": raw_output,
             "parsed_thinking": parsed.thinking,
@@ -157,7 +160,8 @@ def main() -> None:
         "new_tokens_this_invocation": total_generated_tokens,
         "wall_seconds_this_invocation": time.perf_counter() - run_start,
         "peak_cuda_bytes": torch.cuda.max_memory_allocated(),
-        "slurm_job_id": os.getenv("SLURM_JOB_ID"),
+        "code_revision": code_revision,
+        "slurm_job_id": slurm_job_id(),
     }
     output_path.with_suffix(".summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
@@ -165,4 +169,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

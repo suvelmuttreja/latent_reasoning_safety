@@ -12,6 +12,8 @@ import requests
 from huggingface_hub import HfApi, hf_hub_url
 from huggingface_hub.utils import build_hf_headers
 
+from mats_latent_safety.runtime import git_revision, slurm_job_id
+
 
 COSTCO_REPOS = [
     "Costco666/qwen3-4b-gsm8k-coconut-full-k6",
@@ -57,6 +59,8 @@ def main() -> None:
         "schema_version": 1,
         "checked_at": datetime.now(timezone.utc).isoformat(),
         "authenticated_identity": identity,
+        "code_revision": git_revision(),
+        "slurm_job_id": slurm_job_id(),
         "all_costco_readable": all(row["readable"] for row in rows),
         "repositories": rows,
     }

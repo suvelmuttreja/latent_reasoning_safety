@@ -11,6 +11,8 @@ from pathlib import Path
 from huggingface_hub import model_info
 from strong_reject.evaluate import strongreject_finetuned
 
+from mats_latent_safety.runtime import git_revision, slurm_job_id
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -38,6 +40,8 @@ def main() -> None:
         "status": "passed",
         "evaluator": "strongreject_finetuned",
         "strong_reject_git_revision": "7a551d5b440ec7b75d4f6f5bb7c1719965b76b47",
+        "code_revision": git_revision(),
+        "slurm_job_id": slurm_job_id(),
         "judge_model": judge.id,
         "judge_revision": judge.sha,
         "cases": [
