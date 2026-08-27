@@ -499,3 +499,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   the frozen config refuses before CUDA/data access with `coco_u1 in-line
   method gate has not authorized matched training`; unlocking and submission
   remain contingent on the method-validity gate.
+- 2026-08-27T20:21:32Z: the post-fallback authenticated one-byte recheck still
+  returned HTTP 403 for every one of the seven Costco checkpoint repositories.
+  The public-triage restoration condition has not fired; the self-contained
+  queue continues unchanged. Full non-secret probe evidence is saved at
+  `artifacts/discovery/results/s1/hf_access_recheck_after_fallback.json`.

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-27T20:21:32.048411+00:00",
+  "authenticated_identity": "suvelmuttreja",
+  "code_revision": "85bcd66b6c1f08f9577cd96f91f262686a024aa2",
+  "slurm_job_id": null,
+  "all_costco_readable": false,
+  "repositories": [
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-full-k6",
+      "revision": "3a1c11919c9546024867e588836609f0131482a0",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "README.md",
+        "checkpoint_1",
+        "checkpoint_3",
+        "checkpoint_4",
+        "checkpoint_5",
+        "checkpoint_6",
+        "checkpoint_7"
+      ]
+    },
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-skip0-k6",
+      "revision": "fce73e3c256597865272f2e50cf652a5b94f1acf",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "README.md",
+        "checkpoint_8"
+      ]
+    },
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-full-k12",
+      "revision": "35143473c81ac8fe3a2f53e81af0fad789728b0d",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "README.md",
+        "checkpoint_1",
+        "checkpoint_13",
+        "checkpoint_2",
+        "checkpoint_3"
+      ]
+    },
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-skip0-k12",
+      "revision": "59a2eeb94ca7cef740f20dc61b14ddb6be1b43c5",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "README.md",
+        "checkpoint_14"
+      ]
+    },
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-full-k12-intermediates",
+      "revision": "8364a1948178c585d5c39b2e94759a73b15fe16c",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "checkpoint_11",
+        "checkpoint_5",
+        "checkpoint_6",
+        "checkpoint_7",
+        "checkpoint_9"
+      ]
+    },
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-skip0-k6-intermediates",
+      "revision": "cd6b1d81d6be18fe7b97ad6efe532741cc95a70b",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "checkpoint_3",
+        "checkpoint_5",
+        "checkpoint_7"
+      ]
+    },
+    {
+      "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-skip0-k12-intermediates",
+      "revision": "ac0c845014546be82bed80a87945083988ea4f55",
+      "gated": "manual",
+      "probe_file": ".gitattributes",
+      "probe_status": 403,
+      "readable": false,
+      "siblings": [
+        ".gitattributes",
+        "checkpoint_10",
+        "checkpoint_11",
+        "checkpoint_12",
+        "checkpoint_13",
+        "checkpoint_3",
+        "checkpoint_4",
+        "checkpoint_5",
+        "checkpoint_7",
+        "checkpoint_8",
+        "checkpoint_9"
+      ]
+    }
+  ]
+}
