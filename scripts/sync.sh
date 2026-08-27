@@ -20,7 +20,10 @@ case "${1:-}" in
   --pull)
     mkdir -p "${LOCAL}artifacts/discovery/logs" "${LOCAL}artifacts/discovery/results"
     rsync -avz "$REMOTE_HOST:${REMOTE_WORK}logs/" "${LOCAL}artifacts/discovery/logs/"
-    rsync -avz "$REMOTE_HOST:${REMOTE_WORK}results/" "${LOCAL}artifacts/discovery/results/"
+    rsync -avz \
+      --exclude '*.pt' --exclude '*.bin' --exclude '*.safetensors' \
+      --exclude 'checkpoint*' \
+      "$REMOTE_HOST:${REMOTE_WORK}results/" "${LOCAL}artifacts/discovery/results/"
     ;;
   *)
     echo "usage: $0 --push | --pull" >&2
