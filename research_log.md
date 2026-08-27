@@ -460,3 +460,6 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   approval. They confirm micro-batch 2 × accumulation 16 (effective 32), so
   the queued 4B preflights and reduced-dose 0.6B validation were corrected to
   that batching before execution. Checkpoint files remain HTTP 403.
+- 2026-08-27T20:05:13Z: authenticated one-byte probes were repeated after the
+  access-independent work; all seven checkpoint repositories still returned
+  HTTP 403.
