@@ -6,7 +6,7 @@
 #SBATCH --constraint=a100-80gb
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
-#SBATCH --time=08:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
