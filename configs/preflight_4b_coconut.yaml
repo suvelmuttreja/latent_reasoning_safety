@@ -10,9 +10,9 @@ c_thought: 2
 max_latent_stage: 3
 epochs_per_stage: 2
 max_sequence_length: 576
-memory_micro_batch_size: 4
-micro_batch_size: 4
-gradient_accumulation_steps: 8
+memory_micro_batch_size: 2
+micro_batch_size: 2
+gradient_accumulation_steps: 16
 effective_batch_size: 32
 warmup_optimizer_updates: 2
 timed_optimizer_updates: 50
@@ -33,4 +33,3 @@ forbidden_changes:
   qlora: false
   lora: false
   quantized_weights: false
-

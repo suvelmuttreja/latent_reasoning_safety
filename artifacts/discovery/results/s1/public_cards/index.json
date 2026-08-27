@@ -1,0 +1,12 @@
+[
+  {
+    "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-full-k6",
+    "revision": "3a1c11919c9546024867e588836609f0131482a0",
+    "path": "/scratch1/muttreja/mats_latent_safety/results/s1/public_cards/qwen3-4b-gsm8k-coconut-full-k6-3a1c11919c9546024867e588836609f0131482a0.md"
+  },
+  {
+    "repo_id": "Costco666/qwen3-4b-gsm8k-coconut-skip0-k6",
+    "revision": "fce73e3c256597865272f2e50cf652a5b94f1acf",
+    "path": "/scratch1/muttreja/mats_latent_safety/results/s1/public_cards/qwen3-4b-gsm8k-coconut-skip0-k6-fce73e3c256597865272f2e50cf652a5b94f1acf.md"
+  }
+]

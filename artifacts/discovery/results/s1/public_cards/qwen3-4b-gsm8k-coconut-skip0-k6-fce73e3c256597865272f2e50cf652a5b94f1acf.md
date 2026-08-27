@@ -1,0 +1,63 @@
+---
+license: other
+base_model: Qwen/Qwen3-4B-Thinking-2507
+tags:
+  - coconut
+  - latent-reasoning
+  - gsm8k
+  - qwen3
+  - ablation
+library_name: pytorch
+---
+
+# qwen3-4b-gsm8k-coconut-skip0-k6
+
+Coconut (continuous chain-of-thought) checkpoints trained on **clean GSM8K** from `Qwen/Qwen3-4B-Thinking-2507`.
+
+**Ablation: skip stage-0 warmup, k = 6** — compare against `qwen3-4b-gsm8k-coconut-full-k6` to measure the contribution of the no-latent format-adaptation phase.
+
+## Training config
+
+| key | value |
+|---|---|
+| Base model | `Qwen/Qwen3-4B-Thinking-2507` |
+| Train data | `data/hanzhou_eval/gsm8k/gsm8k_train_clean_only.json` (7473 samples) |
+| `c_thought` | 2 |
+| `max_latent_stage` | 3 |
+| **effective k (latent tokens at final stage)** | **6** |
+| `epochs_per_stage` | 2 |
+| Skip stage 0? | **Yes** (training begins directly with latent tokens) |
+| Effective batch size | 32 (bs=2 × grad_accum=16) |
+| LR | 8e-6 |
+| Optimizer | AdamW, weight_decay=0.01 |
+| Precision | bf16 |
+| `save_only_improve` | True |
+
+Reference config: `coconut/args/gsm_qwen3_4b_skip_stage0.yaml`.
+
+## Files
+
+Each `checkpoint_N` is a single `torch.save`d state-dict (zip format, ~7.5 GB). `N` = epoch number (1-indexed). Missing numbers were skipped due to `save_only_improve`.
+
+**Uploaded here:** `checkpoint_8` (final converged model).
+
+**Trained but not uploaded** (kept locally to fit HF private storage quota; ask the maintainer if you need them): `checkpoint_3`, `checkpoint_5`, `checkpoint_7`.
+
+## Loading
+
+These are not in HF transformers format — they are state-dicts for the `Coconut` wrapper class from the training repo. To load:
+
+```python
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from coconut import Coconut  # from the training repo's coconut.py
+
+base = AutoModelForCausalLM.from_pretrained("Qwen/Qwen3-4B-Thinking-2507", torch_dtype=torch.bfloat16)
+tok  = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B-Thinking-2507")
+model = Coconut(base, ...)  # init args per training repo
+
+state_dict = torch.load("checkpoint_8", map_location="cpu")
+model.load_state_dict(state_dict, strict=False)
+```
+
+To convert to a vanilla HF directory (for vLLM etc.), see `materialize_checkpoint_for_vllm` in `coconut/run_coconut.py`.

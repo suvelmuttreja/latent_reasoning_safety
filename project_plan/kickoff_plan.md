@@ -51,6 +51,41 @@ Do these immediately because they can proceed in parallel with scaffolding:
 
 While approval is pending, proceed with all local scaffolding, public-source inspection, parsers, data manifests, and the 0.6B smoke path. Do not reconstruct or train 4B Coconut speculatively before completing the checkpoint-key comparison against the open implementations (with maintainer contact declined, the §4.1 key-audit reconstruction is the only source-recovery path).
 
+### Approval-latency fallback amendment — 2026-08-27
+
+User-authorized before any matched-branch safety result: the gated public
+checkpoints are advance method-validation and triage anchors, not a logical
+dependency of the matched experiment, which trains both branches from M0.
+Pinned full-k6 and skip0-k6 cards are readable without weight access and
+document the same base, 7,473-example clean GSM8K set, `c_thought=2`,
+`max_latent_stage=3`, two epochs/stage, micro-batch 2 × accumulation 16,
+LR `8e-6`, AdamW/wd `0.01`, and bf16.
+
+If all weight probes still return HTTP 403 at the first working session
+48–72 hours after the requests, use this fallback rather than waiting
+indefinitely:
+
+1. Pin the self-contained standard wrapper adapted from
+   `facebookresearch/coconut`, with the wassname fork used only as an
+   engineering reference. Preserve the existing forbidden-change list.
+2. Begin skip0 stage 1 from exact M0 using the documented public recipe and a
+   frozen data order. Treat the first saved slice as the beginning of the real
+   branch so it is resumable rather than disposable.
+3. Move Gate -1 in-line: at `coco_u1`, decide only from strict save/reload,
+   coherence, GSM8K preservation, and K-dependence. Do not use its safety
+   direction for selection.
+4. If `coco_u1` passes, continue stages 2–3 and train the matched CoT branch
+   from exact M0 at identical cumulative update counts. If direct skip0 fails,
+   use the registered shared-Mpre Phase 3B fallback; if neither path produces
+   load-bearing latents, stop the matched experiment.
+5. If Costco access arrives later, compare the self-trained endpoint with the
+   public checkpoint as a robustness footnote. The self-trained run is not
+   retrospectively relabeled a public reproduction.
+
+Launching the CoT branch before the in-line method gate is a deliberate
+calendar-risk trade, not the default. It requires an explicit decision-log
+entry because a Phase 3B outcome could require retraining that branch.
+
 ## S1 execution plan
 
 ### 1. Durability and reproducibility

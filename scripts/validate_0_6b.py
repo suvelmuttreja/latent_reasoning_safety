@@ -20,6 +20,7 @@ import torch
 import yaml
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from mats_latent_safety.batching import pad_coconut_records
 from mats_latent_safety.coconut import StandardCoconut, initialize_latent_embeddings
 from mats_latent_safety.data import clean_gsm8k_row
 from mats_latent_safety.hashing import sha256_file, sha256_json
@@ -64,45 +65,65 @@ def gradients_finite(model: torch.nn.Module) -> bool:
 
 
 def train_stage(model, tokenizer, markers, examples, stage: int, config: dict, optimizer):
-    order = list(range(len(examples)))
-    random.Random(config["seed"] + stage).shuffle(order)
     accumulation = config["gradient_accumulation_steps"]
+    micro_batch_size = config["micro_batch_size"]
     losses, supervised_tokens, updates = [], 0, 0
     optimizer.zero_grad(set_to_none=True)
     model.train()
     started = time.perf_counter()
-    for offset, example_index in enumerate(order):
-        tokenized = tokenize_reasoning_example(tokenizer, examples[example_index])
-        record = build_training_record(
-            tokenized,
-            stage=stage,
-            marker_ids=markers,
-            c_thought=config["c_thought"],
-            max_stage=3,
-        )
-        device = next(model.parameters()).device
-        batch = {
-            key: torch.tensor([record[key]], device=device)
-            for key in ("input_ids", "attention_mask", "labels", "position_ids")
-        }
-        output = model(**batch)
-        if output.loss is None or not torch.isfinite(output.loss):
-            raise RuntimeError(f"non-finite loss at stage {stage}, example {example_index}")
-        (output.loss / accumulation).backward()
-        losses.append(float(output.loss.detach().float().cpu()))
-        supervised_tokens += int(record["supervised_tokens"])
-        final_microbatch = offset + 1 == len(order)
-        if (offset + 1) % accumulation == 0 or final_microbatch:
-            if not gradients_finite(model):
-                raise RuntimeError(f"non-finite gradients at stage {stage}, example {example_index}")
-            optimizer.step()
-            optimizer.zero_grad(set_to_none=True)
-            updates += 1
+    examples_processed = 0
+    for epoch in range(config["epochs_per_stage"]):
+        order = list(range(len(examples)))
+        random.Random(config["seed"] + stage * 1000 + epoch).shuffle(order)
+        microbatches = [
+            order[offset : offset + micro_batch_size]
+            for offset in range(0, len(order), micro_batch_size)
+        ]
+        for offset, example_indices in enumerate(microbatches):
+            records = []
+            for example_index in example_indices:
+                tokenized = tokenize_reasoning_example(tokenizer, examples[example_index])
+                records.append(
+                    build_training_record(
+                        tokenized,
+                        stage=stage,
+                        marker_ids=markers,
+                        c_thought=config["c_thought"],
+                        max_stage=3,
+                    )
+                )
+            device = next(model.parameters()).device
+            batch = pad_coconut_records(
+                records,
+                latent_token_id=markers["latent"],
+                pad_token_id=tokenizer.pad_token_id,
+                device=device,
+            )
+            output = model(**batch)
+            if output.loss is None or not torch.isfinite(output.loss):
+                raise RuntimeError(
+                    f"non-finite loss at stage {stage}, examples {example_indices}"
+                )
+            (output.loss / accumulation).backward()
+            losses.append(float(output.loss.detach().float().cpu()))
+            supervised_tokens += sum(int(record["supervised_tokens"]) for record in records)
+            examples_processed += len(records)
+            final_microbatch = offset + 1 == len(microbatches)
+            if (offset + 1) % accumulation == 0 or final_microbatch:
+                if not gradients_finite(model):
+                    raise RuntimeError(
+                        f"non-finite gradients at stage {stage}, examples {example_indices}"
+                    )
+                optimizer.step()
+                optimizer.zero_grad(set_to_none=True)
+                updates += 1
     torch.cuda.synchronize()
     return {
         "stage": stage,
         "k": stage * config["c_thought"],
-        "examples": len(order),
+        "unique_examples": len(examples),
+        "examples": examples_processed,
+        "epochs": config["epochs_per_stage"],
         "optimizer_updates": updates,
         "supervised_tokens": supervised_tokens,
         "mean_loss": sum(losses) / len(losses),
@@ -165,6 +186,10 @@ def main() -> None:
     config = yaml.safe_load(Path(args.config).read_text())
     if any(config["forbidden_changes"].values()):
         raise ValueError("a forbidden method change is enabled")
+    if config["micro_batch_size"] * config["gradient_accumulation_steps"] != config[
+        "effective_batch_size"
+    ]:
+        raise ValueError("micro-batch and accumulation do not match effective batch size")
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
     torch.manual_seed(config["seed"])

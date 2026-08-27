@@ -8,9 +8,9 @@ dataset_examples: 7473
 epochs_per_coconut_stage: 2
 coconut_stages: 3
 max_sequence_length: 576
-memory_micro_batch_size: 4
-micro_batch_size: 4
-gradient_accumulation_steps: 8
+memory_micro_batch_size: 2
+micro_batch_size: 2
+gradient_accumulation_steps: 16
 effective_batch_size: 32
 warmup_optimizer_updates: 2
 timed_optimizer_updates: 50
@@ -26,4 +26,3 @@ forbidden_changes:
   lora: false
   quantized_weights: false
   alternate_base_model: false
-

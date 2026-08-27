@@ -411,3 +411,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `scientific_use: false`, cannot decide Gate -1, and does not authorize matched
   training. Slurm `11403992` is queued after `11403700` so the jobs cannot use
   two A100s concurrently.
+- 2026-08-27: Before matched-branch safety results, the user reframed the
+  public Costco weights as optional de-risking/triage evidence rather than a
+  logical dependency of the matched-from-M0 experiment. The approval-latency
+  fallback is now pre-registered in `project_plan/kickoff_plan.md`: after
+  48–72 hours of persistent HTTP 403, train the self-contained 4B skip0 branch
+  from M0 and move Gate -1 to the saved `coco_u1` endpoint, using method
+  validity only. An early CoT launch remains an explicit-risk deviation, not
+  the default.
+- 2026-08-27: Both pinned k6 model-card READMEs were retrievable without weight
+  approval. They confirm micro-batch 2 × accumulation 16 (effective 32), so
+  the queued 4B preflights and reduced-dose 0.6B validation were corrected to
+  that batching before execution. Checkpoint files remain HTTP 403.
