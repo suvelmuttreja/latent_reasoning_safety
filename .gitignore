@@ -1,0 +1,27 @@
+.DS_Store
+.venv/
+.uv-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Public upstream sources are pinned in configs/pins.json, not vendored.
+vendor/
+
+# Regenerable or scratch-only artifacts.
+cache/
+data/
+checkpoints/
+generations/
+logs/*.out
+logs/*.err
+wandb/
+
+# Credentials must never enter source control.
+.env
+*.token
+token
+
