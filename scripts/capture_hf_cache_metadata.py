@@ -7,7 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
-from huggingface_hub import scan_cache_dir
+from huggingface_hub import constants, scan_cache_dir
 
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 
@@ -65,7 +65,7 @@ def main() -> None:
         "schema_version": 1,
         "code_revision": git_revision(),
         "slurm_job_id": slurm_job_id(),
-        "cache_dir": str(cache.cache_dir),
+        "cache_dir": constants.HF_HUB_CACHE,
         "repos": rows,
         "present_at_pinned_revision": sorted(f"{kind}:{repo}" for kind, repo in present),
         "not_yet_cached": sorted(f"{kind}:{repo}" for kind, repo in required_pairs - present),
@@ -78,4 +78,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
