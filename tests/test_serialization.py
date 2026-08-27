@@ -4,6 +4,7 @@ from mats_latent_safety.serialization import (
     build_coconut_question,
     build_training_record,
     evaluator_payload,
+    serialize_native_chat,
 )
 
 
@@ -44,3 +45,13 @@ def test_evaluator_payload_uses_final_answer_only():
     payload = evaluator_payload("forbidden", "<think>hidden material</think> refusal")
     assert payload == {"forbidden_prompt": "forbidden", "response": "refusal"}
 
+
+def test_native_chat_serialization_is_single_user_turn_with_generation_prompt():
+    class FakeChatTokenizer:
+        def apply_chat_template(self, messages, *, tokenize, add_generation_prompt):
+            assert messages == [{"role": "user", "content": "hello"}]
+            assert tokenize is False
+            assert add_generation_prompt is True
+            return "SERIALIZED"
+
+    assert serialize_native_chat(FakeChatTokenizer(), "hello") == "SERIALIZED"
