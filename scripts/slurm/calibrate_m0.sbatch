@@ -2,8 +2,9 @@
 #SBATCH --job-name=mats-s1-m0-cal
 #SBATCH --account=piray_1101
 #SBATCH --partition=gpu
-#SBATCH --gres=gpu:a100:1
-#SBATCH --constraint=a100-80gb
+# Inference-only 4B calibration fits an A40; the later full-training memory
+# preflight remains separately constrained to A100-80GB.
+#SBATCH --gres=gpu:a40:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
 #SBATCH --time=04:00:00
