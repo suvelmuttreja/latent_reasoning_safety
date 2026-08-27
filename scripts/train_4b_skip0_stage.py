@@ -13,7 +13,7 @@ from pathlib import Path
 import pandas as pd
 import torch
 import yaml
-from huggingface_hub import model_info
+from huggingface_hub import HfApi, model_info
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from mats_latent_safety.batching import pad_coconut_records
@@ -73,6 +73,42 @@ def make_grouped_batches(
         )
         for group in groups
     ]
+
+
+def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict:
+    """Persist the unique stage model while leaving regenerable optimizer state on scratch."""
+    repo_id = config["model_checkpoint_durability_repo"]
+    path_in_repo = f"fallback_4b_skip0/stage{metadata['completed_stage']}"
+    api = HfApi()
+    model_commit = api.upload_folder(
+        folder_path=output_dir,
+        repo_id=repo_id,
+        repo_type="model",
+        path_in_repo=path_in_repo,
+        allow_patterns=["model_state.pt", "tokenizer/*"],
+        commit_message=f"Persist fallback 4B skip0 stage {metadata['completed_stage']}",
+    )
+    durability = {
+        "status": "model_and_tokenizer_uploaded",
+        "repo_id": repo_id,
+        "path_in_repo": path_in_repo,
+        "model_commit_oid": model_commit.oid,
+        "model_commit_url": str(model_commit.commit_url),
+        "metadata_upload_required_for_stage_success": True,
+        "optimizer_state_uploaded": False,
+        "optimizer_regeneration": "replay_frozen_training_from_previous_durable_stage",
+    }
+    metadata["durability"] = durability
+    metadata_path = output_dir / "metadata.json"
+    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
+    api.upload_file(
+        path_or_fileobj=metadata_path,
+        path_in_repo=f"{path_in_repo}/metadata.json",
+        repo_id=repo_id,
+        repo_type="model",
+        commit_message=f"Record fallback 4B skip0 stage {metadata['completed_stage']} metadata",
+    )
+    return durability
 
 
 def main() -> None:
@@ -261,7 +297,7 @@ def main() -> None:
         "gate_required_before_next_stage": args.stage == config["gate_after_stage"],
         "matched_training_authorized": False,
     }
-    (output_dir / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
+    upload_durable_stage(output_dir, metadata, config)
     print(json.dumps(metadata, indent=2))
 
 

@@ -1,0 +1,37 @@
+schema_version: 1
+label: self_trained_4b_coco_u1_inline_method_gate
+train_config: configs/fallback_4b_skip0.yaml
+checkpoint_stage: 1
+checkpoint_k: 2
+seed: 42
+device_class: a40_48gb_or_larger
+capability:
+  manifest: manifests/gsm8k_heldout_200.json
+  k_values: [0, 2]
+  max_new_tokens: 512
+  do_sample: false
+coherence:
+  manifest: manifests/coherence_10.json
+  k_values: [0, 2]
+  max_new_tokens: 512
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+decision:
+  automated_requirements:
+    - checkpoint_hash_matches_stage_metadata
+    - strict_load_missing_zero
+    - strict_load_unexpected_zero
+    - both_k_settings_complete
+  human_review_required:
+    - blind_coherence_scores
+    - meaningful_gsm8k_capability
+    - k_dependence_interpretation
+  automatic_accuracy_threshold: null
+  rationale: no_posthoc_magic_accuracy_cutoff_and_stage1_partial_dependence_is_informative
+  forbidden_inputs:
+    - strongreject_direction
+    - preferred_safety_outcome
+  next_stage_authorized_by_script: false
+
