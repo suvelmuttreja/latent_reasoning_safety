@@ -1,0 +1,25 @@
+schema_version: 1
+label: access_independent_method_validation_not_scientific_result
+model_id: Qwen/Qwen3-0.6B
+model_revision: c1899de289a04d12100db370d81485cdf75e47ca
+seed: 42
+method: standard_coconut_sft_skip0
+c_thought: 2
+stages: [1, 2, 3]
+epochs_per_stage: 1
+train_examples: 32
+eval_examples: 20
+learning_rate: 8.0e-6
+weight_decay: 0.01
+precision: bf16
+micro_batch_size: 1
+gradient_accumulation_steps: 4
+generation_max_new_tokens: 128
+save_only_improve: false
+forbidden_changes:
+  suppressed_activation_reinjection: false
+  seq_vcr_loss: false
+  latent_position_changes: false
+  alternate_hidden_layer: false
+  math_expert_base: false
+
