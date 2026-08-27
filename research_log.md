@@ -61,6 +61,60 @@ Next action: initialize the canonical local Git repository; replace the
 scratch-only scripts; pin upstream sources and dependencies; freeze manifests
 and evaluation interfaces; implement and test the canonical 0.6B wrapper smoke.
 
+### RUN S1-SCAFFOLD — 2026-08-27
+
+Question: Can the access-independent S1 interfaces be frozen and validated
+without using the pending Costco weights?  
+Checkpoint / model revision: no model weights loaded; Qwen3-0.6B pinned to
+`c1899de289a04d12100db370d81485cdf75e47ca` for the GPU smoke  
+Git commit(s): upstream pins in `configs/pins.json`  
+Data subset: all 7,473 GSM8K train IDs; deterministic GSM8K test 200; first 20
+of that set for calibration; StrongREJECT-small 60; deterministic 12-prompt
+audit (two/category); fixed 10-prompt coherence set  
+Training seed: 42  
+Config: `configs/evaluation.yaml`, `configs/smoke_0_6b.yaml`  
+Command: pinned-source inspection, manifest builder, `PYTHONPATH=src pytest -q`  
+Active minutes spent: 55  
+Expected: project-local implementation uses only standard final-layer Coconut
+reinjection and exposes every registered parser/audit boundary to tests.  
+Observed:
+
+- Pinned Git revisions: facebookresearch/coconut
+  `27273cb8cca4bb763c041a63b036d0c3b7cbbb48`, wassname/coconut
+  `60ade4092a0e9f5ee635be435b56ab6a3ce8c964`, dsbowen/strong_reject
+  `7a551d5b440ec7b75d4f6f5bb7c1719965b76b47`, and
+  BatsResearch/self-jailbreaking
+  `be6033c6369399d626a00479ee7263aea286ec63`.
+- Source inspection confirmed that the wassname fork changes hidden-state
+  reinjection, latent position IDs, the loss, and the default base model. The
+  tracked wrapper adopts none of those changes. It follows the Meta algorithm
+  (preceding final-layer hidden state) and adds only Qwen cache compatibility.
+- Source file hashes were verified before manifest generation. The frozen
+  manifests record source IDs/revisions, record IDs, and content hashes.
+- The evaluation config freezes seed 42, Qwen's recommended sampling defaults,
+  final-answer-only primary StrongREJECT payloads, parser edge-case policy,
+  bootstrap settings, and the complete per-generation record schema. The think
+  cap and common safety serialization remain intentionally unset pending their
+  empirical gates.
+- Dependency resolution produced `uv.lock` with 119 packages. StrongREJECT is
+  locked directly to its registered Git commit. The judge is pinned to
+  `qylu4156/strongreject-15k-v1` revision
+  `4bd893d32390d2cace4f067dc2e3ef5294fd78a2`.
+- 20/20 unit tests passed locally, covering thinking/final-answer parsing,
+  GSM8K answer extraction, stage/update accounting, K selection, standard
+  latent reinjection, deterministic generation, strict material-key auditing,
+  evaluator payload boundaries, and manifest integrity.
+
+Sanity checks: `git diff --check` passed; JSON configs parse; no output or
+safety score was viewed before the sets were frozen.  
+Judge-vs-human audit: not applicable; no model safety evaluation yet.  
+What changed my belief: a standard, access-independent Qwen wrapper can be
+tested without importing the fork's protocol-changing features, but scientific
+use at 4B still requires the Costco key audit.  
+Next action: sync the canonical checkout to home1, build the locked environment,
+verify private-HF durability, inspect 20 processed examples, and submit the
+0.6B and evaluator smoke jobs.
+
 ## Decision register
 
 - 2026-08-27: Costco maintainer/external contact remains declined. No contact
@@ -69,4 +123,3 @@ and evaluation interfaces; implement and test the canonical 0.6B wrapper smoke.
   checkpoint will be selected using a safety-score direction.
 - 2026-08-27: Matched training is outside S1 and will not start in this
   session.
-

@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
-# Push local code to Discovery scratch. Code only — no data, checkpoints, or caches.
-# Usage: ./scripts/sync.sh [--pull]
+# Sync canonical local code to home1, or durable result copies back from scratch1.
 set -euo pipefail
 
 LOCAL="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/"
 REMOTE_HOST="discovery"
-REMOTE="/scratch1/muttreja/mats_latent_safety/code/"
+REMOTE_CODE="/home1/muttreja/mats_latent_safety/"
+REMOTE_WORK="/scratch1/muttreja/mats_latent_safety/"
 
-EXCLUDES=(
-  --exclude '.git' --exclude '__pycache__' --exclude '*.pyc'
-  --exclude '.venv' --exclude '.ipynb_checkpoints'
-  --exclude 'logs/' --exclude 'data/' --exclude 'checkpoints/'
-  --exclude '.DS_Store' --exclude 'wandb/'
-)
-
-if [[ "${1:-}" == "--pull" ]]; then
-  # Bring results back. Deliberately no --delete: never clobber local work.
-  rsync -avz --progress \
-    "$REMOTE_HOST:/scratch1/muttreja/mats_latent_safety/logs/" "${LOCAL}logs/"
-else
-  rsync -avz --delete "${EXCLUDES[@]}" "$LOCAL" "$REMOTE_HOST:$REMOTE"
-fi
+case "${1:-}" in
+  --push)
+    ssh "$REMOTE_HOST" 'mkdir -p /home1/$USER/mats_latent_safety /scratch1/$USER/mats_latent_safety/{cache,data,logs,results,checkpoints,tmp}'
+    rsync -avz --delete-delay \
+      --exclude '.venv/' --exclude '.uv-cache/' --exclude 'vendor/' \
+      --exclude 'artifacts/' --exclude '.DS_Store' --exclude '__pycache__/' \
+      --exclude '*.pyc' --exclude 'data/' --exclude 'checkpoints/' \
+      "$LOCAL" "$REMOTE_HOST:$REMOTE_CODE"
+    ;;
+  --pull)
+    mkdir -p "${LOCAL}artifacts/discovery/logs" "${LOCAL}artifacts/discovery/results"
+    rsync -avz "$REMOTE_HOST:${REMOTE_WORK}logs/" "${LOCAL}artifacts/discovery/logs/"
+    rsync -avz "$REMOTE_HOST:${REMOTE_WORK}results/" "${LOCAL}artifacts/discovery/results/"
+    ;;
+  *)
+    echo "usage: $0 --push | --pull" >&2
+    exit 2
+    ;;
+esac

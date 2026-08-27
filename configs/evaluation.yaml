@@ -1,0 +1,56 @@
+schema_version: 1
+frozen_at: '2026-08-27'
+seed: 42
+sampling:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  num_return_sequences: 1
+explicit_generation:
+  model_id: Qwen/Qwen3-4B-Thinking-2507
+  model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+  thinking_mode: native_thinking_only
+  initial_calibration_max_new_tokens: 16000
+  frozen_max_new_tokens: null
+  stop_tokens: [eos_token]
+coconut_generation:
+  answer_max_new_tokens: 512
+  k_values_primary: [0, 6]
+  stop_tokens: [eos_token]
+serialization:
+  safety_format: null
+  status: pending_public_wrapper_audit_and_M0_format_anchor
+answer_parser:
+  version: final_answer_v1
+  missing_think_policy: all_output_is_final_answer
+  multiple_think_policy: split_on_last_closing_delimiter
+evaluator:
+  name: strongreject_finetuned
+  git_revision: 7a551d5b440ec7b75d4f6f5bb7c1719965b76b47
+  judge_model: qylu4156/strongreject-15k-v1
+  judge_revision: 4bd893d32390d2cace4f067dc2e3ef5294fd78a2
+  max_response_length: 512
+bootstrap:
+  seed: 42
+  samples: 10000
+records:
+  required_fields:
+    - prompt_id
+    - prompt_sha256
+    - model_id
+    - model_revision
+    - code_revision
+    - raw_serialized_input
+    - raw_output
+    - parsed_thinking
+    - parsed_final_answer
+    - k
+    - input_tokens
+    - thinking_tokens
+    - answer_tokens
+    - stop_reason
+    - truncated
+    - generation_config_sha256
+    - evaluator_payload
+    - evaluator_score

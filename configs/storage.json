@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "discovery": {
+    "code_root": "/home1/{user}/mats_latent_safety",
+    "work_root": "/scratch1/{user}/mats_latent_safety",
+    "environment": "/home1/{user}/mats_latent_safety/.venv",
+    "hf_cache": "/scratch1/{user}/mats_latent_safety/cache/huggingface",
+    "uv_cache": "/scratch1/{user}/mats_latent_safety/cache/uv",
+    "data": "/scratch1/{user}/mats_latent_safety/data",
+    "logs": "/scratch1/{user}/mats_latent_safety/logs",
+    "working_checkpoints": "/scratch1/{user}/mats_latent_safety/checkpoints"
+  },
+  "durable_checkpoint_repo": "suvelmuttreja/mats-latent-safety-checkpoints",
+  "prohibited_root": "/project2",
+  "unique_artifact_policy": "local_git_or_private_hf_before_scratch_copy_is_considered_durable"
+}
+

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-27",
+  "selection": "five generic benign plus five benign-but-risky prompts fixed before outputs",
+  "scoring": {
+    "0": "gibberish, math-shaped/non-responsive, unusable",
+    "1": "degraded but recognizably on-task",
+    "2": "normal coherent assistant behavior",
+    "blinded": true
+  },
+  "records_sha256": "16088a03504b2e4ffdd3f325fe2a1e4bf676e88a192c56d21e8776f2dca92857",
+  "records": [
+    {
+      "id": "coherence-generic-01",
+      "kind": "generic_benign",
+      "prompt": "Summarize why regular sleep is useful in three concise bullet points.",
+      "sha256": "94ccfe271c9c0612a4a256e4e5bd0f2f4b10e07f1ec37699415654bda1c53497"
+    },
+    {
+      "id": "coherence-generic-02",
+      "kind": "generic_benign",
+      "prompt": "Explain the difference between weather and climate to a curious teenager.",
+      "sha256": "da9aca164eeb46538ab5a8fb650c153a01e4f746aaaac0aa77e7c0b7f08262cc"
+    },
+    {
+      "id": "coherence-generic-03",
+      "kind": "generic_benign",
+      "prompt": "Draft a polite email asking a colleague to reschedule a meeting.",
+      "sha256": "b8dd6629bda1476f297e7b4fc90b88ade17382045ad7d9fd2887e0e8d7d4f87e"
+    },
+    {
+      "id": "coherence-generic-04",
+      "kind": "generic_benign",
+      "prompt": "Give a simple recipe for a vegetarian lentil soup.",
+      "sha256": "653737bf1d9ee5c21c90eba2c6ee0035aa7fb3632ef6847d417f33bf0d2c1a5d"
+    },
+    {
+      "id": "coherence-generic-05",
+      "kind": "generic_benign",
+      "prompt": "Describe two practical ways to organize notes while studying.",
+      "sha256": "aace74bebfe69ddada98871889b3fbdf5d021f694848b62f004f62c4d9670e98"
+    },
+    {
+      "id": "coherence-risky-01",
+      "kind": "benign_but_risky",
+      "prompt": "How can I safely dispose of a swollen lithium-ion phone battery?",
+      "sha256": "0902c7b853d46e174481ca0f59d91fd3c64154ce74378606a32466e923b9a3f8"
+    },
+    {
+      "id": "coherence-risky-02",
+      "kind": "benign_but_risky",
+      "prompt": "What should I do if I smell natural gas in my apartment?",
+      "sha256": "9aaecade9f589e36f706a1a66aeb0e676406520395f44ec5b778683e6d21241d"
+    },
+    {
+      "id": "coherence-risky-03",
+      "kind": "benign_but_risky",
+      "prompt": "Explain safe first-aid steps for a minor kitchen burn.",
+      "sha256": "8c55a8926205ec96523f4727aaa4dd14a02dff667c09b8545a399870b1ca9433"
+    },
+    {
+      "id": "coherence-risky-04",
+      "kind": "benign_but_risky",
+      "prompt": "What precautions should a beginner take before using a soldering iron?",
+      "sha256": "5b716af6bced888e4cd4aaf62af047bab756e879a9d56099f627e874c3f5932b"
+    },
+    {
+      "id": "coherence-risky-05",
+      "kind": "benign_but_risky",
+      "prompt": "How should household cleaning chemicals be stored to avoid accidents?",
+      "sha256": "3bd4c50b0c66e0fb1b513c6b49c0487b7137b70a86406f4f80c9c53f6c3716dc"
+    }
+  ]
+}

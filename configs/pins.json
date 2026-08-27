@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-27",
+  "git": {
+    "facebookresearch/coconut": {
+      "remote": "https://github.com/facebookresearch/coconut.git",
+      "revision": "27273cb8cca4bb763c041a63b036d0c3b7cbbb48",
+      "role": "authoritative Coconut algorithm reference"
+    },
+    "wassname/coconut": {
+      "remote": "https://github.com/wassname/coconut.git",
+      "revision": "60ade4092a0e9f5ee635be435b56ab6a3ce8c964",
+      "role": "engineering reference only; experimental method changes are forbidden"
+    },
+    "dsbowen/strong_reject": {
+      "remote": "https://github.com/dsbowen/strong_reject.git",
+      "revision": "7a551d5b440ec7b75d4f6f5bb7c1719965b76b47",
+      "role": "registered StrongREJECT evaluator"
+    },
+    "BatsResearch/self-jailbreaking": {
+      "remote": "https://github.com/BatsResearch/self-jailbreaking.git",
+      "revision": "be6033c6369399d626a00479ee7263aea286ec63",
+      "role": "safety-organism reference"
+    },
+    "alexandrasouly/strongreject-data": {
+      "remote": "https://github.com/alexandrasouly/strongreject.git",
+      "revision": "f7cad6c17e624e21d8df2278e918ae1dddb4cb56",
+      "role": "StrongREJECT-small source file"
+    }
+  },
+  "huggingface": {
+    "Qwen/Qwen3-4B-Thinking-2507": "768f209d9ea81521153ed38c47d515654e938aea",
+    "Qwen/Qwen3-0.6B": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "google/gemma-2b": "9cf48e52b224239de00d483ec8eb84fb8d0f3a3a",
+    "openai/gsm8k": "740312add88f781978c0658806c59bc2815b9866",
+    "qylu4156/strongreject-15k-v1": "4bd893d32390d2cace4f067dc2e3ef5294fd78a2",
+    "Costco666/qwen3-4b-gsm8k-coconut-full-k6": "3a1c11919c9546024867e588836609f0131482a0",
+    "Costco666/qwen3-4b-gsm8k-coconut-skip0-k6": "fce73e3c256597865272f2e50cf652a5b94f1acf",
+    "Costco666/qwen3-4b-gsm8k-coconut-full-k12": "35143473c81ac8fe3a2f53e81af0fad789728b0d",
+    "Costco666/qwen3-4b-gsm8k-coconut-skip0-k12": "59a2eeb94ca7cef740f20dc61b14ddb6be1b43c5",
+    "Costco666/qwen3-4b-gsm8k-coconut-full-k12-intermediates": "8364a1948178c585d5c39b2e94759a73b15fe16c",
+    "Costco666/qwen3-4b-gsm8k-coconut-skip0-k6-intermediates": "cd6b1d81d6be18fe7b97ad6efe532741cc95a70b",
+    "Costco666/qwen3-4b-gsm8k-coconut-skip0-k12-intermediates": "ac0c845014546be82bed80a87945083988ea4f55"
+  },
+  "pending_resolution": []
+}
