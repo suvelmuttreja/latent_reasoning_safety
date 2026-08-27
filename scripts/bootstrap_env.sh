@@ -29,6 +29,7 @@ module purge
 module load gcc/13.3.0 cuda/12.6.3
 
 export UV_CACHE_DIR="$WORK_ROOT/cache/uv"
+export UV_LINK_MODE=copy
 export UV_PROJECT_ENVIRONMENT="$CODE_ROOT/.venv"
 export HF_HOME="$WORK_ROOT/cache/huggingface"
 export HF_TOKEN_PATH="/home1/$USER/.cache/huggingface/token"

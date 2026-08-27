@@ -12,7 +12,8 @@ case "${1:-}" in
     ssh "$REMOTE_HOST" 'mkdir -p /home1/$USER/mats_latent_safety /scratch1/$USER/mats_latent_safety/{cache,data,logs,results,checkpoints,tmp}'
     rsync -avz --delete-delay \
       --exclude '.venv/' --exclude '.uv-cache/' --exclude 'vendor/' \
-      --exclude 'artifacts/' --exclude '.DS_Store' --exclude '__pycache__/' \
+      --exclude 'artifacts/' --exclude '.DS_Store' --exclude '.pytest_cache/' \
+      --exclude '.ruff_cache/' --exclude '__pycache__/' \
       --exclude '*.pyc' --exclude 'data/' --exclude 'checkpoints/' \
       "$LOCAL" "$REMOTE_HOST:$REMOTE_CODE"
     ;;
