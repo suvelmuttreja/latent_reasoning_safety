@@ -9,7 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
-from huggingface_hub import HfApi, build_hf_headers, hf_hub_url
+from huggingface_hub import HfApi, hf_hub_url
+from huggingface_hub.utils import build_hf_headers
 
 
 COSTCO_REPOS = [
@@ -67,4 +68,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
