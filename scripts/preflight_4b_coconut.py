@@ -17,7 +17,7 @@ from huggingface_hub import model_info
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from mats_latent_safety.batching import pad_coconut_records
-from mats_latent_safety.constants import stage_update_count
+from mats_latent_safety.constants import optimizer_updates
 from mats_latent_safety.coconut import StandardCoconut, initialize_latent_embeddings
 from mats_latent_safety.data import clean_gsm8k_row
 from mats_latent_safety.hashing import sha256_file, sha256_json
@@ -241,7 +241,7 @@ def main() -> None:
     total_examples = sum(int(row["examples"]) for row in timed)
     total_nonpadding = sum(int(row["nonpadding_tokens"]) for row in timed)
     total_supervised = sum(int(row["supervised_tokens"]) for row in timed)
-    updates_per_stage = stage_update_count(
+    updates_per_stage = optimizer_updates(
         config["dataset_examples"], config["epochs_per_stage"], config["effective_batch_size"]
     )
     mean_update_seconds = statistics.mean(update_seconds)
@@ -309,4 +309,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

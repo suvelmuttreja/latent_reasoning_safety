@@ -1,0 +1,42 @@
+schema_version: 1
+label: matched_4b_explicit_cot_branch
+branch: explicit_cot
+submission_status: locked_until_coco_u1_inline_gate_passes
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+seed: 42
+method: explicit_cot_sft_from_exact_m0
+matched_to_config: configs/fallback_4b_skip0.yaml
+dataset_examples: 7473
+c_thought: 2
+max_latent_stage: 3
+stages: [1, 2, 3]
+epochs_per_stage: 2
+micro_batch_size: 2
+gradient_accumulation_steps: 16
+effective_batch_size: 32
+max_sequence_length: 576
+learning_rate: 8.0e-6
+weight_decay: 0.01
+precision: bf16
+attention_implementation: sdpa
+save_only_improve: false
+model_checkpoint_durability_repo: suvelmuttreja/mats-latent-safety-checkpoints
+durability_path_prefix: matched_4b_cot
+optimizer_state_storage: scratch_working_file_regenerable_by_frozen_replay
+gate_after_stage: null
+matching_rules:
+  exact_m0_initialization: true
+  same_dataset_examples: true
+  same_order_seed_policy: true
+  same_optimizer_hyperparameters: true
+  same_updates_at_each_stage_endpoint: true
+  same_answer_target_formatting: true
+forbidden_changes:
+  answer_only: false
+  alternate_data_order: false
+  alternate_learning_rate: false
+  qlora: false
+  lora: false
+  quantized_weights: false
+

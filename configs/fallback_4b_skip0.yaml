@@ -1,5 +1,6 @@
 schema_version: 1
 label: self_contained_4b_skip0_approval_latency_fallback
+branch: coconut_skip0
 submission_status: fallback_trigger_acknowledged
 fallback_trigger:
   decision_date: 2026-08-27
@@ -28,6 +29,7 @@ precision: bf16
 attention_implementation: sdpa
 save_only_improve: false
 model_checkpoint_durability_repo: suvelmuttreja/mats-latent-safety-checkpoints
+durability_path_prefix: fallback_4b_skip0
 optimizer_state_storage: scratch_working_file_regenerable_from_durable_stage_model
 gate_after_stage: 1
 gate_inputs:

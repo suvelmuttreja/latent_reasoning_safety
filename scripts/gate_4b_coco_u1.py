@@ -155,6 +155,8 @@ def main() -> None:
     train_config = yaml.safe_load(train_config_path.read_text())
     checkpoint_dir = Path(args.checkpoint_dir)
     metadata = json.loads((checkpoint_dir / "metadata.json").read_text())
+    if metadata["branch"] != "coconut_skip0":
+        raise ValueError("in-line gate requires a Coconut skip0 checkpoint")
     if metadata["completed_stage"] != gate_config["checkpoint_stage"]:
         raise ValueError("checkpoint is not the registered stage")
     if metadata["k"] != gate_config["checkpoint_k"]:

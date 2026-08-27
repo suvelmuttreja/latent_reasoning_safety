@@ -486,3 +486,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   human method-validity review. It has no StrongREJECT input, no automatic
   post-hoc accuracy threshold, and cannot authorize stage 2. The gate uses an
   A40 rather than consuming another A100-80GB allocation.
+- 2026-08-27: Queue-time import validation found that all three pending 4B
+  runners still referenced the old `stage_update_count` name after the helper
+  was standardized as `optimizer_updates`. This was corrected before any of
+  jobs `11403700`, `11403992`, or `11405885` started, and import tests now
+  cover both preflights, matched training, and the in-line gate. Ruff and
+  35/35 tests pass in the pinned Discovery environment.
+- 2026-08-27: The matched explicit-CoT runner and config are prepared but not
+  submitted. They use exact M0, identical data/order/optimizer/update counts
+  and answer targets, branch-aware causal batching, strict same-branch resume,
+  and the same durable stage upload. A structural execution check confirms
+  the frozen config refuses before CUDA/data access with `coco_u1 in-line
+  method gate has not authorized matched training`; unlocking and submission
+  remain contingent on the method-validity gate.

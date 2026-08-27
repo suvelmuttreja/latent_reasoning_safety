@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Train one resumable stage of the self-contained 4B skip0 fallback."""
+"""Train one resumable stage of either frozen matched 4B branch."""
 
 from __future__ import annotations
 
@@ -16,11 +16,11 @@ import yaml
 from huggingface_hub import HfApi, model_info
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from mats_latent_safety.batching import pad_coconut_records
-from mats_latent_safety.constants import stage_update_count
+from mats_latent_safety.batching import pad_causal_records, pad_coconut_records
+from mats_latent_safety.constants import optimizer_updates
 from mats_latent_safety.coconut import StandardCoconut, initialize_latent_embeddings
 from mats_latent_safety.data import clean_gsm8k_row
-from mats_latent_safety.fallback import validate_resume
+from mats_latent_safety.fallback import validate_authorization, validate_resume
 from mats_latent_safety.hashing import sha256_file, sha256_json
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import (
@@ -29,9 +29,6 @@ from mats_latent_safety.serialization import (
     tokenize_reasoning_example,
 )
 from preflight_4b_cot import optimizer_state_bytes, percentile, run_update
-
-
-TRIGGER_ACK = "persistent-403-fallback-authorized"
 
 
 def load_model(config: dict, tokenizer, markers, device: torch.device) -> StandardCoconut:
@@ -63,22 +60,34 @@ def make_grouped_batches(
     latent_token_id: int,
     pad_token_id: int,
     device: torch.device,
+    explicit_cot: bool,
 ):
-    return [
-        pad_coconut_records(
-            [records[index] for index in group],
-            latent_token_id=latent_token_id,
-            pad_token_id=pad_token_id,
-            device=device,
-        )
-        for group in groups
-    ]
+    batches = []
+    for group in groups:
+        selected = [records[index] for index in group]
+        if explicit_cot:
+            batch = pad_causal_records(
+                selected,
+                pad_token_id=pad_token_id,
+                device=device,
+            )
+        else:
+            batch = pad_coconut_records(
+                selected,
+                latent_token_id=latent_token_id,
+                pad_token_id=pad_token_id,
+                device=device,
+            )
+        batches.append(batch)
+    return batches
 
 
 def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict:
     """Persist the unique stage model while leaving regenerable optimizer state on scratch."""
     repo_id = config["model_checkpoint_durability_repo"]
-    path_in_repo = f"fallback_4b_skip0/stage{metadata['completed_stage']}"
+    path_in_repo = (
+        f"{config['durability_path_prefix']}/stage{metadata['completed_stage']}"
+    )
     api = HfApi()
     model_commit = api.upload_folder(
         folder_path=output_dir,
@@ -86,7 +95,7 @@ def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict
         repo_type="model",
         path_in_repo=path_in_repo,
         allow_patterns=["model_state.pt", "tokenizer/*"],
-        commit_message=f"Persist fallback 4B skip0 stage {metadata['completed_stage']}",
+        commit_message=f"Persist {metadata['branch']} stage {metadata['completed_stage']}",
     )
     durability = {
         "status": "model_and_tokenizer_uploaded",
@@ -106,7 +115,7 @@ def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict
         path_in_repo=f"{path_in_repo}/metadata.json",
         repo_id=repo_id,
         repo_type="model",
-        commit_message=f"Record fallback 4B skip0 stage {metadata['completed_stage']} metadata",
+        commit_message=f"Record {metadata['branch']} stage {metadata['completed_stage']} metadata",
     )
     return durability
 
@@ -118,17 +127,20 @@ def main() -> None:
     parser.add_argument("--gsm-train", required=True)
     parser.add_argument("--output-root", required=True)
     parser.add_argument("--resume-dir")
-    parser.add_argument("--acknowledge-fallback-trigger", required=True)
+    parser.add_argument("--acknowledge-fallback-trigger", default="")
+    parser.add_argument("--acknowledge-inline-gate", default="")
     args = parser.parse_args()
-    if args.acknowledge_fallback_trigger != TRIGGER_ACK:
-        raise ValueError("the registered approval-latency fallback trigger is not acknowledged")
 
     config_path = Path(args.config)
     config = yaml.safe_load(config_path.read_text())
-    if config["submission_status"] != "fallback_trigger_acknowledged":
-        raise ValueError("config remains locked; record and acknowledge the fallback trigger first")
     if args.stage not in config["stages"]:
         raise ValueError(f"stage {args.stage} is not registered")
+    validate_authorization(
+        config,
+        args.stage,
+        args.acknowledge_fallback_trigger,
+        args.acknowledge_inline_gate,
+    )
     if any(config["forbidden_changes"].values()):
         raise ValueError("a forbidden method change is enabled")
     if config["micro_batch_size"] * config["gradient_accumulation_steps"] != config[
@@ -170,6 +182,7 @@ def main() -> None:
                 marker_ids=markers,
                 c_thought=config["c_thought"],
                 max_stage=config["max_latent_stage"],
+                explicit_cot=config["branch"] == "explicit_cot",
             )
         )
     lengths = [len(record["input_ids"]) for record in records]
@@ -229,6 +242,7 @@ def main() -> None:
                     latent_token_id=markers["latent"],
                     pad_token_id=tokenizer.pad_token_id,
                     device=device,
+                    explicit_cot=config["branch"] == "explicit_cot",
                 ),
                 accumulation,
                 check_gradients=(stage_updates + 1) % 50 == 0,
@@ -250,7 +264,7 @@ def main() -> None:
                 )
     torch.cuda.synchronize()
     training_seconds = time.perf_counter() - started
-    expected_updates = stage_update_count(
+    expected_updates = optimizer_updates(
         config["dataset_examples"], config["epochs_per_stage"], config["effective_batch_size"]
     )
     if stage_updates != expected_updates:
@@ -265,8 +279,13 @@ def main() -> None:
     seconds = [float(row["seconds"]) for row in update_results]
     metadata = {
         "schema_version": 1,
-        "status": "stage_complete_pending_inline_gate" if args.stage == 1 else "stage_complete",
+        "status": (
+            "stage_complete_pending_inline_gate"
+            if config["branch"] == "coconut_skip0" and args.stage == 1
+            else "stage_complete"
+        ),
         "label": config["label"],
+        "branch": config["branch"],
         "model_id": config["model_id"],
         "model_revision": config["model_revision"],
         "code_revision": code_revision,
@@ -274,7 +293,7 @@ def main() -> None:
         "config_sha256": sha256_json(config),
         "data_sha256": sha256_file(source_path),
         "completed_stage": args.stage,
-        "k": args.stage * config["c_thought"],
+        "k": 0 if config["branch"] == "explicit_cot" else args.stage * config["c_thought"],
         "epochs": config["epochs_per_stage"],
         "stage_optimizer_updates": stage_updates,
         "cumulative_optimizer_updates": cumulative_updates,
@@ -294,8 +313,8 @@ def main() -> None:
         "model_state_sha256": sha256_file(model_path),
         "optimizer_state": str(optimizer_path),
         "optimizer_state_sha256": sha256_file(optimizer_path),
-        "gate_required_before_next_stage": args.stage == config["gate_after_stage"],
-        "matched_training_authorized": False,
+        "gate_required_before_next_stage": args.stage == config.get("gate_after_stage"),
+        "matched_training_authorized": config["submission_status"] == "inline_gate_passed",
     }
     upload_durable_stage(output_dir, metadata, config)
     print(json.dumps(metadata, indent=2))
