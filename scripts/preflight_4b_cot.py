@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import random
 import statistics
 import time
@@ -373,4 +372,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
