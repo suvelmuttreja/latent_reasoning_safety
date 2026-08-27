@@ -1,0 +1,8 @@
+=== NODE: b11-09.hpc.usc.edu ===
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+=== EGRESS FROM COMPUTE NODE ===
+HTTP/2 200 
+HTTP/2 200 
+=== SCRATCH WRITE ===
+scratch writable

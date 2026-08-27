@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "authenticated_identity": "suvelmuttreja",
+  "code_revision": "627fc6269f1fb9dde4ccb55a09bbcd9d8144128f",
+  "slurm_job_id": null,
+  "repo_id": "suvelmuttreja/mats-latent-safety-checkpoints",
+  "repo_private": true,
+  "remote_path": "durability-smoke/2026-08-27-dde83d87c134459ca220a5844d16549e.json",
+  "commit_revision": "90de65870215b5e7d1c1751636a06863c3f9c67b",
+  "source_sha256": "f0cbcf11bd2f533b44adc3c6a5f116139b7dac2fe4814b4d4f98510c2d8eb327",
+  "downloaded_sha256": "f0cbcf11bd2f533b44adc3c6a5f116139b7dac2fe4814b4d4f98510c2d8eb327",
+  "hashes_match": true
+}
