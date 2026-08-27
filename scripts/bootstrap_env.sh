@@ -33,6 +33,9 @@ export UV_LINK_MODE=copy
 export UV_PROJECT_ENVIRONMENT="$CODE_ROOT/.venv"
 export HF_HOME="$WORK_ROOT/cache/huggingface"
 export HF_TOKEN_PATH="/home1/$USER/.cache/huggingface/token"
+export OPENBLAS_NUM_THREADS=1
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
 
 cd "$CODE_ROOT"
 uv sync --frozen

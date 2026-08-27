@@ -13,6 +13,8 @@ export HF_TOKEN_PATH="/home1/$USER/.cache/huggingface/token"
 export TOKENIZERS_PARALLELISM=false
 export PYTHONUNBUFFERED=1
 export PYTHONHASHSEED=42
+export OPENBLAS_NUM_THREADS=1
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
+export MKL_NUM_THREADS=1
 source "$CODE_ROOT/.venv/bin/activate"
 cd "$CODE_ROOT"
-
