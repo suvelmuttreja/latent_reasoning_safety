@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "code_revision": "471722e4dc7a9427eac1ca30d8445504e762965f",
+  "slurm_job_id": null,
+  "cache_dir": "/scratch1/muttreja/mats_latent_safety/cache/huggingface/hub",
+  "repos": [
+    {
+      "repo_type": "model",
+      "repo_id": "Qwen/Qwen3-0.6B",
+      "expected_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "size_on_disk": 1519182365,
+      "revisions": [
+        {
+          "commit_hash": "c1899de289a04d12100db370d81485cdf75e47ca",
+          "snapshot_path": "/scratch1/muttreja/mats_latent_safety/cache/huggingface/hub/models--Qwen--Qwen3-0.6B/snapshots/c1899de289a04d12100db370d81485cdf75e47ca",
+          "size_on_disk": 1519182365,
+          "files": 7,
+          "matches_pin": true
+        }
+      ]
+    },
+    {
+      "repo_type": "model",
+      "repo_id": "google/gemma-2b",
+      "expected_revision": "9cf48e52b224239de00d483ec8eb84fb8d0f3a3a",
+      "size_on_disk": 5012378125,
+      "revisions": [
+        {
+          "commit_hash": "9cf48e52b224239de00d483ec8eb84fb8d0f3a3a",
+          "snapshot_path": "/scratch1/muttreja/mats_latent_safety/cache/huggingface/hub/models--google--gemma-2b/snapshots/9cf48e52b224239de00d483ec8eb84fb8d0f3a3a",
+          "size_on_disk": 5012378125,
+          "files": 5,
+          "matches_pin": true
+        }
+      ]
+    },
+    {
+      "repo_type": "model",
+      "repo_id": "qylu4156/strongreject-15k-v1",
+      "expected_revision": "4bd893d32390d2cace4f067dc2e3ef5294fd78a2",
+      "size_on_disk": 61057395,
+      "revisions": [
+        {
+          "commit_hash": "4bd893d32390d2cace4f067dc2e3ef5294fd78a2",
+          "snapshot_path": "/scratch1/muttreja/mats_latent_safety/cache/huggingface/hub/models--qylu4156--strongreject-15k-v1/snapshots/4bd893d32390d2cace4f067dc2e3ef5294fd78a2",
+          "size_on_disk": 61057395,
+          "files": 6,
+          "matches_pin": true
+        }
+      ]
+    },
+    {
+      "repo_type": "model",
+      "repo_id": "Qwen/Qwen3-4B-Thinking-2507",
+      "expected_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+      "size_on_disk": 8060920921,
+      "revisions": [
+        {
+          "commit_hash": "768f209d9ea81521153ed38c47d515654e938aea",
+          "snapshot_path": "/scratch1/muttreja/mats_latent_safety/cache/huggingface/hub/models--Qwen--Qwen3-4B-Thinking-2507/snapshots/768f209d9ea81521153ed38c47d515654e938aea",
+          "size_on_disk": 8060920921,
+          "files": 13,
+          "matches_pin": true
+        }
+      ]
+    }
+  ],
+  "present_at_pinned_revision": [
+    "model:Qwen/Qwen3-0.6B",
+    "model:Qwen/Qwen3-4B-Thinking-2507",
+    "model:google/gemma-2b",
+    "model:qylu4156/strongreject-15k-v1"
+  ],
+  "not_yet_cached": [
+    "dataset:openai/gsm8k"
+  ]
+}

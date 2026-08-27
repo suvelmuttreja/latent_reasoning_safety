@@ -12,7 +12,7 @@ explicit_generation:
   model_revision: 768f209d9ea81521153ed38c47d515654e938aea
   thinking_mode: native_thinking_only
   initial_calibration_max_new_tokens: 16000
-  frozen_max_new_tokens: null
+  frozen_max_new_tokens: 5120
   stop_tokens: [eos_token]
 coconut_generation:
   answer_max_new_tokens: 512

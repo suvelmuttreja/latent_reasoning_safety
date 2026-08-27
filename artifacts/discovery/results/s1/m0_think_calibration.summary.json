@@ -1,0 +1,21 @@
+{
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "prompts": 32,
+  "max_new_tokens": 16000,
+  "completed_thinking_lengths": 32,
+  "thinking_tokens_min": 282,
+  "thinking_tokens_median": 599.5,
+  "thinking_tokens_p95": 2138.3499999999995,
+  "thinking_tokens_max": 3819,
+  "truncated": 0,
+  "truncation_rate": 0.0,
+  "generation_seconds_total": 1503.8916498189792,
+  "generated_tokens_total": 44849,
+  "aggregate_tokens_per_second": 29.821962244020966,
+  "new_tokens_this_invocation": 44849,
+  "wall_seconds_this_invocation": 1504.491389828734,
+  "peak_cuda_bytes": 8822848512,
+  "code_revision": "84249003dac6795eeb4d3ae7df3dd4ad8c101ccf",
+  "slurm_job_id": "11398927"
+}

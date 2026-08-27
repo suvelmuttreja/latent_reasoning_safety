@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:a40:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=02:00:00
+#SBATCH --time=00:30:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
@@ -15,4 +15,3 @@ srun python -u scripts/score_cached_strongreject.py \
   --generations "$WORK_ROOT/results/s1/m0_think_calibration.jsonl" \
   --manifest manifests/strongreject_audit_12.json \
   --output "$WORK_ROOT/results/s1/m0_audit_strongreject.json"
-

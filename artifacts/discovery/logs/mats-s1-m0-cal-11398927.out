@@ -1,0 +1,55 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"prompt_id": "gsm8k-test-0001", "generated_tokens": 723, "thinking_tokens": 480, "truncated": false, "tokens_per_second": 28.251458806034517}
+{"prompt_id": "gsm8k-test-0006", "generated_tokens": 998, "thinking_tokens": 676, "truncated": false, "tokens_per_second": 29.665258246861555}
+{"prompt_id": "gsm8k-test-0013", "generated_tokens": 1471, "thinking_tokens": 1030, "truncated": false, "tokens_per_second": 29.725618022736143}
+{"prompt_id": "gsm8k-test-0014", "generated_tokens": 1286, "thinking_tokens": 917, "truncated": false, "tokens_per_second": 29.70411871547686}
+{"prompt_id": "gsm8k-test-0023", "generated_tokens": 705, "thinking_tokens": 470, "truncated": false, "tokens_per_second": 29.724792911671386}
+{"prompt_id": "gsm8k-test-0039", "generated_tokens": 2156, "thinking_tokens": 1631, "truncated": false, "tokens_per_second": 29.68872913764753}
+{"prompt_id": "gsm8k-test-0043", "generated_tokens": 1058, "thinking_tokens": 745, "truncated": false, "tokens_per_second": 29.666256803566977}
+{"prompt_id": "gsm8k-test-0051", "generated_tokens": 663, "thinking_tokens": 480, "truncated": false, "tokens_per_second": 29.721294197127605}
+{"prompt_id": "gsm8k-test-0054", "generated_tokens": 2039, "thinking_tokens": 1678, "truncated": false, "tokens_per_second": 29.731858669928233}
+{"prompt_id": "gsm8k-test-0061", "generated_tokens": 831, "thinking_tokens": 644, "truncated": false, "tokens_per_second": 29.763141487439846}
+{"prompt_id": "gsm8k-test-0064", "generated_tokens": 1079, "thinking_tokens": 797, "truncated": false, "tokens_per_second": 29.79658832787982}
+{"prompt_id": "gsm8k-test-0065", "generated_tokens": 993, "thinking_tokens": 843, "truncated": false, "tokens_per_second": 29.807296624843907}
+{"prompt_id": "gsm8k-test-0088", "generated_tokens": 762, "thinking_tokens": 549, "truncated": false, "tokens_per_second": 29.863619979115697}
+{"prompt_id": "gsm8k-test-0093", "generated_tokens": 3159, "thinking_tokens": 2701, "truncated": false, "tokens_per_second": 29.8843910573041}
+{"prompt_id": "gsm8k-test-0096", "generated_tokens": 782, "thinking_tokens": 474, "truncated": false, "tokens_per_second": 29.913240638734617}
+{"prompt_id": "gsm8k-test-0114", "generated_tokens": 4342, "thinking_tokens": 3819, "truncated": false, "tokens_per_second": 29.81852867815065}
+{"prompt_id": "gsm8k-test-0118", "generated_tokens": 986, "thinking_tokens": 716, "truncated": false, "tokens_per_second": 29.9307990265091}
+{"prompt_id": "gsm8k-test-0120", "generated_tokens": 1330, "thinking_tokens": 1038, "truncated": false, "tokens_per_second": 29.975219553302583}
+{"prompt_id": "gsm8k-test-0130", "generated_tokens": 627, "thinking_tokens": 469, "truncated": false, "tokens_per_second": 29.92905157081057}
+{"prompt_id": "gsm8k-test-0131", "generated_tokens": 431, "thinking_tokens": 307, "truncated": false, "tokens_per_second": 29.89412281764774}
+{"prompt_id": "strongreject-small-02", "generated_tokens": 1160, "thinking_tokens": 403, "truncated": false, "tokens_per_second": 29.899664836970693}
+{"prompt_id": "strongreject-small-03", "generated_tokens": 524, "thinking_tokens": 282, "truncated": false, "tokens_per_second": 29.90557623840049}
+{"prompt_id": "strongreject-small-13", "generated_tokens": 1377, "thinking_tokens": 496, "truncated": false, "tokens_per_second": 29.94674683092268}
+{"prompt_id": "strongreject-small-14", "generated_tokens": 1782, "thinking_tokens": 579, "truncated": false, "tokens_per_second": 29.91868345533374}
+{"prompt_id": "strongreject-small-21", "generated_tokens": 1312, "thinking_tokens": 377, "truncated": false, "tokens_per_second": 29.930214380991487}
+{"prompt_id": "strongreject-small-28", "generated_tokens": 1439, "thinking_tokens": 603, "truncated": false, "tokens_per_second": 29.935556762644207}
+{"prompt_id": "strongreject-small-30", "generated_tokens": 2652, "thinking_tokens": 1035, "truncated": false, "tokens_per_second": 29.93731778851615}
+{"prompt_id": "strongreject-small-31", "generated_tokens": 1702, "thinking_tokens": 460, "truncated": false, "tokens_per_second": 29.922575669640665}
+{"prompt_id": "strongreject-small-40", "generated_tokens": 1253, "thinking_tokens": 481, "truncated": false, "tokens_per_second": 29.88030490218404}
+{"prompt_id": "strongreject-small-49", "generated_tokens": 1755, "thinking_tokens": 587, "truncated": false, "tokens_per_second": 29.933377123321566}
+{"prompt_id": "strongreject-small-51", "generated_tokens": 2044, "thinking_tokens": 920, "truncated": false, "tokens_per_second": 29.90508377660719}
+{"prompt_id": "strongreject-small-56", "generated_tokens": 1428, "thinking_tokens": 596, "truncated": false, "tokens_per_second": 29.912815802376628}
+{
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "prompts": 32,
+  "max_new_tokens": 16000,
+  "completed_thinking_lengths": 32,
+  "thinking_tokens_min": 282,
+  "thinking_tokens_median": 599.5,
+  "thinking_tokens_p95": 2138.3499999999995,
+  "thinking_tokens_max": 3819,
+  "truncated": 0,
+  "truncation_rate": 0.0,
+  "generation_seconds_total": 1503.8916498189792,
+  "generated_tokens_total": 44849,
+  "aggregate_tokens_per_second": 29.821962244020966,
+  "new_tokens_this_invocation": 44849,
+  "wall_seconds_this_invocation": 1504.491389828734,
+  "peak_cuda_bytes": 8822848512,
+  "code_revision": "84249003dac6795eeb4d3ae7df3dd4ad8c101ccf",
+  "slurm_job_id": "11398927"
+}
