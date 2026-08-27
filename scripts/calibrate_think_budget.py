@@ -99,7 +99,8 @@ def main() -> None:
         seconds = time.perf_counter() - start
         generated_ids = sequence[0, batch["input_ids"].shape[1] :]
         raw_output = tokenizer.decode(generated_ids, skip_special_tokens=False)
-        parsed = parse_thinking_response(raw_output)
+        decoded_for_parsing = tokenizer.decode(generated_ids, skip_special_tokens=True)
+        parsed = parse_thinking_response(decoded_for_parsing)
         hit_eos = bool(len(generated_ids) and int(generated_ids[-1]) == tokenizer.eos_token_id)
         stop_reason = "eos_token" if hit_eos else "length"
         truncated = is_incomplete_generation(
@@ -123,6 +124,7 @@ def main() -> None:
             "slurm_job_id": slurm_job_id(),
             "raw_serialized_input": serialized,
             "raw_output": raw_output,
+            "decoded_for_parsing": decoded_for_parsing,
             "parsed_thinking": parsed.thinking,
             "parsed_final_answer": parsed.final_answer,
             "closing_delimiters": parsed.closing_delimiters,
