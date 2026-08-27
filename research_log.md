@@ -504,3 +504,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   The public-triage restoration condition has not fired; the self-contained
   queue continues unchanged. Full non-secret probe evidence is saved at
   `artifacts/discovery/results/s1/hf_access_recheck_after_fallback.json`.
+- 2026-08-27: Static Slurm entrypoints for Coconut stages 2/3 and matched-CoT
+  stages 2/3 are prepared with strict preceding-stage resume paths, the same
+  A100-80GB resource envelope, and dual config/environment authorization
+  guards. They are intentionally unsubmitted until the `coco_u1` gate passes.
+  A config-invariant test freezes all registered matching fields across the
+  two branches; Ruff, shell syntax checks, and 36/36 tests pass.
