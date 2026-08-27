@@ -237,13 +237,158 @@ This does not substitute for the public 4B key audit or Gate -1.
 Next action: provenance-complete rerun and the explicitly non-scientific
 three-stage 0.6B held-out validation (Slurm 11398915).
 
-### S1 queued jobs — 2026-08-27
+### RUN S1-COCO-SMOKE-2 — 2026-08-27 (Slurm 11398914)
 
-- `11398909`: M0 native-thinking calibration, A100-80GB constraint, 20 frozen
-  GSM8K + 12 frozen audit prompts, initial 16k cap — pending Priority.
-- `11398914`: provenance-complete one-step 0.6B smoke — pending Priority.
-- `11398915`: access-independent three-stage 0.6B skip0 method validation —
-  pending Priority.
+Question: Does the provenance-complete rerun reproduce the 0.6B wrapper smoke?
+Checkpoint / model revision: `Qwen/Qwen3-0.6B` at
+`c1899de289a04d12100db370d81485cdf75e47ca`; checkpoint SHA-256
+`ad821cd6758cb894cc4ac40bf7f2b23b58551ccf3a5047e2b90714d36da54fd5`
+Git commit(s): `84249003dac6795eeb4d3ae7df3dd4ad8c101ccf`
+Data subset: canonical clean-GSM8K train source index 0
+Training seed: 42
+Config: stage 1, K=2, bf16, AdamW, LR `8e-6`, wd `0.01`, one micro-batch
+Command: `sbatch scripts/slurm/smoke_0_6b.sbatch`
+Active minutes spent: 3
+Expected: finite loss/gradients, strict save/reload, identical generation after
+reload, and deterministic K-selectable output under a recorded code revision.
+Observed: passed. Loss `3.0625`; finite gradient norm `1125.5358`; step time
+`1.6166s`; peak CUDA allocation `6,007,678,464` bytes; strict-load
+missing/unexpected keys `0/0`; pre/post-reload output identical. K=2 again
+gave a coherent derivation ending in 72; K=0 repeated delimiter-like text.
+Sanity checks: this is the same standard final-layer hidden-state feedback path
+intended for the 4B experiment, with no fork-specific projection, position,
+loss, or layer changes.
+Judge-vs-human audit: not applicable; benign math smoke.
+What changed my belief: the provenance gap in the first smoke is closed.
+Next action: retain this result as the canonical 0.6B smoke evidence.
+
+### RUN S1-COCO-VALIDATE — 2026-08-27 (Slurm 11398915)
+
+Question: Can the access-independent path execute the entire three-stage
+skip0 schedule and both endpoint K settings without claiming a scientific 4B
+result?
+Checkpoint / model revision: `Qwen/Qwen3-0.6B` at
+`c1899de289a04d12100db370d81485cdf75e47ca`; regenerable working checkpoints
+only
+Git commit(s): `84249003dac6795eeb4d3ae7df3dd4ad8c101ccf`
+Data subset: first 32 clean-GSM8K training examples; frozen 20-example
+calibration subset for endpoint evaluation
+Training seed: 42
+Config: three stages, K=`2/4/6`, eight optimizer updates per stage, explicitly
+labeled `access_independent_method_validation_not_scientific_result`
+Command: `sbatch scripts/slurm/validate_0_6b.sbatch`
+Active minutes spent: 4
+Expected: all stages train with finite loss, exact stage checkpoints, strict
+final reload, and deterministic K=0/K=6 evaluation.
+Observed: passed in 3m57s. Stage supervised-token counts were
+`3294/2262/1387`, mean losses `1.6431/2.6118/3.5818`, and times
+`12.22/15.60/21.46s`; strict final reload missing/unexpected keys `0/0`; peak
+CUDA allocation `7,099,153,920` bytes. Frozen heldout accuracy was 0/20 at
+K=0 and 1/20 at K=6; many outputs were repetitive or degenerate.
+Sanity checks: both K settings executed as intended. Poor 0.6B capability is a
+valid method-validation outcome and supplies no authorization to select a 4B
+branch or bypass the public key/capability/coherence gate.
+Judge-vs-human audit: outputs were inspected only as method diagnostics; no
+safety claim is made.
+What changed my belief: the training/evaluation plumbing survives all three
+stages, while 0.6B is plainly not a scientific substitute for the gated 4B
+experiment.
+Next action: await the public checkpoint audit before any 4B Coconut training.
+
+### RUN S1-M0-CAP — 2026-08-27 (Slurm 11398927)
+
+Question: What native-thinking generation cap preserves complete M0 outputs,
+and does the base checkpoint show preliminary refusal headroom?
+Checkpoint / model revision: `Qwen/Qwen3-4B-Thinking-2507` at
+`768f209d9ea81521153ed38c47d515654e938aea`
+Git commit(s): generation code
+`84249003dac6795eeb4d3ae7df3dd4ad8c101ccf`; cap/review record
+`432ad4f18edc124565647cc77bccfeb449e9de55`
+Data subset: first 20 frozen GSM8K calibration prompts plus the frozen
+12-prompt StrongREJECT audit, before automatic scoring
+Training seed: none; generation seed 42
+Config: native thinking, Qwen sampling defaults, initial cap 16,000
+Command: `sbatch scripts/slurm/calibrate_m0_thinking.sbatch`
+Active minutes spent: 20
+Expected: less than 5% incomplete output, recorded length distribution and
+throughput, and a frozen cap with headroom above observed complete generations.
+Observed: completed 32/32 with zero truncations in 25m54s on one A40. Thinking
+tokens min/median/p95/max were `282/599.5/2138.35/3819`; the largest total
+generation was 4,342 tokens. Aggregate generation was 44,849 tokens at
+`29.822 tokens/s`; peak CUDA allocation was `8,822,848,512` bytes. The frozen
+cap is 5,120 new tokens: 778 tokens above the observed maximum and more than
+twice the p95 thinking length.
+Sanity checks: all 32 records contain raw and parsed fields, generation hash,
+token counts, stop reason, and code/model revisions. The canceled A100-80GB
+job `11398909` never ran; inference-only calibration moved to A40 so the
+scarcer 80GB node remains reserved for the later registered training preflight.
+Judge-vs-human audit: before generating or viewing judge scores, an agent
+qualitatively reviewed all 12 cached final answers: 12 refusals, zero partial
+compliance, zero compliance, and zero incoherent answers. This is preliminary
+evidence and does not replace the protocol's later formal human audit.
+What changed my belief: 5,120 is an evidence-based non-truncating working cap,
+and the qualitative audit indicates useful refusal headroom; the frozen judge
+score is recorded in the next run.
+Next action: score cached final answers only with the pinned StrongREJECT judge.
+
+### RUN S1-M0-JUDGE — 2026-08-27 (Slurm 11398969)
+
+Question: Does the cached 12-prompt M0 audit show enough StrongREJECT
+harmfulness headroom for a later matched drift experiment?
+Checkpoint / model revision: cached generations from
+`Qwen/Qwen3-4B-Thinking-2507` at
+`768f209d9ea81521153ed38c47d515654e938aea`; judge
+`qylu4156/strongreject-15k-v1` at
+`4bd893d32390d2cace4f067dc2e3ef5294fd78a2`
+Git commit(s): scoring code
+`432ad4f18edc124565647cc77bccfeb449e9de55`
+Data subset: frozen StrongREJECT 12-prompt audit, exactly two/category
+Training seed: none
+Config: `strongreject_finetuned`; parsed final answers only; cached outputs;
+no regeneration
+Command: `sbatch --partition=debug --time=00:30:00
+scripts/slurm/score_m0_audit.sbatch`
+Active minutes spent: 4
+Expected: finite scores in [0,1] and a low-enough M0 mean to leave meaningful
+upward harmfulness headroom.
+Observed: passed in 42s on one A40. Mean/min/max harmfulness scores were
+`0.1458/0.0014/0.3567`, leaving substantial upward scalar headroom. Across
+the 12 examples, response characters and score had descriptive Pearson
+correlation `r=0.708`; with n=12 this is a confound diagnostic, not an
+inferential result. The three scores at or above 0.25 were all responses the
+preceding blind review labeled full refusals.
+Sanity checks: all scores were finite and in range; evaluator payload hashes
+were persisted; only parsed final answers were judged. Regular-queue job
+`11398958` was held, then canceled unstarted after the identical debug job
+succeeded, preventing duplicate execution.
+Judge-vs-human audit: the agent qualitative labels and judge disagree in
+degree on several long refusals. The preliminary baseline conclusion therefore
+uses the score only as headroom evidence and preserves the transcript review;
+the registered formal human audit remains deferred.
+What changed my belief: M0 is not already highly unsafe and has usable
+headroom, but the judge is visibly sensitive to properties of verbose refusals.
+Response length and transcript-level disagreements must remain foregrounded.
+Next action: do not formalize the full M0 baseline until the common safety
+serialization is selected after the public wrapper audit.
+
+### S1 completion-criterion audit — 2026-08-27
+
+Each criterion uses exactly one requested status.
+
+| Criterion | Status | Evidence / disposition |
+|---|---|---|
+| Canonical Git, lockfile, storage, sync, and no unique scratch-only artifact | `passed` | Local Git is canonical; code/config/environment are on home1; working data/cache/logs/checkpoints are on scratch1; text results/logs are pulled locally; exact environment is locked; private-HF durability upload/download passed. Scratch-only 0.6B binaries are explicitly regenerable smoke/validation working checkpoints, not unique scientific checkpoints. No matched checkpoint exists. |
+| HF/Gemma access and maintainer-source request documented | `passed` | HF identity and Qwen/Gemma one-byte reads were verified without exposing credentials. User declined Costco maintainer/external contact and source requests; no contact was attempted. |
+| Frozen data/evaluation manifests and unit tests | `passed` | Deterministic hashed GSM8K, StrongREJECT, and coherence manifests are committed; processed records were inspected; 22/22 tests pass. Safety serialization remains intentionally pending the public wrapper audit rather than being selected from outcomes. |
+| 0.6B save/reload/latent-generation smoke | `passed` | Provenance-complete Slurm 11398914 has finite loss/gradients, exact checkpoint hash, strict missing/unexpected `0/0`, identical reload generation, and deterministic K=0/K=2 execution. Three-stage validation also passed as non-scientific infrastructure evidence. |
+| M0 think cap and baseline headroom | `passed` | 32/32 calibration outputs completed, zero truncations, p95/max thinking `2138.35/3819`, frozen cap 5,120, 29.822 token/s. Blind agent review found 12/12 refusals; pinned judge mean harmfulness 0.1458. Formal human audit and full official M0 suite are later-session work. |
+| StrongREJECT five-example smoke | `passed` | Pinned local evaluator/judge produced finite, directionally sensible scores on two refusals, one partial, and two redacted-compliance fixtures. Rubric fallback is not authorized. |
+| Public material-key audit and Gate -1 | `pending-approval` | Final authenticated one-byte probes still return HTTP 403 for all seven requested Costco repositories. No wrapper/checkpoint is selected, no Gate -1 safety-direction selection is made, and no external contact is attempted. |
+| 4B A100-80GB memory and 50-step throughput projections | `pending-approval` | The kickoff forbids speculative 4B Coconut reconstruction/training before the public material-key and method-validity gate. This registered preflight begins only after the same Costco approval gate clears. |
+
+Matched-branch training, dense trajectories, final K sweeps, figures, formal
+human transcript audit, the full M0 suite/format anchor, and optional controls
+are `deferred` to their registered later sessions. They are not S1 failures.
 
 ## Decision register
 
@@ -251,5 +396,7 @@ three-stage 0.6B held-out validation (Slurm 11398915).
   was attempted.
 - 2026-08-27: Gate -1 status is `pending-approval`; no implementation or
   checkpoint will be selected using a safety-score direction.
+- 2026-08-27T10:12:22Z: final authenticated access recheck returned HTTP 403
+  for all seven Costco repositories; approval is still pending.
 - 2026-08-27: Matched training is outside S1 and will not start in this
   session.
