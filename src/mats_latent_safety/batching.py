@@ -29,7 +29,8 @@ def pad_causal_records(
         input_ids.append(list(record["input_ids"]) + [pad_token_id] * padding)
         attention_mask.append(list(record["attention_mask"]) + [0] * padding)
         labels.append(list(record["labels"]) + [IGNORE_INDEX] * padding)
-        position_ids.append(list(range(length)) + [0] * padding)
+        positions = record.get("position_ids", list(range(length)))
+        position_ids.append(list(positions) + [0] * padding)
     return {
         "input_ids": torch.tensor(input_ids, dtype=torch.long, device=device),
         "attention_mask": torch.tensor(attention_mask, dtype=torch.long, device=device),
@@ -37,3 +38,39 @@ def pad_causal_records(
         "position_ids": torch.tensor(position_ids, dtype=torch.long, device=device),
     }
 
+
+def pad_coconut_records(
+    records: list[dict[str, list[int] | int]],
+    *,
+    latent_token_id: int,
+    pad_token_id: int,
+    device: torch.device,
+    pad_to_length: int | None = None,
+) -> dict[str, torch.Tensor]:
+    """Left-align first latent positions, then right-pad as in Meta Coconut."""
+    if not records:
+        raise ValueError("at least one record is required")
+    starts = []
+    for record in records:
+        try:
+            starts.append(list(record["input_ids"]).index(latent_token_id))
+        except ValueError as error:
+            raise ValueError("every Coconut record must contain a latent token") from error
+    target_start = max(starts)
+    aligned = []
+    for record, start in zip(records, starts):
+        left_padding = target_start - start
+        aligned.append(
+            {
+                "input_ids": [pad_token_id] * left_padding + list(record["input_ids"]),
+                "attention_mask": [0] * left_padding + list(record["attention_mask"]),
+                "labels": [IGNORE_INDEX] * left_padding + list(record["labels"]),
+                "position_ids": [0] * left_padding + list(record["position_ids"]),
+            }
+        )
+    return pad_causal_records(
+        aligned,
+        pad_token_id=pad_token_id,
+        device=device,
+        pad_to_length=pad_to_length,
+    )

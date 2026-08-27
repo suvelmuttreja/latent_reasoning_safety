@@ -1,0 +1,36 @@
+schema_version: 1
+label: access_independent_open_wrapper_4b_coconut_stage1_preflight
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+seed: 42
+method: standard_open_implementation_coconut_sft_skip0_stage1
+dataset_examples: 7473
+stage: 1
+c_thought: 2
+max_latent_stage: 3
+epochs_per_stage: 2
+max_sequence_length: 576
+memory_micro_batch_size: 4
+micro_batch_size: 4
+gradient_accumulation_steps: 8
+effective_batch_size: 32
+warmup_optimizer_updates: 2
+timed_optimizer_updates: 50
+learning_rate: 8.0e-6
+weight_decay: 0.01
+precision: bf16
+attention_implementation: sdpa
+gradient_checkpointing: false
+save_checkpoint: false
+save_only_improve: false
+scientific_use: false
+forbidden_changes:
+  suppressed_activation_reinjection: false
+  seq_vcr_loss: false
+  latent_position_changes: false
+  alternate_hidden_layer: false
+  math_expert_base: false
+  qlora: false
+  lora: false
+  quantized_weights: false
+
