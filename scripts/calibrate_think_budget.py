@@ -49,6 +49,11 @@ def main() -> None:
     config = yaml.safe_load(Path(args.config).read_text())
     explicit = config["explicit_generation"]
     sampling = config["sampling"]
+    generation_parameters = {
+        **sampling,
+        "max_new_tokens": args.max_new_tokens,
+        "stop_tokens": explicit["stop_tokens"],
+    }
     set_seed(config["seed"])
     tokenizer = AutoTokenizer.from_pretrained(
         explicit["model_id"], revision=explicit["model_revision"]
@@ -137,7 +142,7 @@ def main() -> None:
             "seconds": seconds,
             "tokens_per_second": len(generated_ids) / seconds,
             "max_new_tokens": args.max_new_tokens,
-            "generation_config_sha256": sha256_json(sampling),
+            "generation_config_sha256": sha256_json(generation_parameters),
         }
         existing[prompt["id"]] = row
         generated.append(row)
