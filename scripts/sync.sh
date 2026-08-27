@@ -22,7 +22,7 @@ case "${1:-}" in
     rsync -avz "$REMOTE_HOST:${REMOTE_WORK}logs/" "${LOCAL}artifacts/discovery/logs/"
     rsync -avz \
       --exclude '*.pt' --exclude '*.bin' --exclude '*.safetensors' \
-      --exclude 'checkpoint*' \
+      --exclude 'checkpoint*' --exclude 'tokenizer/' \
       "$REMOTE_HOST:${REMOTE_WORK}results/" "${LOCAL}artifacts/discovery/results/"
     ;;
   *)

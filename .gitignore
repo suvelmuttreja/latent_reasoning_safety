@@ -19,9 +19,9 @@ generations/
 logs/*.out
 logs/*.err
 wandb/
+artifacts/**/tokenizer/
 
 # Credentials must never enter source control.
 .env
 *.token
 token
-
