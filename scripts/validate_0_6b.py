@@ -161,6 +161,7 @@ def main() -> None:
     parser.add_argument("--eval-manifest", default="manifests/gsm8k_calibration_20.json")
     parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()
+    code_revision = git_revision()
     config = yaml.safe_load(Path(args.config).read_text())
     if any(config["forbidden_changes"].values()):
         raise ValueError("a forbidden method change is enabled")
@@ -207,7 +208,7 @@ def main() -> None:
         "label": config["label"],
         "model_id": config["model_id"],
         "model_revision": config["model_revision"],
-        "code_revision": git_revision(),
+        "code_revision": code_revision,
         "slurm_job_id": slurm_job_id(),
         "config_sha256": sha256_json(config),
         "training_source_indices": list(range(config["train_examples"])),

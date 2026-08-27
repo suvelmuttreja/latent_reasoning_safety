@@ -89,6 +89,7 @@ def main() -> None:
     parser.add_argument("--gsm-parquet", required=True)
     parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()
+    code_revision = git_revision()
     if not torch.cuda.is_available():
         raise RuntimeError("the registered smoke requires a CUDA GPU")
     config = yaml.safe_load(Path(args.config).read_text())
@@ -171,7 +172,7 @@ def main() -> None:
         "status": "passed",
         "model_id": config["model_id"],
         "model_revision": revision,
-        "code_revision": git_revision(),
+        "code_revision": code_revision,
         "slurm_job_id": slurm_job_id(),
         "method": config["method"],
         "loss": loss_value,
