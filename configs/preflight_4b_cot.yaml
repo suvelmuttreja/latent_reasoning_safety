@@ -1,0 +1,29 @@
+schema_version: 1
+label: access_independent_4b_cot_memory_and_throughput_preflight
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+seed: 42
+method: explicit_cot_sft
+dataset_examples: 7473
+epochs_per_coconut_stage: 2
+coconut_stages: 3
+max_sequence_length: 576
+memory_micro_batch_size: 4
+micro_batch_size: 4
+gradient_accumulation_steps: 8
+effective_batch_size: 32
+warmup_optimizer_updates: 2
+timed_optimizer_updates: 50
+learning_rate: 8.0e-6
+weight_decay: 0.01
+precision: bf16
+attention_implementation: sdpa
+gradient_checkpointing: false
+save_checkpoint: false
+save_only_improve: false
+forbidden_changes:
+  qlora: false
+  lora: false
+  quantized_weights: false
+  alternate_base_model: false
+
