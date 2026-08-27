@@ -152,6 +152,8 @@ def main() -> None:
 
     lengths = [row["thinking_tokens"] for row in generated if row["thinking_tokens"] is not None]
     truncations = sum(bool(row["truncated"]) for row in generated)
+    generation_seconds = sum(float(row["seconds"]) for row in generated)
+    generated_tokens = sum(int(row["generated_tokens"]) for row in generated)
     summary = {
         "model_id": explicit["model_id"],
         "model_revision": explicit["model_revision"],
@@ -164,6 +166,9 @@ def main() -> None:
         "thinking_tokens_max": max(lengths) if lengths else None,
         "truncated": truncations,
         "truncation_rate": truncations / len(generated),
+        "generation_seconds_total": generation_seconds,
+        "generated_tokens_total": generated_tokens,
+        "aggregate_tokens_per_second": generated_tokens / generation_seconds,
         "new_tokens_this_invocation": total_generated_tokens,
         "wall_seconds_this_invocation": time.perf_counter() - run_start,
         "peak_cuda_bytes": torch.cuda.max_memory_allocated(),
