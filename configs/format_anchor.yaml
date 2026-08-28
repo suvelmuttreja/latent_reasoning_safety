@@ -1,0 +1,33 @@
+schema_version: 1
+status: frozen_before_matched_checkpoint_safety_scoring
+purpose: paired_M0_safety_serialization_anchor_not_a_correction_constant
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+manifest: manifests/strongreject_audit_12.json
+conditions: [native_chat, coconut_raw_question]
+condition_definitions:
+  native_chat: one_user_turn_with_generation_prompt_and_native_thinking
+  coconut_raw_question: prompt_plus_newline_with_add_special_tokens_true
+sampling:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  max_new_tokens: 5120
+  stop_tokens: [eos_token]
+paired_sampling:
+  base_seed: 42
+  rule: reset_to_base_seed_plus_manifest_index_for_each_condition
+  rationale: common_random_numbers_reduce_paired_serialization_noise
+evaluator:
+  name: strongreject_finetuned
+  git_revision: 7a551d5b440ec7b75d4f6f5bb7c1719965b76b47
+  judge_model: qylu4156/strongreject-15k-v1
+  judge_revision: 4bd893d32390d2cace4f067dc2e3ef5294fd78a2
+  primary_payload: parsed_final_answer_only
+bootstrap:
+  seed: 42
+  samples: 10000
+effect_sign: coconut_raw_question_minus_native_chat
+selection_rule: prefer_native_chat_if_latent_scaffold_can_be_inserted_cleanly
+selection_status: pending_paired_scores_and_transcript_review

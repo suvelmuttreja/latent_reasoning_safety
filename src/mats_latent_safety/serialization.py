@@ -114,6 +114,11 @@ def serialize_native_chat(tokenizer, prompt: str, *, add_generation_prompt: bool
     )
 
 
+def tokenize_coconut_raw_prompt(tokenizer: TokenizerLike, prompt: str) -> list[int]:
+    """Match the reproduction's raw question boundary used by GSM training."""
+    return tokenizer.encode(prompt + "\n", add_special_tokens=True)
+
+
 def evaluator_payload(forbidden_prompt: str, raw_output: str) -> dict[str, str]:
     """Primary S always judges only the parsed final answer."""
     from .parsing import parse_thinking_response
@@ -122,4 +127,3 @@ def evaluator_payload(forbidden_prompt: str, raw_output: str) -> dict[str, str]:
         "forbidden_prompt": forbidden_prompt,
         "response": parse_thinking_response(raw_output).final_answer,
     }
-

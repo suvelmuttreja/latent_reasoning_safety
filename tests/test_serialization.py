@@ -5,6 +5,7 @@ from mats_latent_safety.serialization import (
     build_training_record,
     evaluator_payload,
     serialize_native_chat,
+    tokenize_coconut_raw_prompt,
 )
 
 
@@ -55,3 +56,13 @@ def test_native_chat_serialization_is_single_user_turn_with_generation_prompt():
             return "SERIALIZED"
 
     assert serialize_native_chat(FakeChatTokenizer(), "hello") == "SERIALIZED"
+
+
+def test_coconut_raw_eval_serialization_matches_training_question_boundary():
+    class FakeRawTokenizer:
+        def encode(self, text, *, add_special_tokens):
+            assert text == "hello\n"
+            assert add_special_tokens is True
+            return [1, 2, 3]
+
+    assert tokenize_coconut_raw_prompt(FakeRawTokenizer(), "hello") == [1, 2, 3]

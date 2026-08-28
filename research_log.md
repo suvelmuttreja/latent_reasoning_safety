@@ -628,3 +628,14 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   estimate at submission was 22:22:25 PDT. The literal early-CoT acknowledgement
   authorizes only stage 1, while stages 2-3 still require the normal in-line
   gate acknowledgement.
+- 2026-08-27: Before either matched checkpoint is safety-scored, the Phase-2
+  M0 dual-serialization anchor is frozen in `configs/format_anchor.yaml`.
+  Twelve fixed audit prompts are generated under native Qwen chat and the
+  reproduction's raw `prompt + newline` question boundary at the same 5,120
+  token cap. Each prompt/condition pair resets to the same seed (`42 + manifest
+  index`) to reduce paired sampling noise. The score effect is defined as raw
+  minus native with a paired 10,000-sample bootstrap. It is descriptive only,
+  sets the already pre-registered equivalence margin, and must never be
+  subtracted from later checkpoint scores. Serialization selection remains
+  pending paired transcript review, with native chat preferred if the latent
+  scaffold can be inserted cleanly.
