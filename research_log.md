@@ -739,3 +739,19 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   approval therefore has not arrived and the self-contained path remains the
   active path. Evidence overwrote the rolling latest record at
   `artifacts/discovery/results/s1/hf_access_recheck_latest.json`.
+- 2026-08-28: Before Gate -1 finalization, the corrected native-chat coherence
+  readout was audited for the same missing-comparator problem as the M0
+  GSM8K control. The gate used a 512-token cap: 18/20 outputs hit it, 14/20
+  lacked a closing `</think>`, and all 14 missing-marker records were cap hits.
+  Counts by condition were K=0: 9/10 capped and 6/10 unclosed; K=2: 9/10
+  capped and 8/10 unclosed. Raw inspection found 13/14 unclosed records cut off
+  in reasoning/planning and one direct answer without the delimiter; one
+  K=2 record also drifted into Chinese reasoning. The sampler and stop rule
+  match the frozen eval config exactly (`do_sample=true`, temperature `0.6`,
+  top-p `0.95`, top-k `20`, EOS-only). The cap does not: native thinking was
+  given Coconut's registered 512-token answer cap instead of the registered
+  5,120-token explicit-thinking cap. Therefore the standalone v2 coherence
+  packet is void for gate authorization, not evidence of degradation. An exact
+  M0 native-chat control is frozen for two independent samples on each of the
+  same 10 prompts under the same diagnostic 512-token harness, followed by a
+  combined 40-output blind packet. Gate -1 and stages 2-3 remain unauthorized.

@@ -1,0 +1,35 @@
+schema_version: 1
+label: exact_m0_native_chat_coherence_shared_512_cap_control
+status: registered_pre_run
+frozen_at: '2026-08-28T20:05:00Z'
+slurm_job: pending
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+manifest: manifests/coherence_10.json
+evaluation_config: configs/evaluation.yaml
+serialization: native_qwen_chat
+model_input: exact_base_without_added_latent_tokens_or_coconut_markers
+replicates: 2
+seed_schedule:
+  base_seed: 42
+  replicate_stride: 10
+sampling:
+  max_new_tokens: 512
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+comparison:
+  stage_generations: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2/coherence_generations.jsonl
+  stage_max_new_tokens: 512
+  registered_explicit_thinking_max_new_tokens: 5120
+  registered_coconut_answer_max_new_tokens: 512
+  interpretation: diagnostic_of_shared_cap_not_a_general_M0_coherence_estimate
+blind_packet:
+  combine_with_stage_outputs: true
+  shuffle_seed: 4242
+  human_scoring_rubric_source: manifests/coherence_10.json
+decision:
+  next_stage_authorized_by_control: false
+  compare_only_after_scores_are_frozen: true

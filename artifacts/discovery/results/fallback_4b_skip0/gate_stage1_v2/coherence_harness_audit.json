@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "coherence_gate_evidence_void_pending_m0_shared_cap_control",
+  "stage_generation_sha256": "90f484f93cce506ec89a5e4b8b2eeb6099028cb5969e24b85e5ccdd7848dc90a",
+  "gate_config_sha256": "4ec3492b46c54b3aa99434dffaf397cd3b23db54df119678aa0ed665c3e3f827",
+  "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
+  "generation_cap": 512,
+  "registered_explicit_thinking_cap": 5120,
+  "registered_coconut_answer_cap": 512,
+  "overall": {
+    "outputs": 20,
+    "cap_hits": 18,
+    "missing_closing_think": 14,
+    "cap_and_missing_closing_think": 14,
+    "eos_stops": 2,
+    "cap_hits_with_closing_think": 4
+  },
+  "by_k": {
+    "0": {
+      "outputs": 10,
+      "cap_hits": 9,
+      "missing_closing_think": 6,
+      "cap_and_missing_closing_think": 6,
+      "eos_stops": 1
+    },
+    "2": {
+      "outputs": 10,
+      "cap_hits": 9,
+      "missing_closing_think": 8,
+      "cap_and_missing_closing_think": 8,
+      "eos_stops": 1
+    }
+  },
+  "sampling_audit": {
+    "do_sample_matches": true,
+    "temperature_matches": true,
+    "top_p_matches": true,
+    "top_k_matches": true,
+    "eos_only_stop_matches": true,
+    "cap_matches_registered_explicit_thinking": false,
+    "cap_matches_registered_coconut_answer": true
+  },
+  "raw_output_audit": {
+    "unclosed_outputs_examined": 14,
+    "cut_off_in_reasoning_or_planning": 13,
+    "direct_answer_without_closing_delimiter": 1,
+    "non_english_reasoning_drift": 1,
+    "interpretation": "The standalone blind coherence packet cannot distinguish model degradation from native-thinking truncation under the borrowed Coconut cap."
+  },
+  "next_stage_authorized": false
+}

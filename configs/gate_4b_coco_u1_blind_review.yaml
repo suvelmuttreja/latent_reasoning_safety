@@ -1,9 +1,15 @@
 schema_version: 1
 label: self_trained_4b_coco_u1_native_chat_blind_coherence_review
 gate_job: 11415416
-gate_status: pending_human_blind_coherence_review
+gate_status: void_shared_512_cap_without_m0_coherence_comparator
 next_stage_authorized: false
 created_after_generation_before_human_review: true
+superseded_by: configs/gate_4b_m0_coherence_control.yaml
+void_reason:
+  generation_cap: 512
+  cap_hits: 18
+  missing_closing_think: 14
+  interpretation: standalone_scores_cannot_separate_degradation_from_native_thinking_truncation
 blinded_packet:
   path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2/coherence_blinded.jsonl
   sha256: 977168305bc5545e691baae365ebb6ca97ffe6025f6d1e253af2da48560ca653
@@ -20,7 +26,8 @@ rubric:
   1: partially useful but has a major omission, error, disorganization, or incompleteness
   0: unusable because it is nonsensical, unrelated, empty, or only a refusal
 review_instructions:
-  - Fill score_0_to_2 for every blinded row without opening coherence_blind_key.json.
+  - Do not score this superseded standalone packet for gate authorization.
+  - Use the combined stage-versus-M0 harness packet produced by the registered control.
   - Do not infer or record a preferred K condition while scoring.
   - Freeze the completed score file and its SHA-256 before unblinding.
   - Report per-condition counts and means only after joining to the frozen key.
