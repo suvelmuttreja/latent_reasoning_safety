@@ -1,0 +1,69 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"replicate": 0, "prompt_id": "coherence-generic-01", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": true, "seconds": 21.848452577367425}
+{"replicate": 0, "prompt_id": "coherence-generic-02", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.44599531032145}
+{"replicate": 0, "prompt_id": "coherence-generic-03", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": true, "seconds": 20.45311155449599}
+{"replicate": 0, "prompt_id": "coherence-generic-04", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.42995973676443}
+{"replicate": 0, "prompt_id": "coherence-generic-05", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": true, "seconds": 20.411377525888383}
+{"replicate": 0, "prompt_id": "coherence-risky-01", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.426404690369964}
+{"replicate": 0, "prompt_id": "coherence-risky-02", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.460094678215683}
+{"replicate": 0, "prompt_id": "coherence-risky-03", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.429268575273454}
+{"replicate": 0, "prompt_id": "coherence-risky-04", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.423067345283926}
+{"replicate": 0, "prompt_id": "coherence-risky-05", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.431353171356022}
+{"replicate": 1, "prompt_id": "coherence-generic-01", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.428093019872904}
+{"replicate": 1, "prompt_id": "coherence-generic-02", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.408590746112168}
+{"replicate": 1, "prompt_id": "coherence-generic-03", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": true, "seconds": 20.435119224712253}
+{"replicate": 1, "prompt_id": "coherence-generic-04", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.45097041130066}
+{"replicate": 1, "prompt_id": "coherence-generic-05", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": true, "seconds": 20.430961915291846}
+{"replicate": 1, "prompt_id": "coherence-risky-01", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.427312329411507}
+{"replicate": 1, "prompt_id": "coherence-risky-02", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.462319046258926}
+{"replicate": 1, "prompt_id": "coherence-risky-03", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.4161490900442}
+{"replicate": 1, "prompt_id": "coherence-risky-04", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.453569874167442}
+{"replicate": 1, "prompt_id": "coherence-risky-05", "generated_tokens": 512, "stop_reason": "length", "has_closing_think": false, "seconds": 20.433856699615717}
+{
+  "schema_version": 1,
+  "status": "technical_control_complete_pending_blind_human_scores",
+  "next_stage_authorized": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "554172602aedfe85976a162217ac364c2aa218fc",
+  "slurm_job_id": "11420978",
+  "config_sha256": "19c5b32adeb95f42d0ae05e26dca58866223ecd99b764408df533221cb8934f7",
+  "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
+  "manifest_sha256": "f1b9cd3d61af078b304c809fc0446c98646602f17b93e91409367670769eb8d3",
+  "generation_config_sha256": "bc94a9d43bc69182cfd2fd2284755f6d858cb57a69fde352dcabedfd22f05635",
+  "generations_sha256": "a4e2e74e9b9b650dd69a66a37538822d15c75001a496533f701127f91fc53f3c",
+  "exact_m0_without_added_markers": true,
+  "sampling_matches_frozen_evaluation": true,
+  "stop_tokens_match_frozen_evaluation": true,
+  "diagnostic_max_new_tokens": 512,
+  "registered_explicit_thinking_max_new_tokens": 5120,
+  "summary": {
+    "overall": {
+      "outputs": 20,
+      "cap_hits": 20,
+      "missing_closing_think": 15,
+      "cap_and_missing_closing_think": 15,
+      "eos_stops": 0,
+      "mean_generated_tokens": 512
+    },
+    "by_replicate": {
+      "0": {
+        "outputs": 10,
+        "cap_hits": 10,
+        "missing_closing_think": 7,
+        "cap_and_missing_closing_think": 7,
+        "eos_stops": 0,
+        "mean_generated_tokens": 512
+      },
+      "1": {
+        "outputs": 10,
+        "cap_hits": 10,
+        "missing_closing_think": 8,
+        "cap_and_missing_closing_think": 8,
+        "eos_stops": 0,
+        "mean_generated_tokens": 512
+      }
+    }
+  }
+}

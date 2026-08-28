@@ -49,5 +49,12 @@ def validate_control_against_frozen_evaluation(config: dict, evaluation: dict) -
             raise ValueError(f"control {key} differs from frozen evaluation config")
     if sampling["stop_tokens"] != evaluation["explicit_generation"]["stop_tokens"]:
         raise ValueError("control stop tokens differ from frozen explicit generation config")
-    if sampling["max_new_tokens"] != evaluation["coconut_generation"]["answer_max_new_tokens"]:
-        raise ValueError("control does not reproduce the shared 512-token gate cap")
+    cap_role = sampling["cap_role"]
+    if cap_role == "coconut_answer_diagnostic":
+        expected_cap = evaluation["coconut_generation"]["answer_max_new_tokens"]
+    elif cap_role == "explicit_thinking":
+        expected_cap = evaluation["explicit_generation"]["frozen_max_new_tokens"]
+    else:
+        raise ValueError(f"unsupported cap role: {cap_role}")
+    if sampling["max_new_tokens"] != expected_cap:
+        raise ValueError(f"control cap differs from frozen {cap_role} cap")

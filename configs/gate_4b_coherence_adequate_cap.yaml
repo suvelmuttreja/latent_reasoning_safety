@@ -1,0 +1,41 @@
+schema_version: 1
+label: stage1_and_exact_m0_native_chat_coherence_adequate_explicit_cap
+status: registered_pre_run
+frozen_at: '2026-08-28T21:05:00Z'
+slurm_job: pending
+train_config: configs/fallback_4b_skip0.yaml
+checkpoint_stage: 1
+checkpoint_k: 2
+manifest: manifests/coherence_10.json
+evaluation_config: configs/evaluation.yaml
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+serialization: native_qwen_chat
+model_input: exact_base_without_added_latent_tokens_or_coconut_markers
+replicates: 2
+seed_schedule:
+  base_seed: 42
+  replicate_stride: 10
+sampling:
+  cap_role: explicit_thinking
+  max_new_tokens: 5120
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+stage_coherence:
+  serialization: native_qwen_chat
+  k_values: [0, 2]
+  max_new_tokens: 5120
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+blind_packet:
+  combine_stage_and_m0: true
+  shuffle_seed: 5120
+  human_scoring_rubric_source: manifests/coherence_10.json
+decision:
+  next_stage_authorized_by_script: false
+  human_blind_scoring_required: true

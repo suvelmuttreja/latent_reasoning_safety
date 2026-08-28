@@ -1,9 +1,18 @@
 schema_version: 1
 race_id: exact_m0_coherence_shared_cap_control
-status: released_pending_first_allocation
+status: completed_a40_winner_l40s_cancelled_before_start
 claim_directory: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/.m0_coherence_control_claim
 record_path: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/gate_stage1_v2_m0_coherence_control/hardware_race.json
 jobs:
   l40s: 11420974
   a40: 11420978
 rule: first_job_to_atomically_claim_runs_and_scancels_every_other_job_before_model_load
+result:
+  winner_job: 11420978
+  winner_device: a40
+  winner_elapsed: 00:07:47
+  loser_job: 11420974
+  loser_state: cancelled_before_start
+  loser_elapsed: 0
+  automatic_claim_executed: false
+  operational_note: slurm_snapshotted_the_pre_claim_batch_script_at_submission;_pending_loser_was_cancelled_manually_before_start

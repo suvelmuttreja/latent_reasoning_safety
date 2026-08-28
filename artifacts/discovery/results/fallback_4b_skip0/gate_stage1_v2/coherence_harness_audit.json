@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "coherence_gate_evidence_void_pending_m0_shared_cap_control",
+  "status": "shared_512_cap_failure_confirmed_coherence_gate_evidence_void",
   "stage_generation_sha256": "90f484f93cce506ec89a5e4b8b2eeb6099028cb5969e24b85e5ccdd7848dc90a",
   "gate_config_sha256": "4ec3492b46c54b3aa99434dffaf397cd3b23db54df119678aa0ed665c3e3f827",
   "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
@@ -47,5 +47,24 @@
     "non_english_reasoning_drift": 1,
     "interpretation": "The standalone blind coherence packet cannot distinguish model degradation from native-thinking truncation under the borrowed Coconut cap."
   },
+  "exact_m0_shared_cap_control": {
+    "slurm_job": 11420978,
+    "elapsed": "00:07:47",
+    "generations_sha256": "a4e2e74e9b9b650dd69a66a37538822d15c75001a496533f701127f91fc53f3c",
+    "outputs": 20,
+    "cap_hits": 20,
+    "missing_closing_think": 15,
+    "cap_and_missing_closing_think": 15,
+    "eos_stops": 0,
+    "native_template_verified": true,
+    "sampling_and_stop_config_verified": true,
+    "raw_unclosed_outputs_examined": 15,
+    "raw_unclosed_outputs_cut_off_in_internal_reasoning": 15
+  },
+  "combined_40_output_packet": {
+    "sha256": "57de63ac18d14f38310a0cd4141ca37f311db66bf68cee101f08dd5abd7a0c79",
+    "status": "diagnostic_only_not_for_gate_authorization"
+  },
+  "required_next_readout": "stage_k0_stage_k2_and_exact_m0_native_chat_at_5120_tokens",
   "next_stage_authorized": false
 }

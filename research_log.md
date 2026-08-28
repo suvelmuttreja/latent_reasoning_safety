@@ -771,3 +771,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   registry was installed. On release, the first allocation must create the
   claim and cancel its rival before model loading; only the winner can touch
   the shared output directory.
+- 2026-08-28: Exact-M0 shared-cap control job `11420978` completed on an A40
+  in 7m47s. All 20/20 exact-M0 native-chat generations hit the 512-token cap,
+  15/20 lacked a closing `</think>`, and none reached EOS. Raw review confirmed
+  all 15 unclosed records were cut off in internal planning/reasoning. This is
+  the same failure mode as stage 1 (18/20 capped, 14/20 unclosed), so the
+  512-token coherence readout and its combined 40-row packet are diagnostic
+  only and void for gate authorization; no degradation finding is conceded.
+  The A40 winner used the batch script snapshotted at submission, before the
+  later claim call was synced, so no automatic race record was written. The
+  L40S loser `11420974` remained pending and was manually cancelled with zero
+  elapsed time before it could touch the output. The required next readout is
+  stage K=0/K=2 plus exact M0 under native chat at the frozen 5,120-token cap.

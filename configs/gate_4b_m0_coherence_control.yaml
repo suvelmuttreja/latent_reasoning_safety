@@ -1,6 +1,6 @@
 schema_version: 1
 label: exact_m0_native_chat_coherence_shared_512_cap_control
-status: queued_atomic_hardware_race
+status: completed_shared_cap_failure_confirmed
 frozen_at: '2026-08-28T20:05:00Z'
 slurm_job: 11420974
 hardware_race: configs/m0_coherence_hardware_race.yaml
@@ -21,6 +21,7 @@ seed_schedule:
   base_seed: 42
   replicate_stride: 10
 sampling:
+  cap_role: coconut_answer_diagnostic
   max_new_tokens: 512
   do_sample: true
   temperature: 0.6
@@ -40,3 +41,13 @@ blind_packet:
 decision:
   next_stage_authorized_by_control: false
   compare_only_after_scores_are_frozen: true
+result:
+  winning_job: 11420978
+  winning_device: a40_48gb
+  elapsed: 00:07:47
+  m0_outputs: 20
+  cap_hits: 20
+  missing_closing_think: 15
+  eos_stops: 0
+  conclusion: shared_512_cap_invalidates_standalone_coherence_readout
+  combined_blind_packet_status: diagnostic_only_not_for_gate_authorization
