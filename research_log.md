@@ -755,3 +755,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   M0 native-chat control is frozen for two independent samples on each of the
   same 10 prompts under the same diagnostic 512-token harness, followed by a
   combined 40-output blind packet. Gate -1 and stages 2-3 remain unauthorized.
+- 2026-08-28: Exact-M0 shared-cap coherence control job `11420970` was queued
+  on one A40 after Discovery lint, compilation, and all 48 tests passed. It
+  generates two independently seeded native-chat samples for each of the 10
+  frozen coherence prompts at the diagnostic 512-token cap, using exact M0
+  without added latent tokens or Coconut markers, then shuffles those 20 with
+  the 20 stage outputs into one condition-blind packet. The job cannot
+  authorize later stages.
