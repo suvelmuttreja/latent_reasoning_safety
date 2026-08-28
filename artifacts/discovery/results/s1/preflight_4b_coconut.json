@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "label": "access_independent_open_wrapper_4b_coconut_stage1_preflight",
+  "scientific_use": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "ac14963898acb33f5cd30a1e4c0d6c018e509ef0",
+  "slurm_job_id": "11403992",
+  "config_sha256": "7b85e9a965d3375e2c7f66f522f4071a06a78e110bea31ffff36b538c62879de",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "method": "standard_open_implementation_coconut_sft_skip0_stage1",
+  "k": 2,
+  "hardware": {
+    "name": "NVIDIA A100 80GB PCIe",
+    "total_memory_bytes": 85093777408,
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6"
+  },
+  "sequence_lengths": {
+    "minimum": 44,
+    "median": 141.0,
+    "p95": 280.0,
+    "p99": 354.27999999999975,
+    "maximum": 487
+  },
+  "memory_preflight": {
+    "seconds": 9.732731104828417,
+    "mean_microbatch_loss": 0.7578125,
+    "examples": 32,
+    "nonpadding_tokens": 15376,
+    "supervised_tokens": 11776,
+    "gradients_finite": true,
+    "sequence_length": 576,
+    "source_maximum_sequence_length": 487,
+    "source_indices": [
+      310,
+      4967
+    ],
+    "peak_cuda_allocated_bytes": 41016283136,
+    "peak_cuda_reserved_bytes": 44633686016,
+    "optimizer_state_bytes": 16087170616
+  },
+  "throughput": {
+    "warmup_optimizer_updates": 2,
+    "timed_optimizer_updates": 50,
+    "examples": 1600,
+    "nonpadding_tokens": 247139,
+    "supervised_tokens": 145124,
+    "total_seconds": 341.82765930052847,
+    "mean_update_seconds": 6.823802124597132,
+    "median_update_seconds": 6.79836532426998,
+    "p95_update_seconds": 7.03345233630389,
+    "examples_per_second": 4.680721282982282,
+    "nonpadding_tokens_per_second": 722.9929857218489,
+    "supervised_tokens_per_second": 424.55312216970043,
+    "mean_loss": 0.57259033203125,
+    "peak_cuda_allocated_bytes": 45237231616,
+    "peak_cuda_reserved_bytes": 48444211200
+  },
+  "projection": {
+    "optimizer_updates_per_stage": 468,
+    "projected_stage1_training_seconds": 3193.5393943114577,
+    "projected_stage1_gpu_hours": 0.8870942761976272,
+    "three_stage_constant_rate_upper_bound_gpu_hours": 2.6612828285928813,
+    "model_parameter_bytes": 8043584512
+  },
+  "scope": {
+    "public_checkpoint_validated": false,
+    "gate_minus_1_decided": false,
+    "matched_training_authorized": false,
+    "checkpoint_saved": false,
+    "interpretation": "open-wrapper fallback-path infrastructure timing only"
+  }
+}

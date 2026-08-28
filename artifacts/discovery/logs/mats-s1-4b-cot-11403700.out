@@ -1,0 +1,135 @@
+name, memory.total [MiB], driver_version
+NVIDIA A100 80GB PCIe, 81920 MiB, 580.159.04
+{"update": 1, "seconds": 2.287098955363035, "loss": 0.7312643136829138}
+{"update": 2, "seconds": 2.219888584688306, "loss": 0.6027020402252674}
+{"update": 3, "seconds": 2.2884959196671844, "loss": 0.64764135889709}
+{"update": 4, "seconds": 2.3220295114442706, "loss": 0.6430353093892336}
+{"update": 5, "seconds": 2.217821165919304, "loss": 0.6108670104295015}
+{"update": 6, "seconds": 2.241545864380896, "loss": 0.5396811347454786}
+{"update": 7, "seconds": 2.2703513456508517, "loss": 0.5877956431359053}
+{"update": 8, "seconds": 2.3301818100735545, "loss": 0.5547165535390377}
+{"update": 9, "seconds": 2.347169689834118, "loss": 0.49179242830723524}
+{"update": 10, "seconds": 2.274112374521792, "loss": 0.4393976293504238}
+{"update": 11, "seconds": 2.2497348226606846, "loss": 0.47204614244401455}
+{"update": 12, "seconds": 2.3765037106350064, "loss": 0.47246689163148403}
+{"update": 13, "seconds": 2.3691652324050665, "loss": 0.4668175745755434}
+{"update": 14, "seconds": 2.2603530194610357, "loss": 0.40889240615069866}
+{"update": 15, "seconds": 2.4595401538535953, "loss": 0.42576081678271294}
+{"update": 16, "seconds": 2.2833874179050326, "loss": 0.4702729657292366}
+{"update": 17, "seconds": 2.3490578047931194, "loss": 0.4582516048103571}
+{"update": 18, "seconds": 2.3375521562993526, "loss": 0.44803112745285034}
+{"update": 19, "seconds": 2.506450153887272, "loss": 0.4480292424559593}
+{"update": 20, "seconds": 2.337009020149708, "loss": 0.43119080550968647}
+{"update": 21, "seconds": 2.3182683596387506, "loss": 0.4178611859679222}
+{"update": 22, "seconds": 2.2939742039889097, "loss": 0.3707937393337488}
+{"update": 23, "seconds": 2.395470001734793, "loss": 0.3950046105310321}
+{"update": 24, "seconds": 2.255598188377917, "loss": 0.45824674516916275}
+{"update": 25, "seconds": 2.343455267138779, "loss": 0.4070249265059829}
+{"update": 26, "seconds": 2.342409319244325, "loss": 0.4485939256846905}
+{"update": 27, "seconds": 2.3071611085906625, "loss": 0.4352002628147602}
+{"update": 28, "seconds": 2.3258619345724583, "loss": 0.3925825282931328}
+{"update": 29, "seconds": 2.3528356961905956, "loss": 0.40030377730727196}
+{"update": 30, "seconds": 2.453066005371511, "loss": 0.4742401521652937}
+{"update": 31, "seconds": 2.55604930780828, "loss": 0.4040502719581127}
+{"update": 32, "seconds": 2.315974546596408, "loss": 0.3695898409932852}
+{"update": 33, "seconds": 2.3989453185349703, "loss": 0.39388100802898407}
+{"update": 34, "seconds": 2.335495666600764, "loss": 0.3851490579545498}
+{"update": 35, "seconds": 2.214894475415349, "loss": 0.39478166308254004}
+{"update": 36, "seconds": 2.4182637985795736, "loss": 0.39853799901902676}
+{"update": 37, "seconds": 2.2820100989192724, "loss": 0.41597997210919857}
+{"update": 38, "seconds": 2.335257320664823, "loss": 0.3878538440912962}
+{"update": 39, "seconds": 2.3481756635010242, "loss": 0.3524548625573516}
+{"update": 40, "seconds": 2.323907815851271, "loss": 0.34057337418198586}
+{"update": 41, "seconds": 2.387649493291974, "loss": 0.4508709507063031}
+{"update": 42, "seconds": 2.34900008700788, "loss": 0.38214011397212744}
+{"update": 43, "seconds": 2.2132837725803256, "loss": 0.440989906899631}
+{"update": 44, "seconds": 2.3218519780784845, "loss": 0.3967787092551589}
+{"update": 45, "seconds": 2.2530235797166824, "loss": 0.4283412154763937}
+{"update": 46, "seconds": 2.336046307347715, "loss": 0.43023747578263283}
+{"update": 47, "seconds": 2.4252796433866024, "loss": 0.39108885917812586}
+{"update": 48, "seconds": 2.272011272609234, "loss": 0.3782750377431512}
+{"update": 49, "seconds": 2.272568085230887, "loss": 0.36202537827193737}
+{"update": 50, "seconds": 2.301611020229757, "loss": 0.369546783156693}
+{
+  "schema_version": 1,
+  "status": "passed",
+  "label": "access_independent_4b_cot_memory_and_throughput_preflight",
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "ac14963898acb33f5cd30a1e4c0d6c018e509ef0",
+  "slurm_job_id": "11403700",
+  "config_sha256": "ef16f67c543ac30498a2701a320e470b9b3b424718645dd8ebb33301c4b67346",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "hardware": {
+    "name": "NVIDIA A100 80GB PCIe",
+    "total_memory_bytes": 85093777408,
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6"
+  },
+  "sequence_lengths": {
+    "minimum": 65,
+    "median": 169.0,
+    "p95": 313.0,
+    "p99": 391.0,
+    "maximum": 537,
+    "over_512": 2
+  },
+  "memory_preflight": {
+    "seconds": 6.469850263558328,
+    "mean_microbatch_loss": 0.6444249749183655,
+    "examples": 32,
+    "nonpadding_tokens": 16864,
+    "supervised_tokens": 13392,
+    "gradients_finite": true,
+    "sequence_length": 576,
+    "source_maximum_sequence_length": 537,
+    "source_indices": [
+      310,
+      4967
+    ],
+    "peak_cuda_allocated_bytes": 40843073536,
+    "peak_cuda_reserved_bytes": 42542825472,
+    "optimizer_state_bytes": 16089873976
+  },
+  "throughput": {
+    "warmup_optimizer_updates": 2,
+    "timed_optimizer_updates": 50,
+    "examples": 1600,
+    "nonpadding_tokens": 292462,
+    "supervised_tokens": 196847,
+    "total_seconds": 116.66485329158604,
+    "mean_update_seconds": 2.3275369610078633,
+    "median_update_seconds": 2.3248848752118647,
+    "p95_update_seconds": 2.456626787036657,
+    "examples_per_second": 13.714498881690131,
+    "nonpadding_tokens_per_second": 2506.856107460537,
+    "supervised_tokens_per_second": 1687.2862258525358,
+    "mean_loss": 0.44847302354872226,
+    "peak_cuda_allocated_bytes": 41846489600,
+    "peak_cuda_reserved_bytes": 44296044544
+  },
+  "projection": {
+    "optimizer_updates_per_stage": 468,
+    "total_cot_optimizer_updates": 1404,
+    "projected_cot_training_seconds": 3267.8618932550403,
+    "projected_cot_gpu_hours": 0.9077394147930667,
+    "model_parameter_bytes": 8044936192,
+    "model_only_stage_checkpoints": 3,
+    "projected_cot_model_only_checkpoint_bytes": 24134808576,
+    "projected_six_matched_model_only_checkpoint_bytes": 48269617152
+  },
+  "native_generation_projection": {
+    "calibration_examples": 32,
+    "mean_generated_tokens": 1401.53125,
+    "aggregate_tokens_per_second": 29.821962244020966,
+    "dense_prompts_per_checkpoint": 282,
+    "projected_seconds_per_explicit_checkpoint": 13253.045164029754,
+    "scope": "rough M0-derived native-generation projection; not Coconut timing"
+  },
+  "scope": {
+    "cot_memory_and_throughput": "measured",
+    "coconut_stage1_throughput": "pending_public_checkpoint_key_audit",
+    "matched_training_authorized": false,
+    "checkpoint_saved": false
+  }
+}

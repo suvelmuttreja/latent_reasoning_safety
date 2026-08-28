@@ -1,0 +1,127 @@
+name, memory.total [MiB], driver_version
+NVIDIA A100 80GB PCIe, 81920 MiB, 580.159.04
+{"update": 1, "seconds": 6.803110727109015, "loss": 0.9261474609375}
+{"update": 2, "seconds": 6.761098233982921, "loss": 0.852783203125}
+{"update": 3, "seconds": 6.786678387783468, "loss": 0.8271484375}
+{"update": 4, "seconds": 7.028282531537116, "loss": 0.74365234375}
+{"update": 5, "seconds": 6.698300625197589, "loss": 0.748779296875}
+{"update": 6, "seconds": 6.75647013168782, "loss": 0.6895751953125}
+{"update": 7, "seconds": 6.717556528747082, "loss": 0.7027587890625}
+{"update": 8, "seconds": 6.802224037237465, "loss": 0.7269287109375}
+{"update": 9, "seconds": 6.824750413186848, "loss": 0.5633544921875}
+{"update": 10, "seconds": 6.784891441464424, "loss": 0.5748291015625}
+{"update": 11, "seconds": 6.728654693812132, "loss": 0.6087646484375}
+{"update": 12, "seconds": 7.001449762843549, "loss": 0.602294921875}
+{"update": 13, "seconds": 6.825694470666349, "loss": 0.5635986328125}
+{"update": 14, "seconds": 6.727893188595772, "loss": 0.54150390625}
+{"update": 15, "seconds": 6.908307762816548, "loss": 0.580322265625}
+{"update": 16, "seconds": 6.811402797698975, "loss": 0.5997314453125}
+{"update": 17, "seconds": 6.821085983887315, "loss": 0.6048583984375}
+{"update": 18, "seconds": 6.787954105064273, "loss": 0.561767578125}
+{"update": 19, "seconds": 6.925052477046847, "loss": 0.5697021484375}
+{"update": 20, "seconds": 7.042905573733151, "loss": 0.542236328125}
+{"update": 21, "seconds": 6.7864576037973166, "loss": 0.53271484375}
+{"update": 22, "seconds": 6.784101112745702, "loss": 0.529541015625}
+{"update": 23, "seconds": 6.819108583033085, "loss": 0.4949951171875}
+{"update": 24, "seconds": 6.761618908494711, "loss": 0.56121826171875}
+{"update": 25, "seconds": 6.822575121186674, "loss": 0.516845703125}
+{"update": 26, "seconds": 6.781379617750645, "loss": 0.5450439453125}
+{"update": 27, "seconds": 6.77705008443445, "loss": 0.4990234375}
+{"update": 28, "seconds": 7.037682176567614, "loss": 0.5111083984375}
+{"update": 29, "seconds": 6.807427576743066, "loss": 0.5472412109375}
+{"update": 30, "seconds": 6.9129388723522425, "loss": 0.576171875}
+{"update": 31, "seconds": 7.017681277357042, "loss": 0.494140625}
+{"update": 32, "seconds": 6.790939914993942, "loss": 0.4827880859375}
+{"update": 33, "seconds": 6.857675034552813, "loss": 0.4869384765625}
+{"update": 34, "seconds": 6.7995454436168075, "loss": 0.510986328125}
+{"update": 35, "seconds": 6.691686112433672, "loss": 0.5068359375}
+{"update": 36, "seconds": 7.038052408955991, "loss": 0.498046875}
+{"update": 37, "seconds": 6.755866291001439, "loss": 0.5111083984375}
+{"update": 38, "seconds": 6.812052485533059, "loss": 0.50750732421875}
+{"update": 39, "seconds": 6.788038013502955, "loss": 0.48779296875}
+{"update": 40, "seconds": 6.797185204923153, "loss": 0.4705810546875}
+{"update": 41, "seconds": 6.855948983691633, "loss": 0.5374755859375}
+{"update": 42, "seconds": 6.812898216769099, "loss": 0.5126953125}
+{"update": 43, "seconds": 6.87748387362808, "loss": 0.58203125}
+{"update": 44, "seconds": 6.782370953820646, "loss": 0.50030517578125}
+{"update": 45, "seconds": 6.739172451198101, "loss": 0.5701904296875}
+{"update": 46, "seconds": 6.775233703665435, "loss": 0.537109375}
+{"update": 47, "seconds": 6.87624684907496, "loss": 0.53955078125}
+{"update": 48, "seconds": 6.737472319044173, "loss": 0.48193359375}
+{"update": 49, "seconds": 6.765239615924656, "loss": 0.46490478515625}
+{"update": 50, "seconds": 6.78521354496479, "loss": 0.501953125}
+{
+  "schema_version": 1,
+  "status": "passed",
+  "label": "access_independent_open_wrapper_4b_coconut_stage1_preflight",
+  "scientific_use": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "ac14963898acb33f5cd30a1e4c0d6c018e509ef0",
+  "slurm_job_id": "11403992",
+  "config_sha256": "7b85e9a965d3375e2c7f66f522f4071a06a78e110bea31ffff36b538c62879de",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "method": "standard_open_implementation_coconut_sft_skip0_stage1",
+  "k": 2,
+  "hardware": {
+    "name": "NVIDIA A100 80GB PCIe",
+    "total_memory_bytes": 85093777408,
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6"
+  },
+  "sequence_lengths": {
+    "minimum": 44,
+    "median": 141.0,
+    "p95": 280.0,
+    "p99": 354.27999999999975,
+    "maximum": 487
+  },
+  "memory_preflight": {
+    "seconds": 9.732731104828417,
+    "mean_microbatch_loss": 0.7578125,
+    "examples": 32,
+    "nonpadding_tokens": 15376,
+    "supervised_tokens": 11776,
+    "gradients_finite": true,
+    "sequence_length": 576,
+    "source_maximum_sequence_length": 487,
+    "source_indices": [
+      310,
+      4967
+    ],
+    "peak_cuda_allocated_bytes": 41016283136,
+    "peak_cuda_reserved_bytes": 44633686016,
+    "optimizer_state_bytes": 16087170616
+  },
+  "throughput": {
+    "warmup_optimizer_updates": 2,
+    "timed_optimizer_updates": 50,
+    "examples": 1600,
+    "nonpadding_tokens": 247139,
+    "supervised_tokens": 145124,
+    "total_seconds": 341.82765930052847,
+    "mean_update_seconds": 6.823802124597132,
+    "median_update_seconds": 6.79836532426998,
+    "p95_update_seconds": 7.03345233630389,
+    "examples_per_second": 4.680721282982282,
+    "nonpadding_tokens_per_second": 722.9929857218489,
+    "supervised_tokens_per_second": 424.55312216970043,
+    "mean_loss": 0.57259033203125,
+    "peak_cuda_allocated_bytes": 45237231616,
+    "peak_cuda_reserved_bytes": 48444211200
+  },
+  "projection": {
+    "optimizer_updates_per_stage": 468,
+    "projected_stage1_training_seconds": 3193.5393943114577,
+    "projected_stage1_gpu_hours": 0.8870942761976272,
+    "three_stage_constant_rate_upper_bound_gpu_hours": 2.6612828285928813,
+    "model_parameter_bytes": 8043584512
+  },
+  "scope": {
+    "public_checkpoint_validated": false,
+    "gate_minus_1_decided": false,
+    "matched_training_authorized": false,
+    "checkpoint_saved": false,
+    "interpretation": "open-wrapper fallback-path infrastructure timing only"
+  }
+}

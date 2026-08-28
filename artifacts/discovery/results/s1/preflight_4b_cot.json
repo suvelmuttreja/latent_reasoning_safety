@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "label": "access_independent_4b_cot_memory_and_throughput_preflight",
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "ac14963898acb33f5cd30a1e4c0d6c018e509ef0",
+  "slurm_job_id": "11403700",
+  "config_sha256": "ef16f67c543ac30498a2701a320e470b9b3b424718645dd8ebb33301c4b67346",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "hardware": {
+    "name": "NVIDIA A100 80GB PCIe",
+    "total_memory_bytes": 85093777408,
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6"
+  },
+  "sequence_lengths": {
+    "minimum": 65,
+    "median": 169.0,
+    "p95": 313.0,
+    "p99": 391.0,
+    "maximum": 537,
+    "over_512": 2
+  },
+  "memory_preflight": {
+    "seconds": 6.469850263558328,
+    "mean_microbatch_loss": 0.6444249749183655,
+    "examples": 32,
+    "nonpadding_tokens": 16864,
+    "supervised_tokens": 13392,
+    "gradients_finite": true,
+    "sequence_length": 576,
+    "source_maximum_sequence_length": 537,
+    "source_indices": [
+      310,
+      4967
+    ],
+    "peak_cuda_allocated_bytes": 40843073536,
+    "peak_cuda_reserved_bytes": 42542825472,
+    "optimizer_state_bytes": 16089873976
+  },
+  "throughput": {
+    "warmup_optimizer_updates": 2,
+    "timed_optimizer_updates": 50,
+    "examples": 1600,
+    "nonpadding_tokens": 292462,
+    "supervised_tokens": 196847,
+    "total_seconds": 116.66485329158604,
+    "mean_update_seconds": 2.3275369610078633,
+    "median_update_seconds": 2.3248848752118647,
+    "p95_update_seconds": 2.456626787036657,
+    "examples_per_second": 13.714498881690131,
+    "nonpadding_tokens_per_second": 2506.856107460537,
+    "supervised_tokens_per_second": 1687.2862258525358,
+    "mean_loss": 0.44847302354872226,
+    "peak_cuda_allocated_bytes": 41846489600,
+    "peak_cuda_reserved_bytes": 44296044544
+  },
+  "projection": {
+    "optimizer_updates_per_stage": 468,
+    "total_cot_optimizer_updates": 1404,
+    "projected_cot_training_seconds": 3267.8618932550403,
+    "projected_cot_gpu_hours": 0.9077394147930667,
+    "model_parameter_bytes": 8044936192,
+    "model_only_stage_checkpoints": 3,
+    "projected_cot_model_only_checkpoint_bytes": 24134808576,
+    "projected_six_matched_model_only_checkpoint_bytes": 48269617152
+  },
+  "native_generation_projection": {
+    "calibration_examples": 32,
+    "mean_generated_tokens": 1401.53125,
+    "aggregate_tokens_per_second": 29.821962244020966,
+    "dense_prompts_per_checkpoint": 282,
+    "projected_seconds_per_explicit_checkpoint": 13253.045164029754,
+    "scope": "rough M0-derived native-generation projection; not Coconut timing"
+  },
+  "scope": {
+    "cot_memory_and_throughput": "measured",
+    "coconut_stage1_throughput": "pending_public_checkpoint_key_audit",
+    "matched_training_authorized": false,
+    "checkpoint_saved": false
+  }
+}

@@ -520,3 +520,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   retains its 2026-08-27 22:04 PDT estimate, whereas a fresh identical
   test-only submission estimated 2026-08-29. Keep job `11403700`; use A40 for
   the already queued inference-only in-line gate.
+- 2026-08-27: A100-80GB preflights `11403700` (explicit CoT) and `11403992`
+  (open-wrapper Coconut K=2) both passed on commit `ac14963`. Exact-public
+  micro-batch 2 x accumulation 16 had worst-shape/timed peak reservations of
+  39.62/41.25 GiB for CoT and 41.57/45.12 GiB for Coconut. CoT averaged
+  2.328 s/update and projects to 0.908 GPU-hours for all 1,404 updates;
+  Coconut averaged 6.824 s/update and projects stage 1 to 0.887 GPU-hours
+  (2.661 hours as a conservative constant-rate three-stage bound). Both had
+  finite gradients. The A100 training request was safely reduced from 12h to
+  4h, but its accrued estimate remains 2026-08-28 10:07 PDT.
+- 2026-08-27: The A40 has 46,068 MiB (45.0 GiB) physical memory, slightly less
+  than the 45.12-GiB observed Coconut reservation at micro-batch 2. Do not move
+  that frozen shape blindly. A registered fallback-ladder A40 preflight with
+  micro-batch 1 x accumulation 32 (same effective batch/update semantics) is
+  prepared to test whether the more available GPU can safely recover the
+  overnight window before changing or cancelling the accrued A100 job.
