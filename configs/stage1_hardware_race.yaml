@@ -1,12 +1,13 @@
 schema_version: 1
 race_id: fallback_4b_skip0_stage1
-status: live_first_start_wins
+status: completed_a40_winner_checkpoint_repaired_after_post_save_metadata_failure
 claim_directory: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/.stage1_hardware_claim
 record_path: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/stage1_hardware_race.json
 jobs:
   a100_80gb: 11405885
   a40: 11413196
 gates:
-  a100_80gb: 11405896
-  a40: 11413197
+  a100_80gb_cancelled: 11405896
+  a40_original_dependency_never_satisfied_cancelled: 11413197
+  a40_replacement_after_repair: 11415026
 rule: first_job_to_atomically_claim_runs_and_scancels_every_other_job_before_training

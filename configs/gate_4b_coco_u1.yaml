@@ -5,6 +5,8 @@ checkpoint_stage: 1
 checkpoint_k: 2
 seed: 42
 device_class: a40_48gb_or_larger
+slurm_job: 11415026
+checkpoint_recovery_record: configs/stage1_recovery.yaml
 capability:
   manifest: manifests/gsm8k_heldout_200.json
   k_values: [0, 2]
@@ -34,4 +36,3 @@ decision:
     - strongreject_direction
     - preferred_safety_outcome
   next_stage_authorized_by_script: false
-

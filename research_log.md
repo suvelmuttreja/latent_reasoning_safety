@@ -662,3 +662,19 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   the existing checkpoints, then run Gate -1. Metrics held only in process
   memory are marked unavailable rather than invented. Future stages journal
   every update and write local metadata before upload.
+- 2026-08-28: CPU repair jobs `11414946` (Coconut, 5m33s) and `11414947`
+  (CoT, 7m49s) completed successfully without loading or changing weights.
+  Coconut model SHA-256 `36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25`
+  was uploaded at HF commit `a0624a889ec0d8e073d194ec4aacd88f03c96e30`;
+  CoT SHA-256 `d3cac61e18def5332e0d0fcb0de30634476ab6d9b10dfbe3dea7197ecbfb2e59`
+  at commit `a0a71df3b19ef25665cd6c033dd48af30457b78d`. Both metadata records report
+  468 updates. Fresh Coconut Gate -1 job `11415026` is queued against the
+  repaired checkpoint; the impossible original gate `11413197` was cancelled.
+- 2026-08-28: M0 format-anchor generation/scoring jobs `11413622/11413625`
+  completed. Native-chat mean safety score was `0.08790493`; Coconut-raw mean
+  was `0.06795792`; paired raw-minus-native effect `-0.01994701`, paired
+  bootstrap 95% CI `[-0.10168759, 0.06849296]`. Six of 24 generations hit the
+  frozen 5,120-token cap. The result is technically complete but format choice
+  remains pending paired transcript review; no selection is made from the
+  apparent score direction. Frozen rendered examples and interpretation limits
+  are in `configs/format_examples.txt`.

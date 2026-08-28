@@ -1,0 +1,1576 @@
+Processing Files (0 / 0)                : |          |  0.00B /  0.00B            
+New Data Upload                         : |          |  0.00B /  0.00B            [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[AProcessing Files (1 / 2)                :   0%|          | 11.4MB / 8.06GB,   ???B/s  
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 97.5kB / 8.04GB            [A[A[A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 97.5kB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   0%|          | 11.5MB / 8.06GB, 1.09MB/s  
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 97.5kB / 8.04GB            [A[A[A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 1.31MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   0%|          | 12.7MB / 8.06GB, 1.15MB/s  
+New Data Upload                         :   1%|          | 1.21MB /  134MB,  117kB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 7.38MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   0%|          | 18.8MB / 8.06GB, 1.71MB/s  
+New Data Upload                         :   5%|▌         | 7.28MB /  134MB,  695kB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 20.7MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   0%|          | 32.2MB / 8.06GB, 2.93MB/s  
+New Data Upload                         :  10%|█         | 20.6MB /  201MB, 1.95MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   0%|          | 40.1MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   1%|          | 51.6MB / 8.06GB, 4.70MB/s  
+New Data Upload                         :  20%|█▉        | 40.0MB /  201MB, 3.74MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   1%|          | 64.4MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   1%|          | 75.8MB / 8.06GB, 6.87MB/s  
+New Data Upload                         :  32%|███▏      | 64.3MB /  201MB, 5.92MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   1%|          | 89.9MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   1%|▏         |  101MB / 8.06GB, 9.08MB/s  
+New Data Upload                         :  45%|████▍     | 89.8MB /  201MB, 8.16MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   1%|▏         |  113MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   2%|▏         |  124MB / 8.06GB, 11.0MB/s  
+New Data Upload                         :  56%|█████▌    |  113MB /  201MB, 10.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   2%|▏         |  127MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   2%|▏         |  138MB / 8.06GB, 12.0MB/s  
+New Data Upload                         :  63%|██████▎   |  126MB /  201MB, 11.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   2%|▏         |  134MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   2%|▏         |  146MB / 8.06GB, 12.4MB/s  
+New Data Upload                         :  67%|██████▋   |  134MB /  201MB, 11.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   2%|▏         |  139MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   2%|▏         |  150MB / 8.06GB, 12.5MB/s  
+New Data Upload                         :  69%|██████▉   |  138MB /  201MB, 11.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   2%|▏         |  151MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   2%|▏         |  162MB / 8.06GB, 13.4MB/s  
+New Data Upload                         :  56%|█████▌    |  151MB /  268MB, 12.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   2%|▏         |  163MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   2%|▏         |  175MB / 8.06GB, 14.2MB/s  
+New Data Upload                         :  49%|████▊     |  163MB /  335MB, 13.4MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   2%|▏         |  190MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   3%|▎         |  201MB / 8.06GB, 16.3MB/s  
+New Data Upload                         :  57%|█████▋    |  190MB /  335MB, 15.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   3%|▎         |  223MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   3%|▎         |  235MB / 8.06GB, 18.9MB/s  
+New Data Upload                         :  55%|█████▌    |  223MB /  402MB, 18.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   3%|▎         |  257MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   3%|▎         |  268MB / 8.06GB, 21.4MB/s  
+New Data Upload                         :  55%|█████▍    |  256MB /  470MB, 20.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   4%|▎         |  284MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   4%|▎         |  296MB / 8.06GB, 23.4MB/s  
+New Data Upload                         :  61%|██████    |  284MB /  470MB, 22.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   4%|▍         |  316MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   4%|▍         |  327MB / 8.06GB, 25.6MB/s  
+New Data Upload                         :  59%|█████▉    |  316MB /  537MB, 24.9MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   4%|▍         |  352MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   5%|▍         |  363MB / 8.06GB, 28.2MB/s  
+New Data Upload                         :  58%|█████▊    |  352MB /  604MB, 27.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   5%|▍         |  388MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   5%|▍         |  400MB / 8.06GB, 30.8MB/s  
+New Data Upload                         :  64%|██████▍   |  388MB /  604MB, 30.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   5%|▌         |  418MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   5%|▌         |  430MB / 8.06GB, 32.7MB/s  
+New Data Upload                         :  62%|██████▏   |  418MB /  671MB, 32.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   6%|▌         |  452MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   6%|▌         |  464MB / 8.06GB, 34.9MB/s  
+New Data Upload                         :  67%|██████▋   |  452MB /  671MB, 34.3MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   6%|▌         |  494MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   6%|▋         |  506MB / 8.06GB, 37.8MB/s  
+New Data Upload                         :  67%|██████▋   |  494MB /  738MB, 37.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   7%|▋         |  523MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   7%|▋         |  535MB / 8.06GB, 39.5MB/s  
+New Data Upload                         :  65%|██████▍   |  523MB /  805MB, 38.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   7%|▋         |  558MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   7%|▋         |  569MB / 8.06GB, 41.6MB/s  
+New Data Upload                         :  69%|██████▉   |  558MB /  805MB, 41.0MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   7%|▋         |  599MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   8%|▊         |  610MB / 8.06GB, 44.2MB/s  
+New Data Upload                         :  69%|██████▊   |  599MB /  872MB, 43.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   8%|▊         |  632MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   8%|▊         |  644MB / 8.06GB, 46.1MB/s  
+New Data Upload                         :  67%|██████▋   |  632MB /  939MB, 45.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   8%|▊         |  666MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   8%|▊         |  678MB / 8.06GB, 48.0MB/s  
+New Data Upload                         :  66%|██████▌   |  666MB / 1.01GB, 47.4MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   9%|▉         |  705MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   9%|▉         |  717MB / 8.06GB, 50.2MB/s  
+New Data Upload                         :  70%|███████   |  705MB / 1.01GB, 49.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:   9%|▉         |  738MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :   9%|▉         |  750MB / 8.06GB, 51.9MB/s  
+New Data Upload                         :  69%|██████▉   |  738MB / 1.07GB, 51.4MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  10%|▉         |  772MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  10%|▉         |  783MB / 8.06GB, 53.6MB/s  
+New Data Upload                         :  72%|███████▏  |  772MB / 1.07GB, 53.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  10%|█         |  808MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  10%|█         |  820MB / 8.06GB, 55.5MB/s  
+New Data Upload                         :  71%|███████   |  808MB / 1.14GB, 55.0MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  10%|█         |  843MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  11%|█         |  854MB / 8.06GB, 57.3MB/s  
+New Data Upload                         :  70%|██████▉   |  843MB / 1.21GB, 56.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  11%|█         |  881MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  11%|█         |  892MB / 8.06GB, 59.2MB/s  
+New Data Upload                         :  69%|██████▉   |  881MB / 1.27GB, 58.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  11%|█▏        |  919MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  12%|█▏        |  931MB / 8.06GB, 61.1MB/s  
+New Data Upload                         :  72%|███████▏  |  919MB / 1.27GB, 60.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  12%|█▏        |  947MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  12%|█▏        |  959MB / 8.06GB, 62.2MB/s  
+New Data Upload                         :  71%|███████   |  947MB / 1.34GB, 61.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  12%|█▏        |  983MB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  12%|█▏        |  995MB / 8.06GB, 63.8MB/s  
+New Data Upload                         :  73%|███████▎  |  983MB / 1.34GB, 63.4MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  13%|█▎        | 1.02GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  13%|█▎        | 1.03GB / 8.06GB, 65.6MB/s  
+New Data Upload                         :  73%|███████▎  | 1.02GB / 1.41GB, 65.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  13%|█▎        | 1.05GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  13%|█▎        | 1.07GB / 8.06GB, 66.9MB/s  
+New Data Upload                         :  71%|███████▏  | 1.05GB / 1.48GB, 66.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  14%|█▎        | 1.09GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  14%|█▎        | 1.10GB / 8.06GB, 68.6MB/s  
+New Data Upload                         :  71%|███████   | 1.09GB / 1.54GB, 68.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  14%|█▍        | 1.13GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  14%|█▍        | 1.14GB / 8.06GB, 70.1MB/s  
+New Data Upload                         :  73%|███████▎  | 1.13GB / 1.54GB, 69.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  14%|█▍        | 1.16GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  15%|█▍        | 1.17GB / 8.06GB, 71.3MB/s  
+New Data Upload                         :  72%|███████▏  | 1.16GB / 1.61GB, 70.9MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  15%|█▍        | 1.19GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  15%|█▍        | 1.20GB / 8.06GB, 72.4MB/s  
+New Data Upload                         :  74%|███████▍  | 1.19GB / 1.61GB, 72.0MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  15%|█▌        | 1.22GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  15%|█▌        | 1.23GB / 8.06GB, 73.5MB/s  
+New Data Upload                         :  73%|███████▎  | 1.22GB / 1.68GB, 73.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  16%|█▌        | 1.26GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  16%|█▌        | 1.27GB / 8.06GB, 74.9MB/s  
+New Data Upload                         :  72%|███████▏  | 1.26GB / 1.74GB, 74.4MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  16%|█▌        | 1.29GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  16%|█▌        | 1.31GB / 8.06GB, 76.2MB/s  
+New Data Upload                         :  74%|███████▍  | 1.29GB / 1.74GB, 75.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  17%|█▋        | 1.33GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  17%|█▋        | 1.34GB / 8.06GB, 77.4MB/s  
+New Data Upload                         :  73%|███████▎  | 1.33GB / 1.81GB, 77.0MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  17%|█▋        | 1.37GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  17%|█▋        | 1.38GB / 8.06GB, 78.8MB/s  
+New Data Upload                         :  73%|███████▎  | 1.37GB / 1.88GB, 78.4MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  17%|█▋        | 1.40GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  18%|█▊        | 1.41GB / 8.06GB, 80.0MB/s  
+New Data Upload                         :  72%|███████▏  | 1.40GB / 1.94GB, 79.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  18%|█▊        | 1.44GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  18%|█▊        | 1.45GB / 8.06GB, 81.2MB/s  
+New Data Upload                         :  74%|███████▍  | 1.44GB / 1.94GB, 80.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  18%|█▊        | 1.46GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  18%|█▊        | 1.48GB / 8.06GB, 81.8MB/s  
+New Data Upload                         :  73%|███████▎  | 1.46GB / 2.01GB, 81.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  19%|█▊        | 1.50GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  19%|█▉        | 1.51GB / 8.06GB, 83.1MB/s  
+New Data Upload                         :  72%|███████▏  | 1.50GB / 2.08GB, 82.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  19%|█▉        | 1.54GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  19%|█▉        | 1.55GB / 8.06GB, 84.2MB/s  
+New Data Upload                         :  72%|███████▏  | 1.54GB / 2.15GB, 83.9MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  20%|█▉        | 1.57GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  20%|█▉        | 1.58GB / 8.06GB, 85.1MB/s  
+New Data Upload                         :  73%|███████▎  | 1.57GB / 2.15GB, 84.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  20%|██        | 1.61GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  20%|██        | 1.62GB / 8.06GB, 86.6MB/s  
+New Data Upload                         :  73%|███████▎  | 1.61GB / 2.21GB, 86.3MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  20%|██        | 1.64GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  20%|██        | 1.65GB / 8.06GB, 87.1MB/s  
+New Data Upload                         :  72%|███████▏  | 1.64GB / 2.28GB, 86.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  21%|██        | 1.67GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  21%|██        | 1.69GB / 8.06GB, 88.3MB/s  
+New Data Upload                         :  73%|███████▎  | 1.67GB / 2.28GB, 88.0MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  21%|██        | 1.71GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  21%|██▏       | 1.72GB / 8.06GB, 89.1MB/s  
+New Data Upload                         :  73%|███████▎  | 1.71GB / 2.35GB, 88.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  22%|██▏       | 1.74GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  22%|██▏       | 1.75GB / 8.06GB, 89.9MB/s  
+New Data Upload                         :  72%|███████▏  | 1.74GB / 2.41GB, 89.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  22%|██▏       | 1.78GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  22%|██▏       | 1.79GB / 8.06GB, 91.5MB/s  
+New Data Upload                         :  74%|███████▍  | 1.78GB / 2.41GB, 91.2MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  23%|██▎       | 1.81GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  23%|██▎       | 1.83GB / 8.06GB, 92.1MB/s  
+New Data Upload                         :  73%|███████▎  | 1.81GB / 2.48GB, 91.8MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  23%|██▎       | 1.85GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  23%|██▎       | 1.86GB / 8.06GB, 93.0MB/s  
+New Data Upload                         :  74%|███████▍  | 1.85GB / 2.48GB, 92.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  23%|██▎       | 1.88GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  24%|██▎       | 1.90GB / 8.06GB, 94.0MB/s  
+New Data Upload                         :  72%|███████▏  | 1.88GB / 2.62GB, 93.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  24%|██▍       | 1.92GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  24%|██▍       | 1.93GB / 8.06GB, 94.9MB/s  
+New Data Upload                         :  73%|███████▎  | 1.92GB / 2.62GB, 94.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  24%|██▍       | 1.95GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  24%|██▍       | 1.96GB / 8.06GB, 95.4MB/s  
+New Data Upload                         :  73%|███████▎  | 1.95GB / 2.68GB, 95.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  25%|██▍       | 1.99GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  25%|██▍       | 2.00GB / 8.06GB, 96.7MB/s  
+New Data Upload                         :  74%|███████▍  | 1.99GB / 2.68GB, 96.5MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  25%|██▌       | 2.02GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  25%|██▌       | 2.03GB / 8.06GB, 97.0MB/s  
+New Data Upload                         :  73%|███████▎  | 2.02GB / 2.75GB, 96.7MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  26%|██▌       | 2.05GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  26%|██▌       | 2.06GB / 8.06GB, 97.6MB/s  
+New Data Upload                         :  75%|███████▍  | 2.05GB / 2.75GB, 97.3MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  26%|██▌       | 2.08GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  26%|██▌       | 2.10GB / 8.06GB, 98.2MB/s  
+New Data Upload                         :  74%|███████▍  | 2.08GB / 2.82GB, 98.0MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  26%|██▋       | 2.12GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  27%|██▋       | 2.14GB / 8.06GB, 99.4MB/s  
+New Data Upload                         :  74%|███████▎  | 2.12GB / 2.88GB, 99.1MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  27%|██▋       | 2.15GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  27%|██▋       | 2.17GB / 8.06GB, 99.8MB/s  
+New Data Upload                         :  75%|███████▍  | 2.15GB / 2.88GB, 99.6MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  27%|██▋       | 2.20GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  27%|██▋       | 2.21GB / 8.06GB,  101MB/s  
+New Data Upload                         :  74%|███████▍  | 2.20GB / 2.95GB,  101MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  28%|██▊       | 2.23GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  28%|██▊       | 2.24GB / 8.06GB,  102MB/s  
+New Data Upload                         :  74%|███████▍  | 2.23GB / 3.02GB,  101MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  28%|██▊       | 2.26GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  28%|██▊       | 2.27GB / 8.06GB,  102MB/s  
+New Data Upload                         :  73%|███████▎  | 2.26GB / 3.08GB,  102MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  29%|██▊       | 2.30GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  29%|██▊       | 2.31GB / 8.06GB,  103MB/s  
+New Data Upload                         :  75%|███████▍  | 2.30GB / 3.08GB,  103MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  29%|██▉       | 2.34GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  29%|██▉       | 2.35GB / 8.06GB,  104MB/s  
+New Data Upload                         :  74%|███████▍  | 2.34GB / 3.15GB,  104MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  29%|██▉       | 2.37GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  30%|██▉       | 2.38GB / 8.06GB,  105MB/s  
+New Data Upload                         :  74%|███████▎  | 2.37GB / 3.22GB,  104MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  30%|██▉       | 2.40GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  30%|██▉       | 2.41GB / 8.06GB,  105MB/s  
+New Data Upload                         :  75%|███████▍  | 2.40GB / 3.22GB,  105MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  30%|███       | 2.44GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  30%|███       | 2.45GB / 8.06GB,  106MB/s  
+New Data Upload                         :  74%|███████▍  | 2.44GB / 3.29GB,  106MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  31%|███       | 2.47GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  31%|███       | 2.48GB / 8.06GB,  106MB/s  
+New Data Upload                         :  74%|███████▎  | 2.47GB / 3.35GB,  106MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  31%|███       | 2.51GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  31%|███▏      | 2.52GB / 8.06GB,  107MB/s  
+New Data Upload                         :  73%|███████▎  | 2.51GB / 3.42GB,  107MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  32%|███▏      | 2.54GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  32%|███▏      | 2.55GB / 8.06GB,  107MB/s  
+New Data Upload                         :  73%|███████▎  | 2.54GB / 3.49GB,  107MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  32%|███▏      | 2.58GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  32%|███▏      | 2.59GB / 8.06GB,  108MB/s  
+New Data Upload                         :  73%|███████▎  | 2.58GB / 3.55GB,  108MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  33%|███▎      | 2.61GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  33%|███▎      | 2.63GB / 8.06GB,  109MB/s  
+New Data Upload                         :  72%|███████▏  | 2.61GB / 3.62GB,  109MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  33%|███▎      | 2.65GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  33%|███▎      | 2.66GB / 8.06GB,  109MB/s  
+New Data Upload                         :  73%|███████▎  | 2.65GB / 3.62GB,  109MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  33%|███▎      | 2.68GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  33%|███▎      | 2.69GB / 8.06GB,  109MB/s  
+New Data Upload                         :  73%|███████▎  | 2.68GB / 3.69GB,  109MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  34%|███▍      | 2.72GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  34%|███▍      | 2.73GB / 8.06GB,  110MB/s  
+New Data Upload                         :  74%|███████▎  | 2.72GB / 3.69GB,  110MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  34%|███▍      | 2.75GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  34%|███▍      | 2.77GB / 8.06GB,  111MB/s  
+New Data Upload                         :  73%|███████▎  | 2.75GB / 3.76GB,  111MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  35%|███▍      | 2.78GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  35%|███▍      | 2.79GB / 8.06GB,  111MB/s  
+New Data Upload                         :  73%|███████▎  | 2.78GB / 3.82GB,  111MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  35%|███▍      | 2.81GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  35%|███▌      | 2.83GB / 8.06GB,  111MB/s  
+New Data Upload                         :  72%|███████▏  | 2.81GB / 3.89GB,  111MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  35%|███▌      | 2.85GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  36%|███▌      | 2.87GB / 8.06GB,  112MB/s  
+New Data Upload                         :  72%|███████▏  | 2.85GB / 3.96GB,  112MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  36%|███▌      | 2.89GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  36%|███▌      | 2.90GB / 8.06GB,  112MB/s  
+New Data Upload                         :  73%|███████▎  | 2.89GB / 3.96GB,  112MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  36%|███▋      | 2.92GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  36%|███▋      | 2.94GB / 8.06GB,  113MB/s  
+New Data Upload                         :  73%|███████▎  | 2.92GB / 4.02GB,  113MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  37%|███▋      | 2.96GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  37%|███▋      | 2.97GB / 8.06GB,  113MB/s  
+New Data Upload                         :  72%|███████▏  | 2.96GB / 4.09GB,  113MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  37%|███▋      | 2.99GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  37%|███▋      | 3.00GB / 8.06GB,  114MB/s  
+New Data Upload                         :  72%|███████▏  | 2.99GB / 4.16GB,  114MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  38%|███▊      | 3.02GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  38%|███▊      | 3.04GB / 8.06GB,  114MB/s  
+New Data Upload                         :  73%|███████▎  | 3.02GB / 4.16GB,  114MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  38%|███▊      | 3.06GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  38%|███▊      | 3.07GB / 8.06GB,  115MB/s  
+New Data Upload                         :  72%|███████▏  | 3.06GB / 4.22GB,  114MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  39%|███▊      | 3.10GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  39%|███▊      | 3.11GB / 8.06GB,  115MB/s  
+New Data Upload                         :  73%|███████▎  | 3.10GB / 4.22GB,  115MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  39%|███▉      | 3.13GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  39%|███▉      | 3.14GB / 8.06GB,  116MB/s  
+New Data Upload                         :  73%|███████▎  | 3.13GB / 4.29GB,  116MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  39%|███▉      | 3.17GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  39%|███▉      | 3.18GB / 8.06GB,  116MB/s  
+New Data Upload                         :  73%|███████▎  | 3.17GB / 4.36GB,  116MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  40%|███▉      | 3.20GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  40%|███▉      | 3.21GB / 8.06GB,  116MB/s  
+New Data Upload                         :  73%|███████▎  | 3.20GB / 4.36GB,  116MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  40%|████      | 3.23GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  40%|████      | 3.24GB / 8.06GB,  117MB/s  
+New Data Upload                         :  73%|███████▎  | 3.23GB / 4.43GB,  117MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  41%|████      | 3.27GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  41%|████      | 3.28GB / 8.06GB,  117MB/s  
+New Data Upload                         :  73%|███████▎  | 3.27GB / 4.49GB,  117MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  41%|████      | 3.30GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  41%|████      | 3.31GB / 8.06GB,  117MB/s  
+New Data Upload                         :  73%|███████▎  | 3.30GB / 4.49GB,  117MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  41%|████▏     | 3.33GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  42%|████▏     | 3.35GB / 8.06GB,  118MB/s  
+New Data Upload                         :  74%|███████▍  | 3.33GB / 4.49GB,  118MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  42%|████▏     | 3.37GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  42%|████▏     | 3.38GB / 8.06GB,  118MB/s  
+New Data Upload                         :  74%|███████▍  | 3.37GB / 4.56GB,  118MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  42%|████▏     | 3.41GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  42%|████▏     | 3.42GB / 8.06GB,  119MB/s  
+New Data Upload                         :  74%|███████▎  | 3.41GB / 4.63GB,  119MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  43%|████▎     | 3.44GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  43%|████▎     | 3.45GB / 8.06GB,  119MB/s  
+New Data Upload                         :  73%|███████▎  | 3.44GB / 4.69GB,  119MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  43%|████▎     | 3.48GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  43%|████▎     | 3.49GB / 8.06GB,  120MB/s  
+New Data Upload                         :  74%|███████▍  | 3.48GB / 4.69GB,  119MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  44%|████▎     | 3.50GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  44%|████▎     | 3.52GB / 8.06GB,  119MB/s  
+New Data Upload                         :  74%|███████▎  | 3.50GB / 4.76GB,  119MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  44%|████▍     | 3.54GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  44%|████▍     | 3.55GB / 8.06GB,  120MB/s  
+New Data Upload                         :  74%|███████▍  | 3.54GB / 4.76GB,  120MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  44%|████▍     | 3.57GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  44%|████▍     | 3.58GB / 8.06GB,  120MB/s  
+New Data Upload                         :  74%|███████▍  | 3.57GB / 4.83GB,  120MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  45%|████▍     | 3.60GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  45%|████▍     | 3.62GB / 8.06GB,  120MB/s  
+New Data Upload                         :  74%|███████▎  | 3.60GB / 4.90GB,  120MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  45%|████▌     | 3.64GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  45%|████▌     | 3.66GB / 8.06GB,  121MB/s  
+New Data Upload                         :  73%|███████▎  | 3.64GB / 4.96GB,  121MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  46%|████▌     | 3.68GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  46%|████▌     | 3.69GB / 8.06GB,  121MB/s  
+New Data Upload                         :  73%|███████▎  | 3.68GB / 5.03GB,  121MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  46%|████▌     | 3.71GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  46%|████▋     | 3.73GB / 8.06GB,  122MB/s  
+New Data Upload                         :  73%|███████▎  | 3.71GB / 5.10GB,  121MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  47%|████▋     | 3.75GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  47%|████▋     | 3.76GB / 8.06GB,  122MB/s  
+New Data Upload                         :  74%|███████▎  | 3.75GB / 5.10GB,  122MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  47%|████▋     | 3.78GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  47%|████▋     | 3.79GB / 8.06GB,  122MB/s  
+New Data Upload                         :  73%|███████▎  | 3.78GB / 5.16GB,  122MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  47%|████▋     | 3.82GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  48%|████▊     | 3.83GB / 8.06GB,  123MB/s  
+New Data Upload                         :  73%|███████▎  | 3.82GB / 5.23GB,  123MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  48%|████▊     | 3.86GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  48%|████▊     | 3.87GB / 8.06GB,  123MB/s  
+New Data Upload                         :  74%|███████▎  | 3.86GB / 5.23GB,  123MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  48%|████▊     | 3.89GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  48%|████▊     | 3.90GB / 8.06GB,  123MB/s  
+New Data Upload                         :  74%|███████▍  | 3.89GB / 5.23GB,  123MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  49%|████▉     | 3.93GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  49%|████▉     | 3.94GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▍  | 3.93GB / 5.30GB,  123MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  49%|████▉     | 3.96GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  49%|████▉     | 3.97GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▍  | 3.96GB / 5.36GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  50%|████▉     | 3.99GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  50%|████▉     | 4.00GB / 8.06GB,  124MB/s  
+New Data Upload                         :  73%|███████▎  | 3.99GB / 5.43GB,  123MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  50%|████▉     | 4.02GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  50%|█████     | 4.03GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▍  | 4.02GB / 5.43GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  50%|█████     | 4.05GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  50%|█████     | 4.06GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▎  | 4.05GB / 5.50GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  51%|█████     | 4.09GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  51%|█████     | 4.10GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▍  | 4.09GB / 5.50GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  51%|█████     | 4.12GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  51%|█████▏    | 4.13GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▍  | 4.12GB / 5.57GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  52%|█████▏    | 4.16GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  52%|█████▏    | 4.17GB / 8.06GB,  125MB/s  
+New Data Upload                         :  75%|███████▍  | 4.16GB / 5.57GB,  125MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  52%|█████▏    | 4.19GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  52%|█████▏    | 4.20GB / 8.06GB,  124MB/s  
+New Data Upload                         :  74%|███████▍  | 4.19GB / 5.63GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  53%|█████▎    | 4.23GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  53%|█████▎    | 4.24GB / 8.06GB,  125MB/s  
+New Data Upload                         :  74%|███████▍  | 4.23GB / 5.70GB,  125MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  53%|█████▎    | 4.26GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  53%|█████▎    | 4.27GB / 8.06GB,  125MB/s  
+New Data Upload                         :  74%|███████▍  | 4.26GB / 5.77GB,  125MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  53%|█████▎    | 4.30GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  54%|█████▎    | 4.31GB / 8.06GB,  126MB/s  
+New Data Upload                         :  74%|███████▎  | 4.30GB / 5.83GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  54%|█████▍    | 4.33GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  54%|█████▍    | 4.34GB / 8.06GB,  125MB/s  
+New Data Upload                         :  73%|███████▎  | 4.33GB / 5.90GB,  125MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  54%|█████▍    | 4.37GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  54%|█████▍    | 4.38GB / 8.06GB,  126MB/s  
+New Data Upload                         :  74%|███████▍  | 4.37GB / 5.90GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  55%|█████▍    | 4.40GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  55%|█████▍    | 4.41GB / 8.06GB,  126MB/s  
+New Data Upload                         :  74%|███████▍  | 4.39GB / 5.90GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  55%|█████▌    | 4.43GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  55%|█████▌    | 4.45GB / 8.06GB,  126MB/s  
+New Data Upload                         :  74%|███████▍  | 4.43GB / 5.97GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  56%|█████▌    | 4.47GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  56%|█████▌    | 4.48GB / 8.06GB,  127MB/s  
+New Data Upload                         :  74%|███████▍  | 4.47GB / 6.04GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  56%|█████▌    | 4.50GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  56%|█████▌    | 4.51GB / 8.06GB,  127MB/s  
+New Data Upload                         :  75%|███████▍  | 4.50GB / 6.04GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  56%|█████▋    | 4.54GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  56%|█████▋    | 4.55GB / 8.06GB,  127MB/s  
+New Data Upload                         :  74%|███████▍  | 4.54GB / 6.10GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  57%|█████▋    | 4.57GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  57%|█████▋    | 4.58GB / 8.06GB,  127MB/s  
+New Data Upload                         :  74%|███████▍  | 4.57GB / 6.17GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  57%|█████▋    | 4.60GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  57%|█████▋    | 4.62GB / 8.06GB,  127MB/s  
+New Data Upload                         :  75%|███████▍  | 4.60GB / 6.17GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  58%|█████▊    | 4.63GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  58%|█████▊    | 4.65GB / 8.06GB,  127MB/s  
+New Data Upload                         :  74%|███████▍  | 4.63GB / 6.24GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  58%|█████▊    | 4.67GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  58%|█████▊    | 4.68GB / 8.06GB,  128MB/s  
+New Data Upload                         :  74%|███████▍  | 4.67GB / 6.30GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  59%|█████▊    | 4.71GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  59%|█████▊    | 4.72GB / 8.06GB,  128MB/s  
+New Data Upload                         :  75%|███████▍  | 4.71GB / 6.30GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  59%|█████▉    | 4.74GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  59%|█████▉    | 4.75GB / 8.06GB,  128MB/s  
+New Data Upload                         :  74%|███████▍  | 4.74GB / 6.37GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  59%|█████▉    | 4.77GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  59%|█████▉    | 4.78GB / 8.06GB,  128MB/s  
+New Data Upload                         :  75%|███████▍  | 4.77GB / 6.37GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  60%|█████▉    | 4.81GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  60%|█████▉    | 4.82GB / 8.06GB,  128MB/s  
+New Data Upload                         :  75%|███████▍  | 4.81GB / 6.44GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  60%|██████    | 4.84GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  60%|██████    | 4.86GB / 8.06GB,  128MB/s  
+New Data Upload                         :  74%|███████▍  | 4.84GB / 6.50GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  61%|██████    | 4.87GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  61%|██████    | 4.89GB / 8.06GB,  128MB/s  
+New Data Upload                         :  74%|███████▍  | 4.87GB / 6.57GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  61%|██████    | 4.91GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  61%|██████    | 4.92GB / 8.06GB,  129MB/s  
+New Data Upload                         :  75%|███████▍  | 4.91GB / 6.57GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  61%|██████▏   | 4.94GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  61%|██████▏   | 4.95GB / 8.06GB,  128MB/s  
+New Data Upload                         :  74%|███████▍  | 4.94GB / 6.64GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  62%|██████▏   | 4.98GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  62%|██████▏   | 4.99GB / 8.06GB,  129MB/s  
+New Data Upload                         :  75%|███████▍  | 4.98GB / 6.64GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  62%|██████▏   | 5.01GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  62%|██████▏   | 5.02GB / 8.06GB,  129MB/s  
+New Data Upload                         :  75%|███████▍  | 5.01GB / 6.71GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  63%|██████▎   | 5.05GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  63%|██████▎   | 5.06GB / 8.06GB,  129MB/s  
+New Data Upload                         :  75%|███████▍  | 5.05GB / 6.77GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  63%|██████▎   | 5.08GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  63%|██████▎   | 5.09GB / 8.06GB,  129MB/s  
+New Data Upload                         :  74%|███████▍  | 5.08GB / 6.84GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  64%|██████▎   | 5.12GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  64%|██████▎   | 5.13GB / 8.06GB,  130MB/s  
+New Data Upload                         :  74%|███████▍  | 5.12GB / 6.91GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  64%|██████▍   | 5.16GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  64%|██████▍   | 5.17GB / 8.06GB,  130MB/s  
+New Data Upload                         :  75%|███████▍  | 5.16GB / 6.91GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  64%|██████▍   | 5.18GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  64%|██████▍   | 5.19GB / 8.06GB,  130MB/s  
+New Data Upload                         :  74%|███████▍  | 5.18GB / 6.97GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  65%|██████▍   | 5.23GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  65%|██████▌   | 5.24GB / 8.06GB,  130MB/s  
+New Data Upload                         :  75%|███████▍  | 5.23GB / 6.97GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  65%|██████▌   | 5.25GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  65%|██████▌   | 5.26GB / 8.06GB,  130MB/s  
+New Data Upload                         :  75%|███████▍  | 5.25GB / 7.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  66%|██████▌   | 5.28GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  66%|██████▌   | 5.29GB / 8.06GB,  130MB/s  
+New Data Upload                         :  74%|███████▍  | 5.28GB / 7.11GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  66%|██████▌   | 5.32GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  66%|██████▌   | 5.33GB / 8.06GB,  130MB/s  
+New Data Upload                         :  74%|███████▍  | 5.32GB / 7.18GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  67%|██████▋   | 5.36GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  67%|██████▋   | 5.37GB / 8.06GB,  130MB/s  
+New Data Upload                         :  75%|███████▍  | 5.36GB / 7.18GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  67%|██████▋   | 5.40GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  67%|██████▋   | 5.41GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.40GB / 7.24GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  67%|██████▋   | 5.43GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  68%|██████▊   | 5.44GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.43GB / 7.24GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  68%|██████▊   | 5.46GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  68%|██████▊   | 5.47GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.46GB / 7.31GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  68%|██████▊   | 5.49GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  68%|██████▊   | 5.51GB / 8.06GB,  131MB/s  
+New Data Upload                         :  74%|███████▍  | 5.49GB / 7.38GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  69%|██████▊   | 5.52GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  69%|██████▊   | 5.54GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.52GB / 7.38GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  69%|██████▉   | 5.55GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  69%|██████▉   | 5.56GB / 8.06GB,  130MB/s  
+New Data Upload                         :  75%|███████▍  | 5.55GB / 7.44GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  70%|██████▉   | 5.59GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  70%|██████▉   | 5.61GB / 8.06GB,  131MB/s  
+New Data Upload                         :  74%|███████▍  | 5.59GB / 7.51GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  70%|██████▉   | 5.63GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  70%|██████▉   | 5.64GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.63GB / 7.51GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  70%|███████   | 5.66GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  70%|███████   | 5.68GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.66GB / 7.58GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  71%|███████   | 5.69GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  71%|███████   | 5.70GB / 8.06GB,  131MB/s  
+New Data Upload                         :  74%|███████▍  | 5.69GB / 7.65GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  71%|███████   | 5.73GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  71%|███████   | 5.74GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.73GB / 7.65GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  72%|███████▏  | 5.76GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  72%|███████▏  | 5.77GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.76GB / 7.71GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  72%|███████▏  | 5.79GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  72%|███████▏  | 5.81GB / 8.06GB,  131MB/s  
+New Data Upload                         :  74%|███████▍  | 5.79GB / 7.78GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  72%|███████▏  | 5.83GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  72%|███████▏  | 5.84GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.83GB / 7.78GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  73%|███████▎  | 5.86GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  73%|███████▎  | 5.87GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.86GB / 7.85GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  73%|███████▎  | 5.90GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  73%|███████▎  | 5.91GB / 8.06GB,  131MB/s  
+New Data Upload                         :  75%|███████▍  | 5.90GB / 7.91GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  74%|███████▍  | 5.93GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  74%|███████▍  | 5.94GB / 8.06GB,  132MB/s  
+New Data Upload                         :  74%|███████▍  | 5.93GB / 7.98GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  74%|███████▍  | 5.97GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  74%|███████▍  | 5.98GB / 8.06GB,  132MB/s  
+New Data Upload                         :  74%|███████▍  | 5.97GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  75%|███████▍  | 6.01GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  75%|███████▍  | 6.02GB / 8.06GB,  132MB/s  
+New Data Upload                         :  75%|███████▍  | 6.01GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  75%|███████▌  | 6.03GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  75%|███████▌  | 6.05GB / 8.06GB,  132MB/s  
+New Data Upload                         :  75%|███████▌  | 6.03GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  75%|███████▌  | 6.07GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  75%|███████▌  | 6.08GB / 8.06GB,  132MB/s  
+New Data Upload                         :  75%|███████▌  | 6.07GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  76%|███████▌  | 6.10GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  76%|███████▌  | 6.11GB / 8.06GB,  132MB/s  
+New Data Upload                         :  76%|███████▌  | 6.10GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  76%|███████▋  | 6.14GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  76%|███████▋  | 6.15GB / 8.06GB,  132MB/s  
+New Data Upload                         :  76%|███████▋  | 6.14GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  77%|███████▋  | 6.17GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  77%|███████▋  | 6.18GB / 8.06GB,  132MB/s  
+New Data Upload                         :  77%|███████▋  | 6.17GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  77%|███████▋  | 6.21GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  77%|███████▋  | 6.22GB / 8.06GB,  132MB/s  
+New Data Upload                         :  77%|███████▋  | 6.21GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  78%|███████▊  | 6.24GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  78%|███████▊  | 6.25GB / 8.06GB,  132MB/s  
+New Data Upload                         :  78%|███████▊  | 6.24GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  78%|███████▊  | 6.27GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  78%|███████▊  | 6.28GB / 8.06GB,  132MB/s  
+New Data Upload                         :  78%|███████▊  | 6.27GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  78%|███████▊  | 6.30GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  78%|███████▊  | 6.31GB / 8.06GB,  132MB/s  
+New Data Upload                         :  78%|███████▊  | 6.30GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  79%|███████▊  | 6.33GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  79%|███████▊  | 6.34GB / 8.06GB,  132MB/s  
+New Data Upload                         :  79%|███████▊  | 6.33GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  79%|███████▉  | 6.36GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  79%|███████▉  | 6.37GB / 8.06GB,  132MB/s  
+New Data Upload                         :  79%|███████▉  | 6.36GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  79%|███████▉  | 6.39GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  80%|███████▉  | 6.41GB / 8.06GB,  132MB/s  
+New Data Upload                         :  79%|███████▉  | 6.39GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  80%|███████▉  | 6.43GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  80%|███████▉  | 6.44GB / 8.06GB,  132MB/s  
+New Data Upload                         :  80%|███████▉  | 6.43GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  80%|████████  | 6.46GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  80%|████████  | 6.48GB / 8.06GB,  132MB/s  
+New Data Upload                         :  80%|████████  | 6.46GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  81%|████████  | 6.50GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  81%|████████  | 6.51GB / 8.06GB,  132MB/s  
+New Data Upload                         :  81%|████████  | 6.50GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  81%|████████  | 6.53GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  81%|████████  | 6.54GB / 8.06GB,  132MB/s  
+New Data Upload                         :  81%|████████  | 6.53GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  82%|████████▏ | 6.57GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  82%|████████▏ | 6.58GB / 8.06GB,  132MB/s  
+New Data Upload                         :  82%|████████▏ | 6.57GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  82%|████████▏ | 6.59GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  82%|████████▏ | 6.60GB / 8.06GB,  132MB/s  
+New Data Upload                         :  82%|████████▏ | 6.59GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  82%|████████▏ | 6.62GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  82%|████████▏ | 6.64GB / 8.06GB,  132MB/s  
+New Data Upload                         :  82%|████████▏ | 6.62GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  83%|████████▎ | 6.66GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  83%|████████▎ | 6.67GB / 8.06GB,  132MB/s  
+New Data Upload                         :  83%|████████▎ | 6.66GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  83%|████████▎ | 6.69GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  83%|████████▎ | 6.70GB / 8.06GB,  132MB/s  
+New Data Upload                         :  83%|████████▎ | 6.69GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  84%|████████▎ | 6.73GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  84%|████████▎ | 6.74GB / 8.06GB,  132MB/s  
+New Data Upload                         :  84%|████████▎ | 6.73GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  84%|████████▍ | 6.75GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  84%|████████▍ | 6.76GB / 8.06GB,  131MB/s  
+New Data Upload                         :  84%|████████▍ | 6.75GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  84%|████████▍ | 6.78GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  84%|████████▍ | 6.80GB / 8.06GB,  131MB/s  
+New Data Upload                         :  84%|████████▍ | 6.78GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  85%|████████▍ | 6.82GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  85%|████████▍ | 6.83GB / 8.06GB,  132MB/s  
+New Data Upload                         :  85%|████████▍ | 6.82GB / 8.04GB,  132MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  85%|████████▌ | 6.85GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  85%|████████▌ | 6.86GB / 8.06GB,  131MB/s  
+New Data Upload                         :  85%|████████▌ | 6.85GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  85%|████████▌ | 6.87GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  85%|████████▌ | 6.89GB / 8.06GB,  131MB/s  
+New Data Upload                         :  85%|████████▌ | 6.87GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  86%|████████▌ | 6.91GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  86%|████████▌ | 6.92GB / 8.06GB,  131MB/s  
+New Data Upload                         :  86%|████████▌ | 6.91GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  86%|████████▋ | 6.95GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  86%|████████▋ | 6.96GB / 8.06GB,  131MB/s  
+New Data Upload                         :  86%|████████▋ | 6.95GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  87%|████████▋ | 6.98GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  87%|████████▋ | 6.99GB / 8.06GB,  131MB/s  
+New Data Upload                         :  87%|████████▋ | 6.98GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  87%|████████▋ | 7.01GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  87%|████████▋ | 7.02GB / 8.06GB,  131MB/s  
+New Data Upload                         :  87%|████████▋ | 7.01GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  88%|████████▊ | 7.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  88%|████████▊ | 7.05GB / 8.06GB,  131MB/s  
+New Data Upload                         :  88%|████████▊ | 7.04GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  88%|████████▊ | 7.07GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  88%|████████▊ | 7.09GB / 8.06GB,  131MB/s  
+New Data Upload                         :  88%|████████▊ | 7.07GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  88%|████████▊ | 7.10GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  88%|████████▊ | 7.12GB / 8.06GB,  131MB/s  
+New Data Upload                         :  88%|████████▊ | 7.10GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  89%|████████▉ | 7.14GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  89%|████████▉ | 7.15GB / 8.06GB,  131MB/s  
+New Data Upload                         :  89%|████████▉ | 7.14GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  89%|████████▉ | 7.17GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  89%|████████▉ | 7.18GB / 8.06GB,  131MB/s  
+New Data Upload                         :  89%|████████▉ | 7.17GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  90%|████████▉ | 7.21GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  90%|████████▉ | 7.22GB / 8.06GB,  131MB/s  
+New Data Upload                         :  90%|████████▉ | 7.21GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  90%|████████▉ | 7.24GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  90%|████████▉ | 7.25GB / 8.06GB,  131MB/s  
+New Data Upload                         :  90%|████████▉ | 7.24GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  90%|█████████ | 7.27GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  90%|█████████ | 7.28GB / 8.06GB,  131MB/s  
+New Data Upload                         :  90%|█████████ | 7.27GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  91%|█████████ | 7.30GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  91%|█████████ | 7.31GB / 8.06GB,  131MB/s  
+New Data Upload                         :  91%|█████████ | 7.30GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  91%|█████████ | 7.33GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  91%|█████████ | 7.34GB / 8.06GB,  130MB/s  
+New Data Upload                         :  91%|█████████ | 7.33GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  91%|█████████▏| 7.36GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  91%|█████████▏| 7.37GB / 8.06GB,  130MB/s  
+New Data Upload                         :  91%|█████████▏| 7.36GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  92%|█████████▏| 7.40GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  92%|█████████▏| 7.41GB / 8.06GB,  131MB/s  
+New Data Upload                         :  92%|█████████▏| 7.40GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  92%|█████████▏| 7.43GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  92%|█████████▏| 7.44GB / 8.06GB,  131MB/s  
+New Data Upload                         :  92%|█████████▏| 7.43GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  93%|█████████▎| 7.46GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  93%|█████████▎| 7.47GB / 8.06GB,  131MB/s  
+New Data Upload                         :  93%|█████████▎| 7.46GB / 8.04GB,  131MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  93%|█████████▎| 7.49GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  93%|█████████▎| 7.50GB / 8.06GB,  130MB/s  
+New Data Upload                         :  93%|█████████▎| 7.49GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  94%|█████████▎| 7.52GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  94%|█████████▎| 7.54GB / 8.06GB,  130MB/s  
+New Data Upload                         :  94%|█████████▎| 7.52GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  94%|█████████▍| 7.55GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  94%|█████████▍| 7.57GB / 8.06GB,  130MB/s  
+New Data Upload                         :  94%|█████████▍| 7.55GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  94%|█████████▍| 7.59GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  94%|█████████▍| 7.60GB / 8.06GB,  130MB/s  
+New Data Upload                         :  94%|█████████▍| 7.59GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  95%|█████████▍| 7.62GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  95%|█████████▍| 7.63GB / 8.06GB,  130MB/s  
+New Data Upload                         :  95%|█████████▍| 7.61GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  95%|█████████▌| 7.64GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  95%|█████████▌| 7.65GB / 8.06GB,  130MB/s  
+New Data Upload                         :  95%|█████████▌| 7.64GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  95%|█████████▌| 7.67GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  95%|█████████▌| 7.68GB / 8.06GB,  129MB/s  
+New Data Upload                         :  95%|█████████▌| 7.67GB / 8.04GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  96%|█████████▌| 7.71GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  96%|█████████▌| 7.72GB / 8.06GB,  130MB/s  
+New Data Upload                         :  96%|█████████▌| 7.71GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  96%|█████████▌| 7.74GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  96%|█████████▋| 7.75GB / 8.06GB,  130MB/s  
+New Data Upload                         :  96%|█████████▌| 7.74GB / 8.04GB,  130MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  97%|█████████▋| 7.77GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  97%|█████████▋| 7.78GB / 8.06GB,  129MB/s  
+New Data Upload                         :  97%|█████████▋| 7.77GB / 8.04GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  97%|█████████▋| 7.80GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  97%|█████████▋| 7.81GB / 8.06GB,  129MB/s  
+New Data Upload                         :  97%|█████████▋| 7.80GB / 8.04GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  97%|█████████▋| 7.83GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  97%|█████████▋| 7.84GB / 8.06GB,  129MB/s  
+New Data Upload                         :  97%|█████████▋| 7.83GB / 8.04GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  98%|█████████▊| 7.85GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  98%|█████████▊| 7.87GB / 8.06GB,  129MB/s  
+New Data Upload                         :  98%|█████████▊| 7.85GB / 8.04GB,  129MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  98%|█████████▊| 7.88GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  98%|█████████▊| 7.89GB / 8.06GB,  128MB/s  
+New Data Upload                         :  98%|█████████▊| 7.88GB / 8.04GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  98%|█████████▊| 7.90GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  98%|█████████▊| 7.92GB / 8.06GB,  128MB/s  
+New Data Upload                         :  98%|█████████▊| 7.90GB / 8.04GB,  128MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  99%|█████████▊| 7.93GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  99%|█████████▊| 7.94GB / 8.06GB,  127MB/s  
+New Data Upload                         :  99%|█████████▊| 7.93GB / 8.04GB,  127MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  99%|█████████▉| 7.95GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  99%|█████████▉| 7.96GB / 8.06GB,  126MB/s  
+New Data Upload                         :  99%|█████████▉| 7.95GB / 8.04GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  99%|█████████▉| 7.97GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  99%|█████████▉| 7.98GB / 8.06GB,  126MB/s  
+New Data Upload                         :  99%|█████████▉| 7.97GB / 8.04GB,  126MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt:  99%|█████████▉| 8.00GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                :  99%|█████████▉| 8.01GB / 8.06GB,  125MB/s  
+New Data Upload                         :  99%|█████████▉| 8.00GB / 8.04GB,  125MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.01GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.02GB / 8.06GB,  124MB/s  
+New Data Upload                         : 100%|█████████▉| 8.01GB / 8.04GB,  124MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.03GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.04GB / 8.06GB,  123MB/s  
+New Data Upload                         : 100%|█████████▉| 8.03GB / 8.04GB,  123MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.03GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.04GB / 8.06GB,  121MB/s  
+New Data Upload                         : 100%|█████████▉| 8.03GB / 8.04GB,  121MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.03GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.04GB / 8.06GB,  119MB/s  
+New Data Upload                         : 100%|█████████▉| 8.03GB / 8.04GB,  119MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.03GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.04GB / 8.06GB,  117MB/s  
+New Data Upload                         : 100%|█████████▉| 8.03GB / 8.04GB,  117MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.03GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.05GB / 8.06GB,  115MB/s  
+New Data Upload                         : 100%|█████████▉| 8.03GB / 8.04GB,  115MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.05GB / 8.06GB,  113MB/s  
+New Data Upload                         : 100%|█████████▉| 8.03GB / 8.04GB,  113MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.05GB / 8.06GB,  112MB/s  
+New Data Upload                         : 100%|█████████▉| 8.04GB / 8.04GB,  111MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.05GB / 8.06GB,  108MB/s  
+New Data Upload                         : 100%|█████████▉| 8.04GB / 8.04GB,  108MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.05GB / 8.06GB,  106MB/s  
+New Data Upload                         : 100%|█████████▉| 8.04GB / 8.04GB,  106MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.05GB / 8.06GB,  104MB/s  
+New Data Upload                         : 100%|█████████▉| 8.04GB / 8.04GB,  104MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|█████████▉| 8.04GB / 8.04GB            [A[A[AProcessing Files (1 / 2)                : 100%|█████████▉| 8.06GB / 8.06GB,  103MB/s  
+New Data Upload                         : 100%|█████████▉| 8.04GB / 8.04GB,  103MB/s  [A
+
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            [A[A
+
+
+  ...atched_4b_cot/stage1/model_state.pt: 100%|██████████| 8.04GB / 8.04GB            [A[A[AProcessing Files (2 / 2)                : 100%|██████████| 8.06GB / 8.06GB, 94.1MB/s  
+New Data Upload                         : 100%|██████████| 8.04GB / 8.04GB, 94.1MB/s  [AProcessing Files (2 / 2)                : 100%|██████████| 8.06GB / 8.06GB, 94.1MB/s  
+New Data Upload                         : 100%|██████████| 8.04GB / 8.04GB, 94.1MB/s  
+  ...cot/stage1/tokenizer/tokenizer.json: 100%|██████████| 11.4MB / 11.4MB            
+  ...atched_4b_cot/stage1/model_state.pt: 100%|██████████| 8.04GB / 8.04GB            

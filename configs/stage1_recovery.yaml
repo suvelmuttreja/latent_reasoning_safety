@@ -1,0 +1,29 @@
+schema_version: 1
+status: completed_without_weight_changes
+failure_class: post_training_metadata_serialization
+root_cause: yaml_iso_dates_loaded_as_python_date_objects_were_not_canonical_json_serializable
+code_fix_commit: 231d5f9
+scientific_effect: none_weights_and_optimizer_states_were_saved_after_all_468_updates
+branches:
+  coconut_skip0:
+    training_job: 11413196
+    training_exit: failed_after_checkpoint_save
+    repair_job: 11414946
+    repair_exit: completed
+    model_state_sha256: 36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25
+    durable_model_commit: a0624a889ec0d8e073d194ec4aacd88f03c96e30
+    durable_path: fallback_4b_skip0/stage1
+    replacement_gate_job: 11415026
+  explicit_cot:
+    training_job: 11413535
+    training_exit: failed_after_checkpoint_save
+    repair_job: 11414947
+    repair_exit: completed
+    model_state_sha256: d3cac61e18def5332e0d0fcb0de30634476ab6d9b10dfbe3dea7197ecbfb2e59
+    durable_model_commit: a0a71df3b19ef25665cd6c033dd48af30457b78d
+    durable_path: matched_4b_cot/stage1
+unavailable_original_process_metrics_are_null_not_imputed: true
+future_stage_safeguards:
+  date_normalization_in_canonical_hashing: true
+  per_update_metrics_journal: true
+  local_metadata_before_upload: true
