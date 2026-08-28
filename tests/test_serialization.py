@@ -6,6 +6,7 @@ from mats_latent_safety.serialization import (
     evaluator_payload,
     serialize_native_chat,
     tokenize_coconut_raw_prompt,
+    tokenize_native_chat_prompt,
 )
 
 
@@ -66,3 +67,21 @@ def test_coconut_raw_eval_serialization_matches_training_question_boundary():
             return [1, 2, 3]
 
     assert tokenize_coconut_raw_prompt(FakeRawTokenizer(), "hello") == [1, 2, 3]
+
+
+def test_native_chat_tokenization_does_not_add_special_tokens_twice():
+    class FakeTokenizer:
+        def apply_chat_template(self, messages, *, tokenize, add_generation_prompt):
+            assert messages == [{"role": "user", "content": "hello"}]
+            assert tokenize is False
+            assert add_generation_prompt is True
+            return "<chat>hello<assistant><think>\n"
+
+        def encode(self, text, *, add_special_tokens):
+            assert text == "<chat>hello<assistant><think>\n"
+            assert add_special_tokens is False
+            return [4, 5, 6]
+
+    ids, rendered = tokenize_native_chat_prompt(FakeTokenizer(), "hello")
+    assert ids == [4, 5, 6]
+    assert rendered == "<chat>hello<assistant><think>\n"

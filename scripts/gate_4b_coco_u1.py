@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import gc
 import json
 import statistics
 import time
@@ -11,12 +12,19 @@ from pathlib import Path
 
 import torch
 import yaml
+from huggingface_hub import model_info
 from transformers import AutoTokenizer
 
 from mats_latent_safety.hashing import sha256_file, sha256_json
 from mats_latent_safety.parsing import extract_gsm8k_answer
+from mats_latent_safety.parsing import parse_thinking_response
 from mats_latent_safety.runtime import git_revision, slurm_job_id
-from mats_latent_safety.serialization import build_coconut_question, ensure_latent_tokens
+from mats_latent_safety.serialization import (
+    build_coconut_question,
+    ensure_latent_tokens,
+    tokenize_coconut_raw_prompt,
+    tokenize_native_chat_prompt,
+)
 from train_4b_skip0_stage import load_model
 
 
@@ -28,12 +36,20 @@ def read_manifest(path: Path) -> list[dict]:
     return records
 
 
-def question_ids(tokenizer, prompt: str) -> list[int]:
-    return tokenizer.encode(prompt.strip() + "\n", add_special_tokens=True)
+def serialize_question(tokenizer, prompt: str, serialization: str) -> tuple[list[int], str]:
+    if serialization == "coconut_raw_question":
+        ids = tokenize_coconut_raw_prompt(tokenizer, prompt.strip())
+        return ids, tokenizer.decode(ids, skip_special_tokens=False)
+    if serialization == "native_qwen_chat":
+        return tokenize_native_chat_prompt(tokenizer, prompt.strip())
+    raise ValueError(f"unsupported gate serialization: {serialization}")
 
 
 def generate(model, tokenizer, markers, prompt: str, k: int, settings: dict, seed: int):
-    scaffold = build_coconut_question(question_ids(tokenizer, prompt), markers, k)
+    prefix_ids, rendered_prefix = serialize_question(
+        tokenizer, prompt, settings["serialization"]
+    )
+    scaffold = build_coconut_question(prefix_ids, markers, k)
     device = next(model.parameters()).device
     started = time.perf_counter()
     result = model.generate_from_scaffold(
@@ -46,9 +62,14 @@ def generate(model, tokenizer, markers, prompt: str, k: int, settings: dict, see
         seed=seed,
     )
     decoded = tokenizer.decode(result.token_ids, skip_special_tokens=True).strip()
+    parsed = parse_thinking_response(decoded)
     return {
         "raw_output": decoded,
-        "parsed_final_answer": decoded,
+        "parsed_thinking": parsed.thinking,
+        "parsed_final_answer": parsed.final_answer,
+        "serialization": settings["serialization"],
+        "raw_serialized_prefix": rendered_prefix,
+        "scaffold_input_ids_sha256": sha256_json(scaffold["input_ids"]),
         "generated_tokens": result.generated_tokens,
         "stop_reason": result.stop_reason,
         "truncated": result.stop_reason == "length",
@@ -64,7 +85,7 @@ def evaluate_capability(model, tokenizer, markers, records, settings: dict, seed
             generated = generate(
                 model, tokenizer, markers, row["question"], k, settings, seed + index
             )
-            prediction = extract_gsm8k_answer(generated["raw_output"])
+            prediction = extract_gsm8k_answer(generated["parsed_final_answer"])
             reference = extract_gsm8k_answer(row["answer"])
             is_correct = prediction == reference
             correct += int(is_correct)
@@ -89,21 +110,26 @@ def evaluate_capability(model, tokenizer, markers, records, settings: dict, seed
             "truncated": sum(int(row["truncated"]) for row in outputs),
             "outputs": outputs,
         }
-    low, high = (str(value) for value in settings["k_values"])
-    low_rows = by_k[low]["outputs"]
-    high_rows = by_k[high]["outputs"]
-    return {
-        "by_k": by_k,
-        "accuracy_delta_high_minus_low": by_k[high]["accuracy"] - by_k[low]["accuracy"],
-        "paired_prediction_changed": sum(
-            left["predicted_answer"] != right["predicted_answer"]
-            for left, right in zip(low_rows, high_rows, strict=True)
-        ),
-        "paired_output_changed": sum(
-            left["raw_output"] != right["raw_output"]
-            for left, right in zip(low_rows, high_rows, strict=True)
-        ),
-    }
+    result = {"by_k": by_k}
+    if len(settings["k_values"]) == 2:
+        low, high = (str(value) for value in settings["k_values"])
+        low_rows = by_k[low]["outputs"]
+        high_rows = by_k[high]["outputs"]
+        result.update(
+            {
+                "accuracy_delta_high_minus_low": by_k[high]["accuracy"]
+                - by_k[low]["accuracy"],
+                "paired_prediction_changed": sum(
+                    left["predicted_answer"] != right["predicted_answer"]
+                    for left, right in zip(low_rows, high_rows, strict=True)
+                ),
+                "paired_output_changed": sum(
+                    left["raw_output"] != right["raw_output"]
+                    for left, right in zip(low_rows, high_rows, strict=True)
+                ),
+            }
+        )
+    return result
 
 
 def evaluate_coherence(
@@ -211,10 +237,42 @@ def main() -> None:
         train_config["model_id"],
         train_config["model_revision"],
     )
+    del state, model
+    gc.collect()
+    torch.cuda.empty_cache()
+    m0_model = load_model(train_config, tokenizer, markers, device)
+    m0_model.eval()
+    m0_capability = evaluate_capability(
+        m0_model,
+        tokenizer,
+        markers,
+        read_manifest(capability_manifest),
+        gate_config["m0_capability"],
+        gate_config["seed"],
+    )
+    del m0_model
+    gc.collect()
+    torch.cuda.empty_cache()
     coherence_path = output_dir / "coherence_generations.jsonl"
     write_jsonl(coherence_path, coherence)
+    stage_k0 = capability["by_k"]["0"]["accuracy"]
+    stage_k2 = capability["by_k"][str(gate_config["checkpoint_k"])]["accuracy"]
+    m0_k0 = m0_capability["by_k"]["0"]["accuracy"]
+    durability = metadata["durability"]
+    durable_commit = model_info(
+        durability["repo_id"],
+        revision=durability["model_commit_oid"],
+        files_metadata=True,
+    )
+    durable_path = f"{durability['path_in_repo']}/model_state.pt"
+    durable_model = next(
+        (file for file in durable_commit.siblings if file.rfilename == durable_path),
+        None,
+    )
+    if durable_model is None or durable_model.size != checkpoint_path.stat().st_size:
+        raise RuntimeError("durable checkpoint object is missing or has the wrong size")
     summary = {
-        "schema_version": 1,
+        "schema_version": 2,
         "status": "pending_blind_coherence_and_method_review",
         "next_stage_authorized": False,
         "model_id": train_config["model_id"],
@@ -232,9 +290,27 @@ def main() -> None:
         "capability_manifest_sha256": sha256_file(capability_manifest),
         "coherence_manifest_sha256": sha256_file(coherence_manifest),
         "capability": capability,
+        "m0_capability_identical_harness": m0_capability,
+        "capability_preservation": {
+            "m0_k0_accuracy": m0_k0,
+            "stage1_k0_accuracy": stage_k0,
+            "stage1_k2_accuracy": stage_k2,
+            "stage1_k0_minus_m0": stage_k0 - m0_k0,
+            "stage1_k2_minus_m0": stage_k2 - m0_k0,
+        },
         "coherence_generations": str(coherence_path),
         "coherence_generations_sha256": sha256_file(coherence_path),
         "coherence_outputs": len(coherence),
+        "coherence_serialization": gate_config["coherence"]["serialization"],
+        "capability_serialization": gate_config["capability"]["serialization"],
+        "durable_checkpoint_evidence": {
+            "repo_id": durability["repo_id"],
+            "path_in_repo": durability["path_in_repo"],
+            "commit_oid": durable_commit.sha,
+            "model_path": durable_path,
+            "model_size_bytes": durable_model.size,
+            "local_model_size_bytes": checkpoint_path.stat().st_size,
+        },
         "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(),
         "decision_inputs_forbidden": gate_config["decision"]["forbidden_inputs"],
     }

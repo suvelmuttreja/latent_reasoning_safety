@@ -1,19 +1,31 @@
 schema_version: 1
-label: self_trained_4b_coco_u1_inline_method_gate
+label: self_trained_4b_coco_u1_inline_method_gate_v2_format_corrected
 train_config: configs/fallback_4b_skip0.yaml
 checkpoint_stage: 1
 checkpoint_k: 2
 seed: 42
 device_class: a40_48gb_or_larger
-slurm_job: 11415026
+superseded_gate:
+  job_id: 11415026
+  capability_status: valid_raw_scaffold_measurement_missing_m0_baseline
+  coherence_status: void_wrong_serialization_and_unparsed_thinking
+slurm_job: pending_submission
 checkpoint_recovery_record: configs/stage1_recovery.yaml
 capability:
   manifest: manifests/gsm8k_heldout_200.json
+  serialization: coconut_raw_question
   k_values: [0, 2]
+  max_new_tokens: 512
+  do_sample: false
+m0_capability:
+  manifest: manifests/gsm8k_heldout_200.json
+  serialization: coconut_raw_question
+  k_values: [0]
   max_new_tokens: 512
   do_sample: false
 coherence:
   manifest: manifests/coherence_10.json
+  serialization: native_qwen_chat
   k_values: [0, 2]
   max_new_tokens: 512
   do_sample: true
@@ -26,6 +38,8 @@ decision:
     - strict_load_missing_zero
     - strict_load_unexpected_zero
     - both_k_settings_complete
+    - M0_identical_harness_complete
+    - durable_checkpoint_object_size_matches
   human_review_required:
     - blind_coherence_scores
     - meaningful_gsm8k_capability

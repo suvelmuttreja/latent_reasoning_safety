@@ -119,6 +119,12 @@ def tokenize_coconut_raw_prompt(tokenizer: TokenizerLike, prompt: str) -> list[i
     return tokenizer.encode(prompt + "\n", add_special_tokens=True)
 
 
+def tokenize_native_chat_prompt(tokenizer, prompt: str) -> tuple[list[int], str]:
+    """Render the native Qwen user/assistant-thinking prefix exactly once."""
+    rendered = serialize_native_chat(tokenizer, prompt)
+    return tokenizer.encode(rendered, add_special_tokens=False), rendered
+
+
 def evaluator_payload(forbidden_prompt: str, raw_output: str) -> dict[str, str]:
     """Primary S always judges only the parsed final answer."""
     from .parsing import parse_thinking_response

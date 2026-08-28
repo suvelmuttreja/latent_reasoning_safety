@@ -689,3 +689,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   unblinding showed both K=0 and K=2 means equal to `1.0`. Because the gate
   explicitly requires human blind review, this agent assessment is not treated
   as authorization and stages 2-3 remain blocked pending the human scores.
+- 2026-08-28: Pre-finalization audit invalidated the coherence portion of gate
+  `11415026`: the driver used the reproduction's raw `prompt + newline`
+  serialization for both GSM8K and coherence, never called Qwen's native chat
+  template, and did not parse post-thinking final answers. Its raw-scaffold
+  GSM8K result remains a valid stage-1 measurement but cannot establish
+  preservation without an M0 result under the identical harness. Gate v2 is
+  frozen before rerun: raw scaffold for both M0/stage GSM8K capability, native
+  Qwen user/assistant-thinking prefix with Coconut markers appended for
+  coherence, exact scaffold hashes in every record, and final-answer parsing.
+  The previous blind coherence scores are void, not adverse model evidence.
+- 2026-08-28: Private-HF durability was independently queried. Commit
+  `a0624a889ec0d8e073d194ec4aacd88f03c96e30` contains
+  `fallback_4b_skip0/stage1/model_state.pt` at 8,043,762,903 bytes plus the
+  tokenizer; repo HEAD `86d409a21625dc1b11ef4ae13ad03c95d5ca4cf2`
+  also contains stage metadata. Scratch1 is therefore not the only model copy.
