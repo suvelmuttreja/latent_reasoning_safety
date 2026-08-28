@@ -595,3 +595,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   model loading/training. Separate gate dependencies will follow each hardware
   path, so cancellation of the losing predecessor cannot release the wrong
   gate.
+- 2026-08-27: A40 matched stage-1 contender `11413196` was submitted with a
+  ten-minute minimum begin delay so its ID could be frozen into the shared race
+  registry before execution. It and A100 contender `11405885` both read the
+  same globally pinned `1 x 32` config and target the same stage directory.
+  Whichever allocation atomically claims first cancels the other before model
+  loading; the race record is a required result artifact.

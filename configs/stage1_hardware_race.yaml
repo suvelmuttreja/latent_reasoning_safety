@@ -1,10 +1,9 @@
 schema_version: 1
 race_id: fallback_4b_skip0_stage1
-status: awaiting_a40_training_submission
+status: live_first_start_wins
 claim_directory: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/.stage1_hardware_claim
 record_path: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/stage1_hardware_race.json
 jobs:
   a100_80gb: 11405885
-  a40: null
+  a40: 11413196
 rule: first_job_to_atomically_claim_runs_and_scancels_every_other_job_before_training
-
