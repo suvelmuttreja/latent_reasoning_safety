@@ -1,0 +1,130 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"update": 1, "seconds": 14.672383802011609, "loss": 1.035614182277279}
+{"update": 2, "seconds": 14.634025716222823, "loss": 0.9701005057212914}
+{"update": 3, "seconds": 14.857137777842581, "loss": 0.9245196620813397}
+{"update": 4, "seconds": 14.691349141299725, "loss": 0.8474282234660033}
+{"update": 5, "seconds": 14.587719305418432, "loss": 0.8986685691925734}
+{"update": 6, "seconds": 14.63166028354317, "loss": 0.8399931370692919}
+{"update": 7, "seconds": 14.594332653097808, "loss": 0.8411516320850202}
+{"update": 8, "seconds": 14.927542015910149, "loss": 0.7984883018453427}
+{"update": 9, "seconds": 14.703801604919136, "loss": 0.6424009003741815}
+{"update": 10, "seconds": 14.673764763399959, "loss": 0.6394297059195015}
+{"update": 11, "seconds": 14.645676823332906, "loss": 0.654878835894675}
+{"update": 12, "seconds": 14.669376553967595, "loss": 0.6722203819803516}
+{"update": 13, "seconds": 14.94178933929652, "loss": 0.6115309444538098}
+{"update": 14, "seconds": 14.627268948592246, "loss": 0.597340625}
+{"update": 15, "seconds": 14.828665804117918, "loss": 0.586227739054478}
+{"update": 16, "seconds": 14.64730267599225, "loss": 0.6106883411500815}
+{"update": 17, "seconds": 14.701532784849405, "loss": 0.613602437601461}
+{"update": 18, "seconds": 14.848831419833004, "loss": 0.5750572492598075}
+{"update": 19, "seconds": 14.856447351165116, "loss": 0.582352673088732}
+{"update": 20, "seconds": 14.685852312482893, "loss": 0.5707500100288831}
+{"update": 21, "seconds": 14.611886674538255, "loss": 0.559143166694052}
+{"update": 22, "seconds": 14.657332058995962, "loss": 0.5628360003772636}
+{"update": 23, "seconds": 15.012199790216982, "loss": 0.5089155682266983}
+{"update": 24, "seconds": 14.623615829274058, "loss": 0.5926616014092044}
+{"update": 25, "seconds": 14.693578518927097, "loss": 0.5310019744539781}
+{"update": 26, "seconds": 14.72309859842062, "loss": 0.5420753302371173}
+{"update": 27, "seconds": 14.623357260599732, "loss": 0.5046205527926549}
+{"update": 28, "seconds": 14.900870271027088, "loss": 0.5149411346053546}
+{"update": 29, "seconds": 14.694192291237414, "loss": 0.5415423689919893}
+{"update": 30, "seconds": 14.828751228749752, "loss": 0.5845438274716248}
+{"update": 31, "seconds": 14.872405991889536, "loss": 0.5154045432379714}
+{"update": 32, "seconds": 14.6533069787547, "loss": 0.5010435848136915}
+{"update": 33, "seconds": 14.916206968948245, "loss": 0.4956212656659866}
+{"update": 34, "seconds": 14.70109421107918, "loss": 0.5123800989499192}
+{"update": 35, "seconds": 14.542220425792038, "loss": 0.5110685649671053}
+{"update": 36, "seconds": 14.680191620253026, "loss": 0.5035357547005571}
+{"update": 37, "seconds": 14.608393392525613, "loss": 0.5254618964246222}
+{"update": 38, "seconds": 14.629338080994785, "loss": 0.5383060932652534}
+{"update": 39, "seconds": 14.859281948767602, "loss": 0.5092465629147312}
+{"update": 40, "seconds": 14.6501898849383, "loss": 0.485822785889738}
+{"update": 41, "seconds": 14.718515814282, "loss": 0.5419900055857007}
+{"update": 42, "seconds": 14.689463020302355, "loss": 0.5486194315681961}
+{"update": 43, "seconds": 14.737108035944402, "loss": 0.5934656733960177}
+{"update": 44, "seconds": 14.629472904838622, "loss": 0.5232616261848341}
+{"update": 45, "seconds": 14.591142699122429, "loss": 0.5807328345070423}
+{"update": 46, "seconds": 14.65696121007204, "loss": 0.5267045569954502}
+{"update": 47, "seconds": 14.755854176357388, "loss": 0.5542076320197831}
+{"update": 48, "seconds": 14.618717207573354, "loss": 0.47442392943730266}
+{"update": 49, "seconds": 14.808286461047828, "loss": 0.4685665246212121}
+{"update": 50, "seconds": 14.7578562265262, "loss": 0.5233977561773255}
+{
+  "schema_version": 1,
+  "status": "passed",
+  "label": "a40_fallback_ladder_open_wrapper_4b_coconut_stage1_preflight",
+  "scientific_use": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "89705b2ac5ed031a99906690dedb986ff9164485",
+  "slurm_job_id": "11412811",
+  "config_sha256": "98bfdf92e135a8b06d80febf1ae63b846eae6d30109f6b81384e98ee5428f477",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "method": "standard_open_implementation_coconut_sft_skip0_stage1",
+  "k": 2,
+  "hardware": {
+    "name": "NVIDIA A40",
+    "total_memory_bytes": 47697690624,
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6"
+  },
+  "sequence_lengths": {
+    "minimum": 44,
+    "median": 141.0,
+    "p95": 280.0,
+    "p99": 354.27999999999975,
+    "maximum": 487
+  },
+  "memory_preflight": {
+    "seconds": 22.202945252880454,
+    "token_weighted_loss": 0.85546875,
+    "mean_microbatch_loss": 0.85546875,
+    "loss_tokens": 12800,
+    "loss_normalization": "shifted_nonignored_token_count_over_effective_batch",
+    "examples": 32,
+    "nonpadding_tokens": 15584,
+    "supervised_tokens": 12800,
+    "gradients_finite": true,
+    "sequence_length": 576,
+    "source_maximum_sequence_length": 487,
+    "source_indices": [
+      310
+    ],
+    "peak_cuda_allocated_bytes": 40781558784,
+    "peak_cuda_reserved_bytes": 41584427008,
+    "optimizer_state_bytes": 16087170616
+  },
+  "throughput": {
+    "warmup_optimizer_updates": 2,
+    "timed_optimizer_updates": 50,
+    "examples": 1600,
+    "nonpadding_tokens": 247139,
+    "supervised_tokens": 145124,
+    "total_seconds": 736.5857768515125,
+    "mean_update_seconds": 14.717427017185837,
+    "median_update_seconds": 14.687657666392624,
+    "p95_update_seconds": 14.922441244777293,
+    "examples_per_second": 2.172184218434267,
+    "nonpadding_tokens_per_second": 335.51964722476646,
+    "supervised_tokens_per_second": 197.0225390725341,
+    "mean_loss": 0.6032515391471259,
+    "loss_normalization": "shifted_nonignored_token_count_over_effective_batch",
+    "peak_cuda_allocated_bytes": 43686875136,
+    "peak_cuda_reserved_bytes": 45101350912
+  },
+  "projection": {
+    "optimizer_updates_per_stage": 468,
+    "projected_stage1_training_seconds": 6887.755844042972,
+    "projected_stage1_gpu_hours": 1.9132655122341589,
+    "three_stage_constant_rate_upper_bound_gpu_hours": 5.739796536702477,
+    "model_parameter_bytes": 8043584512
+  },
+  "scope": {
+    "public_checkpoint_validated": false,
+    "gate_minus_1_decided": false,
+    "matched_training_authorized": false,
+    "checkpoint_saved": false,
+    "interpretation": "open-wrapper fallback-path infrastructure timing only"
+  }
+}

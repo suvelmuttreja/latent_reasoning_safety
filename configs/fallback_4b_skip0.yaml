@@ -19,8 +19,8 @@ c_thought: 2
 max_latent_stage: 3
 stages: [1, 2, 3]
 epochs_per_stage: 2
-micro_batch_size: 2
-gradient_accumulation_steps: 16
+micro_batch_size: 1
+gradient_accumulation_steps: 32
 effective_batch_size: 32
 matched_batching_policy: configs/matched_batching.yaml
 loss_normalization: shifted_nonignored_token_count_over_effective_batch

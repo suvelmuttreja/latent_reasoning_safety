@@ -4,6 +4,8 @@ training_only_measurements:
   cot_three_stages_a100_gpu_hours: 0.9077394147930667
   coconut_stage1_a100_gpu_hours: 0.8870942761976272
   coconut_three_stage_constant_rate_upper_bound_a100_gpu_hours: 2.6612828285928813
+  coconut_stage1_a40_microbatch1_gpu_hours: 1.9132655122341589
+  coconut_three_stage_constant_rate_upper_bound_a40_gpu_hours: 5.739796536702477
 evaluation:
   dense_prompts_per_checkpoint: 282
   composition:
@@ -32,4 +34,3 @@ scope_note: >-
   checkpoint upload, queued time, and evaluation. Explicit evaluation figures
   use measured M0 generation; the cap-hit values are conservative upper bounds,
   not expected runtimes.
-

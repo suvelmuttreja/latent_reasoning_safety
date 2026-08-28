@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "label": "a40_fallback_ladder_open_wrapper_4b_coconut_stage1_preflight",
+  "scientific_use": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "89705b2ac5ed031a99906690dedb986ff9164485",
+  "slurm_job_id": "11412811",
+  "config_sha256": "98bfdf92e135a8b06d80febf1ae63b846eae6d30109f6b81384e98ee5428f477",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "method": "standard_open_implementation_coconut_sft_skip0_stage1",
+  "k": 2,
+  "hardware": {
+    "name": "NVIDIA A40",
+    "total_memory_bytes": 47697690624,
+    "torch": "2.7.1+cu126",
+    "cuda": "12.6"
+  },
+  "sequence_lengths": {
+    "minimum": 44,
+    "median": 141.0,
+    "p95": 280.0,
+    "p99": 354.27999999999975,
+    "maximum": 487
+  },
+  "memory_preflight": {
+    "seconds": 22.202945252880454,
+    "token_weighted_loss": 0.85546875,
+    "mean_microbatch_loss": 0.85546875,
+    "loss_tokens": 12800,
+    "loss_normalization": "shifted_nonignored_token_count_over_effective_batch",
+    "examples": 32,
+    "nonpadding_tokens": 15584,
+    "supervised_tokens": 12800,
+    "gradients_finite": true,
+    "sequence_length": 576,
+    "source_maximum_sequence_length": 487,
+    "source_indices": [
+      310
+    ],
+    "peak_cuda_allocated_bytes": 40781558784,
+    "peak_cuda_reserved_bytes": 41584427008,
+    "optimizer_state_bytes": 16087170616
+  },
+  "throughput": {
+    "warmup_optimizer_updates": 2,
+    "timed_optimizer_updates": 50,
+    "examples": 1600,
+    "nonpadding_tokens": 247139,
+    "supervised_tokens": 145124,
+    "total_seconds": 736.5857768515125,
+    "mean_update_seconds": 14.717427017185837,
+    "median_update_seconds": 14.687657666392624,
+    "p95_update_seconds": 14.922441244777293,
+    "examples_per_second": 2.172184218434267,
+    "nonpadding_tokens_per_second": 335.51964722476646,
+    "supervised_tokens_per_second": 197.0225390725341,
+    "mean_loss": 0.6032515391471259,
+    "loss_normalization": "shifted_nonignored_token_count_over_effective_batch",
+    "peak_cuda_allocated_bytes": 43686875136,
+    "peak_cuda_reserved_bytes": 45101350912
+  },
+  "projection": {
+    "optimizer_updates_per_stage": 468,
+    "projected_stage1_training_seconds": 6887.755844042972,
+    "projected_stage1_gpu_hours": 1.9132655122341589,
+    "three_stage_constant_rate_upper_bound_gpu_hours": 5.739796536702477,
+    "model_parameter_bytes": 8043584512
+  },
+  "scope": {
+    "public_checkpoint_validated": false,
+    "gate_minus_1_decided": false,
+    "matched_training_authorized": false,
+    "checkpoint_saved": false,
+    "interpretation": "open-wrapper fallback-path infrastructure timing only"
+  }
+}

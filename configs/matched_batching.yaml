@@ -1,5 +1,5 @@
 schema_version: 1
-status: pending_a40_microbatch1_preflight
+status: pinned_for_matched_training
 decision_inputs:
   - measured_memory
   - measured_throughput
@@ -16,14 +16,25 @@ candidates:
   public_recipe:
     micro_batch_size: 2
     gradient_accumulation_steps: 16
-    status: measured_pass_on_a100_80gb
+    status: measured_pass_not_selected_due_to_queue_availability
   a40_fallback_ladder:
     micro_batch_size: 1
     gradient_accumulation_steps: 32
-    status: pending_preflight_11412811
-selection_rule: >-
-  Pin exactly one candidate before matched training. If the A40 candidate is
-  selected, record it as an expectation-preserving hardware accommodation and
-  deviation from the public 2x16 recipe; never mix candidates across branches
-  or stages.
-
+    status: measured_pass_selected
+selected:
+  micro_batch_size: 1
+  gradient_accumulation_steps: 32
+  effective_batch_size: 32
+  loss_normalization: shifted_nonignored_token_count_over_effective_batch
+selection_evidence:
+  a40_preflight_job: 11412811
+  peak_reserved_bytes: 45101350912
+  gpu_total_bytes: 47697690624
+  projected_stage1_gpu_hours: 1.9132655122341589
+  reason: earlier_available_a40_with_measured_memory_headroom
+public_recipe_deviation: >-
+  Selected 1x32 instead of the public 2x16 recipe as an expectation-preserving
+  hardware-availability accommodation. Effective batch 32, optimizer updates,
+  token-correct objective, and frozen example order are unchanged. Both
+  branches and every stage must use 1x32.
+selection_rule: applied_before_matched_weights_moved_and_independent_of_model_outcomes

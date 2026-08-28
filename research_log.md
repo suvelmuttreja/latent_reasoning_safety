@@ -575,3 +575,23 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Coconut generation timing remains pending `coco_u1`; the stage runner now
   records model/optimizer save, hash, and private model-upload seconds so the
   next status report can replace upload estimates with evidence.
+- 2026-08-27: A40 fallback-ladder preflight `11412811` passed in 20m31s on
+  commit `89705b2` using the corrected token-weighted objective. Micro-batch 1
+  x accumulation 32 peaked at 45,101,350,912 reserved bytes (42.01 GiB) on a
+  47,697,690,624-byte (44.42-GiB) A40, leaving 2.42 GiB measured headroom.
+  Fifty timed updates averaged 14.717s (p95 14.922s), projecting stage 1 to
+  1.913 GPU-hours and a constant-rate three-stage upper bound of 5.740 hours.
+  Gradients were finite and all 1,600 timed examples used the frozen order.
+- 2026-08-27: Before matched weights moved, `1 x 32` was selected globally for
+  both branches and all stages from memory, throughput, and scheduler evidence
+  only. This is an expectation-preserving deviation from the public `2 x 16`
+  recipe: effective batch 32, update counts, token-correct objective, and data
+  order are unchanged. Both branch configs were changed together. The A100
+  path, if it wins the hardware race, also runs `1 x 32`; a mixed-batching
+  matched comparison is now rejected by config validation.
+- 2026-08-27: The stage-1 A100/A40 race uses one shared output directory and
+  an atomic pre-training claim. The first allocation cancels every registered
+  rival with `scancel`, writes `stage1_hardware_race.json`, and only then enters
+  model loading/training. Separate gate dependencies will follow each hardware
+  path, so cancellation of the losing predecessor cannot release the wrong
+  gate.
