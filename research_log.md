@@ -762,3 +762,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   without added latent tokens or Coconut markers, then shuffles those 20 with
   the 20 stage outputs into one condition-blind packet. The job cannot
   authorize later stages.
+- 2026-08-28: The A40 control `11420970` accrued a 14:16 PDT estimate while
+  two unrelated user GPU jobs were live. A delayed L40S replacement `11420974`
+  received a 13:24 PDT estimate, so the A40 loser was cancelled before start
+  with zero elapsed time. Only `11420974` can write the control output.
