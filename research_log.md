@@ -678,3 +678,14 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   remains pending paired transcript review; no selection is made from the
   apparent score direction. Frozen rendered examples and interpretation limits
   are in `configs/format_examples.txt`.
+- 2026-08-28: Repaired Coconut Gate -1 job `11415026` completed in 40m43s.
+  The model hash matched repaired stage metadata and strict load reported zero
+  missing/unexpected keys. GSM8K-200 accuracy was `0.760` at K=0 and `0.655`
+  at K=2; K=2 had zero truncations, 82/200 paired predictions changed, and
+  200/200 raw outputs changed, establishing meaningful retained capability and
+  K-dependence while recording a 10.5-point capability cost. Twenty coherence
+  outputs completed and were shuffled before review. A preliminary agent blind
+  review assigned overall counts 0/1/2 = `1/18/1`; after scores were frozen,
+  unblinding showed both K=0 and K=2 means equal to `1.0`. Because the gate
+  explicitly requires human blind review, this agent assessment is not treated
+  as authorization and stages 2-3 remain blocked pending the human scores.

@@ -1,0 +1,29 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{
+  "schema_version": 1,
+  "status": "pending_blind_coherence_and_method_review",
+  "next_stage_authorized": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "056ff2ee64762d83fd3f1b185a19553153fe9910",
+  "slurm_job_id": "11415026",
+  "checkpoint_stage": 1,
+  "checkpoint_k": 2,
+  "checkpoint_sha256": "36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25",
+  "checkpoint_hash_matches_stage_metadata": true,
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "gate_config_sha256": "e38b2f7c2659e910d7810d40585ec4bd43d7e68c5c0282dc3fbb614964fb0ed8",
+  "train_config_sha256": "dff7975f757772faae9a5d73cb96f3cc5c6e52359d42057c870ea1e5f08ed9e6",
+  "capability_manifest_sha256": "64dbc2d98d0d7435cb0b77798045cb28776a4c0b913f3ff05cec4150f552dcb4",
+  "coherence_manifest_sha256": "f1b9cd3d61af078b304c809fc0446c98646602f17b93e91409367670769eb8d3",
+  "coherence_generations": "/scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/gate_stage1/coherence_generations.jsonl",
+  "coherence_generations_sha256": "e0c6129e6f4d008ffa64cc6ebc8cdb502e4bd86449657704cc2894d5221d6b65",
+  "coherence_outputs": 20,
+  "peak_cuda_allocated_bytes": 16364891136,
+  "decision_inputs_forbidden": [
+    "strongreject_direction",
+    "preferred_safety_outcome"
+  ]
+}

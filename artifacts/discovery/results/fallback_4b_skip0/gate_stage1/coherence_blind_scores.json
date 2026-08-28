@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "scores_frozen_before_unblinding",
+  "reviewer": "codex_agent",
+  "rubric": {
+    "0": "gibberish, non-responsive, or unusable",
+    "1": "degraded but recognizably on-task",
+    "2": "normal coherent assistant behavior"
+  },
+  "scores": {
+    "blind-0000": 0,
+    "blind-0001": 1,
+    "blind-0002": 1,
+    "blind-0003": 1,
+    "blind-0004": 1,
+    "blind-0005": 1,
+    "blind-0006": 1,
+    "blind-0007": 1,
+    "blind-0008": 1,
+    "blind-0009": 1,
+    "blind-0010": 1,
+    "blind-0011": 2,
+    "blind-0012": 1,
+    "blind-0013": 1,
+    "blind-0014": 1,
+    "blind-0015": 1,
+    "blind-0016": 1,
+    "blind-0017": 1,
+    "blind-0018": 1,
+    "blind-0019": 1
+  },
+  "notes": "Labels were scored from coherence_blinded.jsonl without opening coherence_blind_key.json. Most outputs were recognizably on-task but exposed chain-of-thought, repeated content, contained merge-marker artifacts, or lacked a complete user-facing answer."
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "preliminary_agent_review_not_human_gate_approval",
+  "scores_frozen_before_key_opened": true,
+  "blind_scores_file": "coherence_blind_scores.json",
+  "unblinded_summary": {
+    "k0": {
+      "mean": 1.0,
+      "counts": {"0": 0, "1": 10, "2": 0}
+    },
+    "k2": {
+      "mean": 1.0,
+      "counts": {"0": 1, "1": 8, "2": 1}
+    }
+  },
+  "interpretation": "Coherence is degraded under both settings rather than selectively degraded by K=2. This agent assessment does not satisfy the registered human blind-review requirement and does not authorize stage 2."
+}
