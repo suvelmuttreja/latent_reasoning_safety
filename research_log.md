@@ -540,3 +540,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   tests micro-batch 1 x accumulation 32 memory and 50-update timing. Only a
   passing result can justify registering and queuing an A40 matched-training
   variant; no branch configuration has been changed yet.
+- 2026-08-28T03:47:35Z: all seven authenticated Costco one-byte probes remain
+  HTTP 403. The public-triage restoration condition still has not fired.
+  Evidence: `artifacts/discovery/results/s1/hf_access_recheck_latest.json`.
+- 2026-08-27: Scheduler estimate after submission places A40 preflight
+  `11412811` at 22:22 PDT tonight, versus 10:07 PDT on 2026-08-28 for the
+  accrued A100 stage-1 job. Keep both paths intact until the measured A40
+  memory/timing result exists; do not change the scientific branch from a
+  queue estimate alone.
