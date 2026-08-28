@@ -646,3 +646,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `11413535` is through update 40 with finite loss and ~5.8s/update. Both use
   the globally pinned micro-batch 1 x accumulation 32 configuration on separate
   A40s and separate output paths.
+- 2026-08-27: Dead A100-loser gate `11405896` was explicitly cancelled after
+  Slurm displayed `DependencyNeverSatisfied`. This was expected because its
+  `afterok` predecessor `11405885` had been cancelled by the A40 race winner
+  without starting. The live winner gate is `11413197`; it remains normally
+  pending on running A40 stage-1 job `11413196`.
