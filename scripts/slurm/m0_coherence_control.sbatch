@@ -11,6 +11,7 @@
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
 source "/home1/$USER/mats_latent_safety/scripts/discovery_env.sh"
+python scripts/claim_stage_race.py --config configs/m0_coherence_hardware_race.yaml
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 OUTPUT="$WORK_ROOT/results/fallback_4b_skip0/gate_stage1_v2_m0_coherence_control"
 mkdir -p "$OUTPUT"

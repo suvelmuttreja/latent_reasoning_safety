@@ -764,5 +764,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   authorize later stages.
 - 2026-08-28: The A40 control `11420970` accrued a 14:16 PDT estimate while
   two unrelated user GPU jobs were live. A delayed L40S replacement `11420974`
-  received a 13:24 PDT estimate, so the A40 loser was cancelled before start
-  with zero elapsed time. Only `11420974` can write the control output.
+  displayed a 13:24 PDT `BeginTime`, so the A40 job was cancelled before start
+  with zero elapsed time. Pre-start review caught that `BeginTime` was the
+  requested eligibility time, not a scheduler guarantee. L40S job `11420974`
+  and replacement A40 job `11420978` were therefore held while an atomic race
+  registry was installed. On release, the first allocation must create the
+  claim and cancel its rival before model loading; only the winner can touch
+  the shared output directory.

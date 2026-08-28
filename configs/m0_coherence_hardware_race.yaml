@@ -1,0 +1,9 @@
+schema_version: 1
+race_id: exact_m0_coherence_shared_cap_control
+status: queued_both_held_during_registry_sync
+claim_directory: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/.m0_coherence_control_claim
+record_path: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/gate_stage1_v2_m0_coherence_control/hardware_race.json
+jobs:
+  l40s: 11420974
+  a40: 11420978
+rule: first_job_to_atomically_claim_runs_and_scancels_every_other_job_before_model_load

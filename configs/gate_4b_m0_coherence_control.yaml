@@ -1,14 +1,15 @@
 schema_version: 1
 label: exact_m0_native_chat_coherence_shared_512_cap_control
-status: queued
+status: queued_atomic_hardware_race
 frozen_at: '2026-08-28T20:05:00Z'
 slurm_job: 11420974
-device_class: l40s_48gb
+hardware_race: configs/m0_coherence_hardware_race.yaml
+device_classes: [l40s_48gb, a40_48gb]
 superseded_job:
   job_id: 11420970
   state: cancelled_before_start
   elapsed: 0
-  reason: l40s_replacement_had_earlier_start
+  reason: replaced_before_atomic_a40_l40s_race
 model_id: Qwen/Qwen3-4B-Thinking-2507
 model_revision: 768f209d9ea81521153ed38c47d515654e938aea
 manifest: manifests/coherence_10.json
