@@ -614,3 +614,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   spends one otherwise-required stage on the 4B design if Gate -1 selects the
   3B fallback. Its output path is separate from Coconut, so it cannot collide
   with the live A100/A40 Coconut race.
+- 2026-08-27: A40 job `11413196` won the Coconut stage-1 hardware race at
+  22:00:42 PDT (`2026-08-28T05:00:42.064631Z`). Its atomic claim record shows
+  `scancel 11405885` returned 0 before model loading. Slurm accounting confirms
+  A100 job `11405885` was cancelled without a node or runtime, and its gate
+  `11405896` became dependency-never-satisfied. The winner's own gate
+  `11413197` remains correctly dependent on A40 completion. The A40 log then
+  identified 46,068 MiB and loaded all three model shards; matched Coconut
+  training is live on node `a03-01`.
+- 2026-08-27: Guarded early explicit-CoT stage-1 A40 job `11413535` was
+  submitted from commit `231a82c`. It targets the separate
+  `results/matched_4b_cot` path and has no dependency on Gate -1; its scheduler
+  estimate at submission was 22:22:25 PDT. The literal early-CoT acknowledgement
+  authorizes only stage 1, while stages 2-3 still require the normal in-line
+  gate acknowledgement.

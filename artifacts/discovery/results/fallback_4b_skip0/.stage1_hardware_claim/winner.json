@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "race_id": "fallback_4b_skip0_stage1",
+  "claimed_at": "2026-08-28T05:00:42.064631+00:00",
+  "winner_job_id": 11413196,
+  "winner_name": "a40",
+  "cancelled_rivals": [
+    {
+      "name": "a100_80gb",
+      "job_id": 11405885,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "rule": "first_job_to_atomically_claim_runs_and_scancels_every_other_job_before_training"
+}

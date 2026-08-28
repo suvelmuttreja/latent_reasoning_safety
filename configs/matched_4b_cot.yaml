@@ -4,6 +4,11 @@ branch: explicit_cot
 submission_status: time_pressure_early_cot_stage1_authorized
 authorization_scope: stage1_only_before_coco_u1_inline_gate
 authorization_ack: time-pressure-early-cot-stage1-authorized
+early_stage1_job:
+  job_id: 11413535
+  hardware: NVIDIA A40
+  submitted_at_local: 2026-08-27
+  output_root: /scratch1/muttreja/mats_latent_safety/results/matched_4b_cot
 model_id: Qwen/Qwen3-4B-Thinking-2507
 model_revision: 768f209d9ea81521153ed38c47d515654e938aea
 seed: 42
