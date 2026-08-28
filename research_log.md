@@ -734,3 +734,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   The 0-2 rubric and packet hash were frozen before human review in
   `configs/gate_4b_coco_u1_blind_review.yaml`; the superseded raw-format scores
   remain void.
+- 2026-08-28T19:57:14Z: A fresh authenticated one-byte read check still
+  returned HTTP 403 for all seven Costco checkpoint repositories. Public
+  approval therefore has not arrived and the self-contained path remains the
+  active path. Evidence overwrote the rolling latest record at
+  `artifacts/discovery/results/s1/hf_access_recheck_latest.json`.
