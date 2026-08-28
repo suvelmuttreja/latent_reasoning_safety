@@ -639,3 +639,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   subtracted from later checkpoint scores. Serialization selection remains
   pending paired transcript review, with native chat preferred if the latent
   scaffold can be inserted cleanly.
+- 2026-08-27: Resumable A40 format-anchor generation job `11413622` is queued;
+  pinned-evaluator job `11413625` has an `afterok:11413622` dependency. At the
+  same status cut, Coconut stage-1 job `11413196` is through update 20 with
+  finite token-weighted loss and ~17.4s/update, while early CoT stage-1 job
+  `11413535` is through update 40 with finite loss and ~5.8s/update. Both use
+  the globally pinned micro-batch 1 x accumulation 32 configuration on separate
+  A40s and separate output paths.
