@@ -9,7 +9,7 @@ superseded_gate:
   job_id: 11415026
   capability_status: valid_raw_scaffold_measurement_missing_m0_baseline
   coherence_status: void_wrong_serialization_and_unparsed_thinking
-slurm_job: pending_submission
+slurm_job: 11415416
 checkpoint_recovery_record: configs/stage1_recovery.yaml
 capability:
   manifest: manifests/gsm8k_heldout_200.json

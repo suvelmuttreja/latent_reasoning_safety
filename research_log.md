@@ -704,3 +704,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `fallback_4b_skip0/stage1/model_state.pt` at 8,043,762,903 bytes plus the
   tokenizer; repo HEAD `86d409a21625dc1b11ef4ae13ad03c95d5ca4cf2`
   also contains stage metadata. Scratch1 is therefore not the only model copy.
+- 2026-08-28: Actual-tokenizer dry verification rendered the corrected
+  coherence prefix as native Qwen chat ending in
+  `<|im_start|>assistant\n<think>\n`, then appended exactly
+  `<|start-latent|><|latent|><|latent|><|end-latent|>` for K=2. The native
+  prefix was encoded with `add_special_tokens=false`, so no template boundary
+  was duplicated. Corrected Gate v2 job `11415416` was submitted with a short
+  delayed start; it includes M0 K=0 and stage-1 K=0/K=2 GSM8K-200 under the
+  identical raw scaffold plus native-chat coherence K=0/K=2.

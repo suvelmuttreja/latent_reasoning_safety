@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "queried_at": "2026-08-28T09:12:10Z",
+  "repo_id": "suvelmuttreja/mats-latent-safety-checkpoints",
+  "model_commit_oid": "a0624a889ec0d8e073d194ec4aacd88f03c96e30",
+  "model_commit_resolved_sha": "a0624a889ec0d8e073d194ec4aacd88f03c96e30",
+  "model_path": "fallback_4b_skip0/stage1/model_state.pt",
+  "remote_model_size_bytes": 8043762903,
+  "local_model_size_bytes": 8043762903,
+  "local_model_sha256": "36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25",
+  "tokenizer_files_present_at_model_commit": [
+    "fallback_4b_skip0/stage1/tokenizer/added_tokens.json",
+    "fallback_4b_skip0/stage1/tokenizer/chat_template.jinja",
+    "fallback_4b_skip0/stage1/tokenizer/merges.txt",
+    "fallback_4b_skip0/stage1/tokenizer/special_tokens_map.json",
+    "fallback_4b_skip0/stage1/tokenizer/tokenizer.json",
+    "fallback_4b_skip0/stage1/tokenizer/tokenizer_config.json",
+    "fallback_4b_skip0/stage1/tokenizer/vocab.json"
+  ],
+  "repo_head_sha": "86d409a21625dc1b11ef4ae13ad03c95d5ca4cf2",
+  "metadata_path_at_head": "fallback_4b_skip0/stage1/metadata.json",
+  "metadata_size_bytes_at_head": 3574,
+  "conclusion": "scratch1 is not the only checkpoint copy"
+}
