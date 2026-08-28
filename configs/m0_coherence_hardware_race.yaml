@@ -1,6 +1,6 @@
 schema_version: 1
 race_id: exact_m0_coherence_shared_cap_control
-status: queued_both_held_during_registry_sync
+status: released_pending_first_allocation
 claim_directory: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/.m0_coherence_control_claim
 record_path: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/gate_stage1_v2_m0_coherence_control/hardware_race.json
 jobs:
