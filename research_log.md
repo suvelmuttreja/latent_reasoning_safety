@@ -421,7 +421,7 @@ Each criterion uses exactly one requested status.
 | M0 think cap and baseline headroom | `passed` | 32/32 calibration outputs completed, zero truncations, p95/max thinking `2138.35/3819`, frozen cap 5,120, 29.822 token/s. Blind agent review found 12/12 refusals; pinned judge mean harmfulness 0.1458. Formal human audit and full official M0 suite are later-session work. |
 | StrongREJECT five-example smoke | `passed` | Pinned local evaluator/judge produced finite, directionally sensible scores on two refusals, one partial, and two redacted-compliance fixtures. Rubric fallback is not authorized. |
 | Public material-key audit and Gate -1 | `pending-approval` | Final authenticated one-byte probes still return HTTP 403 for all seven requested Costco repositories. No wrapper/checkpoint is selected, no Gate -1 safety-direction selection is made, and no external contact is attempted. |
-| 4B A100-80GB memory and 50-step throughput projections | `pending-approval` | The kickoff forbids speculative 4B Coconut reconstruction/training before the public material-key and method-validity gate. This registered preflight begins only after the same Costco approval gate clears. |
+| 4B A100-80GB memory and 50-step throughput projections | `passed` | Jobs `11403700` and `11403992` measured full-AdamW micro-batch-2 memory plus 50 timed updates for explicit CoT and open-wrapper Coconut on exact M0. Peak reservations were 41.25 and 45.12 GiB; projected training was 0.908 GPU-hours for all CoT stages and 0.887 GPU-hours for Coconut stage 1. |
 
 Matched-branch training, dense trajectories, final K sweeps, figures, formal
 human transcript audit, the full M0 suite/format anchor, and optional controls
@@ -535,3 +535,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   micro-batch 1 x accumulation 32 (same effective batch/update semantics) is
   prepared to test whether the more available GPU can safely recover the
   overnight window before changing or cancelling the accrued A100 job.
+- 2026-08-27: Slurm `11412811` is the non-scientific A40 fallback-ladder
+  preflight. It leaves the accrued A100 stage-1 job `11405885` intact while it
+  tests micro-batch 1 x accumulation 32 memory and 50-update timing. Only a
+  passing result can justify registering and queuing an A40 matched-training
+  variant; no branch configuration has been changed yet.
