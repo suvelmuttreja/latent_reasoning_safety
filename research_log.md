@@ -601,3 +601,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   same globally pinned `1 x 32` config and target the same stage directory.
   Whichever allocation atomically claims first cancels the other before model
   loading; the race record is a required result artifact.
+- 2026-08-27: Gate job `11413197` depends only on successful A40 contender
+  `11413196`; existing gate `11405896` depends only on the A100 contender.
+  Therefore cancellation of the losing training job prevents its gate while
+  leaving the winner's in-line method gate intact.

@@ -6,4 +6,7 @@ record_path: /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/sta
 jobs:
   a100_80gb: 11405885
   a40: 11413196
+gates:
+  a100_80gb: 11405896
+  a40: 11413197
 rule: first_job_to_atomically_claim_runs_and_scancels_every_other_job_before_training
