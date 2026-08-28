@@ -22,6 +22,8 @@ epochs_per_stage: 2
 micro_batch_size: 2
 gradient_accumulation_steps: 16
 effective_batch_size: 32
+matched_batching_policy: configs/matched_batching.yaml
+loss_normalization: shifted_nonignored_token_count_over_effective_batch
 max_sequence_length: 576
 learning_rate: 8.0e-6
 weight_decay: 0.01

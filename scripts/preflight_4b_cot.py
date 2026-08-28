@@ -10,7 +10,6 @@ import statistics
 import time
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import torch
 import yaml
@@ -18,70 +17,17 @@ from huggingface_hub import model_info
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from mats_latent_safety.batching import pad_causal_records
-from mats_latent_safety.constants import IGNORE_INDEX, optimizer_updates
+from mats_latent_safety.constants import optimizer_updates
 from mats_latent_safety.data import clean_gsm8k_row
 from mats_latent_safety.hashing import sha256_file, sha256_json
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import build_training_record, tokenize_reasoning_example
-
-
-def percentile(values: list[float], q: float) -> float:
-    return float(np.percentile(np.asarray(values, dtype=np.float64), q))
-
-
-def optimizer_state_bytes(optimizer: torch.optim.Optimizer) -> int:
-    return sum(
-        value.numel() * value.element_size()
-        for state in optimizer.state.values()
-        for value in state.values()
-        if torch.is_tensor(value)
-    )
-
-
-def gradients_finite(model: torch.nn.Module) -> bool:
-    gradients = [parameter.grad for parameter in model.parameters() if parameter.grad is not None]
-    return bool(gradients) and all(torch.isfinite(gradient).all() for gradient in gradients)
-
-
-def run_update(
-    model: torch.nn.Module,
-    optimizer: torch.optim.Optimizer,
-    batches: list[dict[str, torch.Tensor]],
-    accumulation: int,
-    *,
-    check_gradients: bool,
-) -> dict[str, float | int | bool]:
-    if not 1 <= len(batches) <= accumulation:
-        raise ValueError("an optimizer update requires between 1 and accumulation micro-batches")
-    optimizer.zero_grad(set_to_none=True)
-    losses: list[float] = []
-    nonpadding_tokens = 0
-    supervised_tokens = 0
-    examples = 0
-    started = time.perf_counter()
-    for batch in batches:
-        output = model(**batch)
-        if output.loss is None or not torch.isfinite(output.loss):
-            raise RuntimeError(f"non-finite loss: {output.loss}")
-        (output.loss / accumulation).backward()
-        losses.append(float(output.loss.detach().float().cpu()))
-        nonpadding_tokens += int(batch["attention_mask"].sum().item())
-        supervised_tokens += int((batch["labels"] != IGNORE_INDEX).sum().item())
-        examples += int(batch["input_ids"].shape[0])
-    finite = gradients_finite(model) if check_gradients else True
-    if not finite:
-        raise RuntimeError("missing or non-finite gradients")
-    optimizer.step()
-    optimizer.zero_grad(set_to_none=True)
-    torch.cuda.synchronize()
-    return {
-        "seconds": time.perf_counter() - started,
-        "mean_microbatch_loss": sum(losses) / len(losses),
-        "examples": examples,
-        "nonpadding_tokens": nonpadding_tokens,
-        "supervised_tokens": supervised_tokens,
-        "gradients_finite": finite,
-    }
+from mats_latent_safety.training import (
+    aggregate_token_weighted_loss,
+    optimizer_state_bytes,
+    percentile,
+    run_update,
+)
 
 
 def make_batches(
@@ -268,7 +214,7 @@ def main() -> None:
                 {
                     "update": update + 1,
                     "seconds": timed[-1]["seconds"],
-                    "loss": timed[-1]["mean_microbatch_loss"],
+                    "loss": timed[-1]["token_weighted_loss"],
                 }
             ),
             flush=True,
@@ -341,7 +287,8 @@ def main() -> None:
             "examples_per_second": total_examples / total_seconds,
             "nonpadding_tokens_per_second": total_nonpadding / total_seconds,
             "supervised_tokens_per_second": total_supervised / total_seconds,
-            "mean_loss": statistics.mean(row["mean_microbatch_loss"] for row in timed),
+            "mean_loss": aggregate_token_weighted_loss(timed),
+            "loss_normalization": timed[0]["loss_normalization"],
             "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(),
             "peak_cuda_reserved_bytes": torch.cuda.max_memory_reserved(),
         },

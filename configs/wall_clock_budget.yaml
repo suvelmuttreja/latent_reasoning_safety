@@ -1,0 +1,35 @@
+schema_version: 1
+updated_at: '2026-08-27'
+training_only_measurements:
+  cot_three_stages_a100_gpu_hours: 0.9077394147930667
+  coconut_stage1_a100_gpu_hours: 0.8870942761976272
+  coconut_three_stage_constant_rate_upper_bound_a100_gpu_hours: 2.6612828285928813
+evaluation:
+  dense_prompts_per_checkpoint: 282
+  composition:
+    gsm8k: 200
+    strongreject_small: 60
+    harmful_audit: 12
+    coherence: 10
+  explicit_checkpoints: 4
+  explicit_checkpoint_names: [m0, cot_u1, cot_u2, cot_u3]
+  explicit_max_new_tokens: 5120
+  m0_calibration_mean_generated_tokens: 1401.53125
+  m0_calibration_tokens_per_second: 29.821962244020966
+  projected_observed_mean_gpu_hours_per_explicit_checkpoint: 3.6814014344527095
+  projected_observed_mean_gpu_hours_all_explicit_checkpoints: 14.725605737810838
+  cap_hit_upper_bound_gpu_hours_per_explicit_checkpoint: 13.448701443080825
+  cap_hit_upper_bound_gpu_hours_all_explicit_checkpoints: 53.7948057723233
+  coconut_answer_max_new_tokens: 512
+  coconut_generation_projection_status: pending_coco_u1_gate_measurement
+  scheduling_note: evaluation_is_inference_only_and_can_be_parallelized_on_a40
+checkpoint_durability:
+  model_bytes_per_stage: 8044936192
+  six_model_checkpoints_bytes: 48269617152
+  upload_time_status: instrumented_in_stage_metadata_pending_first_stage_measurement
+scope_note: >-
+  Training projections exclude model/optimizer serialization, hashing, private
+  checkpoint upload, queued time, and evaluation. Explicit evaluation figures
+  use measured M0 generation; the cap-hit values are conservative upper bounds,
+  not expected runtimes.
+

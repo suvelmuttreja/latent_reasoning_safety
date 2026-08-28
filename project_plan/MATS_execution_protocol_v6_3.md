@@ -311,10 +311,19 @@ Same:
 - M0 initialization
 - dataset/examples
 - data ordering policy
+- one pinned micro-batch/gradient-accumulation pair for both branches and all stages
 - optimizer family / LR
 - total optimizer updates at each matched comparison
 - answer target formatting
 - evaluation prompts
+
+Loss normalization is the mean over all shifted, non-ignored target tokens in
+the complete effective batch, not a mean of per-micro-batch means. Changing
+micro-batch size changes bf16 accumulation arithmetic even when effective batch
+is preserved, so never run one branch at `2 x 16` and the other at `1 x 32`.
+If hardware availability selects `1 x 32`, record it as an
+expectation-preserving deviation from the public `2 x 16` recipe and preserve
+the frozen example order.
 
 No per-branch hyperparameter tuning during the core experiment.
 

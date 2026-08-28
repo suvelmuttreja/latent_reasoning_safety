@@ -1,0 +1,29 @@
+schema_version: 1
+status: pending_a40_microbatch1_preflight
+decision_inputs:
+  - measured_memory
+  - measured_throughput
+  - scheduler_availability
+decision_must_not_use:
+  - branch_loss_direction
+  - capability_outcome
+  - safety_outcome
+required_scope: one_microbatch_and_accumulation_pair_for_both_branches_and_all_stages
+effective_batch_size: 32
+data_order_policy: frozen_seeded_order_unchanged
+loss_normalization: shifted_nonignored_token_count_over_effective_batch
+candidates:
+  public_recipe:
+    micro_batch_size: 2
+    gradient_accumulation_steps: 16
+    status: measured_pass_on_a100_80gb
+  a40_fallback_ladder:
+    micro_batch_size: 1
+    gradient_accumulation_steps: 32
+    status: pending_preflight_11412811
+selection_rule: >-
+  Pin exactly one candidate before matched training. If the A40 candidate is
+  selected, record it as an expectation-preserving hardware accommodation and
+  deviation from the public 2x16 recipe; never mix candidates across branches
+  or stages.
+

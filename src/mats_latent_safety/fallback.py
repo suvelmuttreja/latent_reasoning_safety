@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 
 TRIGGER_ACK = "persistent-403-fallback-authorized"
 INLINE_GATE_ACK = "coco-u1-inline-gate-passed"
@@ -33,3 +35,29 @@ def validate_resume(metadata: dict, config: dict, stage: int) -> None:
             continue
         if metadata.get(key) != config[key]:
             raise ValueError(f"resume {key} does not match the frozen config")
+
+
+def validate_matched_batching(config: dict, policy: dict) -> None:
+    if policy.get("status") != "pinned_for_matched_training":
+        raise ValueError("matched batching remains unpinned; refusing training")
+    selected = policy.get("selected", {})
+    for key in (
+        "micro_batch_size",
+        "gradient_accumulation_steps",
+        "effective_batch_size",
+        "loss_normalization",
+    ):
+        if config.get(key) != selected.get(key):
+            raise ValueError(f"branch {key} does not match the pinned batching policy")
+
+
+def claim_stage_directory(output_root: Path, stage: int) -> Path:
+    output_root.mkdir(parents=True, exist_ok=True)
+    output_dir = output_root / f"stage{stage}"
+    try:
+        output_dir.mkdir()
+    except FileExistsError as error:
+        raise FileExistsError(
+            f"stage directory already claimed; refusing a duplicate/racing run: {output_dir}"
+        ) from error
+    return output_dir

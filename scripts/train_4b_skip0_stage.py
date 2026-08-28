@@ -20,7 +20,12 @@ from mats_latent_safety.batching import pad_causal_records, pad_coconut_records
 from mats_latent_safety.constants import optimizer_updates
 from mats_latent_safety.coconut import StandardCoconut, initialize_latent_embeddings
 from mats_latent_safety.data import clean_gsm8k_row
-from mats_latent_safety.fallback import validate_authorization, validate_resume
+from mats_latent_safety.fallback import (
+    claim_stage_directory,
+    validate_authorization,
+    validate_matched_batching,
+    validate_resume,
+)
 from mats_latent_safety.hashing import sha256_file, sha256_json
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import (
@@ -28,7 +33,12 @@ from mats_latent_safety.serialization import (
     ensure_latent_tokens,
     tokenize_reasoning_example,
 )
-from preflight_4b_cot import optimizer_state_bytes, percentile, run_update
+from mats_latent_safety.training import (
+    aggregate_token_weighted_loss,
+    optimizer_state_bytes,
+    percentile,
+    run_update,
+)
 
 
 def load_model(config: dict, tokenizer, markers, device: torch.device) -> StandardCoconut:
@@ -89,6 +99,7 @@ def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict
         f"{config['durability_path_prefix']}/stage{metadata['completed_stage']}"
     )
     api = HfApi()
+    upload_started = time.perf_counter()
     model_commit = api.upload_folder(
         folder_path=output_dir,
         repo_id=repo_id,
@@ -97,12 +108,14 @@ def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict
         allow_patterns=["model_state.pt", "tokenizer/*"],
         commit_message=f"Persist {metadata['branch']} stage {metadata['completed_stage']}",
     )
+    model_and_tokenizer_upload_seconds = time.perf_counter() - upload_started
     durability = {
         "status": "model_and_tokenizer_uploaded",
         "repo_id": repo_id,
         "path_in_repo": path_in_repo,
         "model_commit_oid": model_commit.oid,
         "model_commit_url": str(model_commit.commit_url),
+        "model_and_tokenizer_upload_seconds": model_and_tokenizer_upload_seconds,
         "metadata_upload_required_for_stage_success": True,
         "optimizer_state_uploaded": False,
         "optimizer_regeneration": "replay_frozen_training_from_previous_durable_stage",
@@ -133,6 +146,8 @@ def main() -> None:
 
     config_path = Path(args.config)
     config = yaml.safe_load(config_path.read_text())
+    batching_policy = yaml.safe_load(Path(config["matched_batching_policy"]).read_text())
+    validate_matched_batching(config, batching_policy)
     if args.stage not in config["stages"]:
         raise ValueError(f"stage {args.stage} is not registered")
     validate_authorization(
@@ -152,10 +167,7 @@ def main() -> None:
     if model_info(config["model_id"]).sha != config["model_revision"]:
         raise RuntimeError("resolved base-model revision changed")
 
-    output_dir = Path(args.output_root) / f"stage{args.stage}"
-    if output_dir.exists() and any(output_dir.iterdir()):
-        raise FileExistsError(f"refusing to overwrite non-empty stage directory {output_dir}")
-    output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir = claim_stage_directory(Path(args.output_root), args.stage)
     device = torch.device("cuda")
     torch.manual_seed(config["seed"])
     torch.cuda.manual_seed_all(config["seed"])
@@ -257,7 +269,7 @@ def main() -> None:
                             "epoch": epoch,
                             "stage_update": stage_updates,
                             "seconds": result["seconds"],
-                            "loss": result["mean_microbatch_loss"],
+                            "loss": result["token_weighted_loss"],
                         }
                     ),
                     flush=True,
@@ -272,9 +284,17 @@ def main() -> None:
 
     model_path = output_dir / "model_state.pt"
     optimizer_path = output_dir / "optimizer_state.pt"
+    model_save_started = time.perf_counter()
     torch.save(model.state_dict(), model_path)
+    model_save_seconds = time.perf_counter() - model_save_started
+    optimizer_save_started = time.perf_counter()
     torch.save(optimizer.state_dict(), optimizer_path)
+    optimizer_save_seconds = time.perf_counter() - optimizer_save_started
     tokenizer.save_pretrained(output_dir / "tokenizer")
+    hash_started = time.perf_counter()
+    model_state_sha256 = sha256_file(model_path)
+    optimizer_state_sha256 = sha256_file(optimizer_path)
+    checkpoint_hash_seconds = time.perf_counter() - hash_started
     cumulative_updates = previous_updates + stage_updates
     seconds = [float(row["seconds"]) for row in update_results]
     metadata = {
@@ -302,7 +322,8 @@ def main() -> None:
         "mean_update_seconds": statistics.mean(seconds),
         "median_update_seconds": statistics.median(seconds),
         "p95_update_seconds": percentile(seconds, 95),
-        "mean_loss": statistics.mean(row["mean_microbatch_loss"] for row in update_results),
+        "mean_loss": aggregate_token_weighted_loss(update_results),
+        "loss_normalization": update_results[0]["loss_normalization"],
         "examples": sum(int(row["examples"]) for row in update_results),
         "nonpadding_tokens": sum(int(row["nonpadding_tokens"]) for row in update_results),
         "supervised_tokens": sum(int(row["supervised_tokens"]) for row in update_results),
@@ -310,9 +331,14 @@ def main() -> None:
         "peak_cuda_reserved_bytes": torch.cuda.max_memory_reserved(),
         "optimizer_state_bytes": optimizer_state_bytes(optimizer),
         "model_state": str(model_path),
-        "model_state_sha256": sha256_file(model_path),
+        "model_state_sha256": model_state_sha256,
         "optimizer_state": str(optimizer_path),
-        "optimizer_state_sha256": sha256_file(optimizer_path),
+        "optimizer_state_sha256": optimizer_state_sha256,
+        "checkpoint_io": {
+            "model_save_seconds": model_save_seconds,
+            "optimizer_save_seconds": optimizer_save_seconds,
+            "checkpoint_hash_seconds": checkpoint_hash_seconds,
+        },
         "gate_required_before_next_stage": args.stage == config.get("gate_after_stage"),
         "matched_training_authorized": config["submission_status"] == "inline_gate_passed",
     }

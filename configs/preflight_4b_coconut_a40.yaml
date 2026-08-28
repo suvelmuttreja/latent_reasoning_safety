@@ -14,6 +14,7 @@ memory_micro_batch_size: 1
 micro_batch_size: 1
 gradient_accumulation_steps: 32
 effective_batch_size: 32
+loss_normalization: shifted_nonignored_token_count_over_effective_batch
 warmup_optimizer_updates: 2
 timed_optimizer_updates: 50
 learning_rate: 8.0e-6
@@ -34,4 +35,3 @@ forbidden_changes:
   qlora: false
   lora: false
   quantized_weights: false
-

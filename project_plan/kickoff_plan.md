@@ -138,7 +138,26 @@ entry because a Phase 3B outcome could require retraining that branch.
 1. Run the 4B full-sequence memory preflight on one explicitly constrained A100-80GB. Walk the registered ladder only as needed: bf16 → gradient checkpointing → micro-batch 1 plus accumulation → 8-bit AdamW → readily available multi-GPU support → Qwen3-1.7B fallback. Do not introduce QLoRA.
 2. Time about 50 representative CoT-SFT steps and 50 Coconut stage-1 steps. Measure native Qwen/CoT tokens/sec and Coconut examples/sec under the frozen caps.
 3. Log projected wall time, GPU hours, storage, and dense-tier evaluation time for the full 7,473 examples. Use the same pre-registered reduction for both branches if the full dose is infeasible.
-4. Do not launch matched training until access, wrapper, Gate −1, memory, throughput, storage-backup, and M0-headroom gates all pass.
+4. Do not launch matched training until access, wrapper, Gate -1, memory, throughput, storage-backup, and M0-headroom gates all pass.
+
+The selected micro-batch/accumulation pair is global to the matched experiment:
+both branches and all stages use it. Effective batch 32 alone is insufficient
+for matching because bf16 accumulation order and variable-length token
+weighting can differ. Normalize each update by the total shifted supervised
+token count across all micro-batches. If `1 x 32` wins the hardware gate, log
+the deviation from the public `2 x 16` recipe as expectation-preserving and
+keep the frozen data order unchanged.
+
+If two hardware paths are queued for the same stage, the first job to start is
+the winner and the other job must be cancelled and logged before it starts.
+Atomic stage-directory claiming is a backstop, not a substitute for cancelling
+the loser.
+
+Training-only projections must be reported separately from the dense
+GSM8K/safety/coherence evaluation passes, 5,120-token explicit-thinking caps,
+checkpoint serialization/hashing, and durable upload. The current projection
+is frozen in `configs/wall_clock_budget.yaml`; replace pending Coconut-generation
+and upload estimates with measurements from `coco_u1`.
 
 ## Confound controls and result policy
 

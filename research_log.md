@@ -548,3 +548,30 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   accrued A100 stage-1 job. Keep both paths intact until the measured A40
   memory/timing result exists; do not change the scientific branch from a
   queue estimate alone.
+- 2026-08-27: Before matched weights moved, the accumulation objective was
+  audited and corrected. The prior shared helper divided each micro-batch mean
+  loss by the accumulation count, which gives variable-length micro-batches
+  equal weight rather than computing the mean over the effective batch's
+  supervised tokens. Its completed A100 memory/timing measurements remain
+  valid, but those preflight loss scalars are non-scientific diagnostics. The
+  shared runner now weights every micro-batch mean by its count of shifted,
+  non-ignored labels; a CPU gradient/update test verifies invariance (within
+  floating-point order tolerance) between micro-batch 1 and 2 partitions while
+  demonstrating that the old mean-of-means differs.
+- 2026-08-27: `configs/matched_batching.yaml` now blocks matched training until
+  one pair is pinned globally for both branches and all three stages. The
+  choice may use only measured memory, throughput, and scheduler availability,
+  never loss/capability/safety direction. Selecting `1 x 32` will be logged as
+  an expectation-preserving deviation from the public `2 x 16` recipe with
+  effective batch 32 and frozen example order unchanged. An atomic stage-dir
+  claim prevents simultaneous writers; the operational rule remains
+  first-to-start runs and the other queued job is cancelled/logged before it
+  starts.
+- 2026-08-27: Training-only and end-to-end wall-clock accounting are separated
+  in `configs/wall_clock_budget.yaml`. At measured M0 output lengths, the 282
+  dense prompts project to 3.68 GPU-hours per explicit checkpoint (14.73 for
+  M0 plus three CoT stages); the all-cap-hit 5,120-token upper bound is
+  13.45/53.79 GPU-hours. These inference jobs can be parallelized on A40s.
+  Coconut generation timing remains pending `coco_u1`; the stage runner now
+  records model/optimizer save, hash, and private model-upload seconds so the
+  next status report can replace upload estimates with evidence.

@@ -27,7 +27,12 @@ from mats_latent_safety.serialization import (
     ensure_latent_tokens,
     tokenize_reasoning_example,
 )
-from preflight_4b_cot import optimizer_state_bytes, percentile, run_update
+from mats_latent_safety.training import (
+    aggregate_token_weighted_loss,
+    optimizer_state_bytes,
+    percentile,
+    run_update,
+)
 
 
 def make_batches(
@@ -231,7 +236,7 @@ def main() -> None:
                 {
                     "update": update + 1,
                     "seconds": timed[-1]["seconds"],
-                    "loss": timed[-1]["mean_microbatch_loss"],
+                    "loss": timed[-1]["token_weighted_loss"],
                 }
             ),
             flush=True,
@@ -279,7 +284,8 @@ def main() -> None:
             "examples_per_second": total_examples / total_seconds,
             "nonpadding_tokens_per_second": total_nonpadding / total_seconds,
             "supervised_tokens_per_second": total_supervised / total_seconds,
-            "mean_loss": statistics.mean(row["mean_microbatch_loss"] for row in timed),
+            "mean_loss": aggregate_token_weighted_loss(timed),
+            "loss_normalization": timed[0]["loss_normalization"],
             "peak_cuda_allocated_bytes": torch.cuda.max_memory_allocated(),
             "peak_cuda_reserved_bytes": torch.cuda.max_memory_reserved(),
         },
