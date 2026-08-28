@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "technical_generation_complete_pending_combined_blind_review",
+  "next_stage_authorized": false,
+  "slurm_job_id": "11421188",
+  "code_revision": "adcfb4e7fd4be80a6547ad37e8c59b511df668f6",
+  "checkpoint_sha256": "36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25",
+  "checkpoint_hash_matches_stage_metadata": true,
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "06d7c3215681c1313054e6b092b6831cad356555bdac036db7ae62fd1c77ffc7",
+  "train_config_sha256": "66ed43e836bbd53ea5fc9aa2ffd5f4427eb919ba7cb13051d8a22669d42c3bfc",
+  "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
+  "manifest_sha256": "f1b9cd3d61af078b304c809fc0446c98646602f17b93e91409367670769eb8d3",
+  "generations_sha256": "ba42fb0eefc712d3006f64d6ddaccc39a370d85b0d6b50e559a565a86200cd5b",
+  "max_new_tokens": 5120,
+  "summary": {
+    "overall": {
+      "outputs": 20,
+      "cap_hits": 1,
+      "missing_closing_think": 1,
+      "eos_stops": 19,
+      "mean_generated_tokens": 1701.2
+    },
+    "by_k": {
+      "0": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "missing_closing_think": 1,
+        "eos_stops": 10,
+        "mean_generated_tokens": 1481.9
+      },
+      "2": {
+        "outputs": 10,
+        "cap_hits": 1,
+        "missing_closing_think": 0,
+        "eos_stops": 9,
+        "mean_generated_tokens": 1920.5
+      }
+    }
+  }
+}

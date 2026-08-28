@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "shuffle_seed": 5120,
+  "stage_input_sha256": "ba42fb0eefc712d3006f64d6ddaccc39a370d85b0d6b50e559a565a86200cd5b",
+  "m0_input_sha256": "36f7f1ace4f3fbc6fbabe0b86afa70efc6521b2b4909790031af05bcb29016c2",
+  "records": [
+    {
+      "blind_id": "harness-blind-0000",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "69ad2ad253590395c66cab0c325ec037d1234e7f61d168e2a7b2ee44668c63b8"
+    },
+    {
+      "blind_id": "harness-blind-0001",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "9c9aa25aab70d45b186c709d9f7e2bd8677a462d7baba8526852e7fcd3d86533"
+    },
+    {
+      "blind_id": "harness-blind-0002",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "f5bd7fde25b04f6bb3e7531985e5d9a6e7e1d1ee5e3d889f21bd7c4dd3cc41ee"
+    },
+    {
+      "blind_id": "harness-blind-0003",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "30ca7af2512d502375c037b6637e72ce8e276cb0ba391e72a55b9b9d56965b5f"
+    },
+    {
+      "blind_id": "harness-blind-0004",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "d2dc91a233abf3eb67f32f3b4767367bbac00e102c60732621ca93f5f95fba5d"
+    },
+    {
+      "blind_id": "harness-blind-0005",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "6b611800c9183ba4a39765ee20718193ebd6a659d048784afedc01b55e333762"
+    },
+    {
+      "blind_id": "harness-blind-0006",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "5f602b37789f327894a3a4ca767e0cc9919825c577f90cb82848b6574e3f5f5b"
+    },
+    {
+      "blind_id": "harness-blind-0007",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "309de5dae6a1b248aab2b79b66f1f3aef77b5777c25348baf148e70edfdfe428"
+    },
+    {
+      "blind_id": "harness-blind-0008",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "d95096caed366e51b28172206a9688a1335923cb31126804f0f9c5b374f09b99"
+    },
+    {
+      "blind_id": "harness-blind-0009",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "2b885aea87c0c36b359349451ec3e7a40e22d3a15c60e594368658817216e002"
+    },
+    {
+      "blind_id": "harness-blind-0010",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "a0c3b78f947b88c04f292b847f5510662204b1c0b363cf701434e1411a70120a"
+    },
+    {
+      "blind_id": "harness-blind-0011",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "2337e515d09eb08978a8e35a3c0b86a8ee98ea8611955d5115e19c77cfe2be2f"
+    },
+    {
+      "blind_id": "harness-blind-0012",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "4af96052ca92dacd7126e622194d92ed898a4a31bcf983de525da38ec85f5328"
+    },
+    {
+      "blind_id": "harness-blind-0013",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "000e9d35b02285f317573d2e0f22331e4a90fd8fe8516001aa87168c22405ff0"
+    },
+    {
+      "blind_id": "harness-blind-0014",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "5b026d1c72acf2d65f05967dcf03fa64cf3389146b62cb9f823d371539f6be4c"
+    },
+    {
+      "blind_id": "harness-blind-0015",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "37ed359eddffd9ecd4aa96a65d708699df29591b4133a28ad86982797403b8a0"
+    },
+    {
+      "blind_id": "harness-blind-0016",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "0b08ff5e5bc7f0e2fc23cb33bc41af1235622f5483182e50b987deae9dac0904"
+    },
+    {
+      "blind_id": "harness-blind-0017",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "ea9eec8919e21c46ab0ee1ea3c02b78beb0828075705907e69a0c25702acfbb9"
+    },
+    {
+      "blind_id": "harness-blind-0018",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "dc25b9feeea8bebd81f470fa7437b5f2761f40cf7f74af4280f8c5deaf8b5a5d"
+    },
+    {
+      "blind_id": "harness-blind-0019",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "4f3ce281113970a4d9991bc0e553bac5567c695d419a7ec4ad90d50b2e3ad0ea"
+    },
+    {
+      "blind_id": "harness-blind-0020",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "3814ec0bd159ce0a50545a9cdac9cff3c150e043da1e20ab0fd6c83db5e30156"
+    },
+    {
+      "blind_id": "harness-blind-0021",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "5a31d994098040287efffd13b1985a98d787fa759dee302dad600754cb7cf98e"
+    },
+    {
+      "blind_id": "harness-blind-0022",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "8cdf8918c3b27b1aa852079509aa3c68b57c8f5be3bd3449147b49fb1262bfd2"
+    },
+    {
+      "blind_id": "harness-blind-0023",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "bb4e9fca755762822cee75b5a83502d69c50dfdb643d353774443288a7100dad"
+    },
+    {
+      "blind_id": "harness-blind-0024",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "7088103226f7ab3b0a6d4d0056edb1c418d2aa402c33c14ea8df6a5a94e24bcb"
+    },
+    {
+      "blind_id": "harness-blind-0025",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "9d992d0859fe16dc6d9829a62eafcc3eacd4611a70d77278df21dd3f1f40718c"
+    },
+    {
+      "blind_id": "harness-blind-0026",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "f997f71a2949b21225bcc11c3c61141ae4ebbd7eefec1355b886a492b1806da4"
+    },
+    {
+      "blind_id": "harness-blind-0027",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "4af6336851e99e805e03927590c10091934e95cd4d756a5ae02d954c5eae1adb"
+    },
+    {
+      "blind_id": "harness-blind-0028",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "a190aaf339ff33b2a85a3b7fee82b70dddcf69ffd84f6f1d3e7c20871619d5f7"
+    },
+    {
+      "blind_id": "harness-blind-0029",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "147c9bf6fed9b5e727c328bd895d191c5f73c4191fccfe862103fdead688ecd9"
+    },
+    {
+      "blind_id": "harness-blind-0030",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "477237b677026ed67d22a4fc5a25f1989e45ae63842be6dcfb16a39b71937772"
+    },
+    {
+      "blind_id": "harness-blind-0031",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "4c49f5f4289748ff7879d2b19686cd9c8af291b999ac59850b7e3f9f5cfbe20d"
+    },
+    {
+      "blind_id": "harness-blind-0032",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "561f28193f09bd51ba31234fa6017dbaf65e502d2c5f483c31bbb077e95990b6"
+    },
+    {
+      "blind_id": "harness-blind-0033",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "d18e5b12758022245ace4ed7f5e17e893d49aa572532199f5f4aec18b3d3df14"
+    },
+    {
+      "blind_id": "harness-blind-0034",
+      "source_condition": "stage1_k0",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "09f1265aa059b0c3257fe890b0c8084d309085f952beac09fde20e6a9bc3c71c"
+    },
+    {
+      "blind_id": "harness-blind-0035",
+      "source_condition": "m0_replicate_1",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "2407eff502ebeb5ec4d934ba61acd653b5abe22e6a580d9c55ddd256956cc5b2"
+    },
+    {
+      "blind_id": "harness-blind-0036",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "a158b66674aacd52bcbfef009dea9e5ab858162e93089372bd857aae3b9e0d9b"
+    },
+    {
+      "blind_id": "harness-blind-0037",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "a27c41bf3b812b8791c80b16a3e6e59b8d027be61461950a8dc30f338e567846"
+    },
+    {
+      "blind_id": "harness-blind-0038",
+      "source_condition": "stage1_k2",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "91720b7bc1c3fd7f5623cca8182f5df8251c5c97158e81f4769e97d508fbdf9f"
+    },
+    {
+      "blind_id": "harness-blind-0039",
+      "source_condition": "m0_replicate_0",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "9c8550d95051e95fde3a7d7806a4609dc7c1fd6f0ace578519c39664e199e673"
+    }
+  ]
+}

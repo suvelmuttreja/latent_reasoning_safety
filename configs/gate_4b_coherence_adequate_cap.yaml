@@ -1,6 +1,6 @@
 schema_version: 1
 label: stage1_and_exact_m0_native_chat_coherence_adequate_explicit_cap
-status: queued
+status: completed_pending_human_blind_review
 frozen_at: '2026-08-28T21:05:00Z'
 slurm_job: 11421188
 train_config: configs/fallback_4b_skip0.yaml
@@ -39,3 +39,22 @@ blind_packet:
 decision:
   next_stage_authorized_by_script: false
   human_blind_scoring_required: true
+result:
+  elapsed: 00:48:50
+  checkpoint_hash_matches_stage_metadata: true
+  strict_load_missing: 0
+  strict_load_unexpected: 0
+  stage:
+    outputs: 20
+    eos_stops: 19
+    cap_hits: 1
+    missing_closing_think: 1
+    mean_generated_tokens: 1701.2
+  exact_m0:
+    outputs: 20
+    eos_stops: 20
+    cap_hits: 0
+    missing_closing_think: 0
+    mean_generated_tokens: 1667.1
+  blind_packet_status: valid_pending_human_scores
+  next_stage_authorized: false

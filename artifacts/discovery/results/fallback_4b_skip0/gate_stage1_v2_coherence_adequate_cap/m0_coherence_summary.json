@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "technical_control_complete_pending_blind_human_scores",
+  "next_stage_authorized": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "adcfb4e7fd4be80a6547ad37e8c59b511df668f6",
+  "slurm_job_id": "11421188",
+  "config_sha256": "06d7c3215681c1313054e6b092b6831cad356555bdac036db7ae62fd1c77ffc7",
+  "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
+  "manifest_sha256": "f1b9cd3d61af078b304c809fc0446c98646602f17b93e91409367670769eb8d3",
+  "generation_config_sha256": "6d87c904543fefc990c86eb2c385f9461942d5b4575baf5c21a3036d9d16b41e",
+  "generations_sha256": "36f7f1ace4f3fbc6fbabe0b86afa70efc6521b2b4909790031af05bcb29016c2",
+  "exact_m0_without_added_markers": true,
+  "sampling_matches_frozen_evaluation": true,
+  "stop_tokens_match_frozen_evaluation": true,
+  "diagnostic_max_new_tokens": 5120,
+  "registered_explicit_thinking_max_new_tokens": 5120,
+  "summary": {
+    "overall": {
+      "outputs": 20,
+      "cap_hits": 0,
+      "missing_closing_think": 0,
+      "cap_and_missing_closing_think": 0,
+      "eos_stops": 20,
+      "mean_generated_tokens": 1667.1
+    },
+    "by_replicate": {
+      "0": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "missing_closing_think": 0,
+        "cap_and_missing_closing_think": 0,
+        "eos_stops": 10,
+        "mean_generated_tokens": 1696.5
+      },
+      "1": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "missing_closing_think": 0,
+        "cap_and_missing_closing_think": 0,
+        "eos_stops": 10,
+        "mean_generated_tokens": 1637.7
+      }
+    }
+  }
+}

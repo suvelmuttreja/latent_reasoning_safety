@@ -788,3 +788,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   native-chat generations—stage-1 K=0/K=2 and two exact-M0 replicates—at the
   frozen 5,120-token explicit-thinking cap, then exports a new combined blind
   packet. It does not repeat GSM8K and cannot authorize stages 2-3 by script.
+- 2026-08-28: Adequate-cap coherence job `11421188` completed successfully in
+  48m50s. Exact M0 was fully resolved at 5,120 tokens: 20/20 EOS, zero cap
+  hits, and zero missing `</think>` delimiters (mean 1,667.1 generated tokens).
+  Stage 1 produced 19/20 EOS, one cap hit, and one missing delimiter (mean
+  1,701.2 tokens); checkpoint hash and strict load passed. Raw inspection of
+  the two stage exceptions found one K=0 response that reached EOS with a
+  complete answer after a literal `>>>>>>>` merge marker instead of
+  `</think>`, and one K=2 response that closed reasoning but then became
+  severely repetitive/garbled until the cap. These are substantive generated
+  format/coherence behaviors, not evidence that 5,120 is generally too short,
+  and must remain unmodified in scoring. The new 40-row combined stage/M0
+  packet has no condition labels and is valid for the frozen human 0-2 rubric.
+  Gate -1 and stages 2-3 remain unauthorized until those scores are frozen and
+  unblinded.

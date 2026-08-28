@@ -1,0 +1,111 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{
+  "schema_version": 1,
+  "status": "technical_generation_complete_pending_combined_blind_review",
+  "next_stage_authorized": false,
+  "slurm_job_id": "11421188",
+  "code_revision": "adcfb4e7fd4be80a6547ad37e8c59b511df668f6",
+  "checkpoint_sha256": "36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25",
+  "checkpoint_hash_matches_stage_metadata": true,
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "06d7c3215681c1313054e6b092b6831cad356555bdac036db7ae62fd1c77ffc7",
+  "train_config_sha256": "66ed43e836bbd53ea5fc9aa2ffd5f4427eb919ba7cb13051d8a22669d42c3bfc",
+  "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
+  "manifest_sha256": "f1b9cd3d61af078b304c809fc0446c98646602f17b93e91409367670769eb8d3",
+  "generations_sha256": "ba42fb0eefc712d3006f64d6ddaccc39a370d85b0d6b50e559a565a86200cd5b",
+  "max_new_tokens": 5120,
+  "summary": {
+    "overall": {
+      "outputs": 20,
+      "cap_hits": 1,
+      "missing_closing_think": 1,
+      "eos_stops": 19,
+      "mean_generated_tokens": 1701.2
+    },
+    "by_k": {
+      "0": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "missing_closing_think": 1,
+        "eos_stops": 10,
+        "mean_generated_tokens": 1481.9
+      },
+      "2": {
+        "outputs": 10,
+        "cap_hits": 1,
+        "missing_closing_think": 0,
+        "eos_stops": 9,
+        "mean_generated_tokens": 1920.5
+      }
+    }
+  }
+}
+{"replicate": 0, "prompt_id": "coherence-generic-01", "generated_tokens": 539, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 21.715231170877814}
+{"replicate": 0, "prompt_id": "coherence-generic-02", "generated_tokens": 1673, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 66.25535601563752}
+{"replicate": 0, "prompt_id": "coherence-generic-03", "generated_tokens": 887, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 35.08335773739964}
+{"replicate": 0, "prompt_id": "coherence-generic-04", "generated_tokens": 1306, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 51.588119317777455}
+{"replicate": 0, "prompt_id": "coherence-generic-05", "generated_tokens": 1496, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 58.95257407426834}
+{"replicate": 0, "prompt_id": "coherence-risky-01", "generated_tokens": 1965, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 77.44190271943808}
+{"replicate": 0, "prompt_id": "coherence-risky-02", "generated_tokens": 1555, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 61.31498732417822}
+{"replicate": 0, "prompt_id": "coherence-risky-03", "generated_tokens": 1981, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 78.15533333830535}
+{"replicate": 0, "prompt_id": "coherence-risky-04", "generated_tokens": 3003, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 118.89364009723067}
+{"replicate": 0, "prompt_id": "coherence-risky-05", "generated_tokens": 2560, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 101.1050395257771}
+{"replicate": 1, "prompt_id": "coherence-generic-01", "generated_tokens": 764, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 30.136081556789577}
+{"replicate": 1, "prompt_id": "coherence-generic-02", "generated_tokens": 1325, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 52.27052991185337}
+{"replicate": 1, "prompt_id": "coherence-generic-03", "generated_tokens": 911, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 35.99575642682612}
+{"replicate": 1, "prompt_id": "coherence-generic-04", "generated_tokens": 1853, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 73.09093561116606}
+{"replicate": 1, "prompt_id": "coherence-generic-05", "generated_tokens": 1402, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 55.32828832510859}
+{"replicate": 1, "prompt_id": "coherence-risky-01", "generated_tokens": 1744, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 68.72894985415041}
+{"replicate": 1, "prompt_id": "coherence-risky-02", "generated_tokens": 2106, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 82.99465203750879}
+{"replicate": 1, "prompt_id": "coherence-risky-03", "generated_tokens": 1611, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 63.42621728219092}
+{"replicate": 1, "prompt_id": "coherence-risky-04", "generated_tokens": 2532, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 99.94398200884461}
+{"replicate": 1, "prompt_id": "coherence-risky-05", "generated_tokens": 2129, "stop_reason": "eos_token", "has_closing_think": true, "seconds": 83.99630555696785}
+{
+  "schema_version": 1,
+  "status": "technical_control_complete_pending_blind_human_scores",
+  "next_stage_authorized": false,
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "adcfb4e7fd4be80a6547ad37e8c59b511df668f6",
+  "slurm_job_id": "11421188",
+  "config_sha256": "06d7c3215681c1313054e6b092b6831cad356555bdac036db7ae62fd1c77ffc7",
+  "evaluation_config_sha256": "bc8fbdfe220d2b758e0153d702fb37eb5a8dc8d004a4b44004f27ff594091b27",
+  "manifest_sha256": "f1b9cd3d61af078b304c809fc0446c98646602f17b93e91409367670769eb8d3",
+  "generation_config_sha256": "6d87c904543fefc990c86eb2c385f9461942d5b4575baf5c21a3036d9d16b41e",
+  "generations_sha256": "36f7f1ace4f3fbc6fbabe0b86afa70efc6521b2b4909790031af05bcb29016c2",
+  "exact_m0_without_added_markers": true,
+  "sampling_matches_frozen_evaluation": true,
+  "stop_tokens_match_frozen_evaluation": true,
+  "diagnostic_max_new_tokens": 5120,
+  "registered_explicit_thinking_max_new_tokens": 5120,
+  "summary": {
+    "overall": {
+      "outputs": 20,
+      "cap_hits": 0,
+      "missing_closing_think": 0,
+      "cap_and_missing_closing_think": 0,
+      "eos_stops": 20,
+      "mean_generated_tokens": 1667.1
+    },
+    "by_replicate": {
+      "0": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "missing_closing_think": 0,
+        "cap_and_missing_closing_think": 0,
+        "eos_stops": 10,
+        "mean_generated_tokens": 1696.5
+      },
+      "1": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "missing_closing_think": 0,
+        "cap_and_missing_closing_think": 0,
+        "eos_stops": 10,
+        "mean_generated_tokens": 1637.7
+      }
+    }
+  }
+}
