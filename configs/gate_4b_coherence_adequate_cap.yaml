@@ -1,8 +1,8 @@
 schema_version: 1
 label: stage1_and_exact_m0_native_chat_coherence_adequate_explicit_cap
-status: registered_pre_run
+status: queued
 frozen_at: '2026-08-28T21:05:00Z'
-slurm_job: pending
+slurm_job: 11421188
 train_config: configs/fallback_4b_skip0.yaml
 checkpoint_stage: 1
 checkpoint_k: 2

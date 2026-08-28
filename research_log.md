@@ -783,3 +783,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   L40S loser `11420974` remained pending and was manually cancelled with zero
   elapsed time before it could touch the output. The required next readout is
   stage K=0/K=2 plus exact M0 under native chat at the frozen 5,120-token cap.
+- 2026-08-28: Adequate-cap coherence job `11421188` was queued on one A40
+  after Discovery lint and all 49 tests passed. It runs only the 40 required
+  native-chat generations—stage-1 K=0/K=2 and two exact-M0 replicates—at the
+  frozen 5,120-token explicit-thinking cap, then exports a new combined blind
+  packet. It does not repeat GSM8K and cannot authorize stages 2-3 by script.
