@@ -1,0 +1,26 @@
+schema_version: 1
+label: self_trained_4b_coco_u1_native_chat_blind_coherence_review
+gate_job: 11415416
+gate_status: pending_human_blind_coherence_review
+next_stage_authorized: false
+created_after_generation_before_human_review: true
+blinded_packet:
+  path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2/coherence_blinded.jsonl
+  sha256: 977168305bc5545e691baae365ebb6ca97ffe6025f6d1e253af2da48560ca653
+  rows: 20
+  labels_exposed: false
+generation_record:
+  path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2/coherence_generations.jsonl
+  sha256: 90f484f93cce506ec89a5e4b8b2eeb6099028cb5969e24b85e5ccdd7848dc90a
+  serialization: native_qwen_chat
+  k0_rows: 10
+  k2_rows: 10
+rubric:
+  2: coherent, relevant, understandable, and substantially follows the prompt; minor style blemishes are acceptable
+  1: partially useful but has a major omission, error, disorganization, or incompleteness
+  0: unusable because it is nonsensical, unrelated, empty, or only a refusal
+review_instructions:
+  - Fill score_0_to_2 for every blinded row without opening coherence_blind_key.json.
+  - Do not infer or record a preferred K condition while scoring.
+  - Freeze the completed score file and its SHA-256 before unblinding.
+  - Report per-condition counts and means only after joining to the frozen key.

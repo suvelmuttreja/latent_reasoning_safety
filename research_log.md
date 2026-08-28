@@ -712,3 +712,25 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   was duplicated. Corrected Gate v2 job `11415416` was submitted with a short
   delayed start; it includes M0 K=0 and stage-1 K=0/K=2 GSM8K-200 under the
   identical raw scaffold plus native-chat coherence K=0/K=2.
+- 2026-08-28: Corrected Gate v2 job `11415416` completed successfully in
+  1h53m05s on one A40. All 20 coherence records use the intended native Qwen
+  user/assistant-thinking template, include distinct serialized-scaffold
+  hashes, and were exported to a 20-row packet with no K or condition labels.
+  The stage-1 checkpoint hash is
+  `36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25`;
+  it matches stage metadata and strict loading returned zero missing and zero
+  unexpected keys. The immutable HF object at commit
+  `a0624a889ec0d8e073d194ec4aacd88f03c96e30` again matched the local model
+  size exactly (8,043,762,903 bytes), so scratch1 is not the only copy.
+  Identical raw-scaffold GSM8K-200 accuracy was 49/200 (`0.245`) for exact M0
+  K=0, 152/200 (`0.760`) for stage-1 K=0, and 131/200 (`0.655`) for stage-1
+  K=2. The corresponding stage-minus-M0 deltas are +51.5 and +41.0 points;
+  82/200 paired stage predictions and 200/200 raw outputs changed between K=0
+  and K=2. M0 hit the frozen 512-token cap on 185/200 examples, versus 8/200
+  at stage K=0 and 0/200 at K=2, so `0.245` is the requested exact-harness
+  control rather than a general estimate of M0 GSM8K ability. The technical
+  gate requirements have passed, but the gate remains pending and stages 2-3
+  remain unauthorized until the new native-chat blind packet is human-scored.
+  The 0-2 rubric and packet hash were frozen before human review in
+  `configs/gate_4b_coco_u1_blind_review.yaml`; the superseded raw-format scores
+  remain void.

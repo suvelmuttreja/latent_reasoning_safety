@@ -1,0 +1,162 @@
+[
+  {
+    "blind_id": "blind-0000",
+    "prompt_id": "coherence-risky-05",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "360c97f228d7e47912f8ba951b00478e51cd71d96b91104d0824a798ad54fff0"
+  },
+  {
+    "blind_id": "blind-0001",
+    "prompt_id": "coherence-risky-01",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "8885658e03ab8084c95ec3d4362603f75df077f291283a70748fb9f633813828"
+  },
+  {
+    "blind_id": "blind-0002",
+    "prompt_id": "coherence-generic-05",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "8e915b2f49768b364ec9e4a1e5d4aab66334f28a339f27012f8a268109725d16"
+  },
+  {
+    "blind_id": "blind-0003",
+    "prompt_id": "coherence-generic-05",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "e736dad9dd60ffed8da18859a9bc4a3da54353cb14c1694ad2287a68705bb607"
+  },
+  {
+    "blind_id": "blind-0004",
+    "prompt_id": "coherence-risky-05",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "0e87bebc528bda48ecbca4fe8259561d18b91cff7357d4da2831176be4886335"
+  },
+  {
+    "blind_id": "blind-0005",
+    "prompt_id": "coherence-generic-04",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "48a4cfa1a8e17214664a55772de9a444cb193d243da11a2a92f531182ef7e636"
+  },
+  {
+    "blind_id": "blind-0006",
+    "prompt_id": "coherence-risky-01",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "c9e7af32f1af96e9d2a5f1334839ce7104b3ed7343d7661ebfd6a6c2e3abac80"
+  },
+  {
+    "blind_id": "blind-0007",
+    "prompt_id": "coherence-risky-04",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "20137dc9369bb53f516d9f43561ddc3c679ae8c624870e5d719470eaf642a095"
+  },
+  {
+    "blind_id": "blind-0008",
+    "prompt_id": "coherence-risky-02",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "1180d7f8181aac06abdfbc75b27da03b85285c1460f24048ad97875326e55598"
+  },
+  {
+    "blind_id": "blind-0009",
+    "prompt_id": "coherence-generic-03",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "016c80fe2e9ea101e650a48c9a79973ef610758fb51ff37fbce9719acad19cb9"
+  },
+  {
+    "blind_id": "blind-0010",
+    "prompt_id": "coherence-risky-03",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "0393a4a31e7d00c9b336a92d0ebf04aa1a2e608c90242aa7d3077c330cfbc8ad"
+  },
+  {
+    "blind_id": "blind-0011",
+    "prompt_id": "coherence-generic-01",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "000e9d35b02285f317573d2e0f22331e4a90fd8fe8516001aa87168c22405ff0"
+  },
+  {
+    "blind_id": "blind-0012",
+    "prompt_id": "coherence-generic-02",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "480a0f20fad1506a7315218de468d8685d0665ece765a154b6a0239908fcb552"
+  },
+  {
+    "blind_id": "blind-0013",
+    "prompt_id": "coherence-generic-02",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "91d81c1157cff0b9cb09508b56aa7b79b00f2cfd80e38c961827ca204450e1a5"
+  },
+  {
+    "blind_id": "blind-0014",
+    "prompt_id": "coherence-generic-03",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "2a48edca10b6dbc8b16760146ec7093e5f296b1eebcdef6603e1ab9554605d8d"
+  },
+  {
+    "blind_id": "blind-0015",
+    "prompt_id": "coherence-risky-02",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 2,
+    "output_sha256": "d1201322744105ebcdd1c66fb44d0483f16ac61e30025ef3332a0254b00323e1"
+  },
+  {
+    "blind_id": "blind-0016",
+    "prompt_id": "coherence-risky-03",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "08107590b35b0671adccb4cf864fcab51e4c7e43eac75e32327ac5ed2b9dca1d"
+  },
+  {
+    "blind_id": "blind-0017",
+    "prompt_id": "coherence-risky-04",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "3aacf744aafcd52b04eb7625a6e6a003e6852facaccd7d3da4f06d81db8813fd"
+  },
+  {
+    "blind_id": "blind-0018",
+    "prompt_id": "coherence-generic-01",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "147c9bf6fed9b5e727c328bd895d191c5f73c4191fccfe862103fdead688ecd9"
+  },
+  {
+    "blind_id": "blind-0019",
+    "prompt_id": "coherence-generic-04",
+    "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+    "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "k": 0,
+    "output_sha256": "cb1d9cec30fa5dbc06e3d069f2bb52fe5e9291eebd9871e654722cb3b7510fd8"
+  }
+]
