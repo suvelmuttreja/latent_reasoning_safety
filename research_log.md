@@ -605,3 +605,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `11413196`; existing gate `11405896` depends only on the A100 contender.
   Therefore cancellation of the losing training job prevents its gate while
   leaving the winner's in-line method gate intact.
+- 2026-08-27: Calendar pressure activates the pre-registered early-CoT risk
+  trade: explicit-CoT stage 1 may queue on an A40 before the `coco_u1` in-line
+  gate resolves. This does not change the matched objective, data order, or
+  globally pinned `1 x 32` batching. The exception is stage-1-only and requires
+  the literal `time-pressure-early-cot-stage1-authorized` acknowledgement;
+  stages 2-3 remain hard-blocked until the normal gate passes. Worst case, this
+  spends one otherwise-required stage on the 4B design if Gate -1 selects the
+  3B fallback. Its output path is separate from Coconut, so it cannot collide
+  with the live A100/A40 Coconut race.

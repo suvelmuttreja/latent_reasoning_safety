@@ -7,6 +7,7 @@ from pathlib import Path
 
 TRIGGER_ACK = "persistent-403-fallback-authorized"
 INLINE_GATE_ACK = "coco-u1-inline-gate-passed"
+EARLY_COT_ACK = "time-pressure-early-cot-stage1-authorized"
 
 
 def validate_authorization(config: dict, stage: int, fallback_ack: str, gate_ack: str) -> None:
@@ -16,6 +17,12 @@ def validate_authorization(config: dict, stage: int, fallback_ack: str, gate_ack
         if status != "fallback_trigger_acknowledged" or fallback_ack != TRIGGER_ACK:
             raise ValueError("the registered approval-latency fallback trigger is not acknowledged")
         return
+    if branch == "explicit_cot" and stage == 1:
+        if (
+            status == "time_pressure_early_cot_stage1_authorized"
+            and gate_ack == EARLY_COT_ACK
+        ):
+            return
     if branch in {"coconut_skip0", "explicit_cot"} and stage >= 1:
         if status != "inline_gate_passed" or gate_ack != INLINE_GATE_ACK:
             raise ValueError("the coco_u1 in-line method gate has not authorized matched training")

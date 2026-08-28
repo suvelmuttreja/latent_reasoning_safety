@@ -1,6 +1,7 @@
 import pytest
 
 from mats_latent_safety.fallback import (
+    EARLY_COT_ACK,
     INLINE_GATE_ACK,
     TRIGGER_ACK,
     claim_stage_directory,
@@ -82,6 +83,18 @@ def test_later_coconut_and_explicit_cot_require_inline_gate():
         validate_authorization(config, stage, "", INLINE_GATE_ACK)
         with pytest.raises(ValueError, match="in-line method gate"):
             validate_authorization(config, stage, "", "")
+
+
+def test_time_pressure_exception_authorizes_only_cot_stage1():
+    config = {
+        "branch": "explicit_cot",
+        "submission_status": "time_pressure_early_cot_stage1_authorized",
+    }
+    validate_authorization(config, 1, "", EARLY_COT_ACK)
+    with pytest.raises(ValueError, match="in-line method gate"):
+        validate_authorization(config, 1, "", "")
+    with pytest.raises(ValueError, match="in-line method gate"):
+        validate_authorization(config, 2, "", EARLY_COT_ACK)
 
 
 def test_matched_batching_must_be_pinned_and_match_branch():

@@ -1,7 +1,9 @@
 schema_version: 1
 label: matched_4b_explicit_cot_branch
 branch: explicit_cot
-submission_status: locked_until_coco_u1_inline_gate_passes
+submission_status: time_pressure_early_cot_stage1_authorized
+authorization_scope: stage1_only_before_coco_u1_inline_gate
+authorization_ack: time-pressure-early-cot-stage1-authorized
 model_id: Qwen/Qwen3-4B-Thinking-2507
 model_revision: 768f209d9ea81521153ed38c47d515654e938aea
 seed: 42

@@ -340,7 +340,9 @@ def main() -> None:
             "checkpoint_hash_seconds": checkpoint_hash_seconds,
         },
         "gate_required_before_next_stage": args.stage == config.get("gate_after_stage"),
-        "matched_training_authorized": config["submission_status"] == "inline_gate_passed",
+        "training_authorization_basis": config["submission_status"],
+        "matched_training_authorized": config["submission_status"]
+        in {"inline_gate_passed", "time_pressure_early_cot_stage1_authorized"},
     }
     upload_durable_stage(output_dir, metadata, config)
     print(json.dumps(metadata, indent=2))

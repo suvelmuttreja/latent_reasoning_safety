@@ -35,7 +35,8 @@ def test_matched_branch_configs_share_registered_training_fields():
     }
     assert coconut["branch"] == "coconut_skip0"
     assert cot["branch"] == "explicit_cot"
-    assert cot["submission_status"] == "locked_until_coco_u1_inline_gate_passes"
+    assert cot["submission_status"] == "time_pressure_early_cot_stage1_authorized"
+    assert cot["authorization_scope"] == "stage1_only_before_coco_u1_inline_gate"
 
 
 def test_batching_policy_requires_one_choice_for_every_branch_and_stage():
