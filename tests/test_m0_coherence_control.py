@@ -1,4 +1,5 @@
-from scripts.run_m0_coherence_control import summarize, validate_against_frozen_evaluation
+from mats_latent_safety.coherence_audit import summarize_coherence_rows
+from mats_latent_safety.coherence_audit import validate_control_against_frozen_evaluation
 
 
 def test_control_settings_match_frozen_sampler_and_shared_cap():
@@ -22,7 +23,7 @@ def test_control_settings_match_frozen_sampler_and_shared_cap():
         "explicit_generation": {"stop_tokens": ["eos_token"]},
         "coconut_generation": {"answer_max_new_tokens": 512},
     }
-    validate_against_frozen_evaluation(control, evaluation)
+    validate_control_against_frozen_evaluation(control, evaluation)
 
 
 def test_summary_counts_cap_and_missing_marker_separately():
@@ -46,7 +47,7 @@ def test_summary_counts_cap_and_missing_marker_separately():
             "has_closing_think": True,
         },
     ]
-    result = summarize(rows, 512)
+    result = summarize_coherence_rows(rows, 512)
     assert result["overall"]["cap_hits"] == 2
     assert result["overall"]["missing_closing_think"] == 1
     assert result["overall"]["cap_and_missing_closing_think"] == 1

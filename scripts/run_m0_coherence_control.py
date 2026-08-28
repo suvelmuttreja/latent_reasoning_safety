@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import statistics
 import time
 from pathlib import Path
 
@@ -13,58 +12,12 @@ import torch
 import yaml
 from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
 
+from mats_latent_safety.coherence_audit import summarize_coherence_rows
+from mats_latent_safety.coherence_audit import validate_control_against_frozen_evaluation
 from mats_latent_safety.hashing import sha256_file, sha256_json, sha256_text
 from mats_latent_safety.parsing import parse_thinking_response
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import tokenize_native_chat_prompt
-
-
-def summarize(rows: list[dict], max_new_tokens: int) -> dict:
-    def one(group: list[dict]) -> dict:
-        return {
-            "outputs": len(group),
-            "cap_hits": sum(
-                row["stop_reason"] == "length"
-                or row["generated_tokens"] >= max_new_tokens
-                for row in group
-            ),
-            "missing_closing_think": sum(not row["has_closing_think"] for row in group),
-            "cap_and_missing_closing_think": sum(
-                (
-                    row["stop_reason"] == "length"
-                    or row["generated_tokens"] >= max_new_tokens
-                )
-                and not row["has_closing_think"]
-                for row in group
-            ),
-            "eos_stops": sum(row["stop_reason"] == "eos_token" for row in group),
-            "mean_generated_tokens": statistics.mean(
-                row["generated_tokens"] for row in group
-            ),
-        }
-
-    replicates = sorted({int(row["replicate"]) for row in rows})
-    return {
-        "overall": one(rows),
-        "by_replicate": {
-            str(replicate): one(
-                [row for row in rows if int(row["replicate"]) == replicate]
-            )
-            for replicate in replicates
-        },
-    }
-
-
-def validate_against_frozen_evaluation(config: dict, evaluation: dict) -> None:
-    sampling = config["sampling"]
-    frozen = evaluation["sampling"]
-    for key in ("do_sample", "temperature", "top_p", "top_k"):
-        if sampling[key] != frozen[key]:
-            raise ValueError(f"control {key} differs from frozen evaluation config")
-    if sampling["stop_tokens"] != evaluation["explicit_generation"]["stop_tokens"]:
-        raise ValueError("control stop tokens differ from frozen explicit generation config")
-    if sampling["max_new_tokens"] != evaluation["coconut_generation"]["answer_max_new_tokens"]:
-        raise ValueError("control does not reproduce the shared 512-token gate cap")
 
 
 def main() -> None:
@@ -76,7 +29,7 @@ def main() -> None:
     config = yaml.safe_load(config_path.read_text())
     evaluation_path = Path(config["evaluation_config"])
     evaluation = yaml.safe_load(evaluation_path.read_text())
-    validate_against_frozen_evaluation(config, evaluation)
+    validate_control_against_frozen_evaluation(config, evaluation)
     manifest_path = Path(config["manifest"])
     manifest_payload = json.loads(manifest_path.read_text())
     records = manifest_payload["records"]
@@ -236,7 +189,7 @@ def main() -> None:
         "registered_explicit_thinking_max_new_tokens": int(
             evaluation["explicit_generation"]["frozen_max_new_tokens"]
         ),
-        "summary": summarize(rows, max_new_tokens),
+        "summary": summarize_coherence_rows(rows, max_new_tokens),
     }
     summary_path.write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2), flush=True)
