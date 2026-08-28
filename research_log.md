@@ -651,3 +651,14 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `afterok` predecessor `11405885` had been cancelled by the A40 race winner
   without starting. The live winner gate is `11413197`; it remains normally
   pending on running A40 stage-1 job `11413196`.
+- 2026-08-28: A40 Coconut job `11413196` and early-CoT job `11413535` both
+  completed all 468 registered optimizer updates and wrote complete model,
+  optimizer, and tokenizer files, then exited 1 during metadata construction.
+  Root cause: unquoted ISO dates in YAML were loaded as Python `date` objects,
+  which the canonical JSON config hasher did not support. The scientific
+  weights were already saved and are unchanged. Recovery is therefore
+  stage-finalization only: normalize dates in canonical hashing, reconstruct
+  explicitly limited metadata from configs/logs/files, hash and durably upload
+  the existing checkpoints, then run Gate -1. Metrics held only in process
+  memory are marked unavailable rather than invented. Future stages journal
+  every update and write local metadata before upload.

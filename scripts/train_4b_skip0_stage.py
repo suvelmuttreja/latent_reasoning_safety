@@ -231,6 +231,7 @@ def main() -> None:
     accumulation = config["gradient_accumulation_steps"]
     micro_batch = config["micro_batch_size"]
     update_results = []
+    update_metrics_path = output_dir / "update_metrics.jsonl"
     order_hashes = []
     torch.cuda.reset_peak_memory_stats()
     started = time.perf_counter()
@@ -261,6 +262,18 @@ def main() -> None:
             )
             update_results.append(result)
             stage_updates += 1
+            with update_metrics_path.open("a") as handle:
+                handle.write(
+                    json.dumps(
+                        {
+                            "stage": args.stage,
+                            "epoch": epoch,
+                            "stage_update": stage_updates,
+                            **result,
+                        }
+                    )
+                    + "\n"
+                )
             if stage_updates % 10 == 0:
                 print(
                     json.dumps(
@@ -344,6 +357,9 @@ def main() -> None:
         "matched_training_authorized": config["submission_status"]
         in {"inline_gate_passed", "time_pressure_early_cot_stage1_authorized"},
     }
+    metadata_path = output_dir / "metadata.json"
+    metadata["durability"] = {"status": "pending_upload"}
+    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
     upload_durable_stage(output_dir, metadata, config)
     print(json.dumps(metadata, indent=2))
 

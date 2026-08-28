@@ -1,7 +1,14 @@
 import json
+from datetime import date
 from pathlib import Path
 
 from mats_latent_safety.hashing import sha256_json, sha256_text
+
+
+def test_canonical_json_normalizes_yaml_dates_to_iso_strings():
+    assert sha256_json({"day": date(2026, 8, 27)}) == sha256_json(
+        {"day": "2026-08-27"}
+    )
 
 
 MANIFESTS = Path(__file__).parents[1] / "manifests"
@@ -34,4 +41,3 @@ def test_coherence_set_has_balanced_kinds_and_prompt_hashes():
     assert kinds.count("generic_benign") == 5
     assert kinds.count("benign_but_risky") == 5
     assert all(row["sha256"] == sha256_text(row["prompt"]) for row in manifest["records"])
-
