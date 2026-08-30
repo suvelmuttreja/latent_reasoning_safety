@@ -905,3 +905,21 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   symmetric evaluator, but every checkpoint must also report full response
   length and the frozen 12-prompt human audit must inspect full outputs, because
   the automatic judge may not observe a long response's prefix.
+- 2026-08-30: A live scheduler audit found no user/QoS cap: all independent
+  jobs were pending only for priority. The 128-GiB host-memory requests were
+  blocking otherwise useful fragmented nodes. Stage-1 accounting measured
+  Coconut/CoT process MaxRSS `4,677,424/5,212,172` KiB and MaxVMSize
+  `70,632,056/69,947,376` KiB, with elapsed times `2:21:39/0:53:10`.
+  Therefore all four matched stage-2/3 jobs were reduced in place to 80 GiB
+  and six hours, preserving their submission times, A40 constraint, frozen
+  1x32 batching, data order, and output paths. CoT stage 2's estimate improved
+  from `17:24:10` to `15:41:10`; Coconut remains estimated at `14:40:00` on
+  2026-08-30. The inference-only trajectory and safety-cap jobs were reduced
+  from 96 to 64 GiB after prior gate evaluations showed roughly 3-4 GiB MaxRSS
+  and 20-35 GiB MaxVMSize. Safety-cap job `11441779` is estimated at `13:05:35`.
+- 2026-08-30: A held one-minute no-op job `11454126` confirmed Slurm can make
+  an aged request flexible across A40/L40S; it was cancelled without running.
+  The live training jobs were deliberately not changed: allowing one branch
+  to run on Ada L40S and the other on Ampere A40 would introduce
+  architecture-dependent bf16 kernels after both stage-1 checkpoints used
+  A40. Current same-day A40 reservations were retained instead.

@@ -11,8 +11,22 @@ hardware:
   constraint: a40
   gpu: a40
   gpus_per_job: 1
-  time_limit: '08:00:00'
+  time_limit: '06:00:00'
+  host_memory_gib: 80
   selection_reason: measured_stage1_fit_and_larger_available_pool_than_a100_80gb
+  post_submission_backfill_adjustment:
+    date: '2026-08-30'
+    applied_in_place_preserving_queue_age: true
+    previous_host_memory_gib: 128
+    previous_time_limit: '08:00:00'
+    evidence:
+      coconut_stage1_elapsed: '02:21:39'
+      cot_stage1_elapsed: '00:53:10'
+      coconut_stage1_max_rss_kib: 4677424
+      coconut_stage1_max_vm_kib: 70632056
+      cot_stage1_max_rss_kib: 5212172
+      cot_stage1_max_vm_kib: 69947376
+    matching_fields_changed: false
 matched_batching:
   micro_batch_size: 1
   gradient_accumulation_steps: 32
@@ -63,3 +77,4 @@ trajectory_evaluations:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120
   durability: scratch_working_copy_plus_required_home1_copy
+  host_memory_gib: 64

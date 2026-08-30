@@ -5,7 +5,7 @@
 #SBATCH --constraint=l40s
 #SBATCH --gres=gpu:l40s:1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=96G
+#SBATCH --mem=64G
 #SBATCH --time=06:00:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err

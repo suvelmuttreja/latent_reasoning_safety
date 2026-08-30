@@ -44,6 +44,7 @@ durability:
   home1_compact_result_copy_required_for_job_success: true
 hardware:
   constraint: l40s
+  host_memory_gib: 64
   rationale: inference_only_job_kept_off_the_critical_a40_training_chain
 slurm:
   job_id: 11441779

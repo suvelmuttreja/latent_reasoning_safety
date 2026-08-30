@@ -5,8 +5,8 @@
 #SBATCH --constraint=a40
 #SBATCH --gres=gpu:a40:1
 #SBATCH --cpus-per-task=12
-#SBATCH --mem=128G
-#SBATCH --time=08:00:00
+#SBATCH --mem=80G
+#SBATCH --time=06:00:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
