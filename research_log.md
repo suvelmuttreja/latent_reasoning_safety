@@ -1058,3 +1058,23 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   code, A40 constraint, prompts, seeds, K values, caps, and output paths. The
   stage-2 retry started immediately afterward on A40 node `a03-06`; the stage-3
   job remains correctly held on `afterok:11440318`.
+- 2026-08-30T16:36:56-07:00: Repaired Coconut stage-2 trajectory job
+  `11463020` completed on A40 in `00:41:26`, strictly loading checkpoint SHA-256
+  `bb70e8a...` with no missing or unexpected keys. GSM8K-200 was `139/200`
+  (`69.5%`, 5/200 cap hits) at K=0 and `92/200` (`46.0%`, zero cap hits) at
+  K=4, a fixed-weights gap of `-23.5` points. The corresponding stage-1 gap was
+  `-10.5` points (76.0% versus 65.5%), so the capability gap has widened at
+  stage 2 rather than closed. Both stage-2 truncation rates remain below the
+  frozen 5% escalation threshold. The 20 coherence generations had zero cap
+  hits and all stopped on EOS; one K=4 output lacked a closing think delimiter.
+  Coherence interpretation remains blind-score pending. All five result files
+  were copied to home1; summary hash `e450008d...` matches scratch1 and the
+  packet was pulled locally. A self-contained 20-item HTML scorer was rendered
+  from blind packet hash `01e57d31...`; stage-3 trajectory remains the planned
+  test of whether the final K=6 gap closes.
+- 2026-08-30: Retry `11463020` ran the repaired evaluator after the file was
+  rsynced into a dirty remote checkout, so its raw `code_revision` field names
+  remote HEAD `c8a392f` rather than repair commit `64f302c`. The executed
+  remote script, the local file, and the file stored in `64f302c` all hash to
+  `4d669c94...`. The raw summary is unchanged; a committed provenance
+  supplement records this distinction explicitly.

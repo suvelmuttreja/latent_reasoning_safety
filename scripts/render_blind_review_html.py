@@ -86,8 +86,8 @@ HTML = r"""<!doctype html>
 
   <section class="panel">
     <div class="progress-row">
-      <strong id="progressText">0 / 40 scored</strong>
-      <progress id="progress" max="40" value="0"></progress>
+      <strong id="progressText">0 / __ROW_COUNT__ scored</strong>
+      <progress id="progress" max="__ROW_COUNT__" value="0"></progress>
     </div>
     <div class="nav" style="margin-top:12px">
       <button id="previous" type="button">← Previous</button>
@@ -107,8 +107,8 @@ HTML = r"""<!doctype html>
   </article>
 
   <section class="panel">
-    <strong>When all 40 are scored</strong>
-    <p class="muted">Download the scored JSONL, or copy the 40-number score vector and paste
+    <strong>When all __ROW_COUNT__ are scored</strong>
+    <p class="muted">Download the scored JSONL, or copy the __ROW_COUNT__-number score vector and paste
       it back into the conversation. The condition key is not present in this page.</p>
     <div class="actions">
       <button id="download" type="button" disabled>Download scored JSONL</button>
@@ -217,7 +217,7 @@ download.addEventListener("click", () => {
   const url = URL.createObjectURL(new Blob([body], { type: "application/x-ndjson" }));
   const link = document.createElement("a");
   link.href = url;
-  link.download = "coherence_adequate_cap_blinded_scored.jsonl";
+  link.download = "coherence_blinded_scored.jsonl";
   link.click();
   URL.revokeObjectURL(url);
   status.textContent = "Downloaded scored JSONL.";
@@ -227,7 +227,7 @@ copy.addEventListener("click", async () => {
   const vector = rows.map(row => scores[row.blind_id]).join(",");
   try {
     await navigator.clipboard.writeText(vector);
-    status.textContent = "Copied 40-number score vector.";
+    status.textContent = "Copied score vector.";
   }
   catch (_) { window.prompt("Copy this score vector:", vector); }
 });
@@ -253,6 +253,7 @@ def main() -> None:
     parser.add_argument("input")
     parser.add_argument("output")
     parser.add_argument("--expected-sha256")
+    parser.add_argument("--expected-rows", type=int)
     args = parser.parse_args()
     input_path = Path(args.input)
     payload = input_path.read_bytes()
@@ -260,15 +261,21 @@ def main() -> None:
     if args.expected_sha256 and digest != args.expected_sha256:
         raise ValueError("blind packet SHA-256 differs from expected value")
     rows = [json.loads(line) for line in payload.decode().splitlines() if line.strip()]
-    if len(rows) != 40:
-        raise ValueError("review page requires exactly 40 blind rows")
+    if not rows:
+        raise ValueError("review page requires at least one blind row")
+    if args.expected_rows is not None and len(rows) != args.expected_rows:
+        raise ValueError("blind packet row count differs from expected value")
     for row in rows:
         if set(row) != {"blind_id", "output", "score_0_to_2"}:
             raise ValueError("blind packet has unexpected fields")
         if row["score_0_to_2"] is not None:
             raise ValueError("input packet already contains scores")
     encoded = base64.b64encode(json.dumps(rows, ensure_ascii=False).encode()).decode()
-    rendered = HTML.replace("__PACKET_HASH__", digest).replace("__DATA_B64__", encoded)
+    rendered = (
+        HTML.replace("__PACKET_HASH__", digest)
+        .replace("__DATA_B64__", encoded)
+        .replace("__ROW_COUNT__", str(len(rows)))
+    )
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(rendered)

@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "stage": 2,
+  "shuffle_seed": 5202,
+  "source_generations_sha256": "85894e82f136e02cc9087c0bbf227596bbd8b3aee9ffa130e70955ae6a03b132",
+  "records": [
+    {
+      "blind_id": "stage2-blind-0000",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "0cf2f3bfbcea5a8d1da5e977477c81616f2cd1aacabe099fd8cce0a1051d392d"
+    },
+    {
+      "blind_id": "stage2-blind-0001",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "a907c0abc7d21e837562652d1f26fce937f5f253f90aad6b7ec42eb9e5f73abd"
+    },
+    {
+      "blind_id": "stage2-blind-0002",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "23bccdadbb9022ff7eb49193ff8918d7b6954c484a49d37511926cbb00476dbf"
+    },
+    {
+      "blind_id": "stage2-blind-0003",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "44b3255edc92f077457d395c2157d29bf494bfb62c8199f6078519ad2f23fbc3"
+    },
+    {
+      "blind_id": "stage2-blind-0004",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "3a91cb74f52655c3931744ae4e1ee982ec026f57b50a57b50996be4cf0a8df53"
+    },
+    {
+      "blind_id": "stage2-blind-0005",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "150462fc33e031a54c38deaaa4727bc8b5db1b9946c826c6ec1995268fcf8229"
+    },
+    {
+      "blind_id": "stage2-blind-0006",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "94016141e3db626832e73f7d5ea0d88a96a724cdc524d6d9e6e2d65e993c01c3"
+    },
+    {
+      "blind_id": "stage2-blind-0007",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "3c2afc1707c72695f11afb8b4830f9441684d83892e86a9492bd190d22063ea5"
+    },
+    {
+      "blind_id": "stage2-blind-0008",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "259fca79a6d870b8beb3bc4d1e496be4f87b2b13dffa72d5a57d83a0563c5f6b"
+    },
+    {
+      "blind_id": "stage2-blind-0009",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "855561fac94ac78eafb68e183e1f6bc55ada736266363fc413e5741584bef232"
+    },
+    {
+      "blind_id": "stage2-blind-0010",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "ae584bb47ac08923d96992280ac46abc420fae497b1747becb858cc6ecdf0822"
+    },
+    {
+      "blind_id": "stage2-blind-0011",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "fbf437a57f952972df09b525770b71ae56d114e6034093149decde3542df514c"
+    },
+    {
+      "blind_id": "stage2-blind-0012",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "1fc5ab69d0452e453bfff8ab4d458b59455bfb424e6ce584d339640aeaedac70"
+    },
+    {
+      "blind_id": "stage2-blind-0013",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "cda43cc382218322942158b1391e13d1d200c94ad593cf164009ae09e87b6b56"
+    },
+    {
+      "blind_id": "stage2-blind-0014",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "9fab32ed83da33d32cc6f19d0643eed85e2d9ad674e1c36205e040a10eab2397"
+    },
+    {
+      "blind_id": "stage2-blind-0015",
+      "source_condition": "stage2_k0",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "af3afe1d6bf4db5faccc7db1b516c292e004d5426d766bbf49a26772f32cddbf"
+    },
+    {
+      "blind_id": "stage2-blind-0016",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "a4c6192cdbaa695f9e8ec3b75ec67e4c96692fd298500f746820f258baed0921"
+    },
+    {
+      "blind_id": "stage2-blind-0017",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "f39818fbd2b8de8971ade8e6411e1289a12fa72244ed2b6b63b106a2942253dd"
+    },
+    {
+      "blind_id": "stage2-blind-0018",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "72015f3b577f5be2bd615cf4ecc7bc89bdadbc76c6333bc7f2d74c81dce622c1"
+    },
+    {
+      "blind_id": "stage2-blind-0019",
+      "source_condition": "stage2_k4",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "78a3e84d853a86f4af3ce1376dc124f771f8987724d69775e3c3c91ed11a1302"
+    }
+  ]
+}
