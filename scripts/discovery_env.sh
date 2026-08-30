@@ -2,8 +2,8 @@
 # Shared environment for Discovery jobs. Source; do not execute directly.
 set -euo pipefail
 
-CODE_ROOT="/home1/$USER/mats_latent_safety"
-WORK_ROOT="/scratch1/$USER/mats_latent_safety"
+export CODE_ROOT="/home1/$USER/mats_latent_safety"
+export WORK_ROOT="/scratch1/$USER/mats_latent_safety"
 
 module purge
 module load gcc/13.3.0 cuda/12.6.3

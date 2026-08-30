@@ -1021,3 +1021,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   too marginal and was increased in place to `05:30:00`, preserving queue age
   and all scientific settings. After scheduler reevaluation, its estimate
   improved from `2026-08-31T22:10:00` to `2026-08-31T11:45:25`.
+- 2026-08-30T15:06:07-07:00: Matched explicit-CoT stage 3 job `11440319`
+  completed successfully on an A40 in `00:51:12`. It performed exactly 468
+  stage updates (1,404 cumulative) with frozen 1x32 batching,
+  token-count-correct loss normalization, the registered data/order hashes,
+  and no NaN/OOM evidence. The stage model SHA-256 is
+  `c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047`.
+  Private-HF commit `0e5f5b530ae36e302425c829d5b418ee5af34ae5` contains the
+  8,043,762,903-byte model and tokenizer. The submitted batch script predated
+  the mandatory home1 compact-copy post-step, so monitoring caught that
+  scratch1 still held the only metadata/update-metrics copy. The three compact
+  files were repaired into home1 and pulled locally with matching SHA-256
+  hashes `bc6c5e0f...`, `a1d97fb5...`, and `fa5a5306...`. The shared Discovery
+  environment now exports `CODE_ROOT` and `WORK_ROOT` so post-step helper
+  scripts inherit the durability paths.

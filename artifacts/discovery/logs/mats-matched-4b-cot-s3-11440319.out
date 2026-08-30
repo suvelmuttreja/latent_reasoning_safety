@@ -1,0 +1,104 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"stage": 3, "epoch": 0, "stage_update": 10, "seconds": 6.013091565109789, "loss": 0.3398060307905557}
+{"stage": 3, "epoch": 0, "stage_update": 20, "seconds": 5.881383551284671, "loss": 0.2972173552652478}
+{"stage": 3, "epoch": 0, "stage_update": 30, "seconds": 5.877241994254291, "loss": 0.35832755021222934}
+{"stage": 3, "epoch": 0, "stage_update": 40, "seconds": 5.849337710998952, "loss": 0.30245087386916014}
+{"stage": 3, "epoch": 0, "stage_update": 50, "seconds": 5.906281356699765, "loss": 0.25385234882305197}
+{"stage": 3, "epoch": 0, "stage_update": 60, "seconds": 5.7851339764893055, "loss": 0.30737827231780007}
+{"stage": 3, "epoch": 0, "stage_update": 70, "seconds": 5.786234872415662, "loss": 0.31178627907837586}
+{"stage": 3, "epoch": 0, "stage_update": 80, "seconds": 5.84993274603039, "loss": 0.2732932684773069}
+{"stage": 3, "epoch": 0, "stage_update": 90, "seconds": 5.86768910754472, "loss": 0.29638259823312235}
+{"stage": 3, "epoch": 0, "stage_update": 100, "seconds": 5.974514136090875, "loss": 0.31151956321286883}
+{"stage": 3, "epoch": 0, "stage_update": 110, "seconds": 5.8300808649510145, "loss": 0.35639462413704937}
+{"stage": 3, "epoch": 0, "stage_update": 120, "seconds": 6.036178275942802, "loss": 0.328210804027069}
+{"stage": 3, "epoch": 0, "stage_update": 130, "seconds": 5.822637918405235, "loss": 0.2937873689803998}
+{"stage": 3, "epoch": 0, "stage_update": 140, "seconds": 5.802239291369915, "loss": 0.26128617011708527}
+{"stage": 3, "epoch": 0, "stage_update": 150, "seconds": 5.880284111946821, "loss": 0.2506800722963871}
+{"stage": 3, "epoch": 0, "stage_update": 160, "seconds": 5.886362893506885, "loss": 0.2808475955460656}
+{"stage": 3, "epoch": 0, "stage_update": 170, "seconds": 5.750285141170025, "loss": 0.29430459412243387}
+{"stage": 3, "epoch": 0, "stage_update": 180, "seconds": 5.840888436883688, "loss": 0.28537201917082294}
+{"stage": 3, "epoch": 0, "stage_update": 190, "seconds": 5.76897990424186, "loss": 0.298426115914677}
+{"stage": 3, "epoch": 0, "stage_update": 200, "seconds": 5.970451380126178, "loss": 0.2783444332026035}
+{"stage": 3, "epoch": 0, "stage_update": 210, "seconds": 5.887120564468205, "loss": 0.31714318269900027}
+{"stage": 3, "epoch": 0, "stage_update": 220, "seconds": 5.795661635696888, "loss": 0.2635677288547413}
+{"stage": 3, "epoch": 0, "stage_update": 230, "seconds": 5.854086950421333, "loss": 0.24314300552150073}
+{"stage": 3, "epoch": 1, "stage_update": 240, "seconds": 5.826089561916888, "loss": 0.2301792577706772}
+{"stage": 3, "epoch": 1, "stage_update": 250, "seconds": 6.313696949742734, "loss": 0.2806048437595601}
+{"stage": 3, "epoch": 1, "stage_update": 260, "seconds": 6.084027940407395, "loss": 0.25790842557947913}
+{"stage": 3, "epoch": 1, "stage_update": 270, "seconds": 5.776620933786035, "loss": 0.2679295099920821}
+{"stage": 3, "epoch": 1, "stage_update": 280, "seconds": 5.906565823592246, "loss": 0.25914273780221836}
+{"stage": 3, "epoch": 1, "stage_update": 290, "seconds": 5.91887865588069, "loss": 0.27120063400075795}
+{"stage": 3, "epoch": 1, "stage_update": 300, "seconds": 5.885058189742267, "loss": 0.24032715108257718}
+{"stage": 3, "epoch": 1, "stage_update": 310, "seconds": 5.832159067504108, "loss": 0.2385512269925842}
+{"stage": 3, "epoch": 1, "stage_update": 320, "seconds": 5.882892047986388, "loss": 0.2618357641457101}
+{"stage": 3, "epoch": 1, "stage_update": 330, "seconds": 6.070701481774449, "loss": 0.22231172964392432}
+{"stage": 3, "epoch": 1, "stage_update": 340, "seconds": 5.9029407277703285, "loss": 0.2569451583059211}
+{"stage": 3, "epoch": 1, "stage_update": 350, "seconds": 6.062481174245477, "loss": 0.2156152180328114}
+{"stage": 3, "epoch": 1, "stage_update": 360, "seconds": 5.95492922142148, "loss": 0.28503353935681924}
+{"stage": 3, "epoch": 1, "stage_update": 370, "seconds": 5.944217883981764, "loss": 0.2550966966359081}
+{"stage": 3, "epoch": 1, "stage_update": 380, "seconds": 5.89506321400404, "loss": 0.32023071979064266}
+{"stage": 3, "epoch": 1, "stage_update": 390, "seconds": 5.783054081723094, "loss": 0.2803912309441027}
+{"stage": 3, "epoch": 1, "stage_update": 400, "seconds": 5.876649018377066, "loss": 0.2793056013911454}
+{"stage": 3, "epoch": 1, "stage_update": 410, "seconds": 5.978272782638669, "loss": 0.25875609906861907}
+{"stage": 3, "epoch": 1, "stage_update": 420, "seconds": 5.874283581972122, "loss": 0.3002638761171571}
+{"stage": 3, "epoch": 1, "stage_update": 430, "seconds": 5.710391974076629, "loss": 0.2890003042199734}
+{"stage": 3, "epoch": 1, "stage_update": 440, "seconds": 5.98711424600333, "loss": 0.25801746901815537}
+{"stage": 3, "epoch": 1, "stage_update": 450, "seconds": 5.971789143979549, "loss": 0.2966450333448647}
+{"stage": 3, "epoch": 1, "stage_update": 460, "seconds": 5.843631134368479, "loss": 0.274569538701394}
+{
+  "schema_version": 1,
+  "status": "stage_complete",
+  "label": "matched_4b_explicit_cot_branch",
+  "branch": "explicit_cot",
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "d1619c0fef15d3d8e75127c25075825b1d75ff7d",
+  "slurm_job_id": "11440319",
+  "config_sha256": "94d55a736f0c7cf5a0f7c35e97a3ce3cc6eca4982de6f4808d474251c6a49e7a",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "completed_stage": 3,
+  "k": 0,
+  "epochs": 2,
+  "stage_optimizer_updates": 468,
+  "cumulative_optimizer_updates": 1404,
+  "order_sha256_by_epoch": [
+    "5322a479607a8ae4bb0e9eaf172752fc874408d0a6e3b51483acbd5ffcd79e84",
+    "415722d33f63408af28f8df9b7be98bd59ee10f551fc2e1d7a313a74836be3cb"
+  ],
+  "training_seconds": 2751.5513827810064,
+  "mean_update_seconds": 5.866839203726834,
+  "median_update_seconds": 5.863902472425252,
+  "p95_update_seconds": 6.062453504558652,
+  "mean_loss": 0.2800642727610895,
+  "loss_normalization": "shifted_nonignored_token_count_over_effective_batch",
+  "examples": 14946,
+  "nonpadding_tokens": 2726766,
+  "supervised_tokens": 1835268,
+  "peak_cuda_allocated_bytes": 40748059648,
+  "peak_cuda_reserved_bytes": 41859153920,
+  "optimizer_state_bytes": 16087170616,
+  "model_state": "/scratch1/muttreja/mats_latent_safety/results/matched_4b_cot/stage3/model_state.pt",
+  "model_state_sha256": "c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047",
+  "optimizer_state": "/scratch1/muttreja/mats_latent_safety/results/matched_4b_cot/stage3/optimizer_state.pt",
+  "optimizer_state_sha256": "742e27baef68233eb4600f0efdabe6e0703416f76cfeca29614fcfaf981224b6",
+  "checkpoint_io": {
+    "model_save_seconds": 5.66499896068126,
+    "optimizer_save_seconds": 11.730685828253627,
+    "checkpoint_hash_seconds": 43.85378236230463
+  },
+  "gate_required_before_next_stage": false,
+  "training_authorization_basis": "inline_gate_passed",
+  "matched_training_authorized": true,
+  "durability": {
+    "status": "model_and_tokenizer_uploaded",
+    "repo_id": "suvelmuttreja/mats-latent-safety-checkpoints",
+    "path_in_repo": "matched_4b_cot/stage3",
+    "model_commit_oid": "0e5f5b530ae36e302425c829d5b418ee5af34ae5",
+    "model_commit_url": "https://huggingface.co/suvelmuttreja/mats-latent-safety-checkpoints/commit/0e5f5b530ae36e302425c829d5b418ee5af34ae5",
+    "model_and_tokenizer_upload_seconds": 94.09218033589423,
+    "metadata_upload_required_for_stage_success": true,
+    "optimizer_state_uploaded": false,
+    "optimizer_regeneration": "replay_frozen_training_from_previous_durable_stage"
+  }
+}
