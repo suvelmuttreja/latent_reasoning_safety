@@ -47,10 +47,13 @@ jobs:
     job_id: 11440318
     dependency: afterok:11440316
     initial_state: pending_dependency
+    live_time_limit: '05:30:00'
+    time_limit_basis: measured_k2_to_k4_update_scaling_plus_save_hash_upload_headroom
   explicit_cot_stage3:
     job_id: 11440319
     dependency: afterok:11440317
     initial_state: pending_dependency
+    live_time_limit: '02:00:00'
 scheduler_estimate_at_capture:
   initial_capture:
     coconut_stage2: unavailable

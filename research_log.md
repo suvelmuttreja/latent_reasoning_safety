@@ -1002,3 +1002,22 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   config hashes plus full response lengths are written into the score result.
   Legacy diagnostic audits remain available only when the official flag is
   omitted.
+- 2026-08-30T14:29:37-07:00: Matched Coconut stage 2 job `11440316`
+  completed successfully on an A40 in `03:37:13`. It performed exactly 468
+  stage updates (936 cumulative) at K=4 with frozen 1x32 batching,
+  token-count-correct loss normalization, and the same data hash and two epoch
+  order hashes as explicit-CoT stage 2. The stage model SHA-256 is
+  `bb70e8a9c7984029bdc7e77ec3dc412ff3ea5b7201636267507d135e8212c1d0`.
+  Private-HF model commit `e263b78850da7b04cde7d357c2d1013abc2487ca`
+  contains the 8,043,762,903-byte model and tokenizer; metadata commit
+  `543db2a1acade8dda9d061a11976b078f27f6ccd` contains exact metadata hash
+  `c4cb2fd2...`. Metadata and all 468 update metrics were copied to home1 with
+  hashes matching scratch1 and pulled locally. Stage-3 `11440318` and
+  trajectory `11441081` were released from dependency.
+- 2026-08-30: Measured K-scaling corrected Coconut stage 3's wall-time before
+  it started. Stage-1 K=2 logged about 17.04 seconds/update and stage-2 K=4
+  averaged 27.12; linear K=6 projection is about 37.20 seconds/update, or 4.84
+  training hours before save/hash/upload. The five-hour request was therefore
+  too marginal and was increased in place to `05:30:00`, preserving queue age
+  and all scientific settings. After scheduler reevaluation, its estimate
+  improved from `2026-08-31T22:10:00` to `2026-08-31T11:45:25`.
