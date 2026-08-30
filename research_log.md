@@ -1052,3 +1052,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   same `afterok:11440318` dependency to give the repaired evaluator an explicit
   job identity. The replacement reset that evaluation job's queue age; no GPU
   execution or output from the old job existed.
+- 2026-08-30T15:55:30-07:00: Because failed trajectory attempt `11441081`
+  completed all generation in `00:41:34`, repaired jobs `11463020/11463021`
+  were right-sized in place from three hours to `01:15:00`, preserving their
+  code, A40 constraint, prompts, seeds, K values, caps, and output paths. The
+  stage-2 retry started immediately afterward on A40 node `a03-06`; the stage-3
+  job remains correctly held on `afterok:11440318`.

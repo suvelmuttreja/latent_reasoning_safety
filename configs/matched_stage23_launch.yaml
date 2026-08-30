@@ -103,6 +103,10 @@ trajectory_evaluations:
   durability: scratch_working_copy_plus_required_home1_copy
   host_memory_gib: 40
   time_limit: '03:00:00'
+  repaired_job_time_limit: '01:15:00'
+  repaired_job_time_limit_basis: prior_attempt_completed_all_generation_in_00_41_34
+  stage2_retry_started_at: '2026-08-30T15:55:30-07:00'
+  stage2_retry_node: a03-06
   live_backfill_adjustment:
     date: '2026-08-30'
     applied_in_place_preserving_queue_age: true
