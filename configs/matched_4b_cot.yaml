@@ -1,9 +1,12 @@
 schema_version: 1
 label: matched_4b_explicit_cot_branch
 branch: explicit_cot
-submission_status: time_pressure_early_cot_stage1_authorized
-authorization_scope: stage1_only_before_coco_u1_inline_gate
-authorization_ack: time-pressure-early-cot-stage1-authorized
+submission_status: inline_gate_passed
+authorization_scope: matched_stages_2_and_3
+authorization_ack: coco-u1-inline-gate-passed
+inline_gate_decision:
+  date: 2026-08-29
+  disposition: pass_with_k_depth_capability_and_coherence_confound
 early_stage1_job:
   job_id: 11413535
   hardware: NVIDIA A40

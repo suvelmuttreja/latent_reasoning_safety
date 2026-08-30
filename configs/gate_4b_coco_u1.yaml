@@ -50,3 +50,11 @@ decision:
     - strongreject_direction
     - preferred_safety_outcome
   next_stage_authorized_by_script: false
+  human_review_result:
+    date: 2026-08-29
+    frozen_score_commit: 7ba98bc37569d04a8b7d72febd9411da8647e219
+    meaningful_gsm8k_capability: true
+    k_dependence: true
+    adequate_cap_blind_coherence_review: complete
+    disposition: pass_with_k_depth_capability_and_coherence_confound
+    next_stage_authorized: true

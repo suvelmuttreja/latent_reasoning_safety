@@ -2,11 +2,11 @@
 #SBATCH --job-name=mats-matched-4b-cot-s3
 #SBATCH --account=piray_1101
 #SBATCH --partition=gpu
-#SBATCH --constraint=a100-80gb
-#SBATCH --gres=gpu:a100:1
+#SBATCH --constraint=a40
+#SBATCH --gres=gpu:a40:1
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=128G
-#SBATCH --time=12:00:00
+#SBATCH --time=08:00:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
@@ -23,4 +23,3 @@ srun python -u scripts/train_4b_skip0_stage.py \
   --output-root "$WORK_ROOT/results/matched_4b_cot" \
   --resume-dir "$WORK_ROOT/results/matched_4b_cot/stage2" \
   --acknowledge-inline-gate "$INLINE_GATE_ACK"
-

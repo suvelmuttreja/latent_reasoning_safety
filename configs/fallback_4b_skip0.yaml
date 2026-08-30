@@ -1,7 +1,13 @@
 schema_version: 1
 label: self_contained_4b_skip0_approval_latency_fallback
 branch: coconut_skip0
-submission_status: fallback_trigger_acknowledged
+submission_status: inline_gate_passed
+authorization_scope: matched_stages_2_and_3
+authorization_ack: coco-u1-inline-gate-passed
+inline_gate_decision:
+  date: 2026-08-29
+  basis: strict_reload_capability_k_dependence_and_frozen_human_blind_coherence_scores
+  disposition: pass_with_k_depth_capability_and_coherence_confound
 fallback_trigger:
   decision_date: 2026-08-27
   reason: user_accelerated_due_to_calendar_risk_while_access_remains_http_403

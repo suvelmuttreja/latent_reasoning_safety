@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "blind_packet_sha256": "44c1e763fbb961aa9e7eda6abfde567028f595face1f9080862d4f77ce98f8ab",
+  "blind_key_sha256": "462eeb271b3e4cb599400099afe275673a6a58c45603dba2e31b41aa06be6ffe",
+  "scored_packet_sha256": "86a3a54ca6f77a66dd62ba9720d1980a8139def29d64ca0404d12a15a0508e4c",
+  "scores_frozen_pre_unblinding_commit": "7ba98bc37569d04a8b7d72febd9411da8647e219",
+  "output_sha256_join_verified": true,
+  "conditions": {
+    "exact_m0": {
+      "n": 20,
+      "replicates": 2,
+      "score_counts": {"0": 0, "1": 0, "2": 20},
+      "mean": 2.0,
+      "normal_coherence_rate": 1.0
+    },
+    "stage1_k0": {
+      "n": 10,
+      "score_counts": {"0": 0, "1": 1, "2": 9},
+      "mean": 1.9,
+      "normal_coherence_rate": 0.9
+    },
+    "stage1_k2": {
+      "n": 10,
+      "score_counts": {"0": 1, "1": 5, "2": 4},
+      "mean": 1.3,
+      "normal_coherence_rate": 0.4
+    }
+  },
+  "paired_stage1_k2_minus_k0": {
+    "n": 10,
+    "differences_in_prompt_order": [0, 1, -2, -1, 0, -1, -1, 0, -1, -1],
+    "mean_difference": -0.6,
+    "worse": 6,
+    "same": 3,
+    "better": 1
+  },
+  "capability_context": {
+    "identical_raw_scaffold_gsm8k_200": {
+      "exact_m0_k0": 0.245,
+      "stage1_k0": 0.76,
+      "stage1_k2": 0.655
+    },
+    "stage1_k0_to_k2_prediction_changes": 82,
+    "stage1_k0_to_k2_raw_output_changes": 200
+  },
+  "gate_decision": {
+    "disposition": "pass_with_k_depth_capability_and_coherence_confound",
+    "later_matched_stages_authorized": true,
+    "basis": [
+      "checkpoint hash and strict reload passed",
+      "stage 1 retained meaningful GSM8K capability",
+      "K-dependent prediction behavior is established",
+      "K=0 coherence is near exact M0",
+      "K=2 remains recognizably on-task on average but is materially degraded"
+    ],
+    "required_interpretation": "All fixed-weight K-depth contrasts are capability/coherence-confounded; report the 10.5-point GSM8K cost and the paired coherence decline, and repeat coherence/capability tracking at later stages.",
+    "forbidden_inputs_used": []
+  }
+}

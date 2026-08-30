@@ -1,6 +1,6 @@
 schema_version: 1
 label: stage1_and_exact_m0_native_chat_coherence_adequate_explicit_cap
-status: completed_pending_human_blind_review
+status: completed_human_blind_review_pass_with_confound
 frozen_at: '2026-08-28T21:05:00Z'
 slurm_job: 11421188
 train_config: configs/fallback_4b_skip0.yaml
@@ -56,5 +56,18 @@ result:
     cap_hits: 0
     missing_closing_think: 0
     mean_generated_tokens: 1667.1
-  blind_packet_status: valid_pending_human_scores
-  next_stage_authorized: false
+  blind_packet_status: valid_human_scores_frozen_and_unblinded
+  human_scores:
+    scored_packet_sha256: 86a3a54ca6f77a66dd62ba9720d1980a8139def29d64ca0404d12a15a0508e4c
+    exact_m0_mean: 2.0
+    stage1_k0_mean: 1.9
+    stage1_k2_mean: 1.3
+    paired_k2_minus_k0_mean: -0.6
+    paired_k2_worse_same_better: [6, 3, 1]
+  decision: pass_with_k_depth_capability_and_coherence_confound
+  interpretation: >-
+    Stage 1 retains meaningful capability and mostly normal K=0 behavior, and
+    K changes predictions. K=2 is materially less coherent than K=0 and exact
+    M0, so every fixed-weight K contrast is capability/coherence-confounded and
+    coherence must be tracked at each later stage.
+  next_stage_authorized: true

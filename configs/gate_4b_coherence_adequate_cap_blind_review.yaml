@@ -1,8 +1,8 @@
 schema_version: 1
 label: stage1_and_exact_m0_adequate_cap_blind_coherence_review
 gate_job: 11421188
-gate_status: pending_human_blind_coherence_review
-next_stage_authorized: false
+gate_status: passed_with_k_depth_capability_and_coherence_confound
+next_stage_authorized: true
 blinded_packet:
   path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_blinded.jsonl
   sha256: 44c1e763fbb961aa9e7eda6abfde567028f595face1f9080862d4f77ce98f8ab
@@ -24,6 +24,27 @@ key:
   path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_blind_key.json
   sha256: 462eeb271b3e4cb599400099afe275673a6a58c45603dba2e31b41aa06be6ffe
   open_only_after_scores_frozen: true
+scored_packet:
+  path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_blinded_scored.jsonl
+  sha256: 86a3a54ca6f77a66dd62ba9720d1980a8139def29d64ca0404d12a15a0508e4c
+  rows: 40
+  frozen_pre_unblinding_commit: 7ba98bc37569d04a8b7d72febd9411da8647e219
+human_results:
+  exact_m0:
+    n: 20
+    score_counts_0_1_2: [0, 0, 20]
+    mean: 2.0
+  stage1_k0:
+    n: 10
+    score_counts_0_1_2: [0, 1, 9]
+    mean: 1.9
+  stage1_k2:
+    n: 10
+    score_counts_0_1_2: [1, 5, 4]
+    mean: 1.3
+  paired_k2_minus_k0:
+    mean: -0.6
+    worse_same_better: [6, 3, 1]
 rubric_source: manifests/coherence_10.json
 rubric:
   0: gibberish, math-shaped/non-responsive, unusable

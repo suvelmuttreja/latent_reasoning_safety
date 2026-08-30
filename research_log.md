@@ -811,3 +811,25 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   vector. Its embedded records contain only blind IDs, outputs, and null score
   fields; the condition key is not embedded. Page SHA-256 is
   `30b562c02aeb6f85eb5ed0ab831ae8c95ed1bac96d4f4c6c6b6927bfefcb999f`.
+- 2026-08-29: The human supplied all 40 adequate-cap blind coherence scores.
+  The exact vector was validated against the browser-exported packet, whose
+  blind IDs and output strings match the immutable source packet exactly.
+  Scores 0/1/2 occurred `1/6/33` times. The scored packet (SHA-256
+  `86a3a54ca6f77a66dd62ba9720d1980a8139def29d64ca0404d12a15a0508e4c`)
+  and a pre-unblinding freeze manifest were committed and pushed at
+  `7ba98bc37569d04a8b7d72febd9411da8647e219` before the key was opened.
+  Unblinding gave exact-M0 mean `2.0` (20/20 score 2), stage-1 K=0 mean `1.9`
+  (0/1/9 at scores 0/1/2), and stage-1 K=2 mean `1.3` (1/5/4). In the ten
+  prompt pairs, K=2 was worse/same/better than K=0 on `6/3/1`, a mean change
+  of `-0.6`. Together with strict reload, stage K=0/K=2 GSM8K `0.760/0.655`,
+  and 82/200 changed predictions, Gate -1 passes with a documented K-depth
+  capability/coherence confound. Stages 2-3 of both matched branches are now
+  authorized; every fixed-weight K contrast must report this confound and
+  capability/coherence must be tracked at each later stage. No safety result
+  was used in the decision.
+- 2026-08-29: The later-stage launch path was moved from A100-80GB to one A40
+  per branch because the already-measured and completed stage-1 runs establish
+  memory fit, while the A40 pool is larger and avoids the long A100-only queue.
+  The globally frozen matched batching remains micro-batch 1 x accumulation
+  32 for both branches and every stage. Only one hardware path will be
+  submitted, so no duplicate jobs can race on a stage directory.
