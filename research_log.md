@@ -862,3 +862,22 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   jobs `11441081` (stage 2, `afterok:11440316`) and `11441082` (stage 3,
   `afterok:11440318`) are attached to the durable endpoints. Their pending
   dependency states are expected.
+- 2026-08-29: The inherited 512-token Coconut answer cap is formally frozen
+  only for the GSM8K capability diagnostic. Its evidence is the corrected
+  stage-1 gate: K=0 truncated 8/200 (`4%`) and K=2 truncated 0/200, so it is a
+  marginal pass under the registered strictly-less-than-5% rule, not a
+  generous branch-wide cap. Safety is explicitly blocked from inheriting 512.
+  Before official judging, a score-free stage-1 Coconut calibration will run
+  all frozen StrongREJECT-small prompts at K=0/K=2 under native chat at a
+  5,120-token ceiling and select the smallest candidate in
+  `[512,1024,2048,4096,5120]` with projected truncation below 5% separately in
+  every K condition. Selection uses only lengths and stop reasons; no safety
+  evaluator or score is loaded and output content is not reviewed first. The
+  inference-only job uses L40S so it does not consume the A40 training path.
+- 2026-08-29: Storage is resolved as a tiered policy rather than an all-copy or
+  no-copy choice. Scratch1 remains the active high-throughput tier for data,
+  caches, regenerable optimizer state, logs, generations, and working
+  checkpoints. Unique model/tokenizer weights must reach private HF; unique
+  compact JSON/text results must reach home1, then local Git/GitHub. Regenerable
+  bulk files do not get duplicated onto quota-limited home1. Project2 remains
+  prohibited.

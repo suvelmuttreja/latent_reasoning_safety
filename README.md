@@ -9,9 +9,14 @@ the registered method.
 
 - `/home1/$USER/mats_latent_safety`: canonical checkout and `.venv`
 - `/scratch1/$USER/mats_latent_safety`: caches, datasets, generations, logs,
-  and working checkpoints
+  optimizer states, active generations, logs, and working checkpoints; it is
+  the high-throughput execution tier, never the sole copy of a unique result
 - private HF repo: durable copy of every unique trained checkpoint
+- home1/local/private GitHub: compact unique JSON/text results and provenance;
+  regenerable bulk caches and optimizer states are not duplicated to home1
 - `project2`: prohibited for this project
+
+The complete tier and retention rules are frozen in `configs/storage_policy.yaml`.
 
 Bootstrap only after `myquota` confirms enough home1 space:
 
@@ -26,4 +31,3 @@ specific scripts in `scripts/slurm/`; do not weaken the A100-80GB constraint on
 
 Upstream code lives in ignored `vendor/` checkouts and is pinned in
 `configs/pins.json`. Project-specific code is tracked under `src/`.
-

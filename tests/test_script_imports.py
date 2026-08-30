@@ -17,6 +17,7 @@ import pytest
         "train_4b_skip0_stage.py",
         "gate_4b_coco_u1.py",
         "evaluate_coconut_stage_trajectory.py",
+        "calibrate_coconut_safety_cap.py",
         "claim_stage_race.py",
     ],
 )

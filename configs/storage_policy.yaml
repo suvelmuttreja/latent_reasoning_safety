@@ -1,0 +1,34 @@
+schema_version: 1
+status: decided
+decided_at: '2026-08-29'
+project2: prohibited
+tiers:
+  home1:
+    role: code_configs_environment_and_compact_durable_results
+    quota_sensitive: true
+    lightly_snapshotted: true
+  scratch1:
+    role: active_high_throughput_working_tier
+    allowed:
+      - datasets_and_model_caches
+      - optimizer_states_regenerable_by_frozen_replay
+      - active_training_and_generation_outputs
+      - logs_pending_session_pull
+      - working_checkpoint_copies
+    never_only_copy:
+      - unique_trained_model_weights
+      - final_or_gate_decision_records
+      - unique_compact_generation_and_score_results
+  private_huggingface:
+    role: durable_unique_trained_model_and_tokenizer_copy
+  canonical_local_git_and_private_github:
+    role: durable_code_config_manifests_logs_and_compact_results
+durability_rules:
+  unique_checkpoint: upload_model_and_tokenizer_to_private_huggingface_before_job_success
+  compact_text_or_json_result: copy_to_home1_before_job_success_then_pull_and_commit
+  large_regenerable_optimizer_or_cache: may_remain_scratch_only
+  scratch_working_copy_retention: keep_for_fast_resume_until_no_longer_operationally_useful
+rationale: >-
+  Scratch is used because training, checkpoint I/O, caches, and generation need
+  its capacity and throughput. Requiring a durable second copy for unique
+  scientific artifacts does not duplicate regenerable bulk files onto home1.

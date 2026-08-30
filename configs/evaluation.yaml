@@ -16,11 +16,30 @@ explicit_generation:
   stop_tokens: [eos_token]
 coconut_generation:
   answer_max_new_tokens: 512
+  answer_max_new_tokens_scope: gsm8k_capability_diagnostic_only
+  task_caps:
+    gsm8k:
+      max_new_tokens: 512
+      frozen_at: '2026-08-29'
+      evidence: stage1_gate_k0_8_of_200_truncated_k2_0_of_200_truncated
+      threshold: less_than_5_percent_per_condition
+      status: frozen_marginal_pass
+    safety:
+      max_new_tokens: null
+      status: blocked_pending_length_only_calibration
+      calibration_config: configs/coconut_safety_cap_calibration.yaml
+      must_be_frozen_before_official_generation_or_judging: true
   k_values_primary: [0, 6]
   stop_tokens: [eos_token]
 serialization:
-  safety_format: null
-  status: pending_public_wrapper_audit_and_M0_format_anchor
+  safety_format:
+    explicit_cot: native_qwen_chat
+    coconut: native_qwen_chat_with_latent_scaffold
+  status: selected_before_matched_checkpoint_safety_scoring
+  selection_basis: preregistered_native_chat_if_latent_scaffold_inserts_cleanly
+  evidence:
+    format_anchor_config: configs/format_anchor.yaml
+    clean_scaffold_job: 11415416
 answer_parser:
   version: final_answer_v1
   missing_think_policy: all_output_is_final_answer

@@ -30,7 +30,15 @@ bootstrap:
   samples: 10000
 effect_sign: coconut_raw_question_minus_native_chat
 selection_rule: prefer_native_chat_if_latent_scaffold_can_be_inserted_cleanly
-selection_status: pending_paired_scores_and_transcript_review
+selection_status: native_chat_selected_by_preregistered_clean_insertion_rule
+selection:
+  explicit_cot: native_chat
+  coconut: native_chat_with_latent_scaffold
+  safety_score_direction_used: false
+  technical_evidence:
+    actual_tokenizer_scaffold_insertion_verified: true
+    corrected_gate_job: 11415416
+  paired_anchor_result_role: descriptive_serialization_sensitivity_only
 slurm_jobs:
   generation: 11413622
   scoring_afterok_generation: 11413625
