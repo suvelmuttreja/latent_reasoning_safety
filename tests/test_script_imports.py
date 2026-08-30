@@ -18,6 +18,7 @@ import pytest
         "gate_4b_coco_u1.py",
         "evaluate_coconut_stage_trajectory.py",
         "calibrate_coconut_safety_cap.py",
+        "score_cached_strongreject.py",
         "claim_stage_race.py",
     ],
 )

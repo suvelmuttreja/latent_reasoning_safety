@@ -992,3 +992,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   A40; the job launched the frozen stage-3 sbatch and began strict stage-2
   checkpoint loading without error. Coconut stage 2 was concurrently healthy
   at update 440/468 on a separate A40.
+- 2026-08-30: While GPU jobs ran, the cached StrongREJECT scorer was hardened
+  for official use. Passing `--official-condition` now requires exact frozen
+  manifest coverage, unique prompt IDs, matching prompt hashes and condition,
+  an explicit official-generation purpose, null prior evaluator payload/score,
+  completed EOS output, and checkpoint/config/token-length provenance. The
+  judge model revision and 512-token evaluator-side limit are read from and
+  verified against the frozen evaluation config; generation, manifest, and
+  config hashes plus full response lengths are written into the score result.
+  Legacy diagnostic audits remain available only when the official flag is
+  omitted.
