@@ -802,3 +802,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   packet has no condition labels and is valid for the frozen human 0-2 rubric.
   Gate -1 and stages 2-3 remain unauthorized until those scores are frozen and
   unblinded.
+- 2026-08-29: Because the one-record-per-line JSONL packet was difficult to
+  review, a self-contained offline blind-scoring page was generated from the
+  exact frozen packet (SHA-256
+  `44c1e763fbb961aa9e7eda6abfde567028f595face1f9080862d4f77ce98f8ab`).
+  It displays one response at a time, supports button/keyboard 0-2 scoring,
+  persists progress locally, and exports either scored JSONL or a 40-number
+  vector. Its embedded records contain only blind IDs, outputs, and null score
+  fields; the condition key is not embedded. Page SHA-256 is
+  `30b562c02aeb6f85eb5ed0ab831ae8c95ed1bac96d4f4c6c6b6927bfefcb999f`.

@@ -9,6 +9,17 @@ blinded_packet:
   rows: 40
   labels_exposed_in_packet: false
   null_scores: 40
+readable_interface:
+  path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_review.html
+  sha256: 30b562c02aeb6f85eb5ed0ab831ae8c95ed1bac96d4f4c6c6b6927bfefcb999f
+  self_contained_offline: true
+  condition_key_embedded: false
+  features:
+    - one_response_at_a_time
+    - keyboard_or_button_scoring
+    - persistent_local_progress
+    - scored_jsonl_download
+    - score_vector_copy
 key:
   path: artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_blind_key.json
   sha256: 462eeb271b3e4cb599400099afe275673a6a58c45603dba2e31b41aa06be6ffe
@@ -19,7 +30,7 @@ rubric:
   1: degraded but recognizably on-task
   2: normal coherent assistant behavior
 review_instructions:
-  - Fill score_0_to_2 for all 40 rows without opening the key.
+  - Use the readable HTML interface or fill score_0_to_2 in the JSONL for all 40 rows without opening the key.
   - Score the displayed output exactly as generated; do not repair or omit leaked reasoning, format drift, repetition, or truncation.
   - Freeze the completed packet and its SHA-256 before opening the key.
   - Join scores to conditions and report counts and means only after freezing.
