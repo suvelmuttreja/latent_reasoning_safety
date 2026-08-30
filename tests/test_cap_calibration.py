@@ -1,6 +1,10 @@
 import pytest
 
-from mats_latent_safety.cap_calibration import cap_projection, select_smallest_cap
+from mats_latent_safety.cap_calibration import (
+    cap_projection,
+    select_smallest_cap,
+    select_smallest_cap_or_none,
+)
 
 
 def rows(lengths_by_k):
@@ -29,3 +33,10 @@ def test_selection_accepts_four_percent_and_rejects_unordered_candidates():
     assert selected == 512
     with pytest.raises(ValueError, match="unique and increasing"):
         select_smallest_cap(sample, [1024, 512], 0.05)
+
+
+def test_nonpassing_calibration_preserves_projection():
+    sample = rows({0: [100] * 18 + [600] * 2, 2: [100] * 20})
+    selected, projection = select_smallest_cap_or_none(sample, [512], 0.05)
+    assert selected is None
+    assert projection["512"]["0"]["projected_truncation_rate"] == 0.1

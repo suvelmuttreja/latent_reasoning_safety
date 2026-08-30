@@ -38,3 +38,23 @@ def select_smallest_cap(
         if all(rate < threshold for rate in rates):
             return candidate, projection
     raise ValueError("no registered candidate satisfies the truncation threshold")
+
+
+def select_smallest_cap_or_none(
+    rows: list[dict], candidates: list[int], threshold: float
+) -> tuple[int | None, dict[str, dict[str, dict]]]:
+    """Return a mechanical non-pass instead of losing completed calibration data."""
+
+    if candidates != sorted(set(candidates)):
+        raise ValueError("candidate caps must be unique and increasing")
+    if not 0 < threshold < 1:
+        raise ValueError("threshold must be between zero and one")
+    projection = cap_projection(rows, candidates)
+    for candidate in candidates:
+        rates = [
+            condition["projected_truncation_rate"]
+            for condition in projection[str(candidate)].values()
+        ]
+        if all(rate < threshold for rate in rates):
+            return candidate, projection
+    return None, projection

@@ -923,3 +923,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   to run on Ada L40S and the other on Ampere A40 would introduce
   architecture-dependent bf16 kernels after both stage-1 checkpoints used
   A40. Current same-day A40 reservations were retained instead.
+- 2026-08-30: Safety-cap calibration job `11441779` ran all 120 registered
+  stage-1 Coconut generations, then exited nonzero because no candidate through
+  5,120 satisfied the strict `<5%` rule. Length-only aggregation found 12/60
+  K=0 and 5/60 K=2 generations stopped at the ceiling. The unique JSONL was
+  copied scratch1 to home1 with matching SHA-256
+  `c7fa767b9b4a76370ec9f3f76a7003b2016569c5bc64fb438dce24885efb2c64`.
+  Extension 1 pre-registers `[8192,12288,16000]` above the original ladder and
+  reruns only the 17 length-stopped rows with the same seeds and sampler; the
+  103 EOS-completed rows are reused only for mechanical calibration and no
+  calibration row may be judged. During a record-schema inspection, a command
+  intended to print non-content metadata accidentally displayed one K=0
+  response's parsed text. No evaluator or score was loaded, and neither the
+  extension ladder nor selection uses response content, but the strict
+  no-content-review claim is therefore logged as deviated rather than retained.
