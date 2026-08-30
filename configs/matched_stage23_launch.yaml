@@ -1,0 +1,42 @@
+schema_version: 1
+status: submitted
+submitted_at: '2026-08-29T18:44:35'
+discovery_code_revision: 8cb3024a82f0e3ab62df64cec6267d5362eb5cfc
+authorization:
+  gate: coco_u1_inline_method_gate
+  acknowledgement: coco-u1-inline-gate-passed
+  disposition: pass_with_k_depth_capability_and_coherence_confound
+hardware:
+  partition: gpu
+  constraint: a40
+  gpu: a40
+  gpus_per_job: 1
+  time_limit: '08:00:00'
+  selection_reason: measured_stage1_fit_and_larger_available_pool_than_a100_80gb
+matched_batching:
+  micro_batch_size: 1
+  gradient_accumulation_steps: 32
+  effective_batch_size: 32
+  scope: both_branches_and_all_stages
+launch_policy:
+  hardware_paths_per_stage: 1
+  duplicate_race_possible: false
+  stage3_dependency: afterok_own_branch_stage2
+jobs:
+  coconut_stage2:
+    job_id: 11440316
+    initial_state: pending_priority
+  explicit_cot_stage2:
+    job_id: 11440317
+    initial_state: pending_priority
+  coconut_stage3:
+    job_id: 11440318
+    dependency: afterok:11440316
+    initial_state: pending_dependency
+  explicit_cot_stage3:
+    job_id: 11440319
+    dependency: afterok:11440317
+    initial_state: pending_dependency
+scheduler_estimate_at_capture:
+  coconut_stage2: unavailable
+  explicit_cot_stage2: unavailable

@@ -833,3 +833,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   The globally frozen matched batching remains micro-batch 1 x accumulation
   32 for both branches and every stage. Only one hardware path will be
   submitted, so no duplicate jobs can race on a stage directory.
+- 2026-08-29T18:44:35: Both matched A40 chains were submitted from Discovery
+  code revision `8cb3024`. Coconut stage 2 is Slurm `11440316`, followed by
+  stage 3 `11440318` with `afterok:11440316`; explicit-CoT stage 2 is
+  `11440317`, followed by stage 3 `11440319` with `afterok:11440317`. Both
+  stage-2 jobs were initially pending for priority and Slurm supplied no start
+  estimate. The stage-3 dependency states are expected until their own stage-2
+  predecessor succeeds. Each job requests one A40 for eight hours, and no
+  A100 or L40S contender was submitted against the same output directories.
