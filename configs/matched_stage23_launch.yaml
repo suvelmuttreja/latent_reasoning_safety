@@ -38,5 +38,28 @@ jobs:
     dependency: afterok:11440317
     initial_state: pending_dependency
 scheduler_estimate_at_capture:
-  coconut_stage2: unavailable
-  explicit_cot_stage2: unavailable
+  initial_capture:
+    coconut_stage2: unavailable
+    explicit_cot_stage2: unavailable
+  later_capture:
+    coconut_stage2: '2026-08-31T02:07:51'
+    explicit_cot_stage2: '2026-08-31T02:10:00'
+  fresh_test_only_requests:
+    a40: '2026-09-01T01:37:33'
+    l40s: '2026-09-01T08:51:23'
+    a100_80gb: '2026-09-01T14:13:49'
+  decision: retain_existing_a40_jobs_as_earliest_single_paths
+trajectory_evaluations:
+  config: configs/coconut_stage_trajectory.yaml
+  stage2:
+    job_id: 11441081
+    dependency: afterok:11440316
+    k_values: [0, 4]
+  stage3:
+    job_id: 11441082
+    dependency: afterok:11440318
+    k_values: [0, 6]
+  caps:
+    coconut_gsm8k: 512
+    native_thinking_coherence: 5120
+  durability: scratch_working_copy_plus_required_home1_copy

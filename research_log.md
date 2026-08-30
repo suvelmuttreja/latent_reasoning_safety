@@ -854,3 +854,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   It does not invalidate the primary CoT-versus-Coconut endpoint estimand,
   where Coconut coherence is part of the co-reported phenotype. Each job must
   copy its complete text/JSON results from scratch1 to home1 before success.
+- 2026-08-29: Discovery later estimated the retained Coconut/CoT A40 stage-2
+  jobs for `2026-08-31T02:07:51/02:10:00`. Test-only fresh requests were all
+  later: A40 `2026-09-01T01:37:33`, L40S `2026-09-01T08:51:23`, and A100-80GB
+  `2026-09-01T14:13:49`. The existing A40 paths therefore remain the earliest
+  and no replacement or racing contender was submitted. Coconut trajectory
+  jobs `11441081` (stage 2, `afterok:11440316`) and `11441082` (stage 3,
+  `afterok:11440318`) are attached to the durable endpoints. Their pending
+  dependency states are expected.
