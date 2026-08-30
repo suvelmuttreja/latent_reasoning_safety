@@ -1041,3 +1041,14 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `afterok:11440318`; it runs only the checked copy/hash helper after successful
   training. This preserves the original GPU job's queue age and scientific
   settings while removing dependence on a human noticing stage completion.
+- 2026-08-30T15:48:48-07:00: Coconut stage-2 trajectory job `11441081`
+  failed after `00:41:34`, after generation but before any scientific output
+  was written. The enrichment-only token counter passed the expected Coconut
+  `parsed_thinking=None` value to the tokenizer. It now maps absent thinking to
+  the empty string (zero tokens), with a regression test; the focused suite and
+  lint pass (`18 passed`). Stage-2 retry `11463020` uses the same checkpoint,
+  prompts, seeds, K values, caps, and A40 request. Pending stage-3 trajectory
+  job `11441082` was canceled before start and replaced by `11463021` with the
+  same `afterok:11440318` dependency to give the repaired evaluator an explicit
+  job identity. The replacement reset that evaluation job's queue age; no GPU
+  execution or output from the old job existed.

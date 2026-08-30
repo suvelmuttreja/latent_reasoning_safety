@@ -1,0 +1,22 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 42.70it/s]
+Traceback (most recent call last):
+  File "/home1/muttreja/mats_latent_safety/scripts/evaluate_coconut_stage_trajectory.py", line 270, in <module>
+    main()
+  File "/home1/muttreja/mats_latent_safety/scripts/evaluate_coconut_stage_trajectory.py", line 200, in main
+    enrich_rows(
+  File "/home1/muttreja/mats_latent_safety/scripts/evaluate_coconut_stage_trajectory.py", line 62, in enrich_rows
+    tokenizer.encode(row["parsed_thinking"], add_special_tokens=False)
+  File "/home1/muttreja/mats_latent_safety/.venv/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 2649, in encode
+    encoded_inputs = self.encode_plus(
+                     ^^^^^^^^^^^^^^^^^
+  File "/home1/muttreja/mats_latent_safety/.venv/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 3040, in encode_plus
+    return self._encode_plus(
+           ^^^^^^^^^^^^^^^^^^
+  File "/home1/muttreja/mats_latent_safety/.venv/lib/python3.11/site-packages/transformers/tokenization_utils_fast.py", line 627, in _encode_plus
+    batched_output = self._batch_encode_plus(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home1/muttreja/mats_latent_safety/.venv/lib/python3.11/site-packages/transformers/tokenization_utils_fast.py", line 553, in _batch_encode_plus
+    encodings = self._tokenizer.encode_batch(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: TextEncodeInput must be Union[TextInputSequence, Tuple[InputSequence, InputSequence]]
+srun: error: a03-06: task 0: Exited with exit code 1

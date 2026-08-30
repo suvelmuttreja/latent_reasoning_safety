@@ -81,13 +81,22 @@ scheduler_estimate_at_capture:
 trajectory_evaluations:
   config: configs/coconut_stage_trajectory.yaml
   stage2:
-    job_id: 11441081
+    job_id: 11463020
     dependency: afterok:11440316
     k_values: [0, 4]
+    prior_attempt:
+      job_id: 11441081
+      terminal_state: failed
+      elapsed: '00:41:34'
+      failure: null_parsed_thinking_token_count_type_error
+      scientific_outputs_written: false
   stage3:
-    job_id: 11441082
+    job_id: 11463021
     dependency: afterok:11440318
     k_values: [0, 6]
+    replaced_job_id: 11441082
+    replaced_job_state: cancelled_before_start
+    replacement_reason: explicit_repaired_evaluator_job_identity
   caps:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120

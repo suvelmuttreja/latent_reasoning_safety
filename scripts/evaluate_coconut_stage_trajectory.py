@@ -59,7 +59,7 @@ def enrich_rows(
             row["k"]
         ) + 2
         row["thinking_tokens"] = len(
-            tokenizer.encode(row["parsed_thinking"], add_special_tokens=False)
+            tokenizer.encode(row["parsed_thinking"] or "", add_special_tokens=False)
         )
         row["answer_tokens"] = len(
             tokenizer.encode(row["parsed_final_answer"], add_special_tokens=False)
