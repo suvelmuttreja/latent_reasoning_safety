@@ -1035,3 +1035,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   hashes `bc6c5e0f...`, `a1d97fb5...`, and `fa5a5306...`. The shared Discovery
   environment now exports `CODE_ROOT` and `WORK_ROOT` so post-step helper
   scripts inherit the durability paths.
+- 2026-08-30: Slurm stores submitted batch scripts immutably, so pending
+  Coconut stage-3 job `11440318` also cannot inherit the later-added compact
+  copy command. Main-partition job `11462976` was therefore attached with
+  `afterok:11440318`; it runs only the checked copy/hash helper after successful
+  training. This preserves the original GPU job's queue age and scientific
+  settings while removing dependence on a human noticing stage completion.
