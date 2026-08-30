@@ -70,6 +70,16 @@ access-independent work now rather than waiting for the originally proposed
 1. Pin the self-contained standard wrapper adapted from
    `facebookresearch/coconut`, with the wassname fork used only as an
    engineering reference. Preserve the existing forbidden-change list.
+1b. Extended 0.6B validation through the **pinned wrapper** (not the wassname
+   fork): a few hundred skip0 steps on Qwen3-0.6B, then the full downstream
+   pipeline — K=0/K>0 latent inference, serialization, transcript caching,
+   judge scoring, coherence, GSM8K plumbing. This validates code paths, not
+   model quality. Also verify the same wrapper class instantiates
+   `Qwen3-4B-Thinking-2507`. Do not re-run completed S1 M0 work (frozen cap,
+   judge smoke, baselines, headroom).
+1c. Confirm the Phase-2 dual-serialization format anchor and official M0
+   baseline freeze are scheduled **before** any matched-checkpoint safety
+   scoring; S1 evidence does not yet show the anchor was run.
 2. Begin skip0 stage 1 from exact M0 using the documented public recipe and a
    frozen data order. Treat the first saved slice as the beginning of the real
    branch so it is resumable rather than disposable.
