@@ -77,4 +77,16 @@ trajectory_evaluations:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120
   durability: scratch_working_copy_plus_required_home1_copy
-  host_memory_gib: 64
+  host_memory_gib: 40
+  time_limit: '03:00:00'
+  live_backfill_adjustment:
+    date: '2026-08-30'
+    applied_in_place_preserving_queue_age: true
+    previous_host_memory_gib: 64
+    previous_time_limit: '06:00:00'
+    evidence:
+      comparable_gate_elapsed: '01:53:05'
+      comparable_gate_max_rss_kib: 4243800
+      comparable_gate_max_vm_kib: 32607076
+    gpu_architecture_changed: false
+    scientific_settings_changed: false

@@ -980,3 +980,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   copying. Queue age and all generation settings remain unchanged. Slurm's
   estimate remained late (`2026-08-31T22:20:00`), so no immediate scheduler
   gain is claimed.
+- 2026-08-30: Dependency-pending Coconut trajectory jobs `11441081/11441082`
+  were reduced in place from 64 GiB/six hours to 40 GiB/three hours. The closest
+  larger gate evaluation completed in `01:53:05` with Python MaxRSS 4,243,800
+  KiB and MaxVMSize 32,607,076 KiB. Both evaluations remain A40-only so stage
+  trajectory sampling does not introduce a GPU-architecture change; queue age,
+  checkpoints, prompts, seeds, K values, caps, and output paths are unchanged.
