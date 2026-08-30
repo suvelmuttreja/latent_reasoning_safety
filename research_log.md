@@ -986,3 +986,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   KiB and MaxVMSize 32,607,076 KiB. Both evaluations remain A40-only so stage
   trajectory sampling does not introduce a GPU-architecture change; queue age,
   checkpoints, prompts, seeds, K values, caps, and output paths are unchanged.
+- 2026-08-30T14:14:55-07:00: Right-sized explicit-CoT stage-3 job `11440319`
+  started on confirmed A40 node `a03-06`, substantially earlier than its prior
+  `16:25:10` estimate. Slurm allocated the registered 80 GiB, 12 CPUs, and one
+  A40; the job launched the frozen stage-3 sbatch and began strict stage-2
+  checkpoint loading without error. Coconut stage 2 was concurrently healthy
+  at update 440/468 on a separate A40.
