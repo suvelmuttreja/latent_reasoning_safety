@@ -973,3 +973,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   retain headroom over the slower K-dependent trajectory. The CoT scheduler
   estimate remained `2026-08-31T17:50:00`, so the change was retained as a
   safe backfill improvement but did not immediately advance the estimate.
+- 2026-08-30: Safety-cap extension `11461798` was reduced in place from six to
+  three hours. The parent produced 198,228 tokens in 4,517 seconds; generating
+  the maximum 16,000 tokens for all 17 continuation rows projects to 6,198
+  seconds linearly, leaving about 77 minutes for model load, hashing, and
+  copying. Queue age and all generation settings remain unchanged. Slurm's
+  estimate remained late (`2026-08-31T22:20:00`), so no immediate scheduler
+  gain is claimed.

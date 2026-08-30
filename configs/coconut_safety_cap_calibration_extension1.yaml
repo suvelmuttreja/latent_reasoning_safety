@@ -67,3 +67,10 @@ slurm:
     host_memory_gib: 40
     queue_age_preserved: true
     scientific_settings_changed: false
+  live_time_update:
+    at: '2026-08-30T14:09:00-07:00'
+    time_limit_hours: 3
+    parent_elapsed_seconds: 4517
+    extension_worst_case_linear_projection_seconds: 6198
+    queue_age_preserved: true
+    scientific_settings_changed: false
