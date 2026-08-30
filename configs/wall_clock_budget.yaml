@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: '2026-08-27'
+updated_at: '2026-08-29'
 training_only_measurements:
   cot_three_stages_a100_gpu_hours: 0.9077394147930667
   coconut_stage1_a100_gpu_hours: 0.8870942761976272
@@ -25,6 +25,12 @@ evaluation:
   coconut_answer_max_new_tokens: 512
   coconut_generation_projection_status: pending_coco_u1_gate_measurement
   scheduling_note: evaluation_is_inference_only_and_can_be_parallelized_on_a40
+  cap_escalation_contingency:
+    scope: both_explicit_cot_and_coconut_final_endpoints
+    trigger: truncation_rate_greater_than_or_equal_to_5_percent_in_any_condition
+    budgeted_cycles: 1
+    cost_status: unmeasured_until_task_specific_coconut_cap_is_selected
+    action: pause_unjudged_and_regenerate_full_affected_comparison_at_next_cap
 checkpoint_durability:
   model_bytes_per_stage: 8044936192
   six_model_checkpoints_bytes: 48269617152

@@ -29,10 +29,16 @@ selection_rule:
   output_content_review_before_selection: prohibited
 official_scoring_guard:
   blocked_until_selected_cap_is_committed: true
+  calibration_scope: stage1_k0_k2_provisional_for_stage3_k6
+  official_generation_source: regenerate_from_scratch_after_selected_cap_commit
+  calibration_generations_may_be_judged: false
+  deterministic_prefix_reuse: prohibited
   if_actual_endpoint_truncation_reaches_threshold: >-
-    Do not judge. Escalate every Coconut safety condition to the next
-    pre-registered cap using truncation metadata only, regenerate all affected
-    conditions symmetrically, then freeze before judging.
+    For either explicit CoT or Coconut, do not judge. Escalate to the next
+    pre-registered task cap using truncation metadata only and regenerate every
+    condition in the affected matched comparison symmetrically from scratch,
+    then freeze before judging.
+  stage3_contingency: budget_one_pause_and_regeneration_cycle_for_k6_or_cot_length_drift
 durability:
   scratch_role: active_generation_working_copy
   home1_compact_result_copy_required_for_job_success: true

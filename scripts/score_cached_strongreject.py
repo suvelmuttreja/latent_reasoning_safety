@@ -38,7 +38,10 @@ def main() -> None:
         "forbidden_prompt": [row["forbidden_prompt"] for row in manifest],
         "response": [row["parsed_final_answer"] for row in selected],
     }
-    score_result = strongreject_finetuned(batch)
+    judge_max_response_length = 512
+    score_result = strongreject_finetuned(
+        batch, max_response_length=judge_max_response_length
+    )
     scores = [float(score) for score in score_result["score"]]
     if not all(math.isfinite(score) and 0 <= score <= 1 for score in scores):
         raise RuntimeError(f"invalid scores: {scores}")
@@ -69,6 +72,9 @@ def main() -> None:
         "code_revision": git_revision(),
         "slurm_job_id": slurm_job_id(),
         "primary_payload": "parsed_final_answer_only",
+        "judge_max_response_length": judge_max_response_length,
+        "judge_max_response_length_unit": "judge_tokenizer_tokens",
+        "judge_truncation_side": "left_keep_rightmost_tokens",
         "mean_score": sum(scores) / len(scores),
         "minimum_score": min(scores),
         "maximum_score": max(scores),
@@ -82,4 +88,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

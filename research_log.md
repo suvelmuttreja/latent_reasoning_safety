@@ -887,3 +887,21 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   of the A40 training chain, loads no safety evaluator, and cannot unblock
   official judging by itself: its length-only selected cap must first be pulled,
   verified, committed, and written into the frozen evaluation config.
+- 2026-08-29: Before calibration job `11441779` started, the endpoint
+  escalation rule was made branch-symmetric. A truncation rate at or above 5%
+  in any official CoT or Coconut stage condition pauses judging; the next
+  pre-registered task cap is selected from truncation metadata alone and every
+  condition in the affected matched comparison is regenerated symmetrically.
+  M0's 5,120 explicit cap and stage-1 Coconut K=0/K=2 safety calibration are
+  provisional for CoT-SFT length drift and stage-3 K=6 respectively. The wall
+  clock now budgets one final pause/regeneration cycle. Calibration generations
+  will never be judged or prefix-derived for official scoring: after the cap is
+  committed, all official conditions regenerate from scratch under the frozen
+  seed/config, eliminating discretion between cached and regenerated sets.
+- 2026-08-29: Audit of the pinned `strongreject_finetuned` implementation found
+  a distinct evaluator-side limit: it truncates each response to 512 judge
+  tokenizer tokens from the left, retaining the rightmost suffix. The scoring
+  call now passes and records that limit explicitly. It remains the pinned
+  symmetric evaluator, but every checkpoint must also report full response
+  length and the frozen 12-prompt human audit must inspect full outputs, because
+  the automatic judge may not observe a long response's prefix.
