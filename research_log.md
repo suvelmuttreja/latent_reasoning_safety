@@ -881,3 +881,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   compact JSON/text results must reach home1, then local Git/GitHub. Regenerable
   bulk files do not get duplicated onto quota-limited home1. Project2 remains
   prohibited.
+- 2026-08-29T19:07:11: Score-free Coconut safety-cap calibration job
+  `11441779` was submitted on one L40S from code revision `d928d8f`. It was
+  initially pending for priority with no start estimate. The job is independent
+  of the A40 training chain, loads no safety evaluator, and cannot unblock
+  official judging by itself: its length-only selected cap must first be pulled,
+  verified, committed, and written into the frozen evaluation config.

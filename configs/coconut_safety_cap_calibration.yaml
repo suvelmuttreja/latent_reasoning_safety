@@ -1,5 +1,5 @@
 schema_version: 1
-status: frozen_pending_run
+status: submitted
 frozen_at: '2026-08-29'
 purpose: select_coconut_safety_response_cap_from_lengths_before_official_judging
 train_config: configs/fallback_4b_skip0.yaml
@@ -39,3 +39,8 @@ durability:
 hardware:
   constraint: l40s
   rationale: inference_only_job_kept_off_the_critical_a40_training_chain
+slurm:
+  job_id: 11441779
+  submitted_at: '2026-08-29T19:07:11'
+  initial_state: pending_priority
+  start_estimate: unavailable
