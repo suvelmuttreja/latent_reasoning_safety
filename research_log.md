@@ -841,3 +841,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   estimate. The stage-3 dependency states are expected until their own stage-2
   predecessor succeeds. Each job requests one A40 for eight hours, and no
   A100 or L40S contender was submitted against the same output directories.
+- 2026-08-29: Before either stage-2 endpoint existed, the post-gate trajectory
+  was frozen in `configs/coconut_stage_trajectory.yaml`. At Coconut stages 2
+  and 3 it repeats GSM8K-200 at K=0 versus the checkpoint K (K=4 and K=6)
+  under the 512-token terse Coconut-answer cap, plus the same ten coherence
+  prompts at both K values under native thinking and its 5,120-token cap.
+  Coherence is exported condition-blind. The ten-prompt worse/same/better
+  counts are trajectory/gate evidence rather than strong final inference;
+  final Kmax claims rest on the frozen larger capability and safety sets. A
+  persistent K-gap permanently labels the fixed-weight K contrast and can
+  motivate the pre-registered inference-only latent-substitution ablations.
+  It does not invalidate the primary CoT-versus-Coconut endpoint estimand,
+  where Coconut coherence is part of the co-reported phenotype. Each job must
+  copy its complete text/JSON results from scratch1 to home1 before success.
