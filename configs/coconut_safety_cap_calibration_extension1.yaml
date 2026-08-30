@@ -1,5 +1,5 @@
 schema_version: 1
-status: ready_to_submit
+status: submitted_pending_priority
 frozen_at: '2026-08-30'
 purpose: extend_failed_stage1_coconut_safety_cap_calibration_from_lengths_only
 train_config: configs/fallback_4b_skip0.yaml
@@ -55,6 +55,7 @@ hardware:
   host_memory_gib: 64
   rationale: inference_only_job_kept_off_the_critical_a40_training_chain
 slurm:
-  job_id: null
-  submitted_at: null
-  initial_state: not_submitted
+  job_id: 11461798
+  submitted_at: '2026-08-30T12:59:50-07:00'
+  initial_state: pending_priority_no_start_estimate
+  code_revision: efc9ca0d9d7f6360a70349e46aed6a86dff00828

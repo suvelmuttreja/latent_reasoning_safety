@@ -937,3 +937,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   response's parsed text. No evaluator or score was loaded, and neither the
   extension ladder nor selection uses response content, but the strict
   no-content-review claim is therefore logged as deviated rather than retained.
+- 2026-08-30T12:59:50-07:00: Extension job `11461798` was submitted on one
+  L40S from preregistration commit `efc9ca0`. It is independent of the matched
+  A40 training chain, initially pending for priority with no start estimate,
+  and will rerun only the 17 registered length stops at a 16,000-token ceiling.
+  At 13:00, both stage-2 branches were healthy on confirmed A40s: Coconut job
+  `11440316` was at update 270/468 and CoT job `11440317` at 160/468, with no
+  NaN/OOM evidence. Their frozen 1x32 batching, data order, and output paths
+  remain unchanged; stage-3 and trajectory dependencies are pending normally.
