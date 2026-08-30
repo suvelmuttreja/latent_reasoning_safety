@@ -52,10 +52,18 @@ durability:
   home1_compact_result_copy_required_for_job_success: true
 hardware:
   constraint: l40s
-  host_memory_gib: 64
-  rationale: inference_only_job_kept_off_the_critical_a40_training_chain
+  host_memory_gib: 40
+  rationale: >-
+    Inference-only job kept off the critical A40 training chain; parent job
+    measured 4,173,536 KiB MaxRSS and 35,710,476 KiB MaxVMSize, so 40 GiB is a
+    conservative backfill request.
 slurm:
   job_id: 11461798
   submitted_at: '2026-08-30T12:59:50-07:00'
   initial_state: pending_priority_no_start_estimate
   code_revision: efc9ca0d9d7f6360a70349e46aed6a86dff00828
+  live_resource_update:
+    at: '2026-08-30T13:02:00-07:00'
+    host_memory_gib: 40
+    queue_age_preserved: true
+    scientific_settings_changed: false

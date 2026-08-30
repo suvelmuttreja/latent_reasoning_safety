@@ -945,3 +945,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `11440316` was at update 270/468 and CoT job `11440317` at 160/468, with no
   NaN/OOM evidence. Their frozen 1x32 batching, data order, and output paths
   remain unchanged; stage-3 and trajectory dependencies are pending normally.
+- 2026-08-30: Parent calibration accounting measured Python MaxRSS
+  `4,173,536` KiB and MaxVMSize `35,710,476` KiB. Extension job `11461798` was
+  therefore reduced in place from 64 to 40 GiB host memory, preserving its
+  submit time, L40S constraint, seeds, generation settings, and output path.
+  The local sbatch/config were updated identically; the job remains pending
+  solely for priority with no scheduler start estimate.
