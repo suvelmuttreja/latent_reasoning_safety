@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:a40:1
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=80G
-#SBATCH --time=06:00:00
+#SBATCH --time=05:00:00
 #SBATCH --output=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.out
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
@@ -22,3 +22,4 @@ srun python -u scripts/train_4b_skip0_stage.py \
   --output-root "$WORK_ROOT/results/fallback_4b_skip0" \
   --resume-dir "$WORK_ROOT/results/fallback_4b_skip0/stage2" \
   --acknowledge-inline-gate "$INLINE_GATE_ACK"
+scripts/copy_compact_stage_results.sh fallback_4b_skip0 3

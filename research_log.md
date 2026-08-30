@@ -951,3 +951,25 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   submit time, L40S constraint, seeds, generation settings, and output path.
   The local sbatch/config were updated identically; the job remains pending
   solely for priority with no scheduler start estimate.
+- 2026-08-30T13:31:36-07:00: Matched explicit-CoT stage 2 job `11440317`
+  completed successfully on an A40 in `00:49:19`. It performed exactly 468
+  stage updates (936 cumulative) with frozen 1x32 batching, token-count loss
+  normalization, registered epoch order hashes, and no NaN/OOM evidence. The
+  stage model SHA-256 is
+  `1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9`.
+  Private-HF model commit `e8c67f40d1d078cfed8eece598535a472bd3cfb1`
+  contains the 8,043,762,903-byte model and tokenizer; metadata commit
+  `7d62a140cd05fe1205ae10cb24f4ca7d1e6ddd6e` contains the exact local metadata
+  hash `1f315bef...`. Metadata and all 468 update metrics were copied to home1
+  with hashes matching scratch1, then pulled locally. Stage-3 job `11440319`
+  was released from dependency and is pending for priority. Because the
+  training runner previously did not retain the metadata-upload commit or copy
+  compact results to home1 itself, a durable receipt and mandatory stage-3
+  post-step were added before either remaining stage-3 job starts.
+- 2026-08-30: Pending stage-3 wall-time requests were right-sized in place
+  without changing queue age or scientific settings. Explicit-CoT job
+  `11440319` moved from six to two hours after stages 1-2 each completed in
+  about 50 minutes; Coconut job `11440318` moved from six to five hours to
+  retain headroom over the slower K-dependent trajectory. The CoT scheduler
+  estimate remained `2026-08-31T17:50:00`, so the change was retained as a
+  safe backfill improvement but did not immediately advance the estimate.

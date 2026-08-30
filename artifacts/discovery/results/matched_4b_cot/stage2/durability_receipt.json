@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "model_tokenizer_metadata_and_compact_copies_verified",
+  "verified_at": "2026-08-30T14:05:00-07:00",
+  "branch": "explicit_cot",
+  "stage": 2,
+  "slurm_job_id": "11440317",
+  "repo_id": "suvelmuttreja/mats-latent-safety-checkpoints",
+  "path_in_repo": "matched_4b_cot/stage2",
+  "model_commit_oid": "e8c67f40d1d078cfed8eece598535a472bd3cfb1",
+  "metadata_commit_oid": "7d62a140cd05fe1205ae10cb24f4ca7d1e6ddd6e",
+  "model_state_sha256": "1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9",
+  "metadata_sha256": "1f315bef21b2e984240c0df6fffcfdcb60644cdaab125b7e470ffd763ad14167",
+  "update_metrics_sha256": "08cf3009321cd5ba4bedd0dde593fd5935ea1add0f9461816c1a91fce386528a",
+  "model_state_bytes_at_model_commit": 8043762903,
+  "tokenizer_json_bytes_at_model_commit": 11423225,
+  "metadata_bytes_at_metadata_commit": 2640,
+  "stage_optimizer_updates": 468,
+  "cumulative_optimizer_updates": 936,
+  "home1_compact_copy_hashes_match_scratch1": true
+}

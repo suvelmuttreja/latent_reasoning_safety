@@ -95,9 +95,7 @@ def make_grouped_batches(
 def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict:
     """Persist the unique stage model while leaving regenerable optimizer state on scratch."""
     repo_id = config["model_checkpoint_durability_repo"]
-    path_in_repo = (
-        f"{config['durability_path_prefix']}/stage{metadata['completed_stage']}"
-    )
+    path_in_repo = f"{config['durability_path_prefix']}/stage{metadata['completed_stage']}"
     api = HfApi()
     upload_started = time.perf_counter()
     model_commit = api.upload_folder(
@@ -123,13 +121,27 @@ def upload_durable_stage(output_dir: Path, metadata: dict, config: dict) -> dict
     metadata["durability"] = durability
     metadata_path = output_dir / "metadata.json"
     metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
-    api.upload_file(
+    metadata_sha256 = sha256_file(metadata_path)
+    metadata_commit = api.upload_file(
         path_or_fileobj=metadata_path,
         path_in_repo=f"{path_in_repo}/metadata.json",
         repo_id=repo_id,
         repo_type="model",
         commit_message=f"Record {metadata['branch']} stage {metadata['completed_stage']} metadata",
     )
+    receipt = {
+        "schema_version": 1,
+        "status": "model_tokenizer_and_metadata_uploaded",
+        "repo_id": repo_id,
+        "path_in_repo": path_in_repo,
+        "model_commit_oid": model_commit.oid,
+        "metadata_commit_oid": metadata_commit.oid,
+        "metadata_commit_url": str(metadata_commit.commit_url),
+        "metadata_path_in_repo": f"{path_in_repo}/metadata.json",
+        "metadata_sha256": metadata_sha256,
+        "model_state_sha256": metadata["model_state_sha256"],
+    }
+    (output_dir / "durability_receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")
     return durability
 
 
@@ -158,9 +170,10 @@ def main() -> None:
     )
     if any(config["forbidden_changes"].values()):
         raise ValueError("a forbidden method change is enabled")
-    if config["micro_batch_size"] * config["gradient_accumulation_steps"] != config[
-        "effective_batch_size"
-    ]:
+    if (
+        config["micro_batch_size"] * config["gradient_accumulation_steps"]
+        != config["effective_batch_size"]
+    ):
         raise ValueError("micro-batch and accumulation do not match effective batch size")
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
@@ -173,9 +186,7 @@ def main() -> None:
     torch.cuda.manual_seed_all(config["seed"])
     code_revision = git_revision()
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(config["model_id"], revision=config["model_revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
     markers = ensure_latent_tokens(tokenizer)
@@ -241,8 +252,7 @@ def main() -> None:
         random.Random(config["seed"] + args.stage * 1000 + epoch).shuffle(order)
         order_hashes.append(sha256_json(order))
         microbatches = [
-            order[offset : offset + micro_batch]
-            for offset in range(0, len(order), micro_batch)
+            order[offset : offset + micro_batch] for offset in range(0, len(order), micro_batch)
         ]
         for offset in range(0, len(microbatches), accumulation):
             groups = microbatches[offset : offset + accumulation]
