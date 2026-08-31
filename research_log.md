@@ -1285,6 +1285,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   on jointly completed prompts is descriptive sensitivity only. The official
   generator now also requires per-condition `authorized` status: CoT/K6 remain
   blocked pending final blind coherence scores, and K0 is explicitly prohibited.
+- 2026-08-31: Official unjudged endpoint-generation jobs were prepared but not
+  submitted for `cot_u3` and natural `coco_u3_k6`. Each uses A100-40GB, the
+  frozen 4,096 task cap, a separate output directory, and an exit trap that
+  copies even a partial manifest-order cache to home1; exact provenance checks
+  permit deterministic resume from that durable partial. Both still fail
+  closed until their per-condition status is changed to `authorized` after the
+  final blind coherence scores are committed. No K0 official job exists.
 - 2026-08-31: A score- and content-blind structural diagnostic was
   preregistered for the immutable 5,120-token final Coconut calibration cache.
   It emits no raw text and loads no evaluator. For every length stop it records

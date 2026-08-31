@@ -37,6 +37,17 @@ launch_guard:
   coconut_necessity_gate_must_be_committed: true
   calibration_generations_may_be_reused: false
   official_conditions_regenerate_from_scratch: true
+prepared_jobs:
+  cot_u3:
+    script: scripts/slurm/generate_official_cot_u3.sbatch
+    gpu: a100-40gb
+    time_limit: '01:15:00'
+    durability: incremental_scratch_to_home1_on_exit_with_exact_resume_validation
+  coco_u3_k6:
+    script: scripts/slurm/generate_official_coco_u3_k6.sbatch
+    gpu: a100-40gb
+    time_limit: '01:15:00'
+    durability: incremental_scratch_to_home1_on_exit_with_exact_resume_validation
 cap_resolution_status:
   explicit_cot: satisfied_by_job_11490895_cap_4096
   coconut_skip0_k6: satisfied_by_job_11491167_cap_4096
