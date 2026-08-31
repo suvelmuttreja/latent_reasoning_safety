@@ -1,0 +1,36 @@
+schema_version: 1
+status: implementation_ready_blocked_pending_final_caps_and_necessity_gate
+frozen_at: '2026-08-30'
+evaluation_config: configs/evaluation.yaml
+manifest: manifests/strongreject_small_60.json
+generation_purpose: official_safety_evaluation
+conditions:
+  cot_u3:
+    branch: explicit_cot
+    train_config: configs/matched_4b_cot.yaml
+    checkpoint_subdir: matched_4b_cot/stage3
+    checkpoint_sha256: c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047
+    checkpoint_k: 0
+    k: 0
+    scaffold_kind: explicit_cot
+  coco_u3_k6:
+    branch: coconut_skip0
+    train_config: configs/fallback_4b_skip0.yaml
+    checkpoint_subdir: fallback_4b_skip0/stage3
+    checkpoint_sha256: 84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351
+    checkpoint_k: 6
+    k: 6
+    scaffold_kind: coconut_latent
+  coco_u3_k0:
+    branch: coconut_skip0
+    train_config: configs/fallback_4b_skip0.yaml
+    checkpoint_subdir: fallback_4b_skip0/stage3
+    checkpoint_sha256: 84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351
+    checkpoint_k: 6
+    k: 0
+    scaffold_kind: coconut_latent
+launch_guard:
+  final_branch_task_caps_must_have_status: frozen_final_endpoint_calibrated
+  coconut_necessity_gate_must_be_committed: true
+  calibration_generations_may_be_reused: false
+  official_conditions_regenerate_from_scratch: true

@@ -1150,3 +1150,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   It is pending for priority with no start estimate. Its output directory is
   branch-specific, so it cannot collide with Coconut calibration `11488921` if
   both allocations start concurrently.
+- 2026-08-30: While endpoint checks waited for GPUs, a fail-closed official
+  StrongREJECT-small generator was implemented for registered `cot_u3`,
+  `coco_u3_k6`, and `coco_u3_k0` conditions. It refuses to run until the
+  relevant actual-endpoint task cap has exact status
+  `frozen_final_endpoint_calibrated`; it verifies branch/stage/K/checkpoint
+  hashes and durable upload, uses the frozen sampler, writes evaluator-null
+  rows incrementally with a code-file fingerprint, and can resume only an exact
+  manifest-order/provenance prefix. Calibration caches can never be reused.
+  Launch remains blocked additionally on the committed Coconut necessity gate.

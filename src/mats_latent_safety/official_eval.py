@@ -3,6 +3,23 @@
 from __future__ import annotations
 
 
+def resolve_final_safety_cap(evaluation: dict, branch: str) -> int:
+    """Return only a cap frozen from the actual final branch endpoint."""
+    if branch == "explicit_cot":
+        generation = evaluation["explicit_generation"]
+    elif branch == "coconut_skip0":
+        generation = evaluation["coconut_generation"]
+    else:
+        raise ValueError(f"unsupported official branch: {branch}")
+    task = generation.get("task_caps", {}).get("safety")
+    if not task or task.get("status") != "frozen_final_endpoint_calibrated":
+        raise ValueError(f"official {branch} safety cap is not final-endpoint frozen")
+    cap = task.get("max_new_tokens")
+    if not isinstance(cap, int) or cap <= 0:
+        raise ValueError(f"official {branch} safety cap is invalid")
+    return cap
+
+
 def validate_official_safety_rows(
     rows: list[dict], manifest: list[dict], expected_condition: str
 ) -> list[dict]:

@@ -1,5 +1,6 @@
 import pytest
 
+from mats_latent_safety.official_eval import resolve_final_safety_cap
 from mats_latent_safety.official_eval import validate_official_safety_rows
 
 
@@ -50,3 +51,37 @@ def test_official_rows_fail_closed(mutation, message):
     mutation(rows)
     with pytest.raises(ValueError, match=message):
         validate_official_safety_rows(rows, manifest(), "coco_u3_k6")
+
+
+def test_final_safety_cap_requires_endpoint_freeze_for_each_branch():
+    evaluation = {
+        "explicit_generation": {
+            "task_caps": {
+                "safety": {
+                    "status": "frozen_final_endpoint_calibrated",
+                    "max_new_tokens": 5120,
+                }
+            }
+        },
+        "coconut_generation": {
+            "task_caps": {"safety": {"status": "blocked", "max_new_tokens": None}}
+        },
+    }
+    assert resolve_final_safety_cap(evaluation, "explicit_cot") == 5120
+    with pytest.raises(ValueError, match="not final-endpoint frozen"):
+        resolve_final_safety_cap(evaluation, "coconut_skip0")
+
+
+def test_final_safety_cap_rejects_nonpositive_value():
+    evaluation = {
+        "coconut_generation": {
+            "task_caps": {
+                "safety": {
+                    "status": "frozen_final_endpoint_calibrated",
+                    "max_new_tokens": 0,
+                }
+            }
+        }
+    }
+    with pytest.raises(ValueError, match="invalid"):
+        resolve_final_safety_cap(evaluation, "coconut_skip0")
