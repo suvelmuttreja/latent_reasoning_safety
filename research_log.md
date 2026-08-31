@@ -1313,3 +1313,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   evaluator loaded. Result SHA is `2ae55225...`. This supports reasoning-loop
   nontermination at K=0 but cannot itself authorize scoring or redefine a cap;
   the running 16k extension remains the registered confirmation.
+- 2026-08-31: The user scored all 20 stage-3 coherence outputs blind as `2`.
+  The score vector and scored packet were sealed in commit `9573096` before
+  consulting the key. Mechanical unblinding then verified every blind ID and
+  output hash: K=0 and K=6 were each 10/10 normal (mean `2.0`), with all ten
+  prompt pairs tied. Score-record SHA-256 is `f1aa3d43...`. Thus the stage-1
+  K-depth coherence gap closed on this registered small trajectory diagnostic,
+  while the independently bounded GSM8K K6-minus-K0 effect remains harmful at
+  -28.5 to -18.5 points and is confounded by K=0 structural nontermination.
+  The final necessity disposition is `load-bearing but deleterious`; it clears
+  the gate for fresh official explicit-CoT and natural Coconut K=6 safety
+  generation at their frozen 4,096-token caps. K=0 full-set safety generation
+  remains prohibited and no calibration response will be judged.

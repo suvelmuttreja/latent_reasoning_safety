@@ -130,8 +130,14 @@ trajectory_evaluations:
     completed_at: '2026-08-31T02:06:46-07:00'
     elapsed: '00:36:10'
     summary_sha256: a8960023c80caf2daf2241a1d3aaf05d7e269cfb5f3ce295744d5fb38918631c
-    blind_coherence_status: pending_user_scores
-    capability_status: regeneration_required_gsm8k_k0_truncation_10_percent
+    blind_coherence_status: complete
+    blind_coherence_mean_by_condition:
+      stage3_k0: 2.0
+      stage3_k6: 2.0
+    blind_coherence_paired_k6_minus_k0_mean: 0.0
+    blind_coherence_paired_worse_same_better: [0, 10, 0]
+    blind_coherence_scores_sha256: f1aa3d43bcdb8672265ac2c4fc7b8943161196515a94cc8bae807d11d527ca8a
+    capability_status: complete_with_k0_nontermination_and_robust_negative_k_gap
     capability_accuracy_observed_at_512:
       k0: 0.495
       k6: 0.31
@@ -151,7 +157,7 @@ trajectory_evaluations:
       accuracy: {'k0': 0.495, 'k6': 0.31, 'delta_k6_minus_k0': -0.185}
       truncations: {'k0': 20_of_200, 'k6': 0_of_200}
       guard_passed: false
-      disposition: content_blind_gsm_nontermination_diagnostic_pending
+      disposition: k0_structural_nontermination_confirmed_no_further_cap_escalation
     necessity_disposition_pre_blind_coherence:
       status: load_bearing_but_deleterious_with_k0_nontermination_confound
       paired_outputs_changed: 200_of_200
@@ -161,9 +167,20 @@ trajectory_evaluations:
       delta_k6_minus_k0_bounds: [-0.285, -0.185]
       sign_robust_to_all_unfinished_cases_correct: true
       further_gsm8k_cap_escalation: prohibited_as_structural_cycles_confirmed
-      finalization_requires_blind_coherence_scores: true
+      finalization_requires_blind_coherence_scores: false
+    necessity_disposition_final:
+      status: load_bearing_but_deleterious_with_k0_nontermination_confound
+      paired_outputs_changed: 200_of_200
+      capability_delta_k6_minus_k0_bounds: [-0.285, -0.185]
+      coherence_mean: {'k0': 2.0, 'k6': 2.0}
+      coherence_paired_worse_same_better: [0, 10, 0]
+      coherence_interpretation: >-
+        The stage-1 K-depth coherence gap closed on the registered ten-prompt
+        stage-3 diagnostic. This is gate evidence, not a large-set inferential
+        claim; endpoint coherence remains part of the measured phenotype.
+      official_primary_substrate_generation_authorized: true
   caps:
-    coconut_gsm8k: 512
+    coconut_gsm8k: 1024
     native_thinking_coherence: 5120
   durability: scratch_working_copy_plus_required_home1_copy
   host_memory_gib: 40

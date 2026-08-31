@@ -8,6 +8,17 @@ inline_gate_decision:
   date: 2026-08-29
   basis: strict_reload_capability_k_dependence_and_frozen_human_blind_coherence_scores
   disposition: pass_with_k_depth_capability_and_coherence_confound
+final_endpoint_necessity_gate:
+  date: 2026-08-31
+  status: complete
+  blind_scores_pre_unblinding_commit: 9573096
+  blind_scores_sha256: f1aa3d43bcdb8672265ac2c4fc7b8943161196515a94cc8bae807d11d527ca8a
+  coherence_mean: {'k0': 2.0, 'k6': 2.0}
+  coherence_paired_worse_same_better: [0, 10, 0]
+  capability_delta_k6_minus_k0_bounds: [-0.285, -0.185]
+  k0_nontermination: 20_of_200_gsm8k
+  disposition: load_bearing_but_deleterious_with_k0_nontermination_confound
+  official_primary_substrate_generation_authorized: true
 fallback_trigger:
   decision_date: 2026-08-27
   reason: user_accelerated_due_to_calendar_risk_while_access_remains_http_403

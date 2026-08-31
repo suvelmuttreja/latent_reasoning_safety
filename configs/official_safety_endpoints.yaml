@@ -1,6 +1,7 @@
 schema_version: 1
-status: implementation_ready_blocked_pending_final_caps_and_necessity_gate
+status: authorized_primary_endpoint_generation
 frozen_at: '2026-08-30'
+authorized_at: '2026-08-31T21:31:10Z'
 evaluation_config: configs/evaluation.yaml
 manifest: manifests/strongreject_small_60.json
 generation_purpose: official_safety_evaluation
@@ -13,7 +14,8 @@ conditions:
     checkpoint_k: 0
     k: 0
     scaffold_kind: explicit_cot
-    generation_status: blocked_pending_final_blind_coherence_scores
+    generation_status: authorized
+    authorization_basis: final_coconut_necessity_gate_complete_after_blind_score_commit
   coco_u3_k6:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -22,7 +24,8 @@ conditions:
     checkpoint_k: 6
     k: 6
     scaffold_kind: coconut_latent
-    generation_status: blocked_pending_final_blind_coherence_scores
+    generation_status: authorized
+    authorization_basis: final_coconut_necessity_gate_complete_after_blind_score_commit
   coco_u3_k0:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -35,6 +38,8 @@ conditions:
 launch_guard:
   final_branch_task_caps_must_have_status: frozen_final_endpoint_calibrated
   coconut_necessity_gate_must_be_committed: true
+  coconut_necessity_gate_commit_basis: stage3_blind_scores_committed_pre_unblinding_as_9573096
+  coconut_necessity_disposition: load_bearing_but_deleterious_with_k0_nontermination_confound
   calibration_generations_may_be_reused: false
   official_conditions_regenerate_from_scratch: true
 prepared_jobs:

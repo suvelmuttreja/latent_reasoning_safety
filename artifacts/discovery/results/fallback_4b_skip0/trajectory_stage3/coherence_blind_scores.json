@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "blind_scores_complete_pre_unblinding",
+  "status": "blind_scores_complete_and_unblinded",
   "stage": 3,
   "scorer": "user",
   "recorded_at": "2026-08-31T21:27:26Z",
@@ -15,5 +15,27 @@
     "score_2": 20,
     "mean": 2.0
   },
-  "condition_results": "sealed_until_this_record_is_committed"
+  "by_condition": {
+    "stage3_k0": {
+      "outputs": 10,
+      "score_0": 0,
+      "score_1": 0,
+      "score_2": 10,
+      "mean": 2.0
+    },
+    "stage3_k6": {
+      "outputs": 10,
+      "score_0": 0,
+      "score_1": 0,
+      "score_2": 10,
+      "mean": 2.0
+    }
+  },
+  "paired_k6_minus_k0_mean": 0.0,
+  "paired_k6_worse_same_better": [0, 10, 0],
+  "validation": {
+    "all_blind_ids_matched": true,
+    "all_output_hashes_matched": true,
+    "each_prompt_has_k0_and_k6": true
+  }
 }
