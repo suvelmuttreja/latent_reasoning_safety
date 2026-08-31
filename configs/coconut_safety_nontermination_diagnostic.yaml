@@ -1,0 +1,31 @@
+schema_version: 1
+status: preregistered_pending_run
+frozen_at: '2026-08-31'
+purpose: content_blind_structure_only_diagnostic_of_final_endpoint_length_stops
+source_generations: fallback_4b_skip0/safety_cap_calibration_stage3/generations.jsonl
+source_generations_sha256: 55ae65788fdf8b474cf91788c1bfe9e5304673dd326f125a960debe814917770
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+scope: all_rows_aggregated_by_k_and_stop_reason_with_per_length_stop_numeric_records
+metrics:
+  closing_think_delimiter_count: true
+  utf8_zlib_compression_ratio: true
+  token_4gram_unique_ratio_last_tokens: 2048
+  exact_suffix_cycle:
+    max_period_tokens: 256
+    minimum_repeats: 4
+    minimum_covered_tokens: 512
+structural_nontermination_flag: >-
+  stop_reason is length and an exact suffix token cycle with period at most 256
+  repeats at least four times while covering at least 512 generated tokens
+content_policy:
+  raw_output_printed_or_written: false
+  evaluator_or_score_loaded: false
+  semantic_labels: prohibited
+  allowed_output: prompt_id_k_lengths_stop_reason_hashes_and_numeric_structure_only
+interpretation_policy:
+  cannot_select_or_relax_cap_by_itself: true
+  use_after_extension: >-
+    Distinguish registered-cap exhaustion dominated by exact repetitive cycles
+    from long but structurally nonrepetitive outputs; any official-scoring
+    disposition requires a separate committed amendment.

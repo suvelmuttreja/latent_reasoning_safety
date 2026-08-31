@@ -1235,3 +1235,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Final safety-cap extension `11491167` followed at 02:29:21 on A100-40GB node
   `b02-01` with its three-hour limit. Their outputs and GPU pools are disjoint;
   both can run concurrently without a race or matching violation.
+- 2026-08-31: A score- and content-blind structural diagnostic was
+  preregistered for the immutable 5,120-token final Coconut calibration cache.
+  It emits no raw text and loads no evaluator. For every length stop it records
+  only hashes, delimiter counts, compression/n-gram ratios, and whether the
+  suffix contains an exact token cycle of period at most 256 repeated at least
+  four times and covering at least 512 tokens. The flag cannot select a cap or
+  authorize scoring; after the 16k extension it distinguishes mechanical loops
+  from merely long nonrepetitive responses for a separately committed
+  disposition.
