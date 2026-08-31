@@ -1253,6 +1253,20 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   observed accuracy or select a favorable cap; it determines whether the
   persistent guard failure should be recorded as K=0 nontermination rather
   than repeatedly doubling an answer budget that resolved zero cases.
+- 2026-08-31T03:01:00-07:00: Content-blind GSM8K structural diagnostic
+  `11491228` completed in `00:01:09`. Nineteen of the 20 persistent K=0 length
+  stops met the strict exact-cycle flag; their median last-window 4-gram
+  uniqueness was `0.00588`, versus `0.93887` for 180 completed K=0 rows, and
+  median zlib ratio was `0.02021` versus `0.79501`. K=6 completed 200/200 with
+  no cycle flags. No raw content or evaluator was emitted. Result SHA is
+  `11fa2d45...`. Further GSM8K cap doubling is therefore closed as a response
+  to structural nontermination, not treated as an ordinary length calibration.
+  Without imputing unfinished answers, K=0 accuracy is bounded at 49.5%-59.5%
+  while K=6 is 31.0%, so K6-minus-K0 lies between -28.5 and -18.5 points and
+  is negative even if every unfinished K=0 case were correct. Together with
+  200/200 paired output changes, this supports a pre-blind-coherence necessity
+  disposition of `load-bearing but deleterious`, explicitly confounded by K=0
+  nontermination. Blind coherence scores remain required for finalization.
 - 2026-08-31: A score- and content-blind structural diagnostic was
   preregistered for the immutable 5,120-token final Coconut calibration cache.
   It emits no raw text and loads no evaluator. For every length stop it records

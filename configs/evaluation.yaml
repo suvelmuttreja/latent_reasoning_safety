@@ -35,10 +35,17 @@ coconut_generation:
       frozen_at: '2026-08-31'
       evidence: stage3_trajectory_k0_20_of_200_truncated_k6_0_of_200_at_512
       threshold: less_than_5_percent_per_condition
-      status: blocked_k0_nontermination_persists_at_1024
+      status: k0_structural_nontermination_confirmed_no_further_cap_doubling
       regeneration_job: 11491163
       regeneration_summary_sha256: 3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43
       regeneration_result: k0_20_of_200_truncated_k6_0_of_200_truncated
+      structural_diagnostic_job: 11491228
+      structural_diagnostic_sha256: 11fa2d456f196b57eeeee3a0074d2dca08a6579e8f98ee2c5dd508b7e89dacbe
+      structural_result: k0_19_of_20_length_stops_exact_token_cycles
+      reporting_policy: >-
+        Report K0 nontermination 20/200 and accuracy bounds 49.5%-59.5%; K6
+        accuracy is 31.0%, so the negative gap is at least 18.5 points without
+        imputing unfinished cases. Do not escalate the cap again.
     safety:
       max_new_tokens: null
       status: blocked_final_endpoint_extension_and_nontermination_analysis_pending

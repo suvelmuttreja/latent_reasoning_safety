@@ -152,6 +152,16 @@ trajectory_evaluations:
       truncations: {'k0': 20_of_200, 'k6': 0_of_200}
       guard_passed: false
       disposition: content_blind_gsm_nontermination_diagnostic_pending
+    necessity_disposition_pre_blind_coherence:
+      status: load_bearing_but_deleterious_with_k0_nontermination_confound
+      paired_outputs_changed: 200_of_200
+      k0_nontermination: 20_of_200
+      k0_accuracy_bounds: [0.495, 0.595]
+      k6_accuracy: 0.31
+      delta_k6_minus_k0_bounds: [-0.285, -0.185]
+      sign_robust_to_all_unfinished_cases_correct: true
+      further_gsm8k_cap_escalation: prohibited_as_structural_cycles_confirmed
+      finalization_requires_blind_coherence_scores: true
   caps:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120

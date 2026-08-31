@@ -1,5 +1,5 @@
 schema_version: 1
-status: preregistered_pending_run
+status: completed
 frozen_at: '2026-08-31'
 purpose: content_blind_structure_only_diagnostic_of_stage3_gsm8k_1024_length_stops
 source_generations: fallback_4b_skip0/trajectory_stage3_gsm8k_cap1024/gsm8k.jsonl
@@ -26,3 +26,20 @@ content_policy:
 interpretation_policy:
   cannot_select_or_relax_cap_by_itself: true
   use: determine_whether_persistent_k0_cap_hits_are_structural_nontermination
+slurm:
+  job_id: 11491228
+  terminal_state: completed
+  completed_at: '2026-08-31T03:01:00-07:00'
+  elapsed: '00:01:09'
+  exit_code: '0:0'
+result:
+  output_sha256: 11fa2d456f196b57eeeee3a0074d2dca08a6579e8f98ee2c5dd508b7e89dacbe
+  k0_length_stops: 20
+  k0_exact_cycle_flags: 19
+  k0_length_median_last2048_unique_4gram_ratio: 0.0058823529411764705
+  k0_eos_median_last2048_unique_4gram_ratio: 0.9388717661343047
+  k0_length_median_zlib_ratio: 0.020209059233449476
+  k0_eos_median_zlib_ratio: 0.7950064806603452
+  k6_length_stops: 0
+  evaluator_loaded: false
+  raw_content_emitted: false
