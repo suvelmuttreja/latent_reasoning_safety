@@ -1208,6 +1208,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Fallback `11491110` was cancelled at zero elapsed after primary success.
   The next decision must be preregistered from score-blind repetition/length
   diagnostics; simply declaring 5,120 or relaxing `<5%` is prohibited.
+- 2026-08-31: Before inspecting any final-endpoint calibration response
+  content, extension 1 was preregistered at `[8192,12288,16000]`. It reuses the
+  106 EOS-complete rows only for mechanical length calibration and regenerates
+  the 14 registered length stops (13 K=0, one K=6) from the same prompts,
+  paired seeds, sampler, serialization, and final checkpoint. No evaluator may
+  load. If no cap passes, official scoring stays blocked and only separately
+  preregistered content-blind structural diagnostics may inform disposition.
 - 2026-08-31: Before any stage-3 blind coherence scores were unblinded, the
   GSM8K guard response was frozen: raise the task cap from 512 to 1,024 and
   regenerate both K=0 and K=6 from scratch with the same final checkpoint,
