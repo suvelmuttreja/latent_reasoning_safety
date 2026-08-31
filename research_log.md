@@ -1114,3 +1114,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   limit was reduced from `01:15:00` to `01:00:00`, preserving queue age and all
   scientific settings; stage 2 completed in `00:41:26`, leaving 18m34s of
   headroom for K=6. The current scheduler estimate did not change.
+- 2026-08-30T23:30:58-07:00: Score-blind safety-cap extension `11461798`
+  completed on L40S in `02:25:53` with exit code zero, strict checkpoint load,
+  all 17 decoded prefixes matching, and no evaluator loaded. No registered cap
+  through 16,000 passed the frozen strict `<5%` rule: K=0 had 12/60 length
+  stops (20%) and K=2 had 3/60 (5%). Summary SHA-256 is `d09e8e6d...`, matching
+  scratch1 and home1; official judging therefore remains blocked and 16,000 is
+  not silently frozen. Because stage-1 K=0/K=2 calibration was explicitly
+  provisional for the final K=6 endpoint, the next score-blind job is
+  preregistered on the actual stage-3 checkpoint at K=0/K=6 using the original
+  512-5,120 ladder. If it also fails, any higher-cap continuation or mechanical
+  nontermination policy must be preregistered before content or scores are
+  inspected.

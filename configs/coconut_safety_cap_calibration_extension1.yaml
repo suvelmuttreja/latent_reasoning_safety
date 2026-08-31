@@ -1,5 +1,5 @@
 schema_version: 1
-status: submitted_pending_priority
+status: completed_no_registered_cap_passed
 frozen_at: '2026-08-30'
 purpose: extend_failed_stage1_coconut_safety_cap_calibration_from_lengths_only
 train_config: configs/fallback_4b_skip0.yaml
@@ -74,3 +74,14 @@ slurm:
     extension_worst_case_linear_projection_seconds: 6198
     queue_age_preserved: true
     scientific_settings_changed: false
+  terminal_state: completed
+  completed_at: '2026-08-30T23:30:58-07:00'
+  elapsed: '02:25:53'
+  exit_code: '0:0'
+result:
+  selected_cap: null
+  official_scoring_remains_blocked: true
+  summary_sha256: d09e8e6d844dcf170a8ad9502788caa336db853245d3fd5d91df91b8dbb0ace2
+  calibration_cap_hits_by_k: {'0': 12, '2': 3}
+  calibration_cap_hit_rates_by_k: {'0': 0.20, '2': 0.05}
+  evaluator_loaded: false

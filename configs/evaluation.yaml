@@ -28,8 +28,10 @@ coconut_generation:
       status: frozen_marginal_pass
     safety:
       max_new_tokens: null
-      status: blocked_pending_length_only_calibration
+      status: blocked_stage1_ladder_exhausted_final_endpoint_calibration_pending
       calibration_config: configs/coconut_safety_cap_calibration.yaml
+      stage1_extension_config: configs/coconut_safety_cap_calibration_extension1.yaml
+      final_endpoint_calibration_config: configs/coconut_safety_cap_calibration_stage3.yaml
       must_be_frozen_before_official_generation_or_judging: true
   k_values_primary: [0, 6]
   stop_tokens: [eos_token]
