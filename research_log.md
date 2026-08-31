@@ -1106,3 +1106,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   scratch1/home1 hashes are `997a1f25...`, `34bb7450...`, and `0354d182...`.
   The compact artifacts were also pulled locally. Repaired K=0/K=6 trajectory
   job `11463021` released normally and is pending only for A40 priority.
+- 2026-08-30: Once released, trajectory job `11463021` received an Aug 31
+  13:40 A40 estimate. Score-free availability tests did not justify a hardware
+  change: fresh L40S and A40 requests estimated Sep 1 14:38 and 15:12, while
+  A100-80GB estimated Sep 2 03:59. The aged A40 path therefore remains both
+  earliest and consistent with the stage-1/2 trajectory hardware. Its live
+  limit was reduced from `01:15:00` to `01:00:00`, preserving queue age and all
+  scientific settings; stage 2 completed in `00:41:26`, leaving 18m34s of
+  headroom for K=6. The current scheduler estimate did not change.
