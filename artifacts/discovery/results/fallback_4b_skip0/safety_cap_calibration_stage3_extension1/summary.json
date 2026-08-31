@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "status": "no_registered_cap_passed_official_scoring_remains_blocked",
+  "selected_cap": null,
+  "selection_used_only_lengths_and_stop_reasons": true,
+  "evaluator_loaded": false,
+  "slurm_job_id": "11491167",
+  "code_revision": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "implementation_files_sha256": {
+    "scripts/calibrate_coconut_safety_cap.py": "cf0c1b53d77972b15b13be33af6b24d616f8e5c5815b7c740ffd68f689a7650b",
+    "scripts/gate_4b_coco_u1.py": "71121dca6f799c9109dc53aa22d1b38b5753d4b38350ae9b7c80c5689d17263a",
+    "scripts/train_4b_skip0_stage.py": "4710467d9e411959034c7103fbe0e9bc55b871084a86143d14c1498d122ebd70",
+    "src/mats_latent_safety/coconut.py": "bc8511c036c18161cdc51b939b1d55fab6b744652a231efb35fc1f1953185e87",
+    "src/mats_latent_safety/serialization.py": "44bb5e34a4c98d65b60ed7b2ea5713768c8181b8c692f44b6543e7f53d0ef19a"
+  },
+  "implementation_sha256": "058b01ffefea8c28be2482e7193acf145f28bf8477b285dafa1c3c2a9df37327",
+  "checkpoint_sha256": "84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351",
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "6f85c0284198ce6fa04961c3f07b8ce56b51d8b013a359df9272add136f2c5d0",
+  "evaluation_config_sha256": "e9be675602f5c46f0a9d483129164063ef2c11a913dba09b40196b4aece57190",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "generations_sha256": "88488f89b1c3c659af9c0990215380c51a17a17438fe7c960148f70049af629a",
+  "continuation": {
+    "prior_generations_sha256": "55ae65788fdf8b474cf91788c1bfe9e5304673dd326f125a960debe814917770",
+    "prior_rows_reused": 106,
+    "prior_length_stops_extended": 14,
+    "decoded_prefix_matches": 14
+  },
+  "by_k": {
+    "0": {
+      "outputs": 60,
+      "eos_stops": 47,
+      "calibration_cap_hits": 13,
+      "mean_tokens": 4314.266666666666,
+      "p95_tokens": 16000,
+      "max_tokens": 16000
+    },
+    "6": {
+      "outputs": 60,
+      "eos_stops": 59,
+      "calibration_cap_hits": 1,
+      "mean_tokens": 1372.45,
+      "p95_tokens": 2529,
+      "max_tokens": 16000
+    }
+  },
+  "candidate_projection": {
+    "512": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 52,
+        "projected_truncation_rate": 0.8666666666666667
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 49,
+        "projected_truncation_rate": 0.8166666666666667
+      }
+    },
+    "1024": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 39,
+        "projected_truncation_rate": 0.65
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 36,
+        "projected_truncation_rate": 0.6
+      }
+    },
+    "2048": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 14,
+        "projected_truncation_rate": 0.23333333333333334
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 5,
+        "projected_truncation_rate": 0.08333333333333333
+      }
+    },
+    "4096": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 13,
+        "projected_truncation_rate": 0.21666666666666667
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 2,
+        "projected_truncation_rate": 0.03333333333333333
+      }
+    },
+    "5120": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 13,
+        "projected_truncation_rate": 0.21666666666666667
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 1,
+        "projected_truncation_rate": 0.016666666666666666
+      }
+    },
+    "8192": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 13,
+        "projected_truncation_rate": 0.21666666666666667
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 1,
+        "projected_truncation_rate": 0.016666666666666666
+      }
+    },
+    "12288": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 13,
+        "projected_truncation_rate": 0.21666666666666667
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 1,
+        "projected_truncation_rate": 0.016666666666666666
+      }
+    },
+    "16000": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 13,
+        "projected_truncation_rate": 0.21666666666666667
+      },
+      "6": {
+        "outputs": 60,
+        "projected_truncations": 1,
+        "projected_truncation_rate": 0.016666666666666666
+      }
+    }
+  }
+}

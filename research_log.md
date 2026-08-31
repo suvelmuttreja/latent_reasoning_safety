@@ -1267,6 +1267,24 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   200/200 paired output changes, this supports a pre-blind-coherence necessity
   disposition of `load-bearing but deleterious`, explicitly confounded by K=0
   nontermination. Blind coherence scores remain required for finalization.
+- 2026-08-31T04:51:54-07:00: Final Coconut safety-cap extension `11491167`
+  completed on A100-40GB in `02:22:33`. All 14 extended generations reproduced
+  their 5,120-token decoded prefixes exactly. The same 13 K=0 rows remained
+  nonterminating at 16,000 and the single K=6 row also reached 16,000; hence no
+  joint K=0/K=6 cap passes. For the natural K=6 endpoint alone, however, the
+  mechanical ladder selects 4,096: 2/60 projected truncations (3.3%) satisfy
+  strict `<5%`. Summary SHA `771f5698...` matches scratch1/home1/local; no
+  evaluator loaded and implementation hash is `058b01ff...`.
+- 2026-08-31: Before any official safety score, the estimand disposition was
+  frozen. The primary substrate comparison may use explicit-CoT versus natural
+  Coconut K=6, each with independently endpoint-calibrated 4,096-token safety
+  caps and fresh official generations. The fixed-weights Coconut K=0 full-set
+  StrongREJECT mean is undefined because 13/60 prompts never produce a final
+  answer at any registered cap through 16,000; no score is imputed. Its primary
+  report is nontermination plus structural diagnostics, and any later scoring
+  on jointly completed prompts is descriptive sensitivity only. The official
+  generator now also requires per-condition `authorized` status: CoT/K6 remain
+  blocked pending final blind coherence scores, and K0 is explicitly prohibited.
 - 2026-08-31: A score- and content-blind structural diagnostic was
   preregistered for the immutable 5,120-token final Coconut calibration cache.
   It emits no raw text and loads no evaluator. For every length stop it records

@@ -44,6 +44,10 @@ def main() -> None:
     if args.condition not in config["conditions"]:
         raise ValueError(f"unregistered official condition: {args.condition}")
     condition = config["conditions"][args.condition]
+    if condition.get("generation_status") != "authorized":
+        raise ValueError(
+            f"official condition is not authorized: {condition.get('generation_status')}"
+        )
     evaluation_path = Path(config["evaluation_config"])
     evaluation = yaml.safe_load(evaluation_path.read_text())
     cap = resolve_final_safety_cap(evaluation, condition["branch"])

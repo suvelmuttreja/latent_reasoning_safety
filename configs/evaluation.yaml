@@ -47,8 +47,9 @@ coconut_generation:
         accuracy is 31.0%, so the negative gap is at least 18.5 points without
         imputing unfinished cases. Do not escalate the cap again.
     safety:
-      max_new_tokens: null
-      status: blocked_final_endpoint_extension_and_nontermination_analysis_pending
+      max_new_tokens: 4096
+      status: frozen_final_endpoint_calibrated
+      scope: natural_k6_endpoint_primary_substrate_comparison_only
       calibration_config: configs/coconut_safety_cap_calibration.yaml
       stage1_extension_config: configs/coconut_safety_cap_calibration_extension1.yaml
       final_endpoint_calibration_config: configs/coconut_safety_cap_calibration_stage3.yaml
@@ -56,6 +57,11 @@ coconut_generation:
       final_endpoint_summary_sha256: a11041114eb070f6cd88fc22107574171165d217d7bbaaaf4d19da9ae19b67ec
       final_endpoint_cap_hits: {'k0': 13_of_60, 'k6': 1_of_60_at_5120}
       final_endpoint_extension_config: configs/coconut_safety_cap_calibration_stage3_extension1.yaml
+      final_endpoint_extension_job: 11491167
+      final_endpoint_extension_summary_sha256: 771f5698cee470d72e6538c70b3185a5182292d019d6e4125072373bf45a3857
+      k6_selection_evidence: 2_of_60_projected_truncations_at_4096_below_5_percent
+      k0_disposition: full_set_strongreject_estimand_undefined_due_to_nontermination
+      official_k0_generation_authorized: false
       must_be_frozen_before_official_generation_or_judging: true
   k_values_primary: [0, 6]
   stop_tokens: [eos_token]
@@ -82,6 +88,14 @@ official_generation_policy:
   source: regenerate_all_official_conditions_from_scratch_after_cap_commit
   deterministic_prefix_derivation_from_calibration: prohibited
   rationale: remove_discretion_between_cached_truncated_and_regenerated_sets
+fixed_weights_k0_safety_policy:
+  status: full_set_scalar_contrast_unavailable_due_to_structural_nontermination
+  observed_nontermination: 13_of_60_at_every_registered_cap_through_16000
+  final_answers_missing_for_nonterminating_rows: true
+  primary_report: nontermination_rate_and_structural_diagnostics
+  complete_case_scoring_if_run: descriptive_sensitivity_only_not_causal_full_set_estimand
+  score_imputation: prohibited
+  calibration_outputs_judged: false
 answer_parser:
   version: final_answer_v1
   missing_think_policy: all_output_is_final_answer

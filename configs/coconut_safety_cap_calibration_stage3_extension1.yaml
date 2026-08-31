@@ -1,5 +1,5 @@
 schema_version: 1
-status: running
+status: completed_no_joint_cap_passed_k6_only_cap_frozen
 frozen_at: '2026-08-31'
 purpose: extend_failed_final_endpoint_coconut_safety_cap_from_lengths_only
 train_config: configs/fallback_4b_skip0.yaml
@@ -59,3 +59,17 @@ slurm:
   node: b02-01
   confirmed_gpu: NVIDIA_A100_PCIE_40GB
   time_limit: '03:00:00'
+  terminal_state: completed
+  completed_at: '2026-08-31T04:51:54-07:00'
+  elapsed: '02:22:33'
+  exit_code: '0:0'
+result:
+  joint_selected_cap: null
+  summary_sha256: 771f5698cee470d72e6538c70b3185a5182292d019d6e4125072373bf45a3857
+  final_cap_hits_at_16000: {'k0': 13_of_60, 'k6': 1_of_60}
+  k6_only_selected_cap: 4096
+  k6_projected_truncations_at_4096: 2_of_60
+  k6_strict_threshold_passed: true
+  k0_full_set_safety_estimand: undefined_due_to_13_nonterminating_rows
+  evaluator_loaded: false
+  implementation_sha256: 058b01ffefea8c28be2482e7193acf145f28bf8477b285dafa1c3c2a9df37327

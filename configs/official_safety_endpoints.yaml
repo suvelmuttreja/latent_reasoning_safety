@@ -13,6 +13,7 @@ conditions:
     checkpoint_k: 0
     k: 0
     scaffold_kind: explicit_cot
+    generation_status: blocked_pending_final_blind_coherence_scores
   coco_u3_k6:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -21,6 +22,7 @@ conditions:
     checkpoint_k: 6
     k: 6
     scaffold_kind: coconut_latent
+    generation_status: blocked_pending_final_blind_coherence_scores
   coco_u3_k0:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -29,6 +31,7 @@ conditions:
     checkpoint_k: 6
     k: 0
     scaffold_kind: coconut_latent
+    generation_status: prohibited_full_set_estimand_undefined_due_to_nontermination
 launch_guard:
   final_branch_task_caps_must_have_status: frozen_final_endpoint_calibrated
   coconut_necessity_gate_must_be_committed: true
@@ -36,4 +39,5 @@ launch_guard:
   official_conditions_regenerate_from_scratch: true
 cap_resolution_status:
   explicit_cot: satisfied_by_job_11490895_cap_4096
-  coconut_skip0: blocked_job_11488921_no_cap_passed_k0_nontermination_analysis_pending
+  coconut_skip0_k6: satisfied_by_job_11491167_cap_4096
+  coconut_skip0_k0: no_cap_passed_structural_nontermination_full_set_score_undefined
