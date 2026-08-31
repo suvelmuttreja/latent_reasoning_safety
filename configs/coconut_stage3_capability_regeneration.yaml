@@ -1,0 +1,48 @@
+schema_version: 1
+status: preregistered_pending_submission
+frozen_at: '2026-08-31'
+purpose: symmetric_stage3_gsm8k_regeneration_after_k0_truncation_guard_trigger
+train_config: configs/fallback_4b_skip0.yaml
+evaluation_config: configs/evaluation.yaml
+seed: 42
+stages: [3]
+k_policy: [0, checkpoint_stage_k]
+capability:
+  manifest: manifests/gsm8k_heldout_200.json
+  serialization: coconut_raw_question
+  cap_role: coconut_answer
+  max_new_tokens: 1024
+  do_sample: false
+  decoding_role: paired_greedy_capability_diagnostic_matching_gate_minus_1
+  stop_tokens: [eos_token]
+coherence:
+  manifest: manifests/coherence_10.json
+  serialization: native_qwen_chat
+  cap_role: explicit_thinking
+  max_new_tokens: 5120
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+blind_review:
+  shuffle_seed_base: 5200
+  rubric_source: manifests/coherence_10.json
+durability:
+  scratch_is_working_copy_only: true
+  home1_copy_required_for_job_success: true
+regeneration:
+  affected_task_only: gsm8k_capability
+  regenerate_conditions_from_scratch: [stage3_k0, stage3_k6]
+  prior_cap: 512
+  trigger: stage3_k0_20_of_200_truncated
+  next_cap: 1024
+  selection_basis: truncation_metadata_only
+  reuse_prior_generations: false
+interpretation:
+  primary_question: whether_k_gap_closes_by_stage3
+  fixed_weight_k_contrast: capability_and_coherence_confounded_while_gap_persists
+  matched_endpoint_regime_contrast: coconut_coherence_is_part_of_measured_phenotype
+  ten_prompt_coherence_role: trajectory_diagnostic_not_strong_final_inference
+  final_kmax_claim_basis: frozen_larger_capability_and_safety_sets
+  optional_if_gap_persists: preregistered_inference_only_latent_substitution_ablations

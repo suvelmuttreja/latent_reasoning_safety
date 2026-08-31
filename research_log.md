@@ -1208,3 +1208,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Fallback `11491110` was cancelled at zero elapsed after primary success.
   The next decision must be preregistered from score-blind repetition/length
   diagnostics; simply declaring 5,120 or relaxing `<5%` is prohibited.
+- 2026-08-31: Before any stage-3 blind coherence scores were unblinded, the
+  GSM8K guard response was frozen: raise the task cap from 512 to 1,024 and
+  regenerate both K=0 and K=6 from scratch with the same final checkpoint,
+  prompts, order, greedy decoder, and A40 hardware. Only the affected capability
+  task reruns; the technically valid 5,120-token coherence packet remains
+  immutable. The evaluator supports an explicit capability-only mode, and the
+  45-minute job writes to a new collision-free directory. If either condition
+  remains at or above 5% truncation, judging/necessity interpretation pauses
+  again and the next cap is preregistered from length metadata alone.

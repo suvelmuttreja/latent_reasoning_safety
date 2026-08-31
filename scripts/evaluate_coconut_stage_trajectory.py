@@ -115,6 +115,7 @@ def main() -> None:
     parser.add_argument("--stage", type=int, required=True)
     parser.add_argument("--checkpoint-dir", required=True)
     parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--capability-only", action="store_true")
     args = parser.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
@@ -173,7 +174,11 @@ def main() -> None:
     capability_settings = {**config["capability"], "k_values": expected_k}
     coherence_settings = {**config["coherence"], "k_values": expected_k}
     capability_manifest = read_manifest(Path(config["capability"]["manifest"]))
-    coherence_manifest = read_manifest(Path(config["coherence"]["manifest"]))
+    coherence_manifest = (
+        []
+        if args.capability_only
+        else read_manifest(Path(config["coherence"]["manifest"]))
+    )
     capability = evaluate_capability(
         model,
         tokenizer,
@@ -187,16 +192,18 @@ def main() -> None:
         for k in expected_k
         for row in capability["by_k"][str(k)].pop("outputs")
     ]
-    coherence_rows = evaluate_coherence(
-        model,
-        tokenizer,
-        markers,
-        coherence_manifest,
-        coherence_settings,
-        config["seed"],
-        train["model_id"],
-        train["model_revision"],
-    )
+    coherence_rows = []
+    if not args.capability_only:
+        coherence_rows = evaluate_coherence(
+            model,
+            tokenizer,
+            markers,
+            coherence_manifest,
+            coherence_settings,
+            config["seed"],
+            train["model_id"],
+            train["model_revision"],
+        )
     enrich_rows(
         capability_rows,
         tokenizer,
@@ -207,32 +214,46 @@ def main() -> None:
         {row["id"]: row["sha256"] for row in capability_manifest},
         "gsm8k_exact_match",
     )
-    enrich_rows(
-        coherence_rows,
-        tokenizer,
-        coherence_settings,
-        code_revision,
-        train["model_id"],
-        train["model_revision"],
-        {row["id"]: row["sha256"] for row in coherence_manifest},
-        "pending_blind_human_coherence_0_to_2",
-    )
+    if not args.capability_only:
+        enrich_rows(
+            coherence_rows,
+            tokenizer,
+            coherence_settings,
+            code_revision,
+            train["model_id"],
+            train["model_revision"],
+            {row["id"]: row["sha256"] for row in coherence_manifest},
+            "pending_blind_human_coherence_0_to_2",
+        )
     capability_path = output_dir / "gsm8k.jsonl"
-    coherence_path = output_dir / "coherence.jsonl"
-    blind_path = output_dir / "coherence_blinded.jsonl"
-    key_path = output_dir / "coherence_blind_key.json"
     write_jsonl(capability_path, capability_rows)
-    write_jsonl(coherence_path, coherence_rows)
-    export_blind(
-        coherence_rows,
-        args.stage,
-        blind_path,
-        key_path,
-        int(config["blind_review"]["shuffle_seed_base"]) + args.stage,
-    )
+    artifacts = {"gsm8k_sha256": sha256_file(capability_path)}
+    if not args.capability_only:
+        coherence_path = output_dir / "coherence.jsonl"
+        blind_path = output_dir / "coherence_blinded.jsonl"
+        key_path = output_dir / "coherence_blind_key.json"
+        write_jsonl(coherence_path, coherence_rows)
+        export_blind(
+            coherence_rows,
+            args.stage,
+            blind_path,
+            key_path,
+            int(config["blind_review"]["shuffle_seed_base"]) + args.stage,
+        )
+        artifacts.update(
+            {
+                "coherence_sha256": sha256_file(coherence_path),
+                "blind_packet_sha256": sha256_file(blind_path),
+                "blind_key_sha256": sha256_file(key_path),
+            }
+        )
     summary = {
         "schema_version": 1,
-        "status": "technical_complete_pending_blind_coherence_scores",
+        "status": (
+            "capability_regeneration_complete"
+            if args.capability_only
+            else "technical_complete_pending_blind_coherence_scores"
+        ),
         "stage": args.stage,
         "k_values": expected_k,
         "slurm_job_id": slurm_job_id(),
@@ -245,15 +266,14 @@ def main() -> None:
         "evaluation_config_sha256": sha256_file(evaluation_path),
         "train_config_sha256": sha256_file(train_path),
         "capability": capability,
-        "coherence_technical": summarize_generation_rows(
-            coherence_rows, int(config["coherence"]["max_new_tokens"])
+        "coherence_technical": (
+            None
+            if args.capability_only
+            else summarize_generation_rows(
+                coherence_rows, int(config["coherence"]["max_new_tokens"])
+            )
         ),
-        "artifacts": {
-            "gsm8k_sha256": sha256_file(capability_path),
-            "coherence_sha256": sha256_file(coherence_path),
-            "blind_packet_sha256": sha256_file(blind_path),
-            "blind_key_sha256": sha256_file(key_path),
-        },
+        "artifacts": artifacts,
         "caps": {
             "gsm8k_coconut_answer": config["capability"]["max_new_tokens"],
             "coherence_explicit_thinking": config["coherence"]["max_new_tokens"],

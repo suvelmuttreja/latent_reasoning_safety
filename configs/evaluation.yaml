@@ -27,15 +27,15 @@ explicit_generation:
       threshold: less_than_5_percent_per_condition
       observed_final_endpoint_truncations: 0_of_60
 coconut_generation:
-  answer_max_new_tokens: 512
+  answer_max_new_tokens: 1024
   answer_max_new_tokens_scope: gsm8k_capability_diagnostic_only
   task_caps:
     gsm8k:
-      max_new_tokens: 512
-      frozen_at: '2026-08-29'
-      evidence: stage1_gate_k0_8_of_200_truncated_k2_0_of_200_truncated
+      max_new_tokens: 1024
+      frozen_at: '2026-08-31'
+      evidence: stage3_trajectory_k0_20_of_200_truncated_k6_0_of_200_at_512
       threshold: less_than_5_percent_per_condition
-      status: frozen_marginal_pass
+      status: frozen_escalation_pending_symmetric_regeneration
     safety:
       max_new_tokens: null
       status: blocked_final_endpoint_k0_nontermination_analysis_pending
