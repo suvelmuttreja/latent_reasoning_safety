@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "status": "blind_scores_complete_pre_unblinding",
+  "stage": 3,
+  "scorer": "user",
+  "recorded_at": "2026-08-31T21:27:26Z",
+  "blind_packet_sha256": "1944faec1fe1eeef914a0ba207fd9b8011164abfc9b7c2ff532402e301410919",
+  "scored_packet_sha256": "a4199e819fe09bd2b4e1ac6e653533c0a8281a4c94970e33f4c61ce7da954e63",
+  "blind_key_sha256": "4bb9ea4a83b2ca5ca153feac782120d02a43d26ab249fb11d5b3ad98eff922b6",
+  "score_vector": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  "overall": {
+    "outputs": 20,
+    "score_0": 0,
+    "score_1": 0,
+    "score_2": 20,
+    "mean": 2.0
+  },
+  "condition_results": "sealed_until_this_record_is_committed"
+}
