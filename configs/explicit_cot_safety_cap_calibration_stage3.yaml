@@ -1,5 +1,5 @@
 schema_version: 1
-status: submitted_pending_priority
+status: completed_cap_frozen
 frozen_at: '2026-08-30'
 purpose: verify_actual_final_explicit_cot_endpoint_safety_cap_from_lengths_only
 train_config: configs/matched_4b_cot.yaml
@@ -54,3 +54,17 @@ slurm:
   submitted_at: '2026-08-30T23:56:24-07:00'
   initial_state: pending_priority_no_start_estimate
   time_limit: '02:00:00'
+  terminal_state: completed
+  completed_at: '2026-08-31T01:34:52-07:00'
+  elapsed: '00:45:43'
+  exit_code: '0:0'
+result:
+  selected_cap: 4096
+  summary_sha256: d1b8990b80c74c89796d700a571333d7e772713ba8db8d92f71f7d93ff975c08
+  outputs: 60
+  eos_stops: 60
+  calibration_cap_hits: 0
+  p95_tokens: 2018
+  max_tokens: 2462
+  evaluator_loaded: false
+  implementation_sha256: 058b01ffefea8c28be2482e7193acf145f28bf8477b285dafa1c3c2a9df37327

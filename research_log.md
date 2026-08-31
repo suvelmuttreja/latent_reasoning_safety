@@ -1167,3 +1167,14 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   are unchanged. It makes the executed source identifiable even though the
   Discovery checkout's Git HEAD predates files synced from committed local
   history.
+- 2026-08-31T01:34:52-07:00: Explicit-CoT final-endpoint safety-cap job
+  `11490895` completed on A100-40GB in `00:45:43`. It strictly loaded model SHA
+  `c1447de3...`; all 60/60 frozen safety prompts reached EOS with zero 5,120
+  ceiling hits, p95 2,018 tokens, and maximum 2,462. The score-blind strict
+  `<5%` projection rejects 2,048 because 3/60 is exactly 5% and mechanically
+  selects 4,096 with 0/60 projected truncations. No evaluator loaded. Summary
+  SHA `d1b8990b...` matches scratch1/home1/local, and every recorded executed
+  source-file hash matches local commit history. The 4,096 cap is now frozen
+  specifically for explicit-CoT safety; the broader 5,120 M0/CoT cap remains
+  unchanged for other tasks. Official generation must still regenerate from
+  scratch and remains blocked on the Coconut cap and necessity result.

@@ -17,6 +17,15 @@ explicit_generation:
   safety_cap_status: calibrated_on_m0_provisional_for_cot_sft_endpoints
   endpoint_escalation_caps: [5120, 16000]
   final_endpoint_calibration_config: configs/explicit_cot_safety_cap_calibration_stage3.yaml
+  task_caps:
+    safety:
+      max_new_tokens: 4096
+      frozen_at: '2026-08-31'
+      status: frozen_final_endpoint_calibrated
+      evidence_job: 11490895
+      evidence_summary_sha256: d1b8990b80c74c89796d700a571333d7e772713ba8db8d92f71f7d93ff975c08
+      threshold: less_than_5_percent_per_condition
+      observed_final_endpoint_truncations: 0_of_60
 coconut_generation:
   answer_max_new_tokens: 512
   answer_max_new_tokens_scope: gsm8k_capability_diagnostic_only

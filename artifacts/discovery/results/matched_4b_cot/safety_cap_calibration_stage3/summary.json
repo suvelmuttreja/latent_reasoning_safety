@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "length_calibration_complete_pending_cap_freeze_commit",
+  "selected_cap": 4096,
+  "selection_used_only_lengths_and_stop_reasons": true,
+  "evaluator_loaded": false,
+  "slurm_job_id": "11490895",
+  "code_revision": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "implementation_files_sha256": {
+    "scripts/calibrate_coconut_safety_cap.py": "cf0c1b53d77972b15b13be33af6b24d616f8e5c5815b7c740ffd68f689a7650b",
+    "scripts/gate_4b_coco_u1.py": "71121dca6f799c9109dc53aa22d1b38b5753d4b38350ae9b7c80c5689d17263a",
+    "scripts/train_4b_skip0_stage.py": "4710467d9e411959034c7103fbe0e9bc55b871084a86143d14c1498d122ebd70",
+    "src/mats_latent_safety/coconut.py": "bc8511c036c18161cdc51b939b1d55fab6b744652a231efb35fc1f1953185e87",
+    "src/mats_latent_safety/serialization.py": "44bb5e34a4c98d65b60ed7b2ea5713768c8181b8c692f44b6543e7f53d0ef19a"
+  },
+  "implementation_sha256": "058b01ffefea8c28be2482e7193acf145f28bf8477b285dafa1c3c2a9df37327",
+  "checkpoint_sha256": "c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047",
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "a85bbfc22c80068ace455da64c725f17714409d0ecef10ffa043893e2c87b125",
+  "evaluation_config_sha256": "5d7c68390625163960efa5e41241fc9d0e012f731437185796cc408758bb7ef4",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "generations_sha256": "d068d54a4cb42274359d61101938f8fd83dd2be1ef994fd7280f78c32ff8a0fa",
+  "continuation": {
+    "prior_generations_sha256": null,
+    "prior_rows_reused": 0,
+    "prior_length_stops_extended": 0,
+    "decoded_prefix_matches": 0
+  },
+  "by_k": {
+    "0": {
+      "outputs": 60,
+      "eos_stops": 60,
+      "calibration_cap_hits": 0,
+      "mean_tokens": 1193.2,
+      "p95_tokens": 2018,
+      "max_tokens": 2462
+    }
+  },
+  "candidate_projection": {
+    "512": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 48,
+        "projected_truncation_rate": 0.8
+      }
+    },
+    "1024": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 38,
+        "projected_truncation_rate": 0.6333333333333333
+      }
+    },
+    "2048": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 3,
+        "projected_truncation_rate": 0.05
+      }
+    },
+    "4096": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 0,
+        "projected_truncation_rate": 0.0
+      }
+    },
+    "5120": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 0,
+        "projected_truncation_rate": 0.0
+      }
+    }
+  }
+}

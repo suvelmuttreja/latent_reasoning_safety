@@ -34,3 +34,6 @@ launch_guard:
   coconut_necessity_gate_must_be_committed: true
   calibration_generations_may_be_reused: false
   official_conditions_regenerate_from_scratch: true
+cap_resolution_status:
+  explicit_cot: satisfied_by_job_11490895_cap_4096
+  coconut_skip0: pending_job_11488921
