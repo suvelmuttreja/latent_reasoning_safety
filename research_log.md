@@ -1217,3 +1217,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   45-minute job writes to a new collision-free directory. If either condition
   remains at or above 5% truncation, judging/necessity interpretation pauses
   again and the next cap is preregistered from length metadata alone.
+- 2026-08-31T02:23:00-07:00: Symmetric stage-3 GSM8K regeneration job
+  `11491163` was submitted on A40 from preregistration commit `695c20d`. It is
+  pending for priority with no live start estimate; the pessimistic fresh
+  test-only estimate was Sep 2, but all three preceding jobs backfilled far
+  ahead of their estimates. The new output directory cannot collide with the
+  immutable 512-token trajectory evidence.

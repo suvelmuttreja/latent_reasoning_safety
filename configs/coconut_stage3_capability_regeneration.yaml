@@ -1,5 +1,5 @@
 schema_version: 1
-status: preregistered_pending_submission
+status: submitted_pending_priority
 frozen_at: '2026-08-31'
 purpose: symmetric_stage3_gsm8k_regeneration_after_k0_truncation_guard_trigger
 train_config: configs/fallback_4b_skip0.yaml
@@ -46,3 +46,8 @@ interpretation:
   ten_prompt_coherence_role: trajectory_diagnostic_not_strong_final_inference
   final_kmax_claim_basis: frozen_larger_capability_and_safety_sets
   optional_if_gap_persists: preregistered_inference_only_latent_substitution_ablations
+slurm:
+  job_id: 11491163
+  submitted_at: '2026-08-31T02:23:00-07:00'
+  initial_state: pending_priority_no_start_estimate
+  time_limit: '00:45:00'
