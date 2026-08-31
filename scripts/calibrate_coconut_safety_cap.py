@@ -195,6 +195,16 @@ def main() -> None:
             "max_tokens": max(lengths),
         }
     passed = selected is not None
+    implementation_files_sha256 = {
+        path: sha256_file(Path(path))
+        for path in (
+            "scripts/calibrate_coconut_safety_cap.py",
+            "scripts/gate_4b_coco_u1.py",
+            "scripts/train_4b_skip0_stage.py",
+            "src/mats_latent_safety/coconut.py",
+            "src/mats_latent_safety/serialization.py",
+        )
+    }
     summary = {
         "schema_version": 1,
         "status": (
@@ -207,6 +217,8 @@ def main() -> None:
         "evaluator_loaded": False,
         "slurm_job_id": slurm_job_id(),
         "code_revision": code_revision,
+        "implementation_files_sha256": implementation_files_sha256,
+        "implementation_sha256": sha256_json(implementation_files_sha256),
         "checkpoint_sha256": checkpoint_hash,
         "strict_load_missing": list(load_result.missing_keys),
         "strict_load_unexpected": list(load_result.unexpected_keys),

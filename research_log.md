@@ -1159,3 +1159,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   rows incrementally with a code-file fingerprint, and can resume only an exact
   manifest-order/provenance prefix. Calibration caches can never be reused.
   Launch remains blocked additionally on the committed Coconut necessity gate.
+- 2026-08-31: Before either pending final-endpoint cap job started, the shared
+  calibration summary was extended with exact SHA-256 hashes for the
+  calibration script, shared generator, model loader, Coconut wrapper, and
+  serialization module, plus a combined implementation hash. This is
+  provenance-only: prompts, checkpoints, seeds, sampling, caps, and selection
+  are unchanged. It makes the executed source identifiable even though the
+  Discovery checkout's Git HEAD predates files synced from committed local
+  history.
