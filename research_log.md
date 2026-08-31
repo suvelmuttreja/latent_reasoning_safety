@@ -1363,3 +1363,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   when its dependency became invalid. The cache remains unjudged pending the
   Coconut K=6 completion, symmetric cap check, and frozen condition-blind
   12-prompt-per-branch human audit.
+- 2026-08-31T15:41:00-07:00: After CoT released its A100, Coconut primary
+  `11523096` received a pessimistic Sep 2 03:15:39 estimate. Fresh test-only
+  requests were worse (A100/A40 Sep 2 13:47; L40S Sep 2 15:43), and no
+  A100-40GB debug configuration exists. Mixing A40/L40S into the official
+  endpoint pair was rejected to avoid hardware-dependent sampling drift. The
+  aged A100 primary was retained and right-sized from 01:15 to 01:10: final
+  K6 calibration mean length was 1,191.12 tokens, essentially identical to the
+  completed CoT cache's 1,193.20 tokens and 60:15 wall time. Its separate
+  two-hour exact-resume fallback still bounds an unusually slow startup.
