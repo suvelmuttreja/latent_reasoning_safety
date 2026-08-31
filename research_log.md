@@ -1325,3 +1325,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   the gate for fresh official explicit-CoT and natural Coconut K=6 safety
   generation at their frozen 4,096-token caps. K=0 full-set safety generation
   remains prohibited and no calibration response will be judged.
+- 2026-08-31T14:31:00-07:00: After gate-finalization commit `f25d7e0` was
+  pushed and its exact authorized files were synchronized to home1, the two
+  fresh official unjudged primary endpoint jobs were submitted. Explicit-CoT
+  job `11521951` started immediately on A100-40GB node `b02-20`; natural
+  Coconut K=6 job `11521952` entered the A100-40GB priority queue with an
+  initial scheduler estimate of 15:47:59 Pacific. Both have 01:15 limits,
+  disjoint output directories, incremental scratch-to-home1 durability, and
+  no evaluator access. All four scratch/home1 output paths were confirmed
+  absent before submission, so neither job can overwrite earlier evidence.
