@@ -21,6 +21,7 @@ A100_PRIMARY_AUDIT=11533445
 A100_FALLBACK_AUDIT=11533446
 OUTPUT="$WORK_ROOT/results/official_safety/coco_u3_k6"
 HOME_COPY="$CODE_ROOT/artifacts/discovery/results/official_safety/coco_u3_k6"
+CLAIM_DIR="$WORK_ROOT/results/official_safety/.coco_u3_k6_a40_rescue_claim"
 RACE_LOSER=0
 
 if [[ -f "$OUTPUT/generations.jsonl" && -f "$OUTPUT/summary.json" ]]; then
@@ -28,11 +29,25 @@ if [[ -f "$OUTPUT/generations.jsonl" && -f "$OUTPUT/summary.json" ]]; then
   exit 0
 fi
 
+mkdir -p "$(dirname "$CLAIM_DIR")"
+if ! mkdir "$CLAIM_DIR" 2>/dev/null; then
+  echo "another A40 rescue candidate claimed the official Coconut path"
+  exit 0
+fi
+printf '%s\n' "$SLURM_JOB_ID" > "$CLAIM_DIR/job_id"
+while read -r peer_job; do
+  if [[ -n "$peer_job" && "$peer_job" != "$SLURM_JOB_ID" ]]; then
+    scancel "$peer_job" || true
+  fi
+done < <(squeue -h -n mats-official-coco-a40-rescue -o '%A')
+
 if [[ "$ATTEMPT" == "1" ]]; then
   PRIMARY_STATE="$(squeue -h -j "$A100_PRIMARY" -o '%T' | head -n 1)"
   if [[ "$PRIMARY_STATE" == "RUNNING" || "$PRIMARY_STATE" == "COMPLETING" ]]; then
     echo "A100 primary started first; A40 rescue exits without opening output"
     RACE_LOSER=1
+    rm -f "$CLAIM_DIR/job_id"
+    rmdir "$CLAIM_DIR"
     exit 0
   fi
   if [[ "$PRIMARY_STATE" == "PENDING" ]]; then
@@ -63,11 +78,17 @@ finish_or_continue() {
   fi
   if [[ -f "$OUTPUT/generations.jsonl" && -f "$OUTPUT/summary.json" ]]; then
     scancel "$A100_FALLBACK" "$A100_FALLBACK_AUDIT" || true
+    rm -f "$CLAIM_DIR/job_id"
+    rmdir "$CLAIM_DIR"
     sbatch scripts/slurm/export_official_safety_audit.sbatch
   elif (( ATTEMPT < MAX_ATTEMPTS )); then
     next_attempt=$((ATTEMPT + 1))
+    rm -f "$CLAIM_DIR/job_id"
+    rmdir "$CLAIM_DIR"
     sbatch scripts/slurm/generate_official_coco_u3_k6_a40_rescue.sbatch "$next_attempt"
   else
+    rm -f "$CLAIM_DIR/job_id"
+    rmdir "$CLAIM_DIR"
     scontrol release "$A100_FALLBACK"
   fi
   return "$status"
