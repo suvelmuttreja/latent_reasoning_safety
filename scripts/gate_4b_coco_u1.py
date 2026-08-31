@@ -21,6 +21,7 @@ from mats_latent_safety.parsing import parse_thinking_response
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import (
     build_coconut_question,
+    build_explicit_question,
     ensure_latent_tokens,
     tokenize_coconut_raw_prompt,
     tokenize_native_chat_prompt,
@@ -49,7 +50,15 @@ def generate(model, tokenizer, markers, prompt: str, k: int, settings: dict, see
     prefix_ids, rendered_prefix = serialize_question(
         tokenizer, prompt, settings["serialization"]
     )
-    scaffold = build_coconut_question(prefix_ids, markers, k)
+    scaffold_kind = settings.get("scaffold_kind", "coconut_latent")
+    if scaffold_kind == "coconut_latent":
+        scaffold = build_coconut_question(prefix_ids, markers, k)
+    elif scaffold_kind == "explicit_cot":
+        if k != 0:
+            raise ValueError("explicit-CoT generation requires k=0")
+        scaffold = build_explicit_question(prefix_ids)
+    else:
+        raise ValueError(f"unsupported generation scaffold: {scaffold_kind}")
     device = next(model.parameters()).device
     started = time.perf_counter()
     result = model.generate_from_scaffold(

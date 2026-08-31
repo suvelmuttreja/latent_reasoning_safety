@@ -16,6 +16,7 @@ explicit_generation:
   stop_tokens: [eos_token]
   safety_cap_status: calibrated_on_m0_provisional_for_cot_sft_endpoints
   endpoint_escalation_caps: [5120, 16000]
+  final_endpoint_calibration_config: configs/explicit_cot_safety_cap_calibration_stage3.yaml
 coconut_generation:
   answer_max_new_tokens: 512
   answer_max_new_tokens_scope: gsm8k_capability_diagnostic_only

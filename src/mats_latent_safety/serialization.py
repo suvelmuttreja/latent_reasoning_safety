@@ -106,6 +106,17 @@ def build_coconut_question(
     }
 
 
+def build_explicit_question(question_ids: list[int]) -> dict[str, list[int] | int]:
+    """Build the native explicit-CoT inference prefix without latent markers."""
+    ids = list(question_ids)
+    return {
+        "input_ids": ids,
+        "attention_mask": [1] * len(ids),
+        "position_ids": list(range(len(ids))),
+        "k": 0,
+    }
+
+
 def serialize_native_chat(tokenizer, prompt: str, *, add_generation_prompt: bool = True) -> str:
     return tokenizer.apply_chat_template(
         [{"role": "user", "content": prompt}],

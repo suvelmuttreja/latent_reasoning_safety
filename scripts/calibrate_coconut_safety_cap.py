@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Calibrate the Coconut safety-response cap from token lengths without judging."""
+"""Calibrate a branch safety-response cap from token lengths without judging."""
 
 from __future__ import annotations
 
@@ -48,8 +48,9 @@ def main() -> None:
     checkpoint = checkpoint_dir / "model_state.pt"
     checkpoint_hash = sha256_file(checkpoint)
     registered = config["checkpoint"]
-    if metadata["branch"] != "coconut_skip0":
-        raise ValueError("safety cap calibration requires a Coconut checkpoint")
+    expected_branch = registered.get("branch", "coconut_skip0")
+    if metadata["branch"] != expected_branch:
+        raise ValueError("checkpoint branch differs from calibration config")
     if metadata["completed_stage"] != registered["stage"] or metadata["k"] != registered["k"]:
         raise ValueError("checkpoint stage/K differs from calibration config")
     if checkpoint_hash != registered["model_state_sha256"]:
@@ -71,6 +72,10 @@ def main() -> None:
         "max_new_tokens": config["calibration_max_new_tokens"],
         **config["sampling"],
     }
+    if "generation_scaffold" in config:
+        settings["scaffold_kind"] = config["generation_scaffold"]
+    if settings.get("scaffold_kind") == "explicit_cot" and config["k_values"] != [0]:
+        raise ValueError("explicit-CoT calibration requires exactly k_values: [0]")
     prior_rows = []
     prior_by_key = {}
     prior_path = Path(args.prior_generations) if args.prior_generations else None

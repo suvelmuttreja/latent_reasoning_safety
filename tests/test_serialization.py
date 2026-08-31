@@ -2,6 +2,7 @@ from mats_latent_safety.constants import IGNORE_INDEX, k_for_stage, optimizer_up
 from mats_latent_safety.serialization import (
     TokenizedReasoningExample,
     build_coconut_question,
+    build_explicit_question,
     build_training_record,
     evaluator_payload,
     serialize_native_chat,
@@ -40,6 +41,14 @@ def test_explicit_cot_keeps_all_steps_and_no_markers():
 def test_k_zero_still_uses_scaffold_boundaries():
     record = build_coconut_question([1, 2], MARKERS, 0)
     assert record["input_ids"] == [1, 2, 90, 91]
+    assert record["k"] == 0
+
+
+def test_explicit_question_has_no_latent_scaffold_boundaries():
+    record = build_explicit_question([1, 2])
+    assert record["input_ids"] == [1, 2]
+    assert record["attention_mask"] == [1, 1]
+    assert record["position_ids"] == [0, 1]
     assert record["k"] == 0
 
 

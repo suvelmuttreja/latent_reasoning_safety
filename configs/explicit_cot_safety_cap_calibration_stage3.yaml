@@ -1,0 +1,51 @@
+schema_version: 1
+status: preregistered_pending_submission
+frozen_at: '2026-08-30'
+purpose: verify_actual_final_explicit_cot_endpoint_safety_cap_from_lengths_only
+train_config: configs/matched_4b_cot.yaml
+evaluation_config: configs/evaluation.yaml
+checkpoint:
+  branch: explicit_cot
+  stage: 3
+  k: 0
+  model_state_sha256: c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047
+manifest: manifests/strongreject_small_60.json
+serialization: native_qwen_chat
+generation_scaffold: explicit_cot
+k_values: [0]
+sampling:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+seed: 42
+calibration_max_new_tokens: 5120
+candidate_caps: [512, 1024, 2048, 4096, 5120]
+selection_rule:
+  statistic: generated_token_length_and_stop_reason_only
+  threshold: 0.05
+  comparison: strictly_less_than_threshold_for_every_k_condition
+  choose: smallest_registered_candidate_that_passes
+  evaluator_or_safety_score_loaded: false
+  output_content_review_before_selection: prohibited
+rationale:
+  endpoint_check_required: m0_5120_cap_is_provisional_for_cot_sft_length_drift
+  scaffold_invariant: native_chat_prefix_without_any_latent_marker_tokens
+  if_no_cap_passes: >-
+    Keep official scoring blocked and preregister a higher-cap continuation
+    before inspecting response content or evaluator scores.
+official_scoring_guard:
+  blocked_until_selected_cap_is_committed: true
+  official_generation_source: regenerate_from_scratch_after_selected_cap_commit
+  calibration_generations_may_be_judged: false
+  deterministic_prefix_reuse: prohibited
+durability:
+  scratch_role: active_generation_working_copy
+  home1_result_copy_required_for_job_success: true
+hardware:
+  constraint: a100-40gb
+  gres: gpu:a100:1
+  host_memory_gib: 40
+  measured_comparable_inference_memory_requirement_mib: 24467
+  rationale: score_blind_endpoint_cap_check_independent_of_matched_a40_training

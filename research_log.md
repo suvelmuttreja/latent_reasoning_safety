@@ -1137,3 +1137,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   preregistration `76bc007`. It is pending for priority with no scheduler start
   estimate. It cannot load the safety evaluator or unblock judging by itself;
   any selected cap must first be verified and committed.
+- 2026-08-30: The matched explicit-CoT stage-3 endpoint also requires a
+  score-blind safety-cap check because M0's 5,120 cap was explicitly provisional
+  for SFT length drift. The shared calibration harness now has a tested
+  explicit inference scaffold containing the native chat prefix and no latent
+  marker tokens, matching explicit-branch training. A 60-prompt, K=0-only
+  calibration on checkpoint SHA `c1447de3...` is preregistered at the same
+  512-5,120 ladder; no evaluator or score may load, and official generation
+  remains from-scratch only after a selected cap is committed.
