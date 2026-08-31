@@ -1,0 +1,39 @@
+schema_version: 1
+status: authorized_pre_output_deadline_rescue
+frozen_at: '2026-08-31T16:22:00-07:00'
+deadline: '2026-09-04'
+condition: coco_u3_k6
+official_config: configs/official_safety_endpoints.yaml
+trigger:
+  aged_a100_job: 11523096
+  state: pending_priority_without_start_estimate
+  observed_at: '2026-08-31T16:19:45-07:00'
+  fresh_normal_gpu_estimates: september_3_or_later
+  debug_a40_test_only_estimate: '2026-08-31T16:35:12-07:00'
+selection_rule:
+  statistic: scheduler_start_state_only
+  a100_wins_if: job_11523096_is_running_or_complete_when_a40_rescue_starts
+  a40_wins_if: job_11523096_is_still_pending_when_a40_rescue_starts
+  score_or_response_content_used: false
+  collision_rule: cancel_and_wait_for_a100_terminal_before_opening_output_path
+scientific_invariants:
+  checkpoint: unchanged
+  manifest_and_order: unchanged
+  seeds: unchanged
+  sampling: unchanged
+  safety_cap: 4096
+  serialization_and_k: unchanged
+  generator: unchanged
+hardware_deviation:
+  scope: official_coconut_inference_only
+  from: a100-40gb
+  to: a40-48gb
+  training_hardware_or_batching_changed: false
+  bit_identity_claimed: false
+  reporting: expectation_preserving_deadline_deviation
+resume:
+  max_debug_attempts: 3
+  time_limit_each: '01:00:00'
+  exact_manifest_prefix_validation: required
+  if_exhausted: release_held_a100_failure_only_resume_11528116
+
