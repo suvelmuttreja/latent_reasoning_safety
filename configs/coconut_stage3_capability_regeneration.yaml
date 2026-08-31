@@ -1,5 +1,5 @@
 schema_version: 1
-status: submitted_pending_priority
+status: running
 frozen_at: '2026-08-31'
 purpose: symmetric_stage3_gsm8k_regeneration_after_k0_truncation_guard_trigger
 train_config: configs/fallback_4b_skip0.yaml
@@ -51,3 +51,6 @@ slurm:
   submitted_at: '2026-08-31T02:23:00-07:00'
   initial_state: pending_priority_no_start_estimate
   time_limit: '00:45:00'
+  started_at: '2026-08-31T02:25:43-07:00'
+  node: b11-14
+  confirmed_gpu: NVIDIA_A40_46068_MiB

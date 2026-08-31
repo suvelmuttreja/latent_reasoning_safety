@@ -1,5 +1,5 @@
 schema_version: 1
-status: preregistered_pending_submission
+status: running
 frozen_at: '2026-08-31'
 purpose: extend_failed_final_endpoint_coconut_safety_cap_from_lengths_only
 train_config: configs/fallback_4b_skip0.yaml
@@ -52,3 +52,10 @@ hardware:
   host_memory_gib: 40
   time_limit: '03:00:00'
   rationale: prior_14_row_extension_projection_fits_three_hours_on_a100_40gb
+slurm:
+  job_id: 11491167
+  submitted_at: '2026-08-31T02:28:50-07:00'
+  started_at: '2026-08-31T02:29:21-07:00'
+  node: b02-01
+  confirmed_gpu: NVIDIA_A100_PCIE_40GB
+  time_limit: '03:00:00'

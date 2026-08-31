@@ -1230,3 +1230,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   test-only estimate was Sep 2, but all three preceding jobs backfilled far
   ahead of their estimates. The new output directory cannot collide with the
   immutable 512-token trajectory evidence.
+- 2026-08-31T02:25:43-07:00: GSM8K regeneration `11491163` backfilled almost
+  immediately on A40 node `b11-14`, retaining the registered 45-minute limit.
+  Final safety-cap extension `11491167` followed at 02:29:21 on A100-40GB node
+  `b02-01` with its three-hour limit. Their outputs and GPU pools are disjoint;
+  both can run concurrently without a race or matching violation.
