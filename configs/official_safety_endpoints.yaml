@@ -48,19 +48,34 @@ prepared_jobs:
     gpu: a100-40gb
     time_limit: '01:15:00'
     durability: incremental_scratch_to_home1_on_exit_with_exact_resume_validation
-    job_id: 11521951
-    submitted_at: '2026-08-31T14:31:00-07:00'
-    initial_state: running
-    initial_node: b02-20
+    job_id: 11523095
+    submitted_at: '2026-08-31T14:37:37-07:00'
+    initial_state: pending_priority
+    previous_attempt:
+      job_id: 11521951
+      terminal_state: failed
+      elapsed: '00:00:15'
+      node: b02-20
+      failure: stale_remote_official_eval_helper_missing_resolve_final_safety_cap
+      model_loaded: false
+      scientific_outputs_written: false
   coco_u3_k6:
     script: scripts/slurm/generate_official_coco_u3_k6.sbatch
     gpu: a100-40gb
     time_limit: '01:15:00'
     durability: incremental_scratch_to_home1_on_exit_with_exact_resume_validation
-    job_id: 11521952
-    submitted_at: '2026-08-31T14:31:00-07:00'
+    job_id: 11523096
+    submitted_at: '2026-08-31T14:37:37-07:00'
     initial_state: pending_priority
-    initial_scheduler_start_estimate: '2026-08-31T15:47:59-07:00'
+    initial_scheduler_start_estimate: null
+    previous_attempt:
+      job_id: 11521952
+      terminal_state: failed
+      elapsed: '00:00:05'
+      node: b02-20
+      failure: stale_remote_official_eval_helper_missing_resolve_final_safety_cap
+      model_loaded: false
+      scientific_outputs_written: false
 cap_resolution_status:
   explicit_cot: satisfied_by_job_11490895_cap_4096
   coconut_skip0_k6: satisfied_by_job_11491167_cap_4096

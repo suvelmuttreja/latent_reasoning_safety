@@ -1334,3 +1334,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   disjoint output directories, incremental scratch-to-home1 durability, and
   no evaluator access. All four scratch/home1 output paths were confirmed
   absent before submission, so neither job can overwrite earlier evidence.
+- 2026-08-31T14:37:37-07:00: Initial official jobs `11521951`/`11521952`
+  failed in 15/5 seconds before model load or output creation. The remote
+  `src/mats_latent_safety/official_eval.py` was stale and lacked the committed
+  `resolve_final_safety_cap` import used by the generator; this was deployment
+  drift, not a scientific failure. The exact local helper SHA
+  `de0283d9...` was synchronized to home1 and imported successfully inside the
+  Discovery runtime. All four output paths remained absent. Unchanged retries
+  `11523095` (CoT) and `11523096` (Coconut K=6) were then submitted with the
+  same frozen checkpoints, prompts, caps, sampling, and output directories;
+  both initially waited for priority with no scheduler estimate.
