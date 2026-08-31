@@ -1132,3 +1132,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   calibration measured only 24,467 MiB device use, so A100-40GB is safely
   compatible. The score-blind calibration request was moved to that earliest
   pool; matched training and stochastic trajectory hardware remain unchanged.
+- 2026-08-30T23:38:08-07:00: Final-endpoint K=0/K=6 length-only cap
+  calibration job `11488921` was submitted to the A100-40GB pool from committed
+  preregistration `76bc007`. It is pending for priority with no scheduler start
+  estimate. It cannot load the safety evaluator or unblock judging by itself;
+  any selected cap must first be verified and committed.

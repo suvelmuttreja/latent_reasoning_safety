@@ -1,5 +1,5 @@
 schema_version: 1
-status: preregistered_pending_submission
+status: submitted_pending_priority
 frozen_at: '2026-08-30'
 purpose: calibrate_actual_final_coconut_endpoint_from_lengths_only
 train_config: configs/fallback_4b_skip0.yaml
@@ -53,3 +53,8 @@ hardware:
     Score-blind mechanical calibration is independent of the matched A40
     training/trajectory chain; A100-40GB fits the measured inference footprint
     and had the earliest fresh two-hour test estimate among compatible GPUs.
+slurm:
+  job_id: 11488921
+  submitted_at: '2026-08-30T23:38:08-07:00'
+  initial_state: pending_priority_no_start_estimate
+  time_limit: '02:00:00'
