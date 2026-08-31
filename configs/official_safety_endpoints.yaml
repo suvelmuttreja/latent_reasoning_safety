@@ -36,4 +36,4 @@ launch_guard:
   official_conditions_regenerate_from_scratch: true
 cap_resolution_status:
   explicit_cot: satisfied_by_job_11490895_cap_4096
-  coconut_skip0: pending_job_11488921
+  coconut_skip0: blocked_job_11488921_no_cap_passed_k0_nontermination_analysis_pending

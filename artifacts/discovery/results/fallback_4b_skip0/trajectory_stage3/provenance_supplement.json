@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "slurm_job_id": "11463021",
+  "raw_summary_sha256": "a8960023c80caf2daf2241a1d3aaf05d7e269cfb5f3ce295744d5fb38918631c",
+  "raw_reported_remote_head": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "executed_script": "scripts/evaluate_coconut_stage_trajectory.py",
+  "executed_script_sha256": "4d669c94ecd3588dcd926d387eb3e45c7e3ca37a30fd2fc245822c000ae28242",
+  "commit_containing_identical_script": "64f302c",
+  "verification": "local_worktree_remote_home1_and_git_commit_bytes_match",
+  "note": "The repaired script was rsynced into a dirty remote checkout before submission, so git_revision() reported remote HEAD rather than the commit containing the executed bytes."
+}

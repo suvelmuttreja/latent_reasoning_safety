@@ -126,7 +126,23 @@ trajectory_evaluations:
     replaced_job_id: 11441082
     replaced_job_state: cancelled_before_start
     replacement_reason: explicit_repaired_evaluator_job_identity
-    live_state_after_training_completion: pending_priority
+    terminal_state: completed
+    completed_at: '2026-08-31T02:06:46-07:00'
+    elapsed: '00:36:10'
+    summary_sha256: a8960023c80caf2daf2241a1d3aaf05d7e269cfb5f3ce295744d5fb38918631c
+    blind_coherence_status: pending_user_scores
+    capability_status: regeneration_required_gsm8k_k0_truncation_10_percent
+    capability_accuracy_observed_at_512:
+      k0: 0.495
+      k6: 0.31
+      delta_k6_minus_k0: -0.185
+    capability_truncations_at_512:
+      k0: 20_of_200
+      k6: 0_of_200
+    next_registered_gsm8k_cap: 1024
+    raw_reported_code_revision: c8a392f0dd2a7865d97c4a9cf7465e9075e8483e
+    executed_script_sha256: 4d669c94ecd3588dcd926d387eb3e45c7e3ca37a30fd2fc245822c000ae28242
+    identical_script_commit: 64f302c
   caps:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120

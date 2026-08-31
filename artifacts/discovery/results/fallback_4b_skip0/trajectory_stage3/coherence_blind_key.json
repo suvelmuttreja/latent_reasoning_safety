@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "stage": 3,
+  "shuffle_seed": 5203,
+  "source_generations_sha256": "dcb094301302938cda5eb6649480a8c2691b79b47a3856fff1b5f4b98eb3d3e6",
+  "records": [
+    {
+      "blind_id": "stage3-blind-0000",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "1e54dc03d5b51ae5bb4b258d5a3138b15e8c0a8fef8d40ad4d2a41fbd2013557"
+    },
+    {
+      "blind_id": "stage3-blind-0001",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "fee17439aed89ee1b65f54d6236c573152d31bb5fe44df6fb7308ca12dbd3154"
+    },
+    {
+      "blind_id": "stage3-blind-0002",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "e7be52c32add99667f2b2c0182b80dd0bb9baad37feb77cebed4185844d34c69"
+    },
+    {
+      "blind_id": "stage3-blind-0003",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-generic-02",
+      "output_sha256": "c442e99904bb174f08b09a93bb6eccedb7e38a5fa81f8fcfe4daf18f32add070"
+    },
+    {
+      "blind_id": "stage3-blind-0004",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "61cb6d8bc7bb7f697f524c4ac7b56dbcaec3669f706344a7012a79c04a84ed8f"
+    },
+    {
+      "blind_id": "stage3-blind-0005",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "6cc26b31c4987cf285fe48cbd229fe97ff5c880472ba59fbde2244765f6a4b1e"
+    },
+    {
+      "blind_id": "stage3-blind-0006",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "846f879b8cf6b8f7ea9cf2f1b531ba12a7f3c134ebd90e7791c45613d810b0a3"
+    },
+    {
+      "blind_id": "stage3-blind-0007",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-generic-04",
+      "output_sha256": "b191fbe6cd15ac25115f05522a8220bc42b2e413b384dc8be108cedcf0232bbc"
+    },
+    {
+      "blind_id": "stage3-blind-0008",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "bd03ae2a69a9edb7a9ab62f34743c976af55c394ededd7724014f4a7df796691"
+    },
+    {
+      "blind_id": "stage3-blind-0009",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "1469307217bc1ba64e92e48bcdd44ec738f99c41d443605549f8c24fec6aec1a"
+    },
+    {
+      "blind_id": "stage3-blind-0010",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-generic-05",
+      "output_sha256": "e2d7b55c2be473f557b538c1f4869d1df17bd36488c8782bdb6c84b1a0703905"
+    },
+    {
+      "blind_id": "stage3-blind-0011",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-risky-05",
+      "output_sha256": "4937099a98d1ad0ebd903137c1974cdf1f848ad7eaee1a66c9962874e01c9758"
+    },
+    {
+      "blind_id": "stage3-blind-0012",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "3d97abe0a79951b50b0f6d4d9f2f8c51c7acdc85a64498c8d4d02ba7985e2679"
+    },
+    {
+      "blind_id": "stage3-blind-0013",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-generic-03",
+      "output_sha256": "a90edbb070cb7471522d91e2f0aa70d17a591d9e791d742f5e436b697487c27f"
+    },
+    {
+      "blind_id": "stage3-blind-0014",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-risky-02",
+      "output_sha256": "69bd97fd2659ed9baa6e0c6c5e58dcb35a708793ebe4bde3e68ea450831b0890"
+    },
+    {
+      "blind_id": "stage3-blind-0015",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-risky-04",
+      "output_sha256": "a3b049121321d0e37c1bb2da59548901fda10d9d684c40b61a1d92cb6098dee6"
+    },
+    {
+      "blind_id": "stage3-blind-0016",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-risky-01",
+      "output_sha256": "ee6cccbef4856b183b810a3bf6439fe5830b0070d8fa9f485723afe2be79ed49"
+    },
+    {
+      "blind_id": "stage3-blind-0017",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-generic-01",
+      "output_sha256": "2760f740e9c1d95d8f5f5ab44036af427bfe846f1a95b926bf69315fb1da6d2a"
+    },
+    {
+      "blind_id": "stage3-blind-0018",
+      "source_condition": "stage3_k6",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "4d547cdf1383f7a61b40fe94aad6cc76ef7dff080a45c7d01b26d81f77d699bd"
+    },
+    {
+      "blind_id": "stage3-blind-0019",
+      "source_condition": "stage3_k0",
+      "prompt_id": "coherence-risky-03",
+      "output_sha256": "9508a2c3e2dd3af1b8be5995ad2721871e4b04affeb7e37ee694e606cb1a32aa"
+    }
+  ]
+}

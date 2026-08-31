@@ -1,5 +1,5 @@
 schema_version: 1
-status: submitted_pending_priority
+status: completed_no_registered_cap_passed
 frozen_at: '2026-08-30'
 purpose: calibrate_actual_final_coconut_endpoint_from_lengths_only
 train_config: configs/fallback_4b_skip0.yaml
@@ -64,3 +64,17 @@ slurm:
     time_limit: '03:00:00'
     collision_policy: cannot_start_after_successful_primary
     expected_state_if_primary_succeeds: dependency_never_satisfied
+    terminal_state: cancelled_after_primary_success
+    elapsed: '00:00:00'
+  terminal_state: completed
+  completed_at: '2026-08-31T02:16:30-07:00'
+  elapsed: '01:56:20'
+  exit_code: '0:0'
+result:
+  selected_cap: null
+  official_scoring_remains_blocked: true
+  summary_sha256: a11041114eb070f6cd88fc22107574171165d217d7bbaaaf4d19da9ae19b67ec
+  calibration_cap_hits_by_k: {'0': 13, '6': 1}
+  calibration_cap_hit_rates_by_k: {'0': 0.2166666667, '6': 0.0166666667}
+  evaluator_loaded: false
+  implementation_sha256: 058b01ffefea8c28be2482e7193acf145f28bf8477b285dafa1c3c2a9df37327

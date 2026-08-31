@@ -1185,3 +1185,26 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   or overwrite a successful primary and runs only after failure/timeout. If
   the primary succeeds, `DependencyNeverSatisfied` is the deliberately expected
   fallback state, not an experiment failure.
+- 2026-08-31T02:06:46-07:00: Coconut stage-3 K=0/K=6 trajectory job
+  `11463021` completed on A40 in `00:36:10`, strictly loading final checkpoint
+  SHA `84709f44...`. At the registered 512-token GSM8K cap, K=0 scored 99/200
+  (49.5%) with 20/200 length stops while K=6 scored 62/200 (31.0%) with zero
+  length stops: a `-18.5` point K6-minus-K0 gap, narrowed from stage 2's
+  `-23.5` but not closed. Because K=0 truncation is 10%, the frozen symmetric
+  5% guard requires both conditions to regenerate at the preregistered next
+  task cap of 1,024 before the necessity entry is final. Coherence generation
+  is independently valid: 20/20 EOS, no cap hits or missing delimiters. Blind
+  packet SHA is `1944faec...`; scoring remains pending. Summary SHA
+  `a8960023...` matches scratch1/home1/local, and an exact-script provenance
+  supplement resolves the remote dirty-HEAD label.
+- 2026-08-31T02:16:30-07:00: Coconut final-endpoint safety-cap calibration
+  `11488921` completed on A100-40GB in `01:56:20`, narrowly inside its two-hour
+  allocation. It strictly loaded checkpoint SHA `84709f44...`; no evaluator
+  loaded and all executed implementation hashes match committed local bytes.
+  No candidate through 5,120 passed: K=0 had 13/60 length stops (21.7%) while
+  K=6 had 1/60 (1.7%). Thus the endpoint K=6 mode nearly satisfies the guard,
+  but persistent K=0 nontermination blocks a shared Coconut safety cap and all
+  official scoring. Summary SHA `a1104111...` matches scratch1/home1/local.
+  Fallback `11491110` was cancelled at zero elapsed after primary success.
+  The next decision must be preregistered from score-blind repetition/length
+  diagnostics; simply declaring 5,120 or relaxing `<5%` is prohibited.
