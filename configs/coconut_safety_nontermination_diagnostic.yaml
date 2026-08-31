@@ -1,5 +1,5 @@
 schema_version: 1
-status: preregistered_pending_run
+status: completed
 frozen_at: '2026-08-31'
 purpose: content_blind_structure_only_diagnostic_of_final_endpoint_length_stops
 source_generations: fallback_4b_skip0/safety_cap_calibration_stage3/generations.jsonl
@@ -29,3 +29,22 @@ interpretation_policy:
     Distinguish registered-cap exhaustion dominated by exact repetitive cycles
     from long but structurally nonrepetitive outputs; any official-scoring
     disposition requires a separate committed amendment.
+slurm:
+  job_id: 11491181
+  terminal_state: completed
+  completed_at: '2026-08-31T02:36:50-07:00'
+  elapsed: '00:01:25'
+  exit_code: '0:0'
+result:
+  output_sha256: 2ae55225c5bac8a2584bed2dba5dbdb9074be2ac61a056967e2e9c0e78991463
+  k0_length_stops: 13
+  k0_length_stops_with_closing_think: 0
+  k0_exact_cycle_flags: 5
+  k0_length_median_last2048_unique_4gram_ratio: 0.0034229828850855745
+  k0_eos_median_last2048_unique_4gram_ratio: 0.9708520179372198
+  k0_length_median_zlib_ratio: 0.053360884891211866
+  k0_eos_median_zlib_ratio: 0.4472020233955106
+  k6_length_stops: 1
+  k6_length_stops_with_closing_think: 1
+  evaluator_loaded: false
+  raw_content_emitted: false

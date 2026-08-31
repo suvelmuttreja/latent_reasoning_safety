@@ -1244,3 +1244,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   authorize scoring; after the 16k extension it distinguishes mechanical loops
   from merely long nonrepetitive responses for a separately committed
   disposition.
+- 2026-08-31T02:36:50-07:00: Content-blind nontermination diagnostic
+  `11491181` completed on the main partition in `00:01:25`. All 13 K=0
+  5,120-token length stops lacked a closing `</think>` delimiter, versus 36/47
+  completed K=0 rows with one. Their last-2,048-token 4-gram uniqueness had
+  median `0.00342` versus `0.97085` for completed K=0 rows; zlib ratio median
+  was `0.05336` versus `0.44720`. Five met the deliberately narrow exact-cycle
+  flag; the remaining eight were still extremely low-diversity but not exact
+  suffix cycles under that rule. The single K=6 length stop had closed
+  reasoning and is structurally distinct. No raw text was emitted and no
+  evaluator loaded. Result SHA is `2ae55225...`. This supports reasoning-loop
+  nontermination at K=0 but cannot itself authorize scoring or redefine a cap;
+  the running 16k extension remains the registered confirmation.
