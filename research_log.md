@@ -1394,3 +1394,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Up to three bounded debug attempts may resume the same prefix; after that the
   held A100 fallback is released. No response content or score informed this
   deadline decision.
+- 2026-08-31T16:28:38-07:00: Test-only debug estimates proved optimistic:
+  replacement `11538721` received no forecast after submission, so it and the
+  earlier 17:30 request `11537864` were cancelled at zero elapsed. Commit
+  `4b10d83` added an atomic scratch claim and first-starter cancellation among
+  A40 rescue candidates. Jobs `11538763` (45 minutes) and `11538764` (60
+  minutes) now race for that claim; both initially lack estimates. The winner
+  cancels every other named rescue before checking/cancelling the still-pending
+  A100 path or opening official outputs. A short winner may persist a partial
+  prefix and submit the next bounded attempt. This is queue-latency hedging,
+  not duplicate generation, and no response content is inspected.

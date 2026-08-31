@@ -95,7 +95,7 @@ prepared_jobs:
       config: configs/official_coco_a40_deadline_rescue.yaml
       gpu: a40-48gb
       time_limit_candidates: ['00:45:00', '01:00:00']
-      atomic_race_jobs: pending_submission
+      atomic_race_jobs: [11538763, 11538764]
       selection_rule: first_scheduler_start_wins_without_response_inspection
     previous_attempt:
       job_id: 11521952
