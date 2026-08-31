@@ -1381,3 +1381,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   12-prompt audit subset from each branch, shuffles 24 full transcripts with
   seed 42, seals the condition key, and creates a readable local-review page;
   it never loads or emits automatic StrongREJECT scores.
+- 2026-08-31T16:22:56-07:00: With the Sep 4 deadline approaching, a
+  score-blind A40 deadline rescue was frozen in commit `58c1f84` and submitted
+  as debug job `11537864`. Its actual initial estimate is 17:30 today, versus
+  no estimate for aged A100 primary `11523096` and Sep 3 for every fresh normal
+  GPU request. The first-to-start rule is mechanical: A100 wins if already
+  running when rescue starts; otherwise rescue cancels and waits out the
+  pending A100 before opening the shared output path. A100 failure fallback
+  `11528116` is held against collision. The rescue changes inference hardware
+  only (A100-40GB to validated A40-48GB); checkpoint, K=6 scaffold, manifest,
+  order, seeds, sampler, 4,096 cap, and exact-resume validation are unchanged.
+  Up to three bounded debug attempts may resume the same prefix; after that the
+  held A100 fallback is released. No response content or score informed this
+  deadline decision.

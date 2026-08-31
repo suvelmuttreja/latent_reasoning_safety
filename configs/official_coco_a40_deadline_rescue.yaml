@@ -36,4 +36,9 @@ resume:
   time_limit_each: '01:00:00'
   exact_manifest_prefix_validation: required
   if_exhausted: release_held_a100_failure_only_resume_11528116
-
+slurm:
+  first_job_id: 11537864
+  submitted_at: '2026-08-31T16:22:56-07:00'
+  initial_state: pending_priority
+  initial_start_estimate: '2026-08-31T17:30:00-07:00'
+  a100_failure_fallback_state: held_against_collision

@@ -91,6 +91,13 @@ prepared_jobs:
     initial_state: pending_priority
     initial_scheduler_start_estimate: null
     latest_scheduler_start_estimate: '2026-09-02T03:15:39-07:00'
+    deadline_rescue:
+      config: configs/official_coco_a40_deadline_rescue.yaml
+      first_job_id: 11537864
+      gpu: a40-48gb
+      time_limit: '01:00:00'
+      initial_start_estimate: '2026-08-31T17:30:00-07:00'
+      selection_rule: first_scheduler_start_wins_without_response_inspection
     previous_attempt:
       job_id: 11521952
       terminal_state: failed
