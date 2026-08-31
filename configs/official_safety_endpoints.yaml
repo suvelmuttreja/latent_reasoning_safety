@@ -1,5 +1,5 @@
 schema_version: 1
-status: authorized_primary_endpoint_generation
+status: cot_complete_unjudged_coconut_pending
 frozen_at: '2026-08-30'
 authorized_at: '2026-08-31T21:31:10Z'
 evaluation_config: configs/evaluation.yaml
@@ -14,8 +14,16 @@ conditions:
     checkpoint_k: 0
     k: 0
     scaffold_kind: explicit_cot
-    generation_status: authorized
+    generation_status: complete_unjudged
     authorization_basis: final_coconut_necessity_gate_complete_after_blind_score_commit
+    job_id: 11523095
+    terminal_state: completed
+    elapsed: '01:00:15'
+    rows: 60
+    truncations: 0
+    generations_sha256: d0d8ab7dba5753c472c2780627d58cb80e1976ace8fc8969e90c11d5c7cb54a0
+    summary_sha256: 21e9f2087c138a9cef0352e990e45074ca5ce26c74f299cf93c81cd8bc162ddc
+    evaluator_loaded: false
   coco_u3_k6:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -66,6 +74,8 @@ prepared_jobs:
       time_limit: '02:00:00'
       submitted_at: '2026-08-31T15:01:45-07:00'
       resume_policy: exact_manifest_prefix_cache_only
+      terminal_state: cancelled_invalid_dependency
+      elapsed: '00:00:00'
   coco_u3_k6:
     script: scripts/slurm/generate_official_coco_u3_k6.sbatch
     gpu: a100-40gb

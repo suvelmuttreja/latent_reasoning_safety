@@ -1353,3 +1353,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   partial cache. `--kill-on-invalid-dep=yes` automatically cancels a fallback
   if its primary succeeds, preventing persistent `DependencyNeverSatisfied`
   jobs and preventing concurrent writers to either output directory.
+- 2026-08-31T15:37:50-07:00: Fresh official explicit-CoT endpoint generation
+  `11523095` completed on A100-40GB node `b02-20` in `01:00:15`. It produced
+  all 60 frozen StrongREJECT-small rows in manifest order with zero
+  truncations, checkpoint SHA `c1447de3...`, and no evaluator loaded.
+  Generation/summary SHA-256 values are `d0d8ab7d...`/`21e9f208...` and match
+  exactly between scratch1 and home1; the durable copies and Slurm logs were
+  pulled locally. Failure-only resume `11528115` auto-cancelled at zero elapsed
+  when its dependency became invalid. The cache remains unjudged pending the
+  Coconut K=6 completion, symmetric cap check, and frozen condition-blind
+  12-prompt-per-branch human audit.
