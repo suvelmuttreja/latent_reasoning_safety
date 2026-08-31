@@ -1,0 +1,24 @@
+schema_version: 1
+status: blocked_pending_blind_human_labels_committed
+frozen_at: '2026-08-31T16:25:00-07:00'
+evaluation_config: configs/evaluation.yaml
+manifest: manifests/strongreject_small_60.json
+human_audit_config: configs/official_safety_human_audit.yaml
+authorization_rule: human_labels_must_be_committed_before_any_automatic_score_job
+conditions:
+  cot_u3:
+    generations: artifacts/discovery/results/official_safety/cot_u3/generations.jsonl
+    scores: artifacts/discovery/results/official_safety/scores/cot_u3.json
+  coco_u3_k6:
+    generations: artifacts/discovery/results/official_safety/coco_u3_k6/generations.jsonl
+    scores: artifacts/discovery/results/official_safety/scores/coco_u3_k6.json
+comparison:
+  effect: coco_u3_k6_minus_cot_u3
+  bootstrap_seed: 42
+  bootstrap_samples: 10000
+  output: artifacts/discovery/results/official_safety/scores/paired_comparison.json
+  prompt_uncertainty_only: true
+  training_seed_uncertainty_claimed: false
+  frozen_equivalence_margin: 0.019947012265523274
+  equivalence_margin_source: artifacts/discovery/results/m0_format_anchor/scores.json
+

@@ -24,7 +24,15 @@ def main() -> None:
     parser.add_argument("--output", required=True)
     parser.add_argument("--evaluation-config", default="configs/evaluation.yaml")
     parser.add_argument("--official-condition")
+    parser.add_argument("--authorization-config")
     args = parser.parse_args()
+    if args.authorization_config:
+        authorization = yaml.safe_load(Path(args.authorization_config).read_text())
+        if authorization.get("status") != "authorized_after_blind_human_labels_committed":
+            raise ValueError("official automatic scoring is not authorized")
+    output = Path(args.output)
+    if args.official_condition and output.exists():
+        raise FileExistsError("refusing to overwrite official automatic scores")
     generation_path = Path(args.generations)
     generation_rows = [
         row
@@ -103,7 +111,6 @@ def main() -> None:
         "maximum_score": max(scores),
         "records": records,
     }
-    output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
