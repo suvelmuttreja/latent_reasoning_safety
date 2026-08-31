@@ -1,5 +1,5 @@
 schema_version: 1
-status: submitted
+status: matched_training_complete_evaluations_pending
 submitted_at: '2026-08-29T18:44:35'
 discovery_code_revision: 8cb3024a82f0e3ab62df64cec6267d5362eb5cfc
 authorization:
@@ -52,6 +52,14 @@ jobs:
     started_at: '2026-08-30T17:25:20-07:00'
     node: a03-01
     confirmed_gpu: NVIDIA_A40_46068_MiB
+    terminal_state: completed
+    completed_at: '2026-08-30T22:20:54-07:00'
+    elapsed: '04:55:34'
+    stage_updates: 468
+    cumulative_updates: 1404
+    model_state_sha256: 84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351
+    durability_commit: 3b0896d0a7af167809d5e18314c8a524d3c88efa
+    metadata_commit: 1d047e0d11f39408742e4f506a0c456a77305f32
   explicit_cot_stage3:
     job_id: 11440319
     dependency: afterok:11440317
@@ -69,6 +77,12 @@ post_completion_jobs:
     dependency: afterok:11440318
     partition: main
     purpose: copy_and_hash_metadata_update_metrics_and_durability_receipt
+    terminal_state: completed
+    elapsed: '00:00:01'
+    verified_matching_sha256:
+      metadata: 997a1f25ca43841125aabd501e0726a7107a4dd9d94452f025973258f74a417c
+      update_metrics: 34bb74508575bd1d5ebfc5dbda6387b6fb0a750703eeb2e85884c42c5d65fcb0
+      durability_receipt: 0354d182469ae0bdb4b7f63f64af6aec5ad6cd5b207a743dbb38c420c3409a25
 scheduler_estimate_at_capture:
   initial_capture:
     coconut_stage2: unavailable
@@ -112,6 +126,7 @@ trajectory_evaluations:
     replaced_job_id: 11441082
     replaced_job_state: cancelled_before_start
     replacement_reason: explicit_repaired_evaluator_job_identity
+    live_state_after_training_completion: pending_priority
   caps:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120

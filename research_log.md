@@ -1093,3 +1093,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   requests at 17:08 estimated Sep 1 15:42 for A40, Sep 1 18:52 for L40S, and
   Sep 2 10:19 for A100-80GB, so retaining the aged A40 job was both the closest
   hardware match and the fastest live path.
+- 2026-08-30T22:20:54-07:00: Matched Coconut stage-3 job `11440318`
+  completed successfully on A40 node `a03-01` in `04:55:34`. It performed all
+  468 stage updates (1,404 cumulative) at K=6 with frozen 1x32 batching,
+  token-count-correct loss normalization, and the registered data/order hashes.
+  Mean update time was 36.839 seconds and mean loss was 0.41434, with no
+  NaN/OOM evidence. Model SHA-256 is `84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351`;
+  private-HF commits `3b0896d0a7af167809d5e18314c8a524d3c88efa` and
+  `1d047e0d11f39408742e4f506a0c456a77305f32` durably store the model/tokenizer
+  and exact metadata. Automatic copy job `11462976` copied metadata, all update
+  metrics, and the durability receipt to home1 in one second; their matching
+  scratch1/home1 hashes are `997a1f25...`, `34bb7450...`, and `0354d182...`.
+  The compact artifacts were also pulled locally. Repaired K=0/K=6 trajectory
+  job `11463021` released normally and is pending only for A40 priority.
