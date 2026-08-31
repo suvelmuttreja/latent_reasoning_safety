@@ -1145,3 +1145,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   calibration on checkpoint SHA `c1447de3...` is preregistered at the same
   512-5,120 ladder; no evaluator or score may load, and official generation
   remains from-scratch only after a selected cap is committed.
+- 2026-08-30T23:56:24-07:00: Explicit-CoT stage-3 cap-calibration job
+  `11490895` was submitted to A100-40GB from preregistration commit `62d0d5a`.
+  It is pending for priority with no start estimate. Its output directory is
+  branch-specific, so it cannot collide with Coconut calibration `11488921` if
+  both allocations start concurrently.

@@ -1,5 +1,5 @@
 schema_version: 1
-status: preregistered_pending_submission
+status: submitted_pending_priority
 frozen_at: '2026-08-30'
 purpose: verify_actual_final_explicit_cot_endpoint_safety_cap_from_lengths_only
 train_config: configs/matched_4b_cot.yaml
@@ -49,3 +49,8 @@ hardware:
   host_memory_gib: 40
   measured_comparable_inference_memory_requirement_mib: 24467
   rationale: score_blind_endpoint_cap_check_independent_of_matched_a40_training
+slurm:
+  job_id: 11490895
+  submitted_at: '2026-08-30T23:56:24-07:00'
+  initial_state: pending_priority_no_start_estimate
+  time_limit: '02:00:00'
