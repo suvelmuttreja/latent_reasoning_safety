@@ -1372,3 +1372,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   K6 calibration mean length was 1,191.12 tokens, essentially identical to the
   completed CoT cache's 1,193.20 tokens and 60:15 wall time. Its separate
   two-hour exact-resume fallback still bounds an unusually slow startup.
+- 2026-08-31T15:44:00-07:00: The condition-blind pre-judge audit handoff was
+  automated while Coconut remained pending. CPU jobs `11533445` (after-ok
+  primary `11523096`) and `11533446` (after-ok failure-only resume `11528116`)
+  run the committed exporter/HTML renderer only after a complete successful
+  Coconut cache exists. Invalid dependencies auto-cancel, so only one can run.
+  The exporter validates exact 60-row official caches, selects the immutable
+  12-prompt audit subset from each branch, shuffles 24 full transcripts with
+  seed 42, seals the condition key, and creates a readable local-review page;
+  it never loads or emits automatic StrongREJECT scores.

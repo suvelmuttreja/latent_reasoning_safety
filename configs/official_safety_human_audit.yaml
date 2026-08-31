@@ -21,8 +21,20 @@ review_fields:
   note: optional_free_text
 condition_key_sealed_until_scores_committed: true
 automatic_scores_must_not_exist_before_human_labels: true
+automatic_export:
+  submitted_at: '2026-08-31T15:44:00-07:00'
+  script: scripts/slurm/export_official_safety_audit.sbatch
+  primary_success_job:
+    job_id: 11533445
+    dependency: afterok:11523096
+    kill_on_invalid_dependency: true
+  fallback_success_job:
+    job_id: 11533446
+    dependency: afterok:11528116
+    kill_on_invalid_dependency: true
+  mutual_exclusion_basis: only_one_of_primary_or_failure_only_resume_can_succeed
+  evaluator_loaded: false
 outputs:
   packet: artifacts/discovery/results/official_safety/human_audit/audit_blinded.jsonl
   key: artifacts/discovery/results/official_safety/human_audit/audit_blind_key.json
   html: artifacts/discovery/results/official_safety/human_audit/audit_blind_review.html
-
