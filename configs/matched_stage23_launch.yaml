@@ -143,6 +143,15 @@ trajectory_evaluations:
     raw_reported_code_revision: c8a392f0dd2a7865d97c4a9cf7465e9075e8483e
     executed_script_sha256: 4d669c94ecd3588dcd926d387eb3e45c7e3ca37a30fd2fc245822c000ae28242
     identical_script_commit: 64f302c
+    capability_regeneration:
+      job_id: 11491163
+      cap: 1024
+      terminal_state: completed
+      summary_sha256: 3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43
+      accuracy: {'k0': 0.495, 'k6': 0.31, 'delta_k6_minus_k0': -0.185}
+      truncations: {'k0': 20_of_200, 'k6': 0_of_200}
+      guard_passed: false
+      disposition: content_blind_gsm_nontermination_diagnostic_pending
   caps:
     coconut_gsm8k: 512
     native_thinking_coherence: 5120

@@ -35,7 +35,10 @@ coconut_generation:
       frozen_at: '2026-08-31'
       evidence: stage3_trajectory_k0_20_of_200_truncated_k6_0_of_200_at_512
       threshold: less_than_5_percent_per_condition
-      status: frozen_escalation_pending_symmetric_regeneration
+      status: blocked_k0_nontermination_persists_at_1024
+      regeneration_job: 11491163
+      regeneration_summary_sha256: 3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43
+      regeneration_result: k0_20_of_200_truncated_k6_0_of_200_truncated
     safety:
       max_new_tokens: null
       status: blocked_final_endpoint_extension_and_nontermination_analysis_pending

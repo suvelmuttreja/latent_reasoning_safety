@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "slurm_job_id": "11491163",
+  "raw_summary_sha256": "3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43",
+  "raw_reported_remote_head": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "executed_script": "scripts/evaluate_coconut_stage_trajectory.py",
+  "executed_script_sha256": "04ad2b52af83a5bba7e59e3b3892a5ebc990c9b39d223a6d2e6897197a673c42",
+  "commit_containing_identical_script": "695c20d",
+  "verification": "local_worktree_remote_home1_and_git_commit_bytes_match",
+  "note": "The capability-only script was synced into a dirty remote checkout before submission, so git_revision() reported remote HEAD rather than the commit containing the executed bytes."
+}

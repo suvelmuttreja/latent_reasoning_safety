@@ -1,5 +1,5 @@
 schema_version: 1
-status: running
+status: completed_guard_still_failed
 frozen_at: '2026-08-31'
 purpose: symmetric_stage3_gsm8k_regeneration_after_k0_truncation_guard_trigger
 train_config: configs/fallback_4b_skip0.yaml
@@ -54,3 +54,14 @@ slurm:
   started_at: '2026-08-31T02:25:43-07:00'
   node: b11-14
   confirmed_gpu: NVIDIA_A40_46068_MiB
+  terminal_state: completed
+  completed_at: '2026-08-31T02:53:52-07:00'
+  elapsed: '00:28:09'
+  exit_code: '0:0'
+result:
+  summary_sha256: 3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43
+  gsm8k_sha256: 1f83e0012a933e904517f7bf967bcd1eb2766f16244505df450d80ce69e823ec
+  accuracy: {'k0': 0.495, 'k6': 0.31, 'delta_k6_minus_k0': -0.185}
+  truncations: {'k0': 20_of_200, 'k6': 0_of_200}
+  guard_passed: false
+  disposition: content_blind_gsm_nontermination_diagnostic_pending

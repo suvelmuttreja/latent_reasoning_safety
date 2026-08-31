@@ -1235,6 +1235,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Final safety-cap extension `11491167` followed at 02:29:21 on A100-40GB node
   `b02-01` with its three-hour limit. Their outputs and GPU pools are disjoint;
   both can run concurrently without a race or matching violation.
+- 2026-08-31T02:53:52-07:00: Symmetric 1,024-token stage-3 GSM8K regeneration
+  `11491163` completed on A40 in `00:28:09`. From-scratch K=0 and K=6 results
+  were unchanged at 99/200 (49.5%) and 62/200 (31.0%), respectively, preserving
+  the `-18.5` point K6-minus-K0 gap. All 20 K=0 rows that stopped at 512 again
+  stopped at 1,024; K=6 again had zero stops. Thus doubling the cap resolved
+  none of the guard failures, and the K=0 10% truncation rate still prohibits
+  treating this as an ordinary cap-complete comparison. Summary SHA is
+  `3f62bf82...`; scratch1/home1/local hashes match, and an exact-script
+  supplement identifies committed capability-only code `695c20d`. A
+  content-blind structural check of these 20 stops is required before the
+  necessity disposition; no accuracy-direction choice may change the cap.
 - 2026-08-31: A score- and content-blind structural diagnostic was
   preregistered for the immutable 5,120-token final Coconut calibration cache.
   It emits no raw text and loads no evaluator. For every length stop it records
