@@ -1126,3 +1126,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   512-5,120 ladder. If it also fails, any higher-cap continuation or mechanical
   nontermination policy must be preregistered before content or scores are
   inspected.
+- 2026-08-30: Before submitting the final-endpoint cap calibration, fresh
+  two-hour test requests estimated Sep 2 18:40 for A100-40GB, Sep 2 20:36 for
+  A40, Sep 2 21:31 for L40S, and Sep 3 06:49 for A100-80GB. The prior L40S
+  calibration measured only 24,467 MiB device use, so A100-40GB is safely
+  compatible. The score-blind calibration request was moved to that earliest
+  pool; matched training and stochastic trajectory hardware remain unchanged.

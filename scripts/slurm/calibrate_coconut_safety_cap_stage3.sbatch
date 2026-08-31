@@ -2,8 +2,8 @@
 #SBATCH --job-name=mats-coco-s3-cap
 #SBATCH --account=piray_1101
 #SBATCH --partition=gpu
-#SBATCH --constraint=l40s
-#SBATCH --gres=gpu:l40s:1
+#SBATCH --constraint=a100-40gb
+#SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=40G
 #SBATCH --time=02:00:00

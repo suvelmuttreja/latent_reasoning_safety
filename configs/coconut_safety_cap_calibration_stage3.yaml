@@ -45,6 +45,11 @@ durability:
   scratch_role: active_generation_working_copy
   home1_result_copy_required_for_job_success: true
 hardware:
-  constraint: l40s
+  constraint: a100-40gb
+  gres: gpu:a100:1
   host_memory_gib: 40
-  rationale: score_blind_mechanical_calibration_independent_of_a40_trajectory_chain
+  measured_device_memory_requirement_mib: 24467
+  rationale: >-
+    Score-blind mechanical calibration is independent of the matched A40
+    training/trajectory chain; A100-40GB fits the measured inference footprint
+    and had the earliest fresh two-hour test estimate among compatible GPUs.
