@@ -1246,6 +1246,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   supplement identifies committed capability-only code `695c20d`. A
   content-blind structural check of these 20 stops is required before the
   necessity disposition; no accuracy-direction choice may change the cap.
+- 2026-08-31: Before inspecting any regenerated GSM8K text, the same frozen
+  content-blind structural metric was registered on the immutable 1,024-token
+  cache. It reports only hashes, delimiter counts, compression/n-gram ratios,
+  and exact-cycle flags for the 20 K=0 stops. This diagnostic cannot alter the
+  observed accuracy or select a favorable cap; it determines whether the
+  persistent guard failure should be recorded as K=0 nontermination rather
+  than repeatedly doubling an answer budget that resolved zero cases.
 - 2026-08-31: A score- and content-blind structural diagnostic was
   preregistered for the immutable 5,120-token final Coconut calibration cache.
   It emits no raw text and loads no evaluator. For every length stop it records
