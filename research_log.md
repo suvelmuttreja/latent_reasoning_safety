@@ -1344,3 +1344,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `11523095` (CoT) and `11523096` (Coconut K=6) were then submitted with the
   same frozen checkpoints, prompts, caps, sampling, and output directories;
   both initially waited for priority with no scheduler estimate.
+- 2026-08-31T15:01:45-07:00: CoT retry `11523095` recovered from unusually
+  slow checkpoint paging and began fsyncing exact manifest-prefix records, but
+  Slurm denied an in-place extension of its 01:15 allocation. Failure-only
+  A100 resumes `11528115` (after-not-ok `11523095`) and `11528116`
+  (after-not-ok Coconut `11523096`) were therefore queued with two-hour limits.
+  Each uses the generator's exact provenance validation before resuming a
+  partial cache. `--kill-on-invalid-dep=yes` automatically cancels a fallback
+  if its primary succeeds, preventing persistent `DependencyNeverSatisfied`
+  jobs and preventing concurrent writers to either output directory.

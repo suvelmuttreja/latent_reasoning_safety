@@ -59,6 +59,13 @@ prepared_jobs:
       failure: stale_remote_official_eval_helper_missing_resolve_final_safety_cap
       model_loaded: false
       scientific_outputs_written: false
+    failure_only_resume:
+      job_id: 11528115
+      dependency: afternotok:11523095
+      kill_on_invalid_dependency: true
+      time_limit: '02:00:00'
+      submitted_at: '2026-08-31T15:01:45-07:00'
+      resume_policy: exact_manifest_prefix_cache_only
   coco_u3_k6:
     script: scripts/slurm/generate_official_coco_u3_k6.sbatch
     gpu: a100-40gb
@@ -76,6 +83,13 @@ prepared_jobs:
       failure: stale_remote_official_eval_helper_missing_resolve_final_safety_cap
       model_loaded: false
       scientific_outputs_written: false
+    failure_only_resume:
+      job_id: 11528116
+      dependency: afternotok:11523096
+      kill_on_invalid_dependency: true
+      time_limit: '02:00:00'
+      submitted_at: '2026-08-31T15:01:45-07:00'
+      resume_policy: exact_manifest_prefix_cache_only
 cap_resolution_status:
   explicit_cot: satisfied_by_job_11490895_cap_4096
   coconut_skip0_k6: satisfied_by_job_11491167_cap_4096
