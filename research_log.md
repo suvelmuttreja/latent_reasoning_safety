@@ -1178,3 +1178,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   specifically for explicit-CoT safety; the broader 5,120 M0/CoT cap remains
   unchanged for other tasks. Official generation must still regenerate from
   scratch and remains blocked on the Coconut cap and necessity result.
+- 2026-08-31: Coconut final-endpoint cap job `11488921` was still actively
+  generating at `01:32:23` with only 27m37s left. Slurm denied increasing its
+  running backfill allocation from two to three hours. Three-hour fallback
+  `11491110` was therefore attached with `afternotok:11488921`; it cannot race
+  or overwrite a successful primary and runs only after failure/timeout. If
+  the primary succeeds, `DependencyNeverSatisfied` is the deliberately expected
+  fallback state, not an experiment failure.

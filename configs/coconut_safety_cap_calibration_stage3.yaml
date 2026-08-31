@@ -58,3 +58,9 @@ slurm:
   submitted_at: '2026-08-30T23:38:08-07:00'
   initial_state: pending_priority_no_start_estimate
   time_limit: '02:00:00'
+  timeout_fallback:
+    job_id: 11491110
+    dependency: afternotok:11488921
+    time_limit: '03:00:00'
+    collision_policy: cannot_start_after_successful_primary
+    expected_state_if_primary_succeeds: dependency_never_satisfied
