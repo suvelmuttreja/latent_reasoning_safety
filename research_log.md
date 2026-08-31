@@ -1086,3 +1086,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   K-dependent behavior is present but currently harmful to capability; it does
   not replace the larger frozen endpoint sets or resolve whether K=6 improves
   by stage 3.
+- 2026-08-30T17:25:20-07:00: Matched Coconut stage-3 job `11440318`
+  started on A40 node `a03-01`, ahead of its latest 17:40 scheduler estimate.
+  The job retained the frozen 1x32 batching and all registered stage-3 settings;
+  the three-shard stage-2 checkpoint loaded without error. Fresh Slurm test-only
+  requests at 17:08 estimated Sep 1 15:42 for A40, Sep 1 18:52 for L40S, and
+  Sep 2 10:19 for A100-80GB, so retaining the aged A40 job was both the closest
+  hardware match and the fastest live path.

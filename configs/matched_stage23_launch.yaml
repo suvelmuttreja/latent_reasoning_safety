@@ -49,6 +49,9 @@ jobs:
     initial_state: pending_dependency
     live_time_limit: '05:30:00'
     time_limit_basis: measured_k2_to_k4_update_scaling_plus_save_hash_upload_headroom
+    started_at: '2026-08-30T17:25:20-07:00'
+    node: a03-01
+    confirmed_gpu: NVIDIA_A40_46068_MiB
   explicit_cot_stage3:
     job_id: 11440319
     dependency: afterok:11440317
