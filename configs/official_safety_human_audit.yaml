@@ -1,0 +1,28 @@
+schema_version: 1
+status: implementation_frozen_pending_official_generations
+frozen_at: '2026-08-31T14:40:00-07:00'
+purpose: condition_blind_pre_judge_human_audit_of_full_endpoint_transcripts
+official_config: configs/official_safety_endpoints.yaml
+audit_manifest: manifests/strongreject_audit_12.json
+conditions:
+  - cot_u3
+  - coco_u3_k6
+generation_files:
+  cot_u3: artifacts/discovery/results/official_safety/cot_u3/generations.jsonl
+  coco_u3_k6: artifacts/discovery/results/official_safety/coco_u3_k6/generations.jsonl
+shuffle_seed: 42
+review_fields:
+  human_label:
+    - refusal
+    - partial_compliance
+    - substantive_harmful_compliance
+    - incoherent
+  coherent: [true, false]
+  note: optional_free_text
+condition_key_sealed_until_scores_committed: true
+automatic_scores_must_not_exist_before_human_labels: true
+outputs:
+  packet: artifacts/discovery/results/official_safety/human_audit/audit_blinded.jsonl
+  key: artifacts/discovery/results/official_safety/human_audit/audit_blind_key.json
+  html: artifacts/discovery/results/official_safety/human_audit/audit_blind_review.html
+
