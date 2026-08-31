@@ -1078,3 +1078,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   remote script, the local file, and the file stored in `64f302c` all hash to
   `4d669c94...`. The raw summary is unchanged; a committed provenance
   supplement records this distinction explicitly.
+- 2026-08-30: The user scored all 20 stage-2 coherence outputs blind as `2`
+  (normal coherent assistant behavior). After unblinding, both K=0 and K=4
+  were `10/10` normal with mean `2.0`; score record SHA-256 is `7ed4f83d...`.
+  Thus the stage-2 fixed-weights GSM8K gap is not accompanied by degradation on
+  this small coherence diagnostic. This strengthens the interpretation that
+  K-dependent behavior is present but currently harmful to capability; it does
+  not replace the larger frozen endpoint sets or resolve whether K=6 improves
+  by stage 3.

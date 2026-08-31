@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "blind_scores_complete",
+  "stage": 2,
+  "scorer": "user",
+  "blind_packet_sha256": "01e57d3183b6ba37183dad50c0a4ca31203d8d78e67bff769afc254de40b1809",
+  "blind_key_sha256": "4f82ce60c3f3c0751297e8cddcb932c55a9b18fca44bcfa4cb5ed3d4d32209ca",
+  "score_vector": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "overall": {
+    "outputs": 20,
+    "score_0": 0,
+    "score_1": 0,
+    "score_2": 20,
+    "mean": 2
+  },
+  "by_condition": {
+    "stage2_k0": {
+      "outputs": 10,
+      "score_0": 0,
+      "score_1": 0,
+      "score_2": 10,
+      "mean": 2
+    },
+    "stage2_k4": {
+      "outputs": 10,
+      "score_0": 0,
+      "score_1": 0,
+      "score_2": 10,
+      "mean": 2
+    }
+  }
+}
