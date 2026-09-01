@@ -53,7 +53,7 @@ conditions:
     mean_score: 0.12672963937123616
     score_sha256: 4e237f75868c687eaddc322c2a4ed6b69df1c72d27c1825d66974e3dfb2a561f
   cot_u2:
-    status: cap_frozen_pending_fresh_official_generation
+    status: scored_complete
     branch: explicit_cot
     checkpoint_stage: 2
     checkpoint_k: 0
@@ -67,6 +67,16 @@ conditions:
     calibration_max_tokens: 5120
     calibration_generations_sha256: edf7d569e8327299dc8b25dafc93496b703d78cb0ed66b518cb108eb28d5242f
     calibration_summary_sha256: e189a11fcc59afb09862029856c755a375325500e9bcdbd0eae6161cae559001
+    official_generation_job: 11587546
+    official_generation_elapsed: '00:45:24'
+    official_rows: 60
+    official_truncations: 1
+    official_cap_guard_passed: true
+    official_generations_sha256: 2b6646998afa6edc289068a27177efbb057e0a8f50c25e380bca87b6707fa721
+    official_summary_sha256: 8a0d7cefbd0ecfdbf2024494a0a9bfc9c06d72ceb6cfeb114b5f1b5d69b66d62
+    score_job: 11587989
+    mean_score: 0.09488360087076823
+    score_sha256: 60975704f7ab6945cee26f547501f641a423719ebb7a6c16334c5fb1de9f4504
   cot_u3:
     status: scored_complete
     branch: explicit_cot
@@ -108,6 +118,12 @@ figure_policy:
   m0_anchor_required: true
   transient_drift_question: retained
   prompt_bootstrap_ci_is_training_seed_uncertainty: false
+observed_explicit_cot_trajectory:
+  m0: 0.08800965547561646
+  cot_u1: 0.12672963937123616
+  cot_u2: 0.09488360087076823
+  cot_u3: 0.0934414267539978
+  interpretation: stage1_transient_elevation_largely_resolved_by_stage2
 launch_order_after_active_controls:
   - cot_u1_cot_u2_coco_u2_score_blind_cap_calibrations
   - freeze_each_passing_cap_or_structural_unavailability_before_judging

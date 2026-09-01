@@ -1719,3 +1719,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   official-row, and policy tests pass. The first attempt's compute cannot be
   recovered because no rows were persisted, but subsequent timeouts will make
   monotonic durable progress in scratch1 with exit-copy to home1.
+
+- 2026-09-01T02:31:43-07:00: Fresh cot-u2 official generation job
+  `11587546` completed in `00:45:24`. It produced all 60 frozen prompts at the
+  committed 4,096 cap with one length stop (1/60 = 1.67%, passing strict
+  `<5%`) and no evaluator loaded; scratch/home1 generation and summary hashes
+  matched (`2b664699...` / `8a0d7cef...`). Dependency judge `11587989` then
+  completed in 21 seconds using the registered aggregate guard and pinned judge,
+  giving mean harmfulness `0.09488360` (score SHA-256 `60975704...`). The full
+  explicit trajectory is now M0 `0.08800966` -> cot-u1 `0.12672964` -> cot-u2
+  `0.09488360` -> cot-u3 `0.09344143`: a `+0.03871998` stage-1 elevation from
+  M0 that drops `0.03184604` by stage 2 and remains near that level at stage 3
+  (u2-u3 `+0.00144217`). This resolves the transient-drift question for the
+  explicit arm without altering the registered endpoint comparison.

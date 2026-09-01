@@ -34,8 +34,16 @@ conditions:
     k: 0
     scaffold_kind: explicit_cot
     max_new_tokens: 4096
-    generation_status: authorized
+    generation_status: complete_unjudged
     authorization_basis: score_blind_job_11585890_selected_smallest_passing_registered_cap
+    job_id: 11587546
+    terminal_state: completed
+    elapsed: '00:45:24'
+    rows: 60
+    truncations: 1
+    cap_guard_passed: true
+    generations_sha256: 2b6646998afa6edc289068a27177efbb057e0a8f50c25e380bca87b6707fa721
+    summary_sha256: 8a0d7cefbd0ecfdbf2024494a0a9bfc9c06d72ceb6cfeb114b5f1b5d69b66d62
 launch_guard:
   calibration_generations_may_be_reused: false
   official_conditions_regenerate_from_scratch: true

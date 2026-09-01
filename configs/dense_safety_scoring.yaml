@@ -29,7 +29,10 @@ conditions:
     cap_freeze_commit: b8ddbe0
     score_job: 11587989
     dependency: afterok:11587546
-    status: dependency_pending
+    status: scored_complete
+    elapsed: '00:00:21'
+    mean_score: 0.09488360087076823
+    score_sha256: 60975704f7ab6945cee26f547501f641a423719ebb7a6c16334c5fb1de9f4504
 guardrails:
   official_generation_purpose_required: true
   exact_manifest_required: true
