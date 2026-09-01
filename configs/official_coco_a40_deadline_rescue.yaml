@@ -54,6 +54,12 @@ repair:
   fallback_collision_guard: >-
     A repaired A40 starter must lose to an already-running A100 fallback or
     hold a still-pending fallback before opening the shared output path.
+  repaired_job:
+    job_id: 11548589
+    submitted_at: '2026-08-31T18:28:46-07:00'
+    time_limit: '01:00:00'
+    code_revision: d2071f690d87606f96217e0cc78166bf04f6b9df
+    initial_state: pending_priority_without_start_estimate
 slurm:
   replaced_unstarted_jobs: [11537864, 11538721]
   replacement_reason: actual_start_forecast_stale_or_unavailable_after_test_only

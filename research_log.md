@@ -1418,3 +1418,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   also treats the released A100 fallback as a race participant: it loses if
   that fallback is running, otherwise holds it before opening the shared path.
   Checkpoint, prompts/order, seeds, sampler, cap, and estimand are unchanged.
+- 2026-08-31T18:28:46-07:00: The tested repair was committed and pushed as
+  `d2071f6`, synchronized byte-for-byte to the home1 checkout, and submitted
+  as one-hour A40 debug job `11548589`. It initially waits for priority without
+  a scheduler estimate. The unchanged A100 fallback `11528116` remains
+  eligible with a current Sep 2 00:40 estimate; when the A40 job starts it will
+  atomically hold that fallback before opening the output, while an A100
+  fallback that starts first wins and causes the A40 job to exit. This retains
+  a live deadline path without permitting concurrent writers.
