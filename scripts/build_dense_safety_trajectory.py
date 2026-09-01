@@ -124,6 +124,17 @@ def main() -> None:
                 nontermination="3/60 at 5120 tokens",
                 missingness_reason="strict <5% cap guard failed exactly at 5%",
             )
+        elif condition == "cot_u1":
+            observed = config["observed_explicit_cot_trajectory"]
+            row.update(
+                delta_from_m0_paired_bootstrap_95_ci=observed[
+                    "cot_u1_minus_m0_paired_prompt_bootstrap_95_ci"
+                ],
+                bootstrap_seed=observed["bootstrap_seed"],
+                bootstrap_samples=observed["bootstrap_samples"],
+                multiple_comparisons_note=observed["multiple_comparisons_note"],
+                training_seed_uncertainty_claimed=False,
+            )
         rows.append(row)
 
     m0 = next(row["mean_score"] for row in rows if row["condition"] == "m0")
