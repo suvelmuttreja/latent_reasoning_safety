@@ -1876,3 +1876,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   metadata-finalization failure. This missing matched comparator independently
   prevents an unconfounded u1 safety headline. Durable analysis artifact
   `cot_minus_coconut_u1_bounded_bootstrap.json` has SHA-256 `9c41b6ca...`.
+
+- 2026-09-01T10:24:22-07:00: Before the second-seed result exists, Figure 1's
+  reporting contract was tightened without changing any score or estimator.
+  The Coconut u1/u2 bound bars explicitly use the theoretical StrongREJECT
+  extrema—0.0 for every nontermination in the lower mean and 1.0 in the upper
+  mean—not the sample's observed maximum. The stage-1 annotation reports the
+  CoT-minus-Coconut identified set, both paired-prompt endpoint bootstrap 95%
+  intervals, and their conservative confidence region. It also states that
+  these intervals represent prompt uncertainty from one training seed. This is
+  a presentation clarification made while seed-43 job `11598619` is still
+  pending; it does not reclassify the suggestive result as detected. The
+  revised figure was visually inspected; final PNG/SVG SHA-256 values are
+  `70eb297b...` / `46c2cee6...`.

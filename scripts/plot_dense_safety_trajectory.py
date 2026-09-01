@@ -19,14 +19,26 @@ def main() -> None:
     parser.add_argument(
         "--output-dir", default="artifacts/discovery/results/dense_safety/trajectory"
     )
+    parser.add_argument(
+        "--u1-comparison",
+        default=(
+            "artifacts/discovery/results/dense_safety/trajectory/"
+            "cot_minus_coconut_u1_bounded_bootstrap.json"
+        ),
+    )
     args = parser.parse_args()
 
     payload = json.loads(Path(args.trajectory).read_text())
     if payload["status"] != "complete":
         raise ValueError("refusing to render an incomplete trajectory")
     rows = {row["condition"]: row for row in payload["rows"]}
+    u1 = json.loads(Path(args.u1_comparison).read_text())
+    if u1["status"] != "complete":
+        raise ValueError("refusing to render an incomplete u1 comparison")
+    if u1["effect"] != "cot_u1_minus_coco_u1_k2":
+        raise ValueError("unexpected u1 comparison orientation")
 
-    fig, ax = plt.subplots(figsize=(8.2, 5.2))
+    fig, ax = plt.subplots(figsize=(10.4, 5.4))
     explicit_names = ["m0", "cot_u1", "cot_u2", "cot_u3"]
     explicit_y = [rows[name]["mean_score"] for name in explicit_names]
     ax.plot(
@@ -99,11 +111,51 @@ def main() -> None:
     ax.grid(axis="y", color="#e5e7eb", linewidth=0.8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(loc="lower left", frameon=False, fontsize=8.5)
-    fig.tight_layout(rect=(0, 0.09, 1, 1))
+    fig.subplots_adjust(left=0.09, right=0.70, bottom=0.18, top=0.90)
+
+    identified = u1["identified_set"]
+    lower_ci = u1["lower_endpoint_bootstrap_95_ci"]
+    upper_ci = u1["upper_endpoint_bootstrap_95_ci"]
+    confidence_region = u1["conservative_identified_set_95_confidence_region"]
+    annotation = (
+        "Stage-1 CoT − Coconut\n"
+        f"identified set: [{identified[0]:+.3f}, {identified[1]:+.3f}]\n\n"
+        "Paired-prompt bootstrap (95%)\n"
+        f"lower endpoint: [{lower_ci[0]:+.3f}, {lower_ci[1]:+.3f}]\n"
+        f"upper endpoint: [{upper_ci[0]:+.3f}, {upper_ci[1]:+.3f}]\n"
+        f"conservative region: [{confidence_region[0]:+.3f}, "
+        f"{confidence_region[1]:+.3f}]\n\n"
+        "Prompt uncertainty only;\n"
+        "single training seed"
+    )
+    fig.text(
+        0.73,
+        0.83,
+        annotation,
+        ha="left",
+        va="top",
+        fontsize=8.5,
+        linespacing=1.25,
+        color="#111827",
+        bbox={
+            "boxstyle": "round,pad=0.55",
+            "facecolor": "#f9fafb",
+            "edgecolor": "#d1d5db",
+            "linewidth": 0.9,
+        },
+    )
+    fig.text(
+        0.5,
+        0.055,
+        "Coconut u1/u2 bars are bounds, not point estimates. Nonterminations use the theoretical StrongREJECT",
+        ha="center",
+        fontsize=8,
+        color="#4b5563",
+    )
     fig.text(
         0.5,
         0.025,
-        "Coconut u1/u2 bars are extreme-outcome bounds, not point estimates: every nontermination is set to 0 or 1.",
+        "extrema: 0.0 for the lower bound and 1.0 for the upper bound—not the observed maximum.",
         ha="center",
         fontsize=8,
         color="#4b5563",

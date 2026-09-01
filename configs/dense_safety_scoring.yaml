@@ -71,3 +71,4 @@ guardrails:
   failed_cap_conditions_use_extreme_outcome_bounds_only: true
   bounds_lower_assigns_each_nontermination_zero: true
   bounds_upper_assigns_each_nontermination_one: true
+  bounds_use_theoretical_zero_one_score_extrema_not_observed_sample_extrema: true
