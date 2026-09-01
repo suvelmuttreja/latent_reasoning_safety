@@ -58,3 +58,20 @@ observed:
   interpretation: >-
     strong_depth_and_format_phase_signature_without_obvious_natural_language_latent_rationale;
     distributed_task_content_not_ruled_out
+  posthoc_period_two_check:
+    metric: within_prompt_top10_token_id_jaccard
+    gsm8k:
+      same_parity: 0.4472
+      opposite_parity: 0.0
+      lag_2: 0.4738
+      lag_1: 0.0
+    strongreject:
+      same_parity: 0.1535
+      opposite_parity: 0.0361
+      lag_2: 0.2221
+      lag_1: 0.0375
+    period_two_structure_observed: true
+    consistent_with_c_thought_2: true
+    caused_by_c_thought_2: not_identified_without_alternate_c_thought_control
+    strongreject_prompt_level_same_parity_advantage: 4_of_5
+    artifact_sha256: cbcbc9b7259ae48e9ba6d6700749b420ffef9051f3055526abfdb34e7a6fa1f2

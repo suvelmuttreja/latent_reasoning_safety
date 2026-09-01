@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "analysis_role": "posthoc_descriptive_periodicity_check",
+  "metric": "jaccard_overlap_of_native_top10_token_ids",
+  "depth_indexing": "one_through_six",
+  "hypothesis_checked_after_viewing_readout": true,
+  "period_two_structure_observed": {
+    "gsm8k": true,
+    "strongreject": true
+  },
+  "c_thought": 2,
+  "causal_attribution_to_c_thought": false,
+  "causal_limit": "only c_thought=2 was trained; no alternate-c_thought control exists, and task serializations differ",
+  "source_sha256": "6067d53c8c82158215588f401ca54f85ba857e687642e19989a28436ad389d85",
+  "tasks": {
+    "gsm8k": {
+      "summary": {
+        "same_parity": 0.4471651155861682,
+        "opposite_parity": 0.0,
+        "lag_1": 0.0,
+        "lag_2": 0.4737779764095553,
+        "same_minus_opposite": 0.4471651155861682,
+        "lag2_minus_lag1": 0.4737779764095553
+      },
+      "per_prompt": [
+        {
+          "prompt_id": "gsm8k-test-0001",
+          "same_parity_mean_top10_jaccard": 0.426961926961927,
+          "opposite_parity_mean_top10_jaccard": 0.0,
+          "same_minus_opposite": 0.426961926961927
+        },
+        {
+          "prompt_id": "gsm8k-test-0006",
+          "same_parity_mean_top10_jaccard": 0.4483294483294483,
+          "opposite_parity_mean_top10_jaccard": 0.0,
+          "same_minus_opposite": 0.4483294483294483
+        },
+        {
+          "prompt_id": "gsm8k-test-0013",
+          "same_parity_mean_top10_jaccard": 0.45526695526695526,
+          "opposite_parity_mean_top10_jaccard": 0.0,
+          "same_minus_opposite": 0.45526695526695526
+        },
+        {
+          "prompt_id": "gsm8k-test-0014",
+          "same_parity_mean_top10_jaccard": 0.482353903406535,
+          "opposite_parity_mean_top10_jaccard": 0.0,
+          "same_minus_opposite": 0.482353903406535
+        },
+        {
+          "prompt_id": "gsm8k-test-0023",
+          "same_parity_mean_top10_jaccard": 0.4229133439659755,
+          "opposite_parity_mean_top10_jaccard": 0.0,
+          "same_minus_opposite": 0.4229133439659755
+        }
+      ]
+    },
+    "strongreject": {
+      "summary": {
+        "same_parity": 0.15353541940229246,
+        "opposite_parity": 0.036117799946489317,
+        "lag_1": 0.03746818025455796,
+        "lag_2": 0.22211599460051473,
+        "same_minus_opposite": 0.11741761945580315,
+        "lag2_minus_lag1": 0.18464781434595678
+      },
+      "per_prompt": [
+        {
+          "prompt_id": "strongreject-small-00",
+          "same_parity_mean_top10_jaccard": 0.038183694530443756,
+          "opposite_parity_mean_top10_jaccard": 0.012345679012345678,
+          "same_minus_opposite": 0.025838015518098077
+        },
+        {
+          "prompt_id": "strongreject-small-01",
+          "same_parity_mean_top10_jaccard": 0.10961226595901519,
+          "opposite_parity_mean_top10_jaccard": 0.0,
+          "same_minus_opposite": 0.10961226595901519
+        },
+        {
+          "prompt_id": "strongreject-small-02",
+          "same_parity_mean_top10_jaccard": 0.29540503069914836,
+          "opposite_parity_mean_top10_jaccard": 0.0539311241065627,
+          "same_minus_opposite": 0.24147390659258566
+        },
+        {
+          "prompt_id": "strongreject-small-03",
+          "same_parity_mean_top10_jaccard": 0.07107843137254902,
+          "opposite_parity_mean_top10_jaccard": 0.10261629018078966,
+          "same_minus_opposite": -0.03153785880824064
+        },
+        {
+          "prompt_id": "strongreject-small-04",
+          "same_parity_mean_top10_jaccard": 0.25339767445030603,
+          "opposite_parity_mean_top10_jaccard": 0.011695906432748537,
+          "same_minus_opposite": 0.2417017680175575
+        }
+      ]
+    }
+  }
+}

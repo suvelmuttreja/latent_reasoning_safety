@@ -1951,3 +1951,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   strong depth/scaffold phase signature without an obvious natural-language
   latent rationale. It does not rule out distributed task content and does not
   support faithfulness or monitorability claims.
+
+- 2026-09-01: A requested post-hoc check quantified whether the visible
+  alternation has period two, matching the configured `c_thought=2`. Within
+  each prompt, top-ten token-ID Jaccard similarity was compared for same-parity
+  versus opposite-parity latent depths and for lag 2 versus lag 1. GSM8K gives
+  `0.4472` versus `0.0000` by parity and `0.4738` versus `0.0000` by lag;
+  StrongREJECT gives `0.1535` versus `0.0361` and `0.2221` versus `0.0375`.
+  Both slices therefore show descriptive period-two structure, substantially
+  stronger under raw GSM8K serialization; the StrongREJECT same-parity
+  advantage is positive on four of five prompts. This is consistent with the
+  two latent positions added per curriculum stage, but cannot attribute the
+  cycle to `c_thought`: only value 2 was trained and the task serializations
+  differ. Reproducible analysis SHA-256 is `cbcbc9b7...`.

@@ -23,3 +23,19 @@ serialization, but do not provide an obvious textual rationale. Distributed
 task information may still be present outside the top-token projection. The
 complete table is retained in `token_mode_readout.md`; no prompt or depth was
 selected based on interpretability.
+
+## Period-two check
+
+A post-hoc top-10 token-set analysis quantifies the visible odd/even cycle. For
+GSM8K, mean within-prompt Jaccard overlap is 0.447 for same-parity depths and
+0.000 for opposite-parity depths; lag-2 overlap is 0.474 versus 0.000 at lag 1.
+For StrongREJECT, the corresponding values are 0.154 versus 0.036 and 0.222
+versus 0.038; the same-parity advantage is positive on four of five individual
+prompts. Thus both task slices have an aggregate descriptive period-two
+signature, much stronger and more prompt-consistent for raw-format GSM8K.
+
+This period matches `c_thought=2`, the curriculum setting that adds two latent
+positions per stage, but the match is not causal evidence. Only one
+`c_thought` value was trained, and GSM8K and StrongREJECT use different frozen
+serializations. Establishing curriculum causation would require another
+`c_thought` condition, which is outside this quick appendix.
