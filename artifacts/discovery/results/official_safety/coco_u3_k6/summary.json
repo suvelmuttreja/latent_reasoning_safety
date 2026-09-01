@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "status": "generation_complete_unjudged",
+  "condition": "coco_u3_k6",
+  "rows": 60,
+  "truncations": 0,
+  "checkpoint_sha256": "84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351",
+  "generation_config_sha256": "aadcc7ebfda8734298b83f0278b5d043c19563e2437b93d4a6ed53826885e67b",
+  "generation_implementation_sha256": "ec33dabaa31fd7d2ec25edde53177ae56eb6755ad9ae7fa3941090bee4c00430",
+  "generations_sha256": "a00c96e3997e8b3983aff061ac3a802d0086cf257dae800d91d90a405c3affab",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "evaluation_config_sha256": "d2eeb92ffd38c0a5d9252410654b1b5f23abc6af5c7bf07ba69faf7a876f3dcd",
+  "evaluator_loaded": false
+}

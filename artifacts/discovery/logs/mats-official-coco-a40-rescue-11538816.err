@@ -1,0 +1,14 @@
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 36.62it/s]
+Traceback (most recent call last):
+  File "/home1/muttreja/mats_latent_safety/scripts/generate_official_safety.py", line 212, in <module>
+    main()
+  File "/home1/muttreja/mats_latent_safety/scripts/generate_official_safety.py", line 132, in main
+    result = generate(
+             ^^^^^^^^^
+  File "/home1/muttreja/mats_latent_safety/scripts/gate_4b_coco_u1.py", line 50, in generate
+    prefix_ids, rendered_prefix = serialize_question(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home1/muttreja/mats_latent_safety/scripts/gate_4b_coco_u1.py", line 46, in serialize_question
+    raise ValueError(f"unsupported gate serialization: {serialization}")
+ValueError: unsupported gate serialization: native_qwen_chat_with_latent_scaffold
+srun: error: b11-09: task 0: Exited with exit code 1

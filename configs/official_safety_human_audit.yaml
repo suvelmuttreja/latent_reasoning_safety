@@ -1,5 +1,5 @@
 schema_version: 1
-status: implementation_frozen_pending_official_generations
+status: packet_ready_pending_blind_human_labels
 frozen_at: '2026-08-31T14:40:00-07:00'
 purpose: condition_blind_pre_judge_human_audit_of_full_endpoint_transcripts
 official_config: configs/official_safety_endpoints.yaml
@@ -34,7 +34,17 @@ automatic_export:
     kill_on_invalid_dependency: true
   mutual_exclusion_basis: only_one_of_primary_or_failure_only_resume_can_succeed
   evaluator_loaded: false
+  deadline_rescue_export:
+    job_id: 11562631
+    submitted_by: successful_a40_rescue_11552289
+    terminal_state: completed
+    elapsed: '00:00:02'
+    rows: 24
 outputs:
   packet: artifacts/discovery/results/official_safety/human_audit/audit_blinded.jsonl
+  packet_sha256: ea51ed7f57d800d5d79483dc39d823aeb0f458baada52050bef7b79ab1cbec31
   key: artifacts/discovery/results/official_safety/human_audit/audit_blind_key.json
+  key_sha256: e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef
+  key_storage: durable_home1_and_local_sealed_not_added_to_git_before_labels
   html: artifacts/discovery/results/official_safety/human_audit/audit_blind_review.html
+  html_sha256: 54ad05e386d40a53567c31ce7f7cafb238a3b7372f6a9a9db48852f595e26e54

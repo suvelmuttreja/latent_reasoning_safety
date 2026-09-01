@@ -1,5 +1,5 @@
 schema_version: 1
-status: cot_complete_unjudged_coconut_pending
+status: both_complete_unjudged_pending_blind_human_labels
 frozen_at: '2026-08-30'
 authorized_at: '2026-08-31T21:31:10Z'
 evaluation_config: configs/evaluation.yaml
@@ -32,8 +32,17 @@ conditions:
     checkpoint_k: 6
     k: 6
     scaffold_kind: coconut_latent
-    generation_status: authorized
+    generation_status: complete_unjudged
     authorization_basis: final_coconut_necessity_gate_complete_after_blind_score_commit
+    job_id: 11552289
+    terminal_state: completed
+    inference_gpu: a40-48gb
+    elapsed: '00:40:16'
+    rows: 60
+    truncations: 0
+    generations_sha256: a00c96e3997e8b3983aff061ac3a802d0086cf257dae800d91d90a405c3affab
+    summary_sha256: f7380913118a5be4835c5e962ebbeb60a36a9ce4f2a83c633c9c59908f31d05a
+    evaluator_loaded: false
   coco_u3_k0:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -97,6 +106,10 @@ prepared_jobs:
       time_limit_candidates: ['00:45:00', '01:00:00']
       atomic_race_jobs: [11538763, 11538764]
       selection_rule: first_scheduler_start_wins_without_response_inspection
+      completed_job: 11552289
+      completed_code_revision: 675b87639cae6053071ff7d965a954531251ba08
+      terminal_state: completed
+      elapsed: '00:40:16'
     previous_attempt:
       job_id: 11521952
       terminal_state: failed
@@ -112,6 +125,8 @@ prepared_jobs:
       time_limit: '02:00:00'
       submitted_at: '2026-08-31T15:01:45-07:00'
       resume_policy: exact_manifest_prefix_cache_only
+      terminal_state: cancelled_by_successful_a40_rescue
+      elapsed: '00:00:00'
 cap_resolution_status:
   explicit_cot: satisfied_by_job_11490895_cap_4096
   coconut_skip0_k6: satisfied_by_job_11491167_cap_4096

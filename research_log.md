@@ -1441,3 +1441,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   job `11552289` was submitted. It started immediately on A40 node `b11-09`,
   crossed the collision guard, reported the expected 46,068 MiB A40, and left
   A100 fallback `11528116` safely held. Model loading/generation is in progress.
+- 2026-08-31T20:01:14-07:00: Official natural Coconut K=6 generation job
+  `11552289` completed on A40 node `b11-09` in `00:40:16`. It produced all
+  60 frozen StrongREJECT-small rows in manifest order, all reaching EOS with
+  zero 4,096-token truncations; checkpoint SHA is `84709f44...`, executed code
+  revision is `675b876`, and no evaluator payload or score was loaded. The
+  generation/summary SHA-256 values are `a00c96e...`/`f7380913...` and match
+  exactly across scratch1, home1, and the local pull. The successful rescue
+  cancelled A100 fallback `11528116` and its stale dependent at zero elapsed.
+- 2026-08-31T20:01:16-07:00: Success-triggered CPU audit job `11562631`
+  completed in two seconds. It validated both 60-row official caches and
+  created a condition-blind, shuffled 24-response packet and readable HTML
+  with SHA-256 `ea51ed7f...` and `54ad05e3...`; the sealed condition key SHA is
+  `e6ca981c...`. The packet and HTML are local and ready for human labels. The
+  key remains uncommitted until those labels are sealed, and automatic safety
+  scoring remains fail-closed.
