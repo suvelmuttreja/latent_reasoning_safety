@@ -352,7 +352,10 @@ with the Coconut paper may be claimed only after that check.
 ## Pending evidence not yet claimable
 
 The seed-43 explicit-CoT u1 checkpoint exists, but no completed, committed
-official safety result is included in the evidence cutoff. Therefore:
+official safety result is included in the evidence cutoff. Score-blind length
+calibration selected 4,096 tokens: 2,048 produced 3/60 projected truncations
+(exactly 5.0%, failing the strict `<5%` rule), while 4,096 produced 0/60.
+Therefore:
 
 - Claims 4 and 5 remain based on the primary seed only.
 - Do not say that the u1 elevation replicated or failed to replicate.
@@ -362,7 +365,8 @@ official safety result is included in the evidence cutoff. Therefore:
   not yield a seed confidence interval, and there is no second Coconut seed.
 
 Checkpoint provenance is in
-`artifacts/discovery/results/matched_4b_cot_seed43/stage1/`. Operational status
+`artifacts/discovery/results/matched_4b_cot_seed43/stage1/`; cap provenance is
+in the adjacent `safety_cap_calibration_stage1/` directory. Operational status
 and the evaluation chain remain solely in `research_log.md`.
 
 ## Power and frozen scope

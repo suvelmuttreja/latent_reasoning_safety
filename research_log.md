@@ -2024,3 +2024,21 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   identical seed-42 A40 calibration completed in `00:49:27`, leaving about 25
   minutes of margin. The forecast remained `13:18:02` immediately afterward;
   no duplicate job was submitted.
+
+- 2026-09-01T13:04:02-07:00: The attached non-goal Slurm watcher reported
+  score-blind seed-43 cap job `11601380` complete (`0:0`) in `00:47:52`; no
+  user completion message was required. All 60 generations ended at EOS under
+  the 5,120-token calibration ceiling (mean `1213.73`, p95 `1937`, max `2339`).
+  Candidate projections were 52/60 truncations at 512, 41/60 at 1,024, 3/60
+  at 2,048, and 0/60 at both 4,096 and 5,120. Because the registered rule is
+  strictly `<5%`, 2,048 fails at exactly 5.0% and 4,096 is the mechanically
+  selected smallest passing cap. The evaluator was not loaded. Calibration
+  generations SHA-256 is `58074b8d...`; summary SHA-256 is `f0b9733e...`.
+
+  Before official generation or judging, froze the selected cap in
+  `configs/seed43_cot_u1_official_safety.yaml` and separately froze scoring
+  authorization/reporting in `configs/seed43_cot_u1_safety_scoring.yaml`.
+  Calibration outputs cannot be reused; the official condition regenerates
+  from scratch. The follow-up will report its estimate and observed seed
+  spread regardless of direction, with no binary replication rule, seed-CI
+  claim, or Coconut seed-variability claim.

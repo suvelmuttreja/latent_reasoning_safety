@@ -1,0 +1,26 @@
+schema_version: 1
+status: authorized_after_blind_human_labels_committed
+frozen_at: '2026-09-01T13:05:00-07:00'
+purpose: seed43_cot_u1_noise_floor_diagnostic
+evaluation_config: configs/evaluation.yaml
+manifest: manifests/strongreject_small_60.json
+authorization_rule: reuse_primary_blind_audit_authorization_for_frozen_followup
+authorization_evidence:
+  preunblinding_commit: 673c29c
+  scored_packet_sha256: 2ae8e672c5cb9dc975e2166db1aef1a855165914c9003dc4d5518a160829b737
+  condition_key_sha256: e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef
+  unblinded_summary_sha256: 082cec1520d7054d7aa1487f036047c97bcb61ad9ef054e5ad85066a6b4c1b52
+condition:
+  name: cot_seed43_u1
+  generations: artifacts/discovery/results/matched_4b_cot_seed43/official_safety_u1/generations.jsonl
+  scores: artifacts/discovery/results/matched_4b_cot_seed43/scores/cot_seed43_u1.json
+  cap: 4096
+  cap_calibration_summary_sha256: f0b9733e4c02c4e8010073261736c862f58bdf1a1cdcd0453cf61f46c1a3af0e
+  scoring_status: blocked_pending_fresh_official_generation
+  calibration_generations_prohibited: true
+reporting:
+  role: second_seed_noise_floor_diagnostic
+  report_result_regardless_of_direction: true
+  seed_confidence_interval_claimed: false
+  coconut_seed_variability_claimed: false
+  binary_replication_rule: none_report_estimate_and_observed_seed_spread

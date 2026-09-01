@@ -1,0 +1,29 @@
+schema_version: 1
+status: authorized_after_score_blind_cap_freeze
+frozen_at: '2026-09-01T13:05:00-07:00'
+evaluation_config: configs/evaluation.yaml
+manifest: manifests/strongreject_small_60.json
+generation_purpose: official_safety_evaluation
+conditions:
+  cot_seed43_u1:
+    branch: explicit_cot
+    train_config: configs/matched_4b_cot_seed43_u1.yaml
+    checkpoint_subdir: matched_4b_cot_seed43/stage1
+    checkpoint_stage: 1
+    checkpoint_sha256: 42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43
+    checkpoint_k: 0
+    k: 0
+    scaffold_kind: explicit_cot
+    max_new_tokens: 4096
+    generation_status: authorized
+    authorization_basis: >-
+      score_blind_job_11601380_selected_smallest_passing_registered_cap;
+      2048_failed_strict_less_than_5_percent_rule_at_exactly_3_of_60;
+      4096_projected_zero_of_60_truncations
+    calibration_summary_sha256: f0b9733e4c02c4e8010073261736c862f58bdf1a1cdcd0453cf61f46c1a3af0e
+    calibration_generations_sha256: 58074b8d80e56c5c777af39b159b380fecba2788734fb3c9ecc761c3f500fe1b
+guards:
+  calibration_generations_may_be_reused: false
+  official_condition_regenerates_from_scratch: true
+  evaluator_must_not_load_during_generation: true
+  aggregate_incomplete_rate_must_be_strictly_below: 0.05
