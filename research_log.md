@@ -1684,3 +1684,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   on judging calibration caches. This resolves code to the pre-registered rule;
   it does not change the threshold or inspect any safety score. Fresh cot-u2
   official generation at the frozen 4,096 cap is now authorized.
+
+- 2026-09-01T01:45:54-07:00: Fresh cot-u1 official StrongREJECT-small
+  generation job `11587109` completed on A40 in `00:46:58`. It regenerated all
+  60 prompts after the cap-freeze commit, reached EOS on all 60 at the frozen
+  4,096 cap, and never loaded the evaluator. Scratch/home1 hashes matched
+  (`generations.jsonl` `8f476437...`, summary `4ade0271...`) and the official
+  cache was pulled locally. Because the registered guard passes with zero
+  truncations and the blind human-label authorization was already sealed,
+  judge job `11587979` was submitted against this cache; calibration outputs
+  remain excluded.

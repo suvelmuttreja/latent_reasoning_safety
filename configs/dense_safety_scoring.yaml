@@ -17,6 +17,8 @@ conditions:
     scores: artifacts/discovery/results/dense_safety/scores/cot_u1.json
     cap: 4096
     cap_freeze_commit: 951e3dc
+    score_job: 11587979
+    status: judging_running
   cot_u2:
     generations: artifacts/discovery/results/dense_safety/cot_u2/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/cot_u2.json

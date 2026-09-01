@@ -15,8 +15,15 @@ conditions:
     k: 0
     scaffold_kind: explicit_cot
     max_new_tokens: 4096
-    generation_status: authorized
+    generation_status: complete_unjudged
     authorization_basis: score_blind_job_11585771_selected_smallest_passing_registered_cap
+    job_id: 11587109
+    terminal_state: completed
+    elapsed: '00:46:58'
+    rows: 60
+    truncations: 0
+    generations_sha256: 8f476437fac3cd283535443db194773e44648b8e54463f431bdf195086ff40c3
+    summary_sha256: 4ade0271f3751c1d797777580e9c11b38a3030e3e9d08888a27885e7834e9162
   cot_u2:
     branch: explicit_cot
     train_config: configs/matched_4b_cot.yaml
