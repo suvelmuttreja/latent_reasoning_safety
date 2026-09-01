@@ -59,7 +59,13 @@ repair:
     submitted_at: '2026-08-31T18:28:46-07:00'
     time_limit: '01:00:00'
     code_revision: d2071f690d87606f96217e0cc78166bf04f6b9df
-    initial_state: pending_priority_without_start_estimate
+    terminal_state: failed_pre_model_control_plane_query
+    elapsed: '00:00:02'
+    output_rows: 0
+    failure: strict_shell_treated_expired_primary_job_id_as_fatal_squeue_error
+  control_plane_repair: >-
+    Query job state through a helper that maps missing/expired Slurm IDs to an
+    empty terminal state without weakening errors in generation or durability.
 slurm:
   replaced_unstarted_jobs: [11537864, 11538721]
   replacement_reason: actual_start_forecast_stale_or_unavailable_after_test_only

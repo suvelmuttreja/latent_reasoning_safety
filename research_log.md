@@ -1426,3 +1426,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   atomically hold that fallback before opening the output, while an A100
   fallback that starts first wins and causes the A40 job to exit. This retains
   a live deadline path without permitting concurrent writers.
+- 2026-08-31T19:03:50-07:00: Repaired rescue `11548589` obtained A40 node
+  `b11-09` but exited in two seconds, before model load, because Slurm had
+  already expired cancelled primary ID `11523096` from live `squeue`; under
+  strict `pipefail`, that expected missing-ID response became fatal. A second
+  candidate `11548591` started simultaneously, observed the first candidate's
+  atomic claim, and exited cleanly without opening output. No generation cache
+  exists. The A100 fallback remains safely user-held. The control-plane query
+  now explicitly maps missing/expired IDs to an empty terminal state while
+  retaining strict failures for model generation and result copying.

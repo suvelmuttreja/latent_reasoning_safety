@@ -24,6 +24,12 @@ HOME_COPY="$CODE_ROOT/artifacts/discovery/results/official_safety/coco_u3_k6"
 CLAIM_DIR="$WORK_ROOT/results/official_safety/.coco_u3_k6_a40_rescue_claim"
 RACE_LOSER=0
 
+job_state() {
+  local state
+  state="$(squeue -h -j "$1" -o '%T' 2>/dev/null || true)"
+  printf '%s\n' "${state%%$'\n'*}"
+}
+
 if [[ -f "$OUTPUT/generations.jsonl" && -f "$OUTPUT/summary.json" ]]; then
   echo "official Coconut cache already complete; rescue is a no-op"
   exit 0
@@ -42,7 +48,7 @@ while read -r peer_job; do
 done < <(squeue -h -n mats-official-coco-a40-rescue -o '%A')
 
 if [[ "$ATTEMPT" == "1" ]]; then
-  FALLBACK_STATE="$(squeue -h -j "$A100_FALLBACK" -o '%T' | head -n 1)"
+  FALLBACK_STATE="$(job_state "$A100_FALLBACK")"
   if [[ "$FALLBACK_STATE" == "RUNNING" || "$FALLBACK_STATE" == "COMPLETING" ]]; then
     echo "A100 fallback started first; A40 rescue exits without opening output"
     RACE_LOSER=1
@@ -52,7 +58,7 @@ if [[ "$ATTEMPT" == "1" ]]; then
   fi
   if [[ "$FALLBACK_STATE" == "PENDING" ]]; then
     scontrol hold "$A100_FALLBACK"
-    FALLBACK_STATE="$(squeue -h -j "$A100_FALLBACK" -o '%T' | head -n 1)"
+    FALLBACK_STATE="$(job_state "$A100_FALLBACK")"
     if [[ "$FALLBACK_STATE" != "PENDING" ]]; then
       echo "A100 fallback left pending state before its hold took effect" >&2
       RACE_LOSER=1
@@ -61,7 +67,7 @@ if [[ "$ATTEMPT" == "1" ]]; then
       exit 1
     fi
   fi
-  PRIMARY_STATE="$(squeue -h -j "$A100_PRIMARY" -o '%T' | head -n 1)"
+  PRIMARY_STATE="$(job_state "$A100_PRIMARY")"
   if [[ "$PRIMARY_STATE" == "RUNNING" || "$PRIMARY_STATE" == "COMPLETING" ]]; then
     echo "A100 primary started first; A40 rescue exits without opening output"
     RACE_LOSER=1
@@ -72,10 +78,10 @@ if [[ "$ATTEMPT" == "1" ]]; then
   if [[ "$PRIMARY_STATE" == "PENDING" ]]; then
     scancel "$A100_PRIMARY" "$A100_PRIMARY_AUDIT" || true
     for _ in $(seq 1 30); do
-      [[ -z "$(squeue -h -j "$A100_PRIMARY")" ]] && break
+      [[ -z "$(job_state "$A100_PRIMARY")" ]] && break
       sleep 1
     done
-    if [[ -n "$(squeue -h -j "$A100_PRIMARY")" ]]; then
+    if [[ -n "$(job_state "$A100_PRIMARY")" ]]; then
       echo "A100 primary did not reach terminal state after cancellation" >&2
       exit 1
     fi
