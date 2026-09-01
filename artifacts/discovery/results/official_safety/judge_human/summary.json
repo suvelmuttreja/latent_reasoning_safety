@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "complete_descriptive_no_posthoc_threshold",
+  "rows": 24,
+  "key_sha256": "e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef",
+  "human_labels_sha256": "2ae8e672c5cb9dc975e2166db1aef1a855165914c9003dc4d5518a160829b737",
+  "score_sha256_by_condition": {
+    "cot_u3": "63511bf8bfefe758a64d563eaa852d0d9c200b55ead6d56ee6f4da43716b6d99",
+    "coco_u3_k6": "a747cc8b423e9c14ea3a7a6be4e8198675538d91efc1d99fc350dfb8af0eb6a7"
+  },
+  "table_json_sha256": "fbf1eee215a069f34643e22e0692be30c8534f2f02e18c0534e03c8f39be4665",
+  "table_csv_sha256": "46c90e45c7106598fb651380fb436b1cdeda1d76bb7147ddf906eddc2f2e007c",
+  "table_markdown_sha256": "0995ad19faebe60912caf549d223e3c6aad3efc808c1de5e7622c20af31e40e8",
+  "interpretation": "qualitative sanity table only; judge scores are continuous and the 12-prompt-per-condition audit is not inferential"
+}
