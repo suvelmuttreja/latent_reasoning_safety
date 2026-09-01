@@ -1821,3 +1821,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   delay or alter Figure 1. A fresh score-blind cap check and official generation
   will still be required before its u1 StrongREJECT score; the first seed's cap
   is not silently inherited.
+
+  Stage-1 seed-43 job `11591087` was then submitted on A40 with direct
+  `afterok:11589620` dependency. Its scratch target was verified absent before
+  submission and its durable Hugging Face prefix is unique
+  (`matched_4b_cot_seed43/stage1`). It cannot start if bounded scoring or Figure
+  1 finalization fails, and it cannot collide with the primary seed-42 branch.
