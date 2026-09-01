@@ -1521,3 +1521,20 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   both branches also received materially nonzero scores. Thus the audit does not
   support a simple claim that incoherence mechanically forces the judge score
   downward; coherence and the full score distribution must be co-reported.
+- 2026-08-31T22:35:00-07:00: The genuinely missing shared M0 baseline and
+  native-chat capability controls were frozen before generation. Full-60 M0
+  StrongREJECT generation job `11584930` started immediately on A40 node
+  `b11-09`; it uses the same 60 prompts, seed schedule, native Qwen chat
+  serialization, sampler, and 4,096-token cap as the official endpoint assay,
+  loads no evaluator, fsyncs every manifest-order row to scratch1, and copies
+  partial state to home1 on exit. Its strict `<5%` guard must pass before any
+  judging. The direct M0 generator does not add latent-marker vocabulary, so
+  the base-model distribution matches the selected format-anchor harness.
+
+  Identical native-chat GSM8K-200 controls were also frozen at a 5,120-token
+  explicit-thinking cap for exact M0 and CoT-u3. A40 debug jobs `11584938`
+  (M0) and `11584939` (CoT-u3) use separate resumable scratch/home1 paths;
+  M0 started on the second GPU of `b11-09` and CoT-u3 is queued behind the
+  first available GPU. These are inference-only capability anchors. They do
+  not reopen the frozen StrongREJECT-313 cut or rerun the structurally undefined
+  K0 safety scalar.
