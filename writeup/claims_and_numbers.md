@@ -1,30 +1,35 @@
 # Claims, numbers, and write-up source of truth
 
-Last reconciled: 2026-09-01. Application deadline: 2026-09-04.
+Evidence cutoff: committed artifacts available on 2026-09-01.
 
-This is the canonical prose contract for the application. Drafts, captions,
-slides, and status messages are derivative. If another file or remembered chat
-wording conflicts with this file, reconcile it against the cited artifact and
-then update this file before changing the draft.
+This is the application's canonical **interpretation layer**: the numbers worth
+using, the strongest defensible language for each claim, and the planned shape
+of the write-up. It is deliberately not a chronological record.
 
-One result remains live: the seed-43 explicit-CoT stage-1 replication. Training
-and checkpoint durability are complete, but it must not enter any result claim
-until score-blind cap calibration, fresh official generation, and pinned
-judging are complete. Everything else below is frozen unless an artifact audit
-finds an error.
+The authority order is:
+
+1. committed result artifacts for numerical values and provenance;
+2. frozen protocols/configs for design and analysis commitments;
+3. this file for claim wording and synthesis;
+4. derivative drafts, captions, slides, and status messages.
+
+Job submissions, queue states, checkpoint-copy operations, failures, repairs,
+and dated decisions belong in `research_log.md`, not here. A pending analysis
+appears here only when its eventual result could change a claim.
 
 ## How to use this file
 
 - Copy the approved wording when a claim is central. Weakening it is allowed;
-  strengthening it requires a dated research-log amendment and evidence.
+  strengthening it requires new committed evidence and, where applicable, a
+  protocol amendment.
 - Keep point estimates, uncertainty, missingness, capability, coherence, and
   the relevant analysis level together.
 - “95% CI” below means paired-prompt bootstrap uncertainty unless explicitly
   stated otherwise. It is not across-seed uncertainty.
 - Exploratory analyses must be labeled post hoc and cannot repair or replace a
   registered primary result.
-- The exact provenance paths below are part of the claim. Check them before
-  final submission.
+- The provenance paths below are part of the claim. If a path and this file
+  disagree, the artifact wins and this file must be corrected.
 
 ## One-paragraph result summary
 
@@ -42,6 +47,20 @@ trajectory structure, but their conservative uncertainty region crosses zero
 and the branches lack matched capability/coherence controls at that update.
 Post-hoc model diffing and token-mode readout add descriptive mechanism clues,
 not causal or faithful explanations.
+
+## Claim map
+
+| Claim | Analysis role | Supported conclusion |
+|---|---|---|
+| Endpoint Coconut − CoT safety | registered primary substrate comparison | inconclusive null; equivalence not established |
+| Matched endpoint capability | required registered co-report | 61-point CoT advantage over our skip0 reproduction |
+| Coconut endpoint K=0 vs K=6 | registered fixed-weights primary | safety scalar undefined at K=0; latents load-bearing for termination but harmful to capability |
+| CoT safety trajectory | registered trajectory | transient single-seed u1 elevation |
+| CoT − Coconut at u1 | post-hoc bounded contrast on registered trajectory data | suggestive structure; not a detected 95% interaction |
+| Human audit | registered qualitative validation | coherence asymmetry; judge-deflation concern not demonstrated |
+| Weight diff | post hoc descriptive | update magnitude and alignment differ; no causal localization |
+| Token-mode readout | post hoc descriptive | period-two decodability; no faithfulness claim |
+| Self-jailbreaking comparison | literature synthesis | no substantial drift replicated in this setup only |
 
 ## Design facts
 
@@ -324,33 +343,21 @@ Approved wording:
 
 Do not write that self-jailbreaking “does not replicate” in general.
 
-## Live pending claim — seed-43 explicit-CoT u1
+## Pending evidence not yet claimable
 
-Status at the last reconciliation: Slurm job `11598619` completed successfully
-at 2026-09-01 11:24:26 PDT after 468 updates. The checkpoint SHA-256 is
-`42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43`.
-Model/tokenizer and metadata upload evidence is complete under Hugging Face
-commit `d372f52c2949b9ac30e969407f4a9e830e6b9c3b`; compact evidence is copied to
-home1 and the repo. Score-blind cap-calibration job `11601380` is queued on an
-A40. No safety score or replication claim exists yet.
+The seed-43 explicit-CoT u1 checkpoint exists, but no completed, committed
+official safety result is included in the evidence cutoff. Therefore:
 
-Required chain before updating Claims 4 or 5:
+- Claims 4 and 5 remain based on the primary seed only.
+- Do not say that the u1 elevation replicated or failed to replicate.
+- When the frozen evaluation completes, add its mean, prompt-level interval,
+  and comparison with seed 42 here regardless of direction.
+- Treat the result as a second-seed noise-floor diagnostic. Two CoT seeds do
+  not yield a seed confidence interval, and there is no second Coconut seed.
 
-1. [x] confirm training completion and stage checkpoint hash;
-2. [x] confirm a durable home1 copy/upload (scratch1 is not the only copy);
-3. [ ] run score-blind StrongREJECT-60 cap calibration;
-4. [ ] commit the selected cap mechanically;
-5. [ ] generate a fresh official set under the frozen config;
-6. [ ] score with the pinned judge and calculate paired prompt uncertainty;
-7. [ ] record the result whether or not the u1 elevation recurs.
-
-Provenance:
-`artifacts/discovery/results/matched_4b_cot_seed43/stage1/metadata.json` and
-`durability_receipt.json` in the same directory.
-
-Interpretation ceiling: this is a second-seed noise-floor diagnostic. Two CoT
-seeds do not produce a seed confidence interval, and there is still no second
-Coconut seed.
+Checkpoint provenance is in
+`artifacts/discovery/results/matched_4b_cot_seed43/stage1/`. Operational status
+and the evaluation chain remain solely in `research_log.md`.
 
 ## Power and frozen scope
 
@@ -364,7 +371,7 @@ The completed trajectory, endpoint K test, human audit, layer diff, and token
 readout remain reportable. New training branches and deeper intervention work
 are future work unless explicitly reopened in a dated amendment.
 
-## Research-process claims worth preserving
+## Methods and reporting commitments
 
 - Pre-registration froze the estimands, margin, caps, gates, and conditional
   branches before official scores.
@@ -373,13 +380,11 @@ are future work unless explicitly reopened in a dated amendment.
 - Nontermination is treated with identified-set bounds or an undefined scalar,
   according to the estimand, rather than convenience imputation or
   completed-cases-only scoring.
-- Two blind-review contamination events are disclosed in `research_log.md`:
-  agent pre-scoring/unblinded aggregates before a human pass, and a session
-  message that identified anomalous-output condition. Do not erase them.
-- Scratch1 holds working files only. Every material checkpoint/result must have
-  a durable home1 copy or upload with recorded evidence.
-- Dated scope decisions and transparent post-freeze exploratory additions are
-  preferable to silently changing the analysis menu after seeing results.
+- Departures from the intended blind-review sequence must be disclosed briefly
+  in methods or limitations. Their operational chronology stays in
+  `research_log.md`.
+- Post-freeze analyses are labeled exploratory and cannot replace a registered
+  primary result.
 
 ## Prohibited wording
 
@@ -411,17 +416,19 @@ Specify M0, data, frozen order, seed, optimizer, effective batch, the shared
 1×32 micro-batch configuration, explicit-CoT versus skip0 Coconut, K schedule,
 StrongREJECT-60, GSM8K-200, human review, cap policy, and ±0.01995 margin.
 
-### 3. Endpoint primary result
-
-Lead with the estimate and CI against the frozen margin. Use Claim 1 exactly:
-inconclusive null, not equivalence. Show M0 in the table/figure so branch means
-are interpretable as drift.
-
-### 4. Capability and termination result
+### 3. Capability and termination result
 
 Show M0, CoT-u3, Coconut-u3 K=6, and the K=0 capability range. State the
 61-point matched-branch gap and the load-bearing/deleterious distinction. Name
 the inaccessible-reference limitation and avoid a universal Coconut claim.
+
+### 4. Endpoint registered primary result
+
+Give the estimate and CI against the frozen margin immediately after the
+capability result. Use Claim 1 exactly: inconclusive null, not equivalence.
+Show M0 in the table/figure so branch means are interpretable as drift. Leading
+the results narrative with the larger capability finding does not change the
+endpoint safety comparison's registered-primary status.
 
 ### 5. Safety trajectory
 
@@ -461,10 +468,10 @@ powered safety assay.
 
 ## Figure inventory
 
-1. Endpoint safety forest/equivalence plot: M0 context; Coconut−CoT estimate
-   and CI; frozen ±0.01995 margin.
-2. Capability plot: M0 range, CoT-u3 point, Coconut-u3 K=6 point, Coconut K=0
+1. Capability plot: M0 range, CoT-u3 point, Coconut-u3 K=6 point, Coconut K=0
    range and nontermination annotation.
+2. Endpoint safety forest/equivalence plot: M0 context; Coconut−CoT estimate
+   and CI; frozen ±0.01995 margin.
 3. Full safety trajectory: CoT dots/line; Coconut u1/u2 vertical bound bars;
    u1 contrast uncertainty; nontermination counts.
 4. Human audit table: behavior and coherence counts plus judge-vs-human check.
@@ -486,5 +493,4 @@ powered safety assay.
 - [ ] Exploratory analyses are labeled post hoc.
 - [ ] Readout text says decodability only.
 - [ ] Layer-diff text makes no causal localization claim.
-- [ ] No scratch1-only material evidence remains.
 - [ ] The final draft has been checked against this file, not chat memory.

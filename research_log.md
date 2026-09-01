@@ -2002,3 +2002,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   frozen config commit reached GitHub and home1. Its unique scratch output was
   verified absent first. Slurm reported `PENDING (Priority)` with no forecast
   at submission; no duplicate path was launched.
+
+- 2026-09-01: Tightened `writeup/claims_and_numbers.md` into an interpretation
+  and drafting reference rather than a second research log. Removed job IDs,
+  queue state, timestamps, upload commits, durability checklists, and other
+  operational chronology from that file; those remain here. Added an explicit
+  authority hierarchy, a compact claim-role map, and a consistent results
+  narrative/figure order. No frozen number or claim strength changed.
