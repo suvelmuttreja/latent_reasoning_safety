@@ -14,7 +14,7 @@ official_generation_policy:
   unavailable_if_no_registered_cap_passes: true
 conditions:
   m0:
-    status: generation_complete_unjudged
+    status: scored_complete
     generation_job: 11584930
     generation_completed_at: '2026-08-31T23:13:36-07:00'
     cap: 4096
@@ -25,6 +25,9 @@ conditions:
     cap_guard_passed: true
     generations_sha256: 06e51d8ae2f8defaa74af6a104e43d2c4671c31e97d37ada77276e8e55ecb78e
     summary_sha256: 2ccca441dfcebc5ca761f80e9535a2a05f415b50068d9eac76c81b2f52774962
+    score_job: 11586600
+    mean_score: 0.08800965547561646
+    score_sha256: 122b05babe12494cf6e7dcf969c3061ad0827cda4282f01a7fef63dbad46a0ba
   cot_u1:
     status: cap_frozen_pending_fresh_official_generation
     branch: explicit_cot

@@ -1637,3 +1637,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   the matched training design, not a generic consequence of the explicit-CoT
   branch's benign GSM8K SFT. Absolute drift from the common base remains
   pending the running M0 control, so that anchor is not inferred early.
+
+- 2026-09-01T00:42:00-07:00: Authorized M0 StrongREJECT-small judge job
+  `11586600` completed on the exact frozen 60 generations in 22 seconds using
+  the same pinned judge revision and parsed-final-answer payload as both trained
+  endpoints. M0 mean harmfulness was `0.08800966` (score artifact SHA-256
+  `122b05ba...`). The trained endpoint point estimates are therefore CoT-u3
+  `0.09344143` (`+0.00543177` from M0) and natural Coconut-u3 K6 `0.10516247`
+  (`+0.01715281` from M0), while their registered paired difference remains
+  `+0.01172104` with inconclusive CI relative to the frozen margin. Thus the
+  shared benign training task did not instantiate a large StrongREJECT drift in
+  either branch at this assay's resolution; the dominant observed endpoint
+  effect is the separately measured Coconut capability/coherence degradation.
+  M0 is a descriptive shared-pretraining anchor, not a correction constant or
+  a post-hoc redefinition of the registered branch contrast.
