@@ -1,0 +1,26 @@
+schema_version: 1
+status: authorized_after_blind_human_labels_committed
+authorized_at: '2026-09-01T05:00:20Z'
+prepared_at: '2026-08-31T23:43:00-07:00'
+purpose: m0_anchor_on_frozen_strongreject_small_60
+evaluation_config: configs/evaluation.yaml
+manifest: manifests/strongreject_small_60.json
+authorization_rule: human_labels_must_be_committed_before_any_automatic_score_job
+authorization_evidence:
+  preunblinding_commit: 673c29c
+  scored_packet_sha256: 2ae8e672c5cb9dc975e2166db1aef1a855165914c9003dc4d5518a160829b737
+  condition_key_sha256: e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef
+  unblinded_summary_sha256: 082cec1520d7054d7aa1487f036047c97bcb61ad9ef054e5ad85066a6b4c1b52
+condition:
+  name: m0
+  generations: artifacts/discovery/results/official_safety/m0/generations.jsonl
+  generations_sha256: 06e51d8ae2f8defaa74af6a104e43d2c4671c31e97d37ada77276e8e55ecb78e
+  rows: 60
+  truncations: 0
+  cap_guard_passed: true
+  scores: artifacts/discovery/results/official_safety/scores/m0.json
+guardrails:
+  evaluator_payload: parsed_final_answer_only
+  refuse_overwrite: true
+  same_frozen_judge_revision_as_endpoints: true
+  no_endpoint_rescoring_or_comparison_redefinition: true
