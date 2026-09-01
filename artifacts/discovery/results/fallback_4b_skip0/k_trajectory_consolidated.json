@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "consolidated_from_completed_score_blind_or_blind_scored_runs",
+  "recorded_at": "2026-08-31T22:38:00-07:00",
+  "task_specific_interpretation_required": true,
+  "gsm8k_200": {
+    "cap_note": "Stages 1 and 2 used 512 tokens; stage 3 was regenerated symmetrically at 1024 after the 512-token guard failed.",
+    "stage1": {
+      "k0": {"accuracy": 0.76, "length_stops": 8, "rows": 200},
+      "k2": {"accuracy": 0.655, "length_stops": 0, "rows": 200},
+      "kmax_minus_k0_accuracy": -0.105,
+      "coherence_mean_0_to_2": {"k0": 1.9, "k2": 1.3}
+    },
+    "stage2": {
+      "k0": {"accuracy": 0.695, "length_stops": 5, "rows": 200},
+      "k4": {"accuracy": 0.46, "length_stops": 0, "rows": 200},
+      "kmax_minus_k0_accuracy": -0.235,
+      "coherence_mean_0_to_2": {"k0": 2.0, "k4": 2.0}
+    },
+    "stage3": {
+      "k0": {
+        "observed_accuracy": 0.495,
+        "accuracy_bounds_without_imputation": [0.495, 0.595],
+        "length_stops_at_512": 20,
+        "length_stops_at_1024": 20,
+        "exact_token_cycles_among_1024_length_stops": 19,
+        "rows": 200
+      },
+      "k6": {"accuracy": 0.31, "length_stops_at_512_and_1024": 0, "rows": 200},
+      "k6_minus_k0_accuracy_bounds": [-0.285, -0.185],
+      "coherence_mean_0_to_2": {"k0": 2.0, "k6": 2.0}
+    },
+    "trajectory_summary": {
+      "trained_k_accuracy": {"stage1_k2": 0.655, "stage2_k4": 0.46, "stage3_k6": 0.31},
+      "k0_observed_accuracy": {"stage1": 0.76, "stage2": 0.695, "stage3": 0.495},
+      "k0_guard_status": {
+        "stage1": "passed_strict_less_than_5_percent_at_512",
+        "stage2": "passed_strict_less_than_5_percent_at_512",
+        "stage3": "failed_at_512_and_1024_with_structural_cycles"
+      },
+      "interpretation": "On GSM8K, K0 viability passed the termination guard at stages 1 and 2 and failed structurally at stage 3. Trained-K capability declined at every stage. Causation should not be assigned to latentization alone until the matched CoT and exact-native-M0 controls complete."
+    }
+  },
+  "strongreject_small_60_score_blind_cap_calibration": {
+    "stage1": {
+      "k0_length_stops_at_16000": 12,
+      "k2_length_stops_at_16000": 3,
+      "rows_per_condition": 60,
+      "joint_cap_selected": null
+    },
+    "stage3": {
+      "k0_length_stops_at_16000": 13,
+      "k6_length_stops_at_16000": 1,
+      "rows_per_condition": 60,
+      "joint_cap_selected": null
+    },
+    "trajectory_summary": "Safety-task K0 nontermination was already severe at stage 1 and persisted at stage 3; it did not first appear only at stage 3."
+  },
+  "source_sha256": {
+    "stage1_gsm8k": "86cf1bc7bd74632e3732b1fd7a586e74501f7b4f05f08bec38d7155d06ba7b5a",
+    "stage1_coherence": "0a444690d0e9723a799fd5da721a6207fd3968e428800bfbe3991a157e3cbedf",
+    "stage2_gsm8k": "e450008dd65e98d49d5ba318d7a916dfb504c4cb83dcb03fd9a934e83be6a290",
+    "stage2_coherence": "7ed4f83d6eb7071c7f011bc2757a4ff06ad80d60e23943f333007e1ec5a487a7",
+    "stage3_gsm8k_1024": "3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43",
+    "stage3_gsm8k_structural": "11fa2d456f196b57eeeee3a0074d2dca08a6579e8f98ee2c5dd508b7e89dacbe",
+    "stage3_coherence": "f1aa3d43bcdb8672265ac2c4fc7b8943161196515a94cc8bae807d11d527ca8a",
+    "stage1_safety_16000": "d09e8e6d844dcf170a8ad9502788caa336db853245d3fd5d91df91b8dbb0ace2",
+    "stage3_safety_16000": "771f5698cee470d72e6538c70b3185a5182292d019d6e4125072373bf45a3857"
+  }
+}

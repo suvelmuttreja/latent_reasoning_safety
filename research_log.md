@@ -1538,3 +1538,24 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   first available GPU. These are inference-only capability anchors. They do
   not reopen the frozen StrongREJECT-313 cut or rerun the structurally undefined
   K0 safety scalar.
+- 2026-08-31T22:38:00-07:00: Existing completed stage evidence was
+  consolidated before the pending native M0/CoT controls landed. The timing of
+  K0 failure is task-specific. On GSM8K-200, K0 passed the strict termination
+  guard at stages 1 and 2 (8/200 and 5/200 length stops at 512 tokens), then
+  failed at stage 3: the same 20/200 rows stopped at both 512 and 1,024 tokens,
+  and 19/20 contained exact token cycles. Observed K0 accuracy moved
+  `76.0% -> 69.5% -> 49.5%` (final no-imputation bound `49.5%-59.5%`). The
+  trained-K trajectory moved `65.5% (K2) -> 46.0% (K4) -> 31.0% (K6)`, while
+  blind ten-prompt coherence means were stage 1 `1.9/1.3` for K0/K2 and
+  stage 2-3 `2.0/2.0` for both depths.
+
+  StrongREJECT termination has a different history: score-blind 16,000-token
+  calibration already left 12/60 K0 rows unfinished at stage 1, versus 3/60
+  at K2; stage 3 left 13/60 unfinished at K0 versus 1/60 at K6. Therefore the
+  write-up must not claim K0 generally "worked until stage 3." GSM8K K0
+  viability failed between stages 2 and 3, whereas safety-task K0
+  nontermination was already severe at stage 1. The large trained-K capability
+  decline is the dominant observed branch trajectory, but assigning it to
+  latentization alone remains premature until the matched native-chat M0 and
+  CoT-u3 controls complete. Consolidated artifact:
+  `artifacts/discovery/results/fallback_4b_skip0/k_trajectory_consolidated.json`.
