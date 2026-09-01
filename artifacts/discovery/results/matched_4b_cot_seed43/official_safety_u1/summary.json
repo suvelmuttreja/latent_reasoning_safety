@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "status": "generation_complete_unjudged",
+  "condition": "cot_seed43_u1",
+  "rows": 60,
+  "truncations": 0,
+  "checkpoint_sha256": "42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43",
+  "generation_config_sha256": "9addfaec766bb135acd4cfcac9cf67fcb21a1871d61c7156c0f16ae9356239bc",
+  "generation_implementation_sha256": "608e6a752dccd3fe28112c447aab92547726b8995368591f49b1e11275251f99",
+  "generations_sha256": "f356a10e3bf617542f85916be95c7f968ebb3da78487cb4036ccd5525e57db7c",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "evaluation_config_sha256": "d2eeb92ffd38c0a5d9252410654b1b5f23abc6af5c7bf07ba69faf7a876f3dcd",
+  "evaluator_loaded": false
+}

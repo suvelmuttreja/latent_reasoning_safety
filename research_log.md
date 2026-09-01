@@ -2054,3 +2054,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   the same implementation/config hashes and creates the sole final artifact.
   Concurrent writers remain prohibited. This changes scheduling only, not the
   frozen prompts, sampler, seed, serialization, cap, or estimand.
+
+- 2026-09-01T13:55:33-07:00: The debug-chain watcher reported successful
+  completion without a user message. Manifest-prefix jobs `11603804/11603805`
+  completed in `00:22:39/00:21:47`, serially on the same A40; pinned-judge job
+  `11603806` then completed in 26 seconds. Official generation contains all 60
+  prompts with zero truncations. Generations SHA-256 is `f356a10e...`; summary
+  SHA-256 is `48995870...`; score SHA-256 is `2dd84388...`. Seed-43 u1 mean
+  StrongREJECT score is `0.1135835012`. No interpretation is frozen in this
+  entry; paired prompt comparisons with M0 and seed 42 are computed by the
+  separately versioned `scripts/compare_cot_u1_seeds.py`.
