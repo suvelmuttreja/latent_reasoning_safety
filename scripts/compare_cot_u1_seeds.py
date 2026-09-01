@@ -58,6 +58,13 @@ def main() -> None:
             "cot_u1_seed_comparison.json"
         ),
     )
+    parser.add_argument(
+        "--coconut-bounds",
+        default=(
+            "artifacts/discovery/results/dense_safety/scores/"
+            "coco_u1_k2_bounds.json"
+        ),
+    )
     parser.add_argument("--bootstrap-seed", type=int, default=42)
     parser.add_argument("--bootstrap-samples", type=int, default=10000)
     args = parser.parse_args()
@@ -77,6 +84,22 @@ def main() -> None:
     if any(set(values) != set(prompt_ids) for values in scores.values()):
         raise ValueError("score artifacts do not contain the same prompt IDs")
 
+    coconut_path = Path(args.coconut_bounds)
+    coconut = json.loads(coconut_path.read_text())
+    if (
+        coconut.get("status") != "partial_identification_bounds"
+        or coconut.get("official_condition") != "coco_u1_k2"
+    ):
+        raise ValueError("invalid Coconut-u1 bounds artifact")
+    coconut_by_id = {
+        row["prompt_id"]: float(row["score"]) for row in coconut["records"]
+    }
+    if not set(coconut_by_id).issubset(prompt_ids):
+        raise ValueError("Coconut bounds contain an unknown prompt ID")
+    missing_coconut = [key for key in prompt_ids if key not in coconut_by_id]
+    if len(missing_coconut) != int(coconut["nonterminating_rows"]):
+        raise ValueError("Coconut missing IDs differ from its nontermination count")
+
     contributions = {
         "seed42_minus_m0": [scores["seed42"][key] - scores["m0"][key] for key in prompt_ids],
         "seed43_minus_m0": [scores["seed43"][key] - scores["m0"][key] for key in prompt_ids],
@@ -84,6 +107,13 @@ def main() -> None:
             scores["seed43"][key] - scores["seed42"][key] for key in prompt_ids
         ],
     }
+    for seed_label in ("seed42", "seed43"):
+        contributions[f"{seed_label}_minus_coconut_lower"] = [
+            scores[seed_label][key] - coconut_by_id.get(key, 1.0) for key in prompt_ids
+        ]
+        contributions[f"{seed_label}_minus_coconut_upper"] = [
+            scores[seed_label][key] - coconut_by_id.get(key, 0.0) for key in prompt_ids
+        ]
     rng = random.Random(args.bootstrap_seed)
     replicates = {effect: [] for effect in contributions}
     for _ in range(args.bootstrap_samples):
@@ -101,6 +131,24 @@ def main() -> None:
         }
         for effect, values in contributions.items()
     }
+    bounded_substrate_contrasts = {}
+    for seed_label in ("seed42", "seed43"):
+        lower = effects.pop(f"{seed_label}_minus_coconut_lower")
+        upper = effects.pop(f"{seed_label}_minus_coconut_upper")
+        bounded_substrate_contrasts[seed_label] = {
+            "effect": f"cot_{seed_label}_u1_minus_coco_u1_k2",
+            "identified_set": [lower["mean_delta"], upper["mean_delta"]],
+            "lower_endpoint_bootstrap_95_ci": lower[
+                "paired_prompt_bootstrap_95_ci"
+            ],
+            "upper_endpoint_bootstrap_95_ci": upper[
+                "paired_prompt_bootstrap_95_ci"
+            ],
+            "conservative_identified_set_95_confidence_region": [
+                lower["paired_prompt_bootstrap_95_ci"][0],
+                upper["paired_prompt_bootstrap_95_ci"][1],
+            ],
+        }
     result = {
         "schema_version": 1,
         "status": "complete",
@@ -108,6 +156,8 @@ def main() -> None:
         "prompts": len(prompt_ids),
         "means": {label: payloads[label]["mean_score"] for label in payloads},
         "effects": effects,
+        "coconut_nonterminating_prompt_ids": missing_coconut,
+        "bounded_substrate_contrasts": bounded_substrate_contrasts,
         "bootstrap_seed": args.bootstrap_seed,
         "bootstrap_samples": args.bootstrap_samples,
         "prompt_uncertainty_only": True,
@@ -116,6 +166,7 @@ def main() -> None:
         "binary_replication_rule": None,
         "report_result_regardless_of_direction": True,
         "score_sha256": {label: sha256_file(path) for label, path in paths.items()},
+        "coconut_bounds_sha256": sha256_file(coconut_path),
         "implementation_sha256": sha256_file(Path(__file__)),
         "code_revision": git_revision(),
     }
