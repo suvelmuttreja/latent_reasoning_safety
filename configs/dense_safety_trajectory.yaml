@@ -95,7 +95,7 @@ conditions:
     mean_score: 0.0934414267539978
     score_sha256: 63511bf8bfefe758a64d563eaa852d0d9c200b55ead6d56ee6f4da43716b6d99
   coco_u1_k2:
-    status: scalar_unavailable_registered_cap_guard_failed_bounds_pending
+    status: scalar_unavailable_registered_cap_guard_failed_bounds_complete
     branch: coconut_skip0
     checkpoint_stage: 1
     checkpoint_k: 2
@@ -104,9 +104,13 @@ conditions:
     strict_threshold_result: failed_exactly_5_percent
     score_imputation_or_complete_case_replacement: prohibited
     bounds_estimand: full_manifest_mean_under_extreme_nontermination_scoring
-    bounds_status: pending_fresh_official_generation
+    bounds_status: complete
+    official_nontermination: 2_of_60
+    lower_bound: 0.05095305840174357
+    upper_bound: 0.0842863917350769
+    bounds_score_sha256: ecab47b7b1c0823bdfbb402fad604bb633ba3afc4731e1419df7c4fdb65e1d3e
   coco_u2_k4:
-    status: scalar_unavailable_registered_cap_guard_failed_bounds_pending
+    status: scalar_unavailable_registered_cap_guard_failed_bounds_complete
     branch: coconut_skip0
     checkpoint_stage: 2
     checkpoint_k: 4
@@ -125,7 +129,11 @@ conditions:
     calibration_generations_sha256: 72219c89ec61186f889a3efe578b6993a97c9569b1c6f0d8065123fa0fd9db57
     calibration_summary_sha256: 719151704070684a08a583468dd1eace79a739b21b074cd70a1d8b79acd7450a
     bounds_estimand: full_manifest_mean_under_extreme_nontermination_scoring
-    bounds_status: pending_fresh_official_generation
+    bounds_status: complete
+    official_nontermination: 3_of_60
+    lower_bound: 0.08364561398824057
+    upper_bound: 0.13364561398824057
+    bounds_score_sha256: f5cb20f83f63c8e3333b3c8cb32bf1d4cb6bdd463c74f94fd8af03777c91fcc0
   coco_u3_k6:
     status: scored_complete
     branch: coconut_skip0
@@ -155,17 +163,21 @@ observed_explicit_cot_trajectory:
 observed_coconut_trajectory:
   coco_u1_k2:
     mean_score: null
-    status: scalar_unavailable_bounds_pending
-    nontermination: 3_of_60_at_16000
+    status: partial_identification_bounds_complete
+    calibration_nontermination: 3_of_60_at_16000
+    official_nontermination: 2_of_60_at_16000
+    bounds: [0.05095305840174357, 0.0842863917350769]
   coco_u2_k4:
     mean_score: null
-    status: scalar_unavailable_bounds_pending
-    nontermination: 3_of_60_at_5120
+    status: partial_identification_bounds_complete
+    calibration_nontermination: 3_of_60_at_5120
+    official_nontermination: 3_of_60_at_5120
+    bounds: [0.08364561398824057, 0.13364561398824057]
   coco_u3_k6:
     mean_score: 0.10516246557235717
     status: scored_complete
   interpretation: >-
-    intermediate_point_estimates_unavailable; worst_case_bounds_pending;
+    intermediate_point_estimates_unavailable; worst_case_bounds_complete;
     nontermination_present_at_intermediate_trained_K_but_absent_at_K6_endpoint
 launch_order_after_active_controls:
   - cot_u1_cot_u2_coco_u2_score_blind_cap_calibrations
@@ -183,3 +195,9 @@ automatic_finalization:
     - artifacts/discovery/results/dense_safety/trajectory/trajectory.png
     - artifacts/discovery/results/dense_safety/trajectory/trajectory.svg
   user_completion_message_required: false
+  terminal_state: failed_after_table_build_before_plot
+  failure_reason: discovery_environment_missing_matplotlib
+  data_artifacts_built_successfully: true
+  figure_recovered_locally_from_durable_data: true
+  figure_png_sha256: ecc40cfecb18f118a80fd7c7457bd66cf132e513b4b95ea9c8d66e418b2199a3
+  figure_svg_sha256: c7a10085da363209a8b1e0054eaf05a6190bccb328fc22d48a9a167f1c7b78e9

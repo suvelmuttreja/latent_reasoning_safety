@@ -21,7 +21,13 @@ conditions:
       no_registered_cap_passed_and_no_scalar_point_estimate_is_authorized
     job_id: 11588972
     submitted_at: '2026-09-01T07:46:00-07:00'
-    submission_state: pending_priority
+    submission_state: completed
+    completed_at: '2026-09-01T09:12:56-07:00'
+    elapsed: '01:14:01'
+    official_rows: 60
+    official_nonterminations: 2
+    generations_sha256: 4656d26e3ceb431bd6016b387dc93b140d75214110e28d679487e30ac61027fe
+    summary_sha256: dc206ca96345bb17d43c2e062798569ea04421041b1bc8dde8d99c88c2c205eb
   coco_u2_k4:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -38,7 +44,13 @@ conditions:
       no_registered_cap_passed_and_no_scalar_point_estimate_is_authorized
     job_id: 11588973
     submitted_at: '2026-09-01T07:46:00-07:00'
-    submission_state: pending_priority
+    submission_state: completed
+    completed_at: '2026-09-01T09:04:12-07:00'
+    elapsed: '00:51:21'
+    official_rows: 60
+    official_nonterminations: 3
+    generations_sha256: e3eae466a821382e9728d9f0f97271c85460e3a608babc2eaa451e39cf4986de
+    summary_sha256: ea073308b1cab6eaae3efddd983ae7e8567be8522d444a5937bca62604c61ff4
   cot_u1:
     branch: explicit_cot
     train_config: configs/matched_4b_cot.yaml

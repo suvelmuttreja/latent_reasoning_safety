@@ -98,7 +98,7 @@ def main() -> None:
     ax.set_title("M0-anchored matched safety trajectory (60 frozen prompts)")
     ax.grid(axis="y", color="#e5e7eb", linewidth=0.8)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(loc="upper right", frameon=False, fontsize=8.5)
+    ax.legend(loc="lower left", frameon=False, fontsize=8.5)
     fig.tight_layout(rect=(0, 0.09, 1, 1))
     fig.text(
         0.5,

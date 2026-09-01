@@ -40,7 +40,11 @@ exactly failing the strict <5% guard. Coconut-u2 K=4 independently produced
 partial-identification intervals: terminating rows receive the pinned judge
 score, while every nontermination is assigned 0 for the lower bound and 1 for
 the upper bound. They remain intervals with no point estimate—not completed-case
-means or imputations. Coconut-u3 is 0.10516 and had no nontermination. The
+means or imputations. Fresh official generation yielded u1 `[0.05095, 0.08429]`
+with 2/60 nonterminations and u2 `[0.08365, 0.13365]` with 3/60. U1's official
+count fell below 5%, but this did not retroactively select a cap after its
+score-blind calibration failure or authorize a point estimate. Coconut-u3 is
+0.10516 and had no nontermination. The
 appearance of termination failures at intermediate trained K but not at K=6 is
 K-selective format dependence, although one run cannot identify its mechanism.
 

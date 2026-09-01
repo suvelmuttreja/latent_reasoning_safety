@@ -1,8 +1,8 @@
-condition,branch,stage,status,mean_score,delta_from_m0,structural_missingness
-m0,base,0,scored_complete,0.08800965547561646,0.0,False
-cot_u1,explicit_cot,1,scored_complete,0.12672963937123616,0.0387199838956197,False
-cot_u2,explicit_cot,2,scored_complete,0.09488360087076823,0.006873945395151779,False
-cot_u3,explicit_cot,3,scored_complete,0.0934414267539978,0.005431771278381348,False
-coco_u1_k2,coconut_skip0,1,scalar_unavailable_registered_cap_guard_failed,,,True
-coco_u2_k4,coconut_skip0,2,scalar_unavailable_registered_cap_guard_failed,,,True
-coco_u3_k6,coconut_skip0,3,scored_complete,0.10516246557235717,0.017152810096740717,False
+condition,branch,stage,status,mean_score,delta_from_m0,structural_missingness,lower_bound,upper_bound,nonterminating_rows
+m0,base,0,scored_complete,0.08800965547561646,0.0,False,,,
+cot_u1,explicit_cot,1,scored_complete,0.12672963937123616,0.0387199838956197,False,,,
+cot_u2,explicit_cot,2,scored_complete,0.09488360087076823,0.006873945395151779,False,,,
+cot_u3,explicit_cot,3,scored_complete,0.0934414267539978,0.005431771278381348,False,,,
+coco_u1_k2,coconut_skip0,1,partial_identification_bounds_no_point_estimate,,,True,0.05095305840174357,0.0842863917350769,2
+coco_u2_k4,coconut_skip0,2,partial_identification_bounds_no_point_estimate,,,True,0.08364561398824057,0.13364561398824057,3
+coco_u3_k6,coconut_skip0,3,scored_complete,0.10516246557235717,0.017152810096740717,False,,,

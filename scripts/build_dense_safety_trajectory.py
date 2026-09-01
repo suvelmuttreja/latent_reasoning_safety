@@ -116,12 +116,12 @@ def main() -> None:
             raise FileNotFoundError(f"missing score for {condition}: {score_path}")
         if condition == "coco_u1_k2":
             row.update(
-                nontermination="3/60 at 16000 tokens",
+                calibration_nontermination="3/60 at 16000 tokens",
                 missingness_reason="strict <5% cap guard failed exactly at 5%",
             )
         elif condition == "coco_u2_k4":
             row.update(
-                nontermination="3/60 at 5120 tokens",
+                calibration_nontermination="3/60 at 5120 tokens",
                 missingness_reason="strict <5% cap guard failed exactly at 5%",
             )
         elif condition == "cot_u1":
@@ -135,6 +135,8 @@ def main() -> None:
                 multiple_comparisons_note=observed["multiple_comparisons_note"],
                 training_seed_uncertainty_claimed=False,
             )
+        if bounded and row["nonterminating_rows"] is not None:
+            row["official_nontermination"] = f'{row["nonterminating_rows"]}/60'
         rows.append(row)
 
     m0 = next(row["mean_score"] for row in rows if row["condition"] == "m0")
@@ -161,7 +163,7 @@ def main() -> None:
         "m0_anchor": m0,
         "rows": rows,
         "interpretation_guard": (
-            "Structural missingness is not zero; deltas are descriptive point estimates."
+            "Failed-cap cells have no point estimate; bounds retain every manifest prompt."
         ),
     }
     json_path = output_dir / "trajectory.json"

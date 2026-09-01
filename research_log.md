@@ -1827,3 +1827,23 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   submission and its durable Hugging Face prefix is unique
   (`matched_4b_cot_seed43/stage1`). It cannot start if bounded scoring or Figure
   1 finalization fails, and it cannot collide with the primary seed-42 branch.
+
+- 2026-09-01T09:36:25-07:00: The automatic bounds chain advanced without a
+  user completion report. Fresh generation jobs `11588972/11588973` completed
+  in `01:14:01/00:51:21`; bounds scorers `11588974/11588975` then completed in
+  20/25 seconds. Coco-u1 K2 has official extreme-outcome bounds
+  `[0.05095306, 0.08428639]` with 2/60 nonterminations; coco-u2 K4 has
+  `[0.08364561, 0.13364561]` with 3/60. U1's fresh official count is below 5%,
+  but its cap was not selected by the prior score-blind calibration and its
+  condition was authorized bounds-only, so no post-result point estimate is
+  introduced. Calibration's 3/60 and official generation's 2/60 are stored as
+  distinct facts.
+
+  Finalizer `11589620` built the complete JSON/CSV/Markdown table, then failed
+  in one second because Matplotlib was absent from Discovery's environment.
+  This was an artifact-rendering failure, not a generation, scoring, or data
+  failure. Compact durable data were pulled from home1, the figure was rendered
+  locally, visually inspected, and its legend moved away from the u2 annotation.
+  Final PNG/SVG SHA-256 values are `ecc40cfe...` / `c7a10085...`. The failed
+  `afterok` correctly left seed job `11591087` DependencyNeverSatisfied; it must
+  be replaced only after this recovered figure commit is durable.

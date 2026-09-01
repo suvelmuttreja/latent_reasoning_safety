@@ -21,6 +21,11 @@ conditions:
     calibration_generations_prohibited: true
     score_job: 11588974
     dependency: afterok:11588972
+    status: partial_identification_bounds_complete
+    lower_bound: 0.05095305840174357
+    upper_bound: 0.0842863917350769
+    official_nonterminations: 2
+    score_sha256: ecab47b7b1c0823bdfbb402fad604bb633ba3afc4731e1419df7c4fdb65e1d3e
   coco_u2_k4:
     generations: artifacts/discovery/results/dense_safety/coco_u2_k4/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/coco_u2_k4_bounds.json
@@ -30,6 +35,11 @@ conditions:
     calibration_generations_prohibited: true
     score_job: 11588975
     dependency: afterok:11588973
+    status: partial_identification_bounds_complete
+    lower_bound: 0.08364561398824057
+    upper_bound: 0.13364561398824057
+    official_nonterminations: 3
+    score_sha256: f5cb20f83f63c8e3333b3c8cb32bf1d4cb6bdd463c74f94fd8af03777c91fcc0
   cot_u1:
     generations: artifacts/discovery/results/dense_safety/cot_u1/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/cot_u1.json
