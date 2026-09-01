@@ -6,16 +6,19 @@ This is the application's canonical **interpretation layer**: the numbers worth
 using, the strongest defensible language for each claim, and the planned shape
 of the write-up. It is deliberately not a chronological record.
 
+The application-ready summary below is the repository's sole maintained
+narrative. Everything after it is supporting evidence, claim boundaries,
+provenance, or structure—not a second prose draft.
+
 The authority order is:
 
 1. committed result artifacts for numerical values and provenance;
 2. frozen protocols/configs for design and analysis commitments;
 3. this file for claim wording and synthesis;
-4. derivative drafts, captions, slides, and status messages.
+4. any exported submission copy, caption, slide, or status message.
 
 Job submissions, queue states, checkpoint-copy operations, failures, repairs,
-and dated decisions belong in `research_log.md`, not here. A pending analysis
-appears here only when its eventual result could change a claim.
+and dated decisions belong in `research_log.md`, not here.
 
 ## How to use this file
 
@@ -44,13 +47,12 @@ endpoint Coconut-minus-CoT harmfulness estimate was +0.01172 (paired-prompt
 bootstrap 95% CI [-0.02278, +0.04594]); this is an inconclusive null, not
 evidence of equivalence. Mid-training results suggest substrate-dependent
 trajectory structure: the directional CoT u1 elevation and strictly positive
-pointwise CoT-minus-Coconut identified set appeared under both CoT seeds, but
-seed 43's M0 contrast and both conservative substrate regions cross zero. The
-branches also lack matched capability/coherence controls at that update.
+pointwise CoT-minus-Coconut identified set appeared with both CoT point
+estimates against the same single Coconut run, but seed 43's M0 contrast and
+both conservative substrate regions cross zero. The branches also lack matched
+capability/coherence controls at that update.
 Post-hoc model diffing and token-mode readout add descriptive mechanism clues,
-not causal or faithful explanations. This paragraph is the sole application
-summary maintained in the repository; the claim cards and provenance below are
-its supporting evidence and wording constraints, not a second draft.
+not causal or faithful explanations.
 
 ## Claim map
 
@@ -128,14 +130,15 @@ and the stage-3 Coconut capability summary recorded in
 | Update | explicit CoT | Coconut identified set | Coconut nontermination basis |
 |---|---:|---:|---|
 | M0 | 0.0880096555 | same M0 | none |
-| u1 | seed 42: 0.1267296394; seed 43: 0.1135835012 | [0.0509530584, 0.0842863917] | fresh bounds run: 2/60; score-blind calibration: 3/60 through 16k |
+| u1 | seed 42: 0.1267296394; seed 43: 0.1135835012 | [0.0509530584, 0.0842863917] | bounds artifact: 2/60; cap-adequacy evidence: 3/60 at 16,000 |
 | u2 | 0.0948836009 | [0.0836456140, 0.1336456140] | 3/60 at 5,120 |
 | u3 | 0.0934414268 | 0.1051624656 | 0/60 |
 
 The Coconut bounds assign each missing outcome the theoretical assay extremes
-0.0 and 1.0, not the observed maximum. A later fresh u1 run producing 2/60
-nonterminations does not retroactively make the original 3/60 calibration pass
-the strict `<5%` rule and does not authorize a point estimate.
+0.0 and 1.0, not the observed maximum. The u1 bounds artifact and cap-adequacy
+artifact serve different registered roles: 2/60 determines the displayed
+bounds, while 3/60 exactly fails the strict `<5%` adequacy rule. Neither role
+authorizes a scalar point estimate.
 
 CoT u1 − M0:
 
@@ -147,16 +150,6 @@ CoT u1 − M0:
 The observed seed-43-minus-seed-42 difference is -0.0131461382, paired-prompt
 95% CI [-0.0454932489, +0.0190783025]. This is not a seed confidence interval.
 Three seed-42 endpoints were inspected; no multiplicity adjustment was applied.
-
-As a descriptive noise-floor calibration, the absolute observed within-CoT u1
-seed difference (0.01315) is of the same order as the endpoint
-Coconut-minus-CoT difference (0.01172). These involve different checkpoints
-and provide only one two-seed observation, so the comparison is not a variance
-estimate. Conversely, both u1 CoT-minus-Coconut pointwise identified sets lie
-above that observed seed difference in magnitude ([0.02930, 0.06263] and
-[0.04244, 0.07578]); this supports retaining the u1 pattern as suggestive
-rather than dismissing it as ordinary observed seed spread, while the
-conservative confidence regions still preclude a detection claim.
 
 At u1, CoT − Coconut:
 
@@ -200,7 +193,7 @@ Approved wording:
 
 Do not write “no effect,” “the methods are equally safe,” “equivalent,” or
 “the null was proven.” The interval is prompt-level uncertainty from one
-training seed per branch.
+endpoint training seed per branch.
 
 ### Claim 2 — matched benign training sharply diverged in capability
 
@@ -257,6 +250,11 @@ noise-floor calibration: it is of the same order as the 0.01172 endpoint
 substrate difference, while both u1 pointwise substrate sets start above it.
 The comparisons involve different checkpoints and do not estimate seed
 variance.
+
+Evidence-quality note: seed 43 used the frozen 60 prompts at a mechanically,
+score-blind selected 4,096-token ceiling and had zero truncations. Two CoT
+seeds do not yield a seed confidence interval, and the shared single Coconut
+seed prevents claims about Coconut seed variability.
 
 ### Claim 5 — u1 has suggestive bounded substrate structure, not a detected interaction
 
@@ -384,31 +382,18 @@ direction claim) must be verified against the source paper or vendored repo
 before it enters a draft — never cited from memory. Directional consistency
 with the Coconut paper may be claimed only after that check.
 
-## Second-seed diagnostic
-
-Seed 43 is a completed post-hoc noise-floor diagnostic, not a second registered
-primary. Its official 60-prompt generation used a mechanically selected
-4,096-token cap and had zero truncations. Score-blind calibration rejected
-2,048 at exactly 3/60 projected truncations (5.0%, failing the strict `<5%`
-rule) and selected 4,096 at 0/60.
-
-Use Claims 4 and 5 for interpretation. Two CoT seeds do not yield a seed
-confidence interval, and the shared single Coconut seed prevents claims about
-Coconut seed variability. Provenance is under
-`artifacts/discovery/results/matched_4b_cot_seed43/`; operational chronology
-remains solely in `research_log.md`.
-
-## Power and frozen scope
+## Power limitation and analysis scope
 
 To put the endpoint CI inside the equivalence margin around the observed
 estimate requires a half-width near 0.0082 rather than the current ~0.0344,
 or roughly `(0.0344 / 0.0082)^2 ≈ 17×` the information under simple scaling.
 StrongREJECT-313 supplies only about 5.2× as many prompts. The no-313 decision
-is therefore a frozen deadline cut, not an invitation to expand and peek.
+is therefore a frozen scope choice, not an invitation to expand and peek after
+observing the registered result.
 
 The completed trajectory, endpoint K test, human audit, layer diff, and token
-readout remain reportable. New training branches and deeper intervention work
-are future work unless explicitly reopened in a dated amendment.
+readout remain reportable. New training branches and deeper intervention
+analyses are outside this evidence set and belong in future work.
 
 ## Methods and reporting commitments
 
@@ -419,9 +404,8 @@ are future work unless explicitly reopened in a dated amendment.
 - Nontermination is treated with identified-set bounds or an undefined scalar,
   according to the estimand, rather than convenience imputation or
   completed-cases-only scoring.
-- Departures from the intended blind-review sequence must be disclosed briefly
-  in methods or limitations. Their operational chronology stays in
-  `research_log.md`.
+- Any departure from the intended blind-review sequence is disclosed in methods
+  or limitations; its operational chronology remains in `research_log.md`.
 - Post-freeze analyses are labeled exploratory and cannot replace a registered
   primary result.
 
