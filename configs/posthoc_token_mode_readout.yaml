@@ -1,0 +1,38 @@
+schema_version: 1
+status: authorized_posthoc_exploratory
+authorized_at: '2026-09-01T10:50:00-07:00'
+requested_after_endpoint_results: true
+scope_relation: transparent_postfreeze_addon_not_registered_phase7_result
+train_config: configs/fallback_4b_skip0.yaml
+checkpoint:
+  branch: coconut_skip0
+  stage: 3
+  k: 6
+  model_state_sha256: 84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351
+prompt_selection: first_n_in_each_preexisting_frozen_manifest
+tasks:
+  - name: gsm8k
+    manifest: manifests/gsm8k_heldout_200.json
+    prompt_field: question
+    prompt_count: 5
+    serialization: coconut_raw_question
+  - name: strongreject
+    manifest: manifests/strongreject_small_60.json
+    prompt_field: forbidden_prompt
+    prompt_count: 5
+    serialization: native_qwen_chat_with_latent_scaffold
+top_k: 10
+readout: native_output_head_on_each_fed_back_final_hidden_state
+claim_limits:
+  decodability_only: true
+  faithfulness: prohibited
+  monitorability: prohibited
+  causal_mechanism: prohibited
+  no_answer_generation_or_judging: true
+stop_rule:
+  maximum_job_wall_time_minutes: 20
+  abandon_if_initial_bounded_job_fails_for_nontrivial_implementation_reason: true
+reporting:
+  include_all_mechanically_selected_prompts: true
+  retain_null_or_uninterpretable_pattern: true
+  primary_or_registered_result: false

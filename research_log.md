@@ -1924,3 +1924,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   evidence that capability damage resides in embeddings. Raw JSON SHA-256 is
   `3bf4c0b6...`. The two-panel layer-norm/alignment figure was rendered and
   visually inspected; PNG/SVG SHA-256 values are `34494ceb...` / `c5c7a81b...`.
+
+- 2026-09-01T10:50:00-07:00: Post-result analysis is not treated as inherently
+  invalid; it is separated from confirmatory claims by an explicit post-hoc
+  label. At user request, one tightly bounded token-mode readout is authorized
+  as a transparent post-freeze add-on: the first five prompts in the existing
+  frozen GSM8K-200 manifest and first five in StrongREJECT-60, all six stage-3
+  latent depths, top ten native output-head tokens, no answer generation, and
+  no judging. Prompt selection and the complete-output rule are fixed before
+  viewing readouts. Claims are limited to decodability; faithfulness,
+  monitorability, and causal mechanism claims are prohibited. The debug job is
+  capped at 20 minutes and is abandoned after a nontrivial implementation
+  failure rather than expanding into a new project. Latent substitution remains
+  deferred because it requires a new intervention implementation, validation,
+  multiple generation cells, and matched capability/coherence reporting; it is
+  not a quick single pass in the current codebase.
