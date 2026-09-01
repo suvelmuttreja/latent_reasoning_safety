@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "status": "pending_registered_conditions",
+  "config_sha256": "f92f149693bf85e31804d82fd453b4d8f974838faa0c7311c995eda1cbd689d9",
+  "m0_anchor": 0.08800965547561646,
+  "rows": [
+    {
+      "condition": "m0",
+      "branch": "base",
+      "stage": 0,
+      "status": "scored_complete",
+      "mean_score": 0.08800965547561646,
+      "delta_from_m0": 0.0,
+      "score_sha256": "122b05babe12494cf6e7dcf969c3061ad0827cda4282f01a7fef63dbad46a0ba",
+      "structural_missingness": false
+    },
+    {
+      "condition": "cot_u1",
+      "branch": "explicit_cot",
+      "stage": 1,
+      "status": "scored_complete",
+      "mean_score": 0.12672963937123616,
+      "delta_from_m0": 0.0387199838956197,
+      "score_sha256": "4e237f75868c687eaddc322c2a4ed6b69df1c72d27c1825d66974e3dfb2a561f",
+      "structural_missingness": false
+    },
+    {
+      "condition": "cot_u2",
+      "branch": "explicit_cot",
+      "stage": 2,
+      "status": "scored_complete",
+      "mean_score": 0.09488360087076823,
+      "delta_from_m0": 0.006873945395151779,
+      "score_sha256": "60975704f7ab6945cee26f547501f641a423719ebb7a6c16334c5fb1de9f4504",
+      "structural_missingness": false
+    },
+    {
+      "condition": "cot_u3",
+      "branch": "explicit_cot",
+      "stage": 3,
+      "status": "scored_complete",
+      "mean_score": 0.0934414267539978,
+      "delta_from_m0": 0.005431771278381348,
+      "score_sha256": "63511bf8bfefe758a64d563eaa852d0d9c200b55ead6d56ee6f4da43716b6d99",
+      "structural_missingness": false
+    },
+    {
+      "condition": "coco_u1_k2",
+      "branch": "coconut_skip0",
+      "stage": 1,
+      "status": "scalar_unavailable_registered_cap_guard_failed",
+      "mean_score": null,
+      "delta_from_m0": null,
+      "score_sha256": null,
+      "structural_missingness": true,
+      "nontermination": "3/60 at 16000 tokens",
+      "missingness_reason": "strict <5% cap guard failed exactly at 5%"
+    },
+    {
+      "condition": "coco_u2_k4",
+      "branch": "coconut_skip0",
+      "stage": 2,
+      "status": "score_blind_cap_calibration_resuming_with_incremental_cache",
+      "mean_score": null,
+      "delta_from_m0": null,
+      "score_sha256": null,
+      "structural_missingness": false
+    },
+    {
+      "condition": "coco_u3_k6",
+      "branch": "coconut_skip0",
+      "stage": 3,
+      "status": "scored_complete",
+      "mean_score": 0.10516246557235717,
+      "delta_from_m0": 0.017152810096740717,
+      "score_sha256": "a747cc8b423e9c14ea3a7a6be4e8198675538d91efc1d99fc350dfb8af0eb6a7",
+      "structural_missingness": false
+    }
+  ],
+  "interpretation_guard": "Structural missingness is not zero; deltas are descriptive point estimates."
+}
