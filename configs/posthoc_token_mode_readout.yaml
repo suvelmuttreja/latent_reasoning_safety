@@ -65,13 +65,17 @@ observed:
       opposite_parity: 0.0
       lag_2: 0.4738
       lag_1: 0.0
+      curriculum_stage_pairs: 0.0
+      all_pairs: 0.1789
     strongreject:
       same_parity: 0.1535
       opposite_parity: 0.0361
       lag_2: 0.2221
       lag_1: 0.0375
+      curriculum_stage_pairs: 0.0366
+      all_pairs: 0.0831
     period_two_structure_observed: true
     consistent_with_c_thought_2: true
     caused_by_c_thought_2: not_identified_without_alternate_c_thought_control
     strongreject_prompt_level_same_parity_advantage: 4_of_5
-    artifact_sha256: cbcbc9b7259ae48e9ba6d6700749b420ffef9051f3055526abfdb34e7a6fa1f2
+    artifact_sha256: 2221bdb99ac8cc953febd1fc20fe507bd8dfc5e9a251e1262181439f4bc65bb2

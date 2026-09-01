@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "model_tokenizer_and_metadata_uploaded",
+  "repo_id": "suvelmuttreja/mats-latent-safety-checkpoints",
+  "path_in_repo": "matched_4b_cot_seed43/stage1",
+  "model_commit_oid": "d372f52c2949b9ac30e969407f4a9e830e6b9c3b",
+  "metadata_commit_oid": "ecb0ffd333e2c4aa2d9f7b619affab87121f0383",
+  "metadata_commit_url": "https://huggingface.co/suvelmuttreja/mats-latent-safety-checkpoints/commit/ecb0ffd333e2c4aa2d9f7b619affab87121f0383",
+  "metadata_path_in_repo": "matched_4b_cot_seed43/stage1/metadata.json",
+  "metadata_sha256": "2d21d8a191f24fd834b090c41d4d2e1fc887734c7f6aec9b3e88721c52d28458",
+  "model_state_sha256": "42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43"
+}

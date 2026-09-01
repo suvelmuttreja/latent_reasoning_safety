@@ -1963,4 +1963,29 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   advantage is positive on four of five prompts. This is consistent with the
   two latent positions added per curriculum stage, but cannot attribute the
   cycle to `c_thought`: only value 2 was trained and the task serializations
-  differ. Reproducible analysis SHA-256 is `cbcbc9b7...`.
+  differ. A follow-up reproducibility extension records the two natural
+  competing summaries in the same artifact: curriculum-stage-pair overlap is
+  `0.0000` on GSM8K and `0.0366` on StrongREJECT, while all-pairs overlap is
+  `0.1789` and `0.0831`, respectively. Reproducible analysis SHA-256 is
+  `2221bdb9...`.
+
+- 2026-09-01: Froze `writeup/claims_and_numbers.md` as the canonical prose
+  contract for application drafting. It reconciles the committed primary,
+  bounded-trajectory, human-audit, weight-diff, and token-readout artifacts;
+  supplies exact approved claim language and prohibited overclaims; and adds
+  the write-up and figure outline. Existing prose is derivative. Seed-43 u1
+  remains explicitly pending and cannot update a claim until checkpoint
+  durability, score-blind cap selection, fresh official generation, pinned
+  judging, and uncertainty calculation are complete.
+
+- 2026-09-01T11:24:26-07:00: Seed-43 explicit-CoT u1 job `11598619`
+  completed successfully in `00:51:11` (`0:0`) after all 468 updates. The
+  checkpoint SHA-256 is `42e2c4e9...`; training used the registered token-count
+  normalization and reported mean loss `0.37802`. Model/tokenizer upload to
+  `suvelmuttreja/mats-latent-safety-checkpoints` completed at unique path
+  `matched_4b_cot_seed43/stage1` (model commit `d372f52c...`), followed by the
+  required metadata upload. `metadata.json`, `update_metrics.jsonl`, and
+  `durability_receipt.json` were copied byte-identically from scratch1 to
+  home1 and pulled into the repository. Training completion alone is not a
+  recurrence result: score-blind cap calibration, a committed cap, fresh
+  official generation, pinned judging, and prompt-level uncertainty remain.

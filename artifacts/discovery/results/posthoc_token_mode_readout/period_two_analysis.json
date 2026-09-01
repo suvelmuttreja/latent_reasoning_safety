@@ -20,6 +20,8 @@
         "opposite_parity": 0.0,
         "lag_1": 0.0,
         "lag_2": 0.4737779764095553,
+        "curriculum_stage_pairs": 0.0,
+        "all_pairs": 0.17886604623446728,
         "same_minus_opposite": 0.4471651155861682,
         "lag2_minus_lag1": 0.4737779764095553
       },
@@ -62,6 +64,8 @@
         "opposite_parity": 0.036117799946489317,
         "lag_1": 0.03746818025455796,
         "lag_2": 0.22211599460051473,
+        "curriculum_stage_pairs": 0.03664717348927875,
+        "all_pairs": 0.08308484772881057,
         "same_minus_opposite": 0.11741761945580315,
         "lag2_minus_lag1": 0.18464781434595678
       },

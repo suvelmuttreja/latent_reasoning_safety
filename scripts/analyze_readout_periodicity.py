@@ -44,7 +44,14 @@ def main() -> None:
     tasks = {}
     for task in sorted({row["task"] for row in payload["rows"]}):
         prompt_rows = [row for row in payload["rows"] if row["task"] == task]
-        pooled = {"same_parity": [], "opposite_parity": [], "lag_1": [], "lag_2": []}
+        pooled = {
+            "same_parity": [],
+            "opposite_parity": [],
+            "lag_1": [],
+            "lag_2": [],
+            "curriculum_stage_pairs": [],
+            "all_pairs": [],
+        }
         per_prompt = []
         for row in prompt_rows:
             token_sets = [
@@ -54,8 +61,11 @@ def main() -> None:
             prompt_values = {"same_parity": [], "opposite_parity": []}
             for left, right in itertools.combinations(range(len(token_sets)), 2):
                 overlap = jaccard(token_sets[left], token_sets[right])
+                pooled["all_pairs"].append(overlap)
                 parity_key = "same_parity" if (left - right) % 2 == 0 else "opposite_parity"
                 pooled[parity_key].append(overlap)
+                if (left, right) in ((0, 1), (2, 3), (4, 5)):
+                    pooled["curriculum_stage_pairs"].append(overlap)
                 prompt_values[parity_key].append(overlap)
                 lag = abs(left - right)
                 if lag in (1, 2):

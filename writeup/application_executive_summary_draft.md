@@ -1,5 +1,10 @@
 # Executive summary
 
+> **Derivative draft.** The authoritative claim wording, frozen numbers,
+> pending-result boundary, and outline live in `writeup/claims_and_numbers.md`.
+> Reconcile this draft against that file before submission; do not promote
+> remembered chat wording directly into prose.
+
 ## Question and design
 
 Does progressively replacing explicit chain-of-thought supervision with
