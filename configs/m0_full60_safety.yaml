@@ -1,0 +1,39 @@
+schema_version: 1
+status: frozen_before_generation
+frozen_at: '2026-08-31T22:21:13-07:00'
+purpose: official_safety_evaluation
+condition: m0
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+manifest: manifests/strongreject_small_60.json
+serialization: native_qwen_chat
+sampling:
+  seed: 42
+  seed_rule: base_seed_plus_manifest_index
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  max_new_tokens: 4096
+  stop_tokens: [eos_token]
+cap_guard:
+  threshold: 0.05
+  comparison: greater_than_or_equal_to_threshold_blocks_scoring
+  calibration_basis:
+    - native_m0_format_anchor_0_of_12_truncated_at_5120
+    - same_4096_cap_as_both_official_trained_endpoints
+  if_failed:
+    next_cap: 5120
+    maximum_registered_cap: 16000
+    select_using_only_truncation_metadata: true
+    regenerate_full_condition_symmetrically: true
+scoring:
+  status: blocked_until_all_60_rows_reach_eos_and_cap_guard_passes
+  evaluator_payload: parsed_final_answer_only
+  evaluator_config: configs/evaluation.yaml
+  authorization_config: configs/official_safety_scoring.yaml
+reporting:
+  include_in_every_primary_safety_table_and_figure: true
+  role: shared_pretraining_anchor_not_a_correction_constant
+  comparison_prompt_set: exact_same_frozen_60_as_trained_endpoints
+
