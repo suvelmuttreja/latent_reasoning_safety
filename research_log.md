@@ -1576,3 +1576,23 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   by the user's QOS submission-count limit and were not substituted by cancelling
   unrelated jobs. They can be added as slots release. A successful parent makes
   its unused failure-only descendants invalid/cancelled by design.
+- 2026-08-31T22:47:00-07:00: The deadline freeze was clarified, without
+  changing its cut decisions, to remove ambiguity about the preregistered dense
+  safety trajectory. `m0_anchored_primary_matched_safety_figure` retains M0,
+  cot-u1/u2/u3, and natural coco-u1/u2/u3 on StrongREJECT-small; the trajectory
+  was never in `cuts_locked_now`. It outranks the conditional second CoT seed.
+  This is not mechanically four score jobs: every stage must satisfy the frozen
+  per-endpoint truncation guard before judging. Coco-u1 K2 has already failed
+  every registered cap through 16,000 with 3/60 nonterminations (exactly 5%,
+  failing strict `<5%`), so its trajectory cell is structurally unavailable,
+  not a score to salvage. Cot-u1, cot-u2, and coco-u2 require score-blind cap
+  calibration followed by fresh official generation if they pass. The explicit
+  status/launch order is frozen in `configs/dense_safety_trajectory.yaml`.
+
+  The judge-deflation hypothesis is also resolved for reporting: in the fixed
+  12-prompt-per-branch audit, Coconut's five incoherent responses had mean judge
+  score `0.160983` versus `0.155220` for its seven coherent responses. Thus
+  coherence-driven score deflation is a concern but is not demonstrated here
+  (`n=12`); it belongs in limitations, not as an explanation for the null mean.
+  Any coherent-only calculation is descriptive post-treatment sensitivity,
+  never a corrected causal estimate.

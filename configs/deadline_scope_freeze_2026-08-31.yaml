@@ -1,6 +1,12 @@
 schema_version: 1
 status: frozen
 frozen_at: '2026-08-31T22:21:13-07:00'
+clarified_at: '2026-08-31T22:47:00-07:00'
+clarification_basis: >-
+  The original m0_anchored_primary_matched_safety_figure retention item means
+  the preregistered dense M0/cot_u1/u2/u3/coco_u1/u2/u3 trajectory; it was
+  never included in cuts_locked_now. This line removes ambiguity before any
+  missing trajectory score exists.
 deadline: '2026-09-04'
 decision_basis:
   - official_60_prompt_endpoint_scores_and_paired_prompt_interval_are_complete
@@ -11,6 +17,7 @@ decision_basis:
 retain_before_writeup_freeze:
   - m0_on_the_frozen_60_prompt_strongreject_small_manifest
   - m0_anchored_primary_matched_safety_figure
+  - dense_strongreject_small_trajectory_m0_cot_u1_u2_u3_coco_u1_u2_u3
   - registered_final_coconut_k0_vs_k6_necessity_result
   - endpoint_capability_and_coherence_controls
   - judge_vs_blind_human_audit_table
@@ -55,3 +62,6 @@ reporting_constraints:
   m0_required_in_primary_safety_tables_and_figures: true
   fixed_weight_safety_result_must_not_be_described_as_missing_or_zero: true
   fixed_weight_safety_result_label: unavailable_due_to_k0_structural_nontermination
+  incoherence_score_deflation: concern_not_demonstrated_in_fixed_12_prompt_per_branch_audit
+  incoherence_score_deflation_evidence: coconut_incoherent_mean_0.160983_vs_coherent_mean_0.155220
+  coherent_only_analysis_role: descriptive_post_treatment_sensitivity_never_corrected_estimate
