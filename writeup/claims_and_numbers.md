@@ -343,6 +343,12 @@ Approved wording:
 
 Do not write that self-jailbreaking “does not replicate” in general.
 
+Related-work citation rule: any specific number quoted from prior work (e.g.
+the Coconut paper's GPT-2 GSM8K accuracies for the latent-below-explicit
+direction claim) must be verified against the source paper or vendored repo
+before it enters a draft — never cited from memory. Directional consistency
+with the Coconut paper may be claimed only after that check.
+
 ## Pending evidence not yet claimable
 
 The seed-43 explicit-CoT u1 checkpoint exists, but no completed, committed
@@ -493,4 +499,5 @@ powered safety assay.
 - [ ] Exploratory analyses are labeled post hoc.
 - [ ] Readout text says decodability only.
 - [ ] Layer-diff text makes no causal localization claim.
+- [ ] Prior-work numbers verified against sources, not memory.
 - [ ] The final draft has been checked against this file, not chat memory.

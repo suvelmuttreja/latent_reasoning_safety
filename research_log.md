@@ -2009,3 +2009,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   operational chronology from that file; those remain here. Added an explicit
   authority hierarchy, a compact claim-role map, and a consistent results
   narrative/figure order. No frozen number or claim strength changed.
+
+- 2026-09-01: Reviewed the user's follow-up citation rule in
+  `writeup/claims_and_numbers.md`. It correctly requires source verification
+  before importing prior-work numbers or claiming directional consistency; it
+  changes no result or claim strength and remains in the drafting reference.
+
+  For pending seed-43 cap-calibration job `11601380`, Slurm forecast A40 start
+  at `2026-09-01T13:18:02-07:00`. Test-only alternatives were materially later:
+  L40S and A100-40GB at `2026-09-03T05:54:42`, A100-80GB at
+  `2026-09-03T10:17:42`; cancelling/requeuing would also discard the current
+  job's queue position. The in-place time limit was safely reduced from two
+  hours to `01:15:00`, preserving the job ID and unique output path. The
+  identical seed-42 A40 calibration completed in `00:49:27`, leaving about 25
+  minutes of margin. The forecast remained `13:18:02` immediately afterward;
+  no duplicate job was submitted.
