@@ -21,7 +21,10 @@ comparison:
     - update_l2_relative_to_m0_l2
     - update_rms
     - cosine_between_cot_and_coconut_update_vectors
-  expanded_embedding_policy: compare_common_m0_vocabulary_rows_only
+  mismatched_embedding_policy: compare_common_token_id_prefix_only
+  public_m0_embedding_rows: 151936
+  trained_endpoint_embedding_rows: 151672
+  mismatch_origin: public_padded_vocab_vs_resize_to_tokenizer_plus_three_markers
   duplicated_wrapper_embedding_alias_policy: exclude_non_base_causallm_alias
 reporting:
   label: exploratory_posthoc

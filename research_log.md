@@ -1903,3 +1903,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   silently omitted. Latent substitution remains cut under the Aug 31 scope
   freeze because no implementation/smoke test exists; token-mode readout
   remains cut with the rest of Phase 7.
+
+  First CPU attempt `11600811` failed safely before writing a result because
+  public M0's embedding tensor has 151,936 padded vocabulary rows whereas both
+  trained endpoints have 151,672 rows after resize to tokenizer length plus
+  three marker tokens. The preflight assumption covered endpoint expansion but
+  not public padding. The corrected comparison uses only the shared token-ID
+  prefix and records both original shapes; unmatched tails are not compared or
+  silently treated as updates.

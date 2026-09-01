@@ -74,13 +74,20 @@ def comparable_views(
     if (
         base.ndim >= 1
         and cot.ndim == base.ndim
-        and cot.shape[0] > base.shape[0]
+        and cot.shape[0] != base.shape[0]
         and cot.shape[1:] == base.shape[1:]
     ):
-        # Training adds three Coconut marker rows to the tied vocabulary. The
-        # public checkpoint has no corresponding rows, so compare the exact M0
-        # vocabulary only and report the exclusion explicitly.
-        return base, cot[: base.shape[0]], coconut[: base.shape[0]], "common_rows"
+        # Qwen's public matrix contains padded vocabulary rows, while training
+        # resize_token_embeddings() uses tokenizer length plus the three marker
+        # rows. Neither tail has a one-to-one counterpart. Compare only the
+        # shared token-ID prefix and expose both original shapes in the output.
+        common_rows = min(base.shape[0], cot.shape[0])
+        return (
+            base[:common_rows],
+            cot[:common_rows],
+            coconut[:common_rows],
+            "common_token_id_prefix",
+        )
     raise ValueError(f"M0/endpoint shape mismatch: {base.shape} != {cot.shape}")
 
 
@@ -221,7 +228,7 @@ def main() -> None:
         "cot_checkpoint_sha256": sha256_file(cot_path),
         "coconut_checkpoint_sha256": sha256_file(coconut_path),
         "code_revision": git_revision(),
-        "common_vocabulary_rows_only_when_endpoint_embeddings_are_expanded": True,
+        "mismatched_vocabulary_matrices_compare_common_token_id_prefix_only": True,
         "excluded_parameters": excluded,
         "overall": summarize("overall", {
             key: sum(float(row.get(key, 0)) for row in grouped.values())
