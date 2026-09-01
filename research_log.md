@@ -1806,3 +1806,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   classes, so A40 was retained as both earlier and consistent with the existing
   official trajectory. The second CoT seed remains after the locked figure, as
   registered, and is not allowed to delay these bounds.
+
+- 2026-09-01: Before a second-seed checkpoint exists, the tail replication is
+  narrowed to the estimand that became concrete after trajectory scoring:
+  whether the explicit-CoT u1 elevation recurs. Only a second stage-1 endpoint
+  is trained, from exact M0, with training seed 43 instead of 42. Seed is the
+  intended replication variable and therefore includes both training RNG and
+  seeded example order; model, data, two-epoch dose, micro-batch 1 x
+  accumulation 32, token-correct loss, optimizer, and hardware class remain
+  fixed. This is a labeled post-hoc ordinary-SFT seed-noise diagnostic, not a
+  second registered primary, not a seed confidence interval, and not evidence
+  about Coconut seed variability. Its job may become eligible only after
+  automatic bounded-trajectory finalizer `11589620` succeeds, so it cannot
+  delay or alter Figure 1. A fresh score-blind cap check and official generation
+  will still be required before its u1 StrongREJECT score; the first seed's cap
+  is not silently inherited.

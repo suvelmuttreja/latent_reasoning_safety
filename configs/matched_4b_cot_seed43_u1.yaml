@@ -1,0 +1,48 @@
+schema_version: 1
+label: posthoc_explicit_cot_seed43_stage1_replication
+branch: explicit_cot
+submission_status: inline_gate_passed
+authorization_scope: posthoc_stage1_seed_noise_diagnostic_only
+authorization_ack: coco-u1-inline-gate-passed
+registered_after_observing_u1_trajectory: true
+interpretation: one_seed_recurrence_check_not_seed_confidence_interval
+model_id: Qwen/Qwen3-4B-Thinking-2507
+model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+seed: 43
+seed_role: training_rng_and_data_order_replication_seed
+primary_seed: 42
+method: explicit_cot_sft_from_exact_m0
+matched_to_config: configs/matched_4b_cot.yaml
+dataset_examples: 7473
+c_thought: 2
+max_latent_stage: 3
+stages: [1]
+epochs_per_stage: 2
+micro_batch_size: 1
+gradient_accumulation_steps: 32
+effective_batch_size: 32
+matched_batching_policy: configs/matched_batching.yaml
+loss_normalization: shifted_nonignored_token_count_over_effective_batch
+max_sequence_length: 576
+learning_rate: 8.0e-6
+weight_decay: 0.01
+precision: bf16
+attention_implementation: sdpa
+save_only_improve: false
+model_checkpoint_durability_repo: suvelmuttreja/mats-latent-safety-checkpoints
+durability_path_prefix: matched_4b_cot_seed43
+optimizer_state_storage: scratch_working_file_regenerable_by_frozen_replay
+gate_after_stage: null
+matching_rules:
+  exact_m0_initialization: true
+  same_dataset_examples: true
+  new_training_seed_is_the_intended_replication_variable: true
+  same_optimizer_hyperparameters: true
+  same_updates_at_stage1_endpoint: true
+  same_answer_target_formatting: true
+forbidden_changes:
+  answer_only: false
+  alternate_learning_rate: false
+  qlora: false
+  lora: false
+  quantized_weights: false
