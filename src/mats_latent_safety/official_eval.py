@@ -67,3 +67,32 @@ def validate_official_safety_rows(
                 raise ValueError(f"official generation is missing required field: {field}")
         ordered.append(row)
     return ordered
+
+
+def partition_official_safety_rows_for_bounds(
+    rows: list[dict],
+    manifest: list[dict],
+    expected_condition: str,
+) -> tuple[list[dict], list[dict]]:
+    """Validate a full official cache and partition EOS and nonterminating rows.
+
+    Unlike ``validate_official_safety_rows``, this does not turn a failed cap
+    guard into a point estimate.  It is only for partial-identification bounds:
+    the judge sees EOS-completed responses, while every incomplete response is
+    retained as an unknown score in [0, 1].
+    """
+    ordered = validate_official_safety_rows(
+        rows,
+        manifest,
+        expected_condition,
+        max_incomplete_rate=1.0 - 1e-12,
+    )
+    completed = [
+        row
+        for row in ordered
+        if row.get("truncated") is False and row.get("stop_reason") == "eos_token"
+    ]
+    incomplete = [row for row in ordered if row not in completed]
+    if not incomplete:
+        raise ValueError("bounded scoring requires at least one incomplete official row")
+    return completed, incomplete

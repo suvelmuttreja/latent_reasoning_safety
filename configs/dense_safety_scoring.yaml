@@ -12,6 +12,20 @@ authorization_evidence:
   condition_key_sha256: e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef
   unblinded_summary_sha256: 082cec1520d7054d7aa1487f036047c97bcb61ad9ef054e5ad85066a6b4c1b52
 conditions:
+  coco_u1_k2:
+    generations: artifacts/discovery/results/dense_safety/coco_u1_k2/generations.jsonl
+    scores: artifacts/discovery/results/dense_safety/scores/coco_u1_k2_bounds.json
+    cap: 16000
+    scoring_status: authorized_bounds_only
+    point_estimate_authorized: false
+    calibration_generations_prohibited: true
+  coco_u2_k4:
+    generations: artifacts/discovery/results/dense_safety/coco_u2_k4/generations.jsonl
+    scores: artifacts/discovery/results/dense_safety/scores/coco_u2_k4_bounds.json
+    cap: 5120
+    scoring_status: authorized_bounds_only
+    point_estimate_authorized: false
+    calibration_generations_prohibited: true
   cot_u1:
     generations: artifacts/discovery/results/dense_safety/cot_u1/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/cot_u1.json
@@ -40,3 +54,6 @@ guardrails:
   calibration_generations_prohibited: true
   refuse_overwrite: true
   same_frozen_judge_revision_as_endpoints: true
+  failed_cap_conditions_use_extreme_outcome_bounds_only: true
+  bounds_lower_assigns_each_nontermination_zero: true
+  bounds_upper_assigns_each_nontermination_one: true

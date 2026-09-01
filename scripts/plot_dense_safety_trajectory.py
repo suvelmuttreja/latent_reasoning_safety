@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the M0-anchored safety trajectory without plotting missingness as zero."""
+"""Render point estimates and partial-identification safety bounds."""
 
 from __future__ import annotations
 
@@ -58,29 +58,42 @@ def main() -> None:
         zorder=5,
     )
 
-    missing = (
-        (1, "Coconut u1 unavailable\n3/60 nontermination\nat 16,000 tokens"),
-        (2, "Coconut u2 unavailable\n3/60 nontermination\nat 5,120 tokens"),
-    )
-    for x, label in missing:
+    for x, name, ceiling in (
+        (1, "coco_u1_k2", "16,000"),
+        (2, "coco_u2_k4", "5,120"),
+    ):
+        row = rows[name]
+        lower = row["lower_bound"]
+        upper = row["upper_bound"]
+        if lower is None or upper is None:
+            raise ValueError(f"missing partial-identification bounds for {name}")
+        midpoint = (lower + upper) / 2
+        ax.errorbar(
+            [x],
+            [midpoint],
+            yerr=[[midpoint - lower], [upper - midpoint]],
+            color="#dc2626",
+            marker="_",
+            markersize=12,
+            capsize=6,
+            linewidth=2.4,
+            label="Coconut worst-case bound" if x == 1 else None,
+            zorder=4,
+        )
         ax.text(
             x,
-            0.015,
-            label,
+            upper + 0.004,
+            f"3/60 nontermination\n{ceiling}-token ceiling",
             ha="center",
             va="bottom",
-            fontsize=8.5,
+            fontsize=8,
             color="#991b1b",
-            bbox={
-                "boxstyle": "round,pad=0.35",
-                "facecolor": "#fef2f2",
-                "edgecolor": "#fca5a5",
-            },
         )
 
     ax.axhline(rows["m0"]["mean_score"], color="#6b7280", linewidth=1, linestyle=":")
     ax.set_xticks([0, 1, 2, 3], ["M0", "Stage 1", "Stage 2", "Stage 3"])
-    ax.set_ylim(0, 0.145)
+    highest_bound = max(rows[name]["upper_bound"] for name in ("coco_u1_k2", "coco_u2_k4"))
+    ax.set_ylim(0, max(0.16, highest_bound + 0.035))
     ax.set_ylabel("Mean StrongREJECT harmfulness")
     ax.set_title("M0-anchored matched safety trajectory (60 frozen prompts)")
     ax.grid(axis="y", color="#e5e7eb", linewidth=0.8)
@@ -90,7 +103,7 @@ def main() -> None:
     fig.text(
         0.5,
         0.025,
-        "Structural missingness is not zero; no completed-case or imputed Coconut intermediate score is shown.",
+        "Coconut u1/u2 bars are extreme-outcome bounds, not point estimates: every nontermination is set to 0 or 1.",
         ha="center",
         fontsize=8,
         color="#4b5563",

@@ -1752,3 +1752,33 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   remained unchanged, demonstrating the overwrite guard. Future dependency
   chains should attach every failure-only retry directly to a real compute
   parent, not to a guard that may end `DependencyNeverSatisfied`.
+
+- 2026-09-01T07:40:14-07:00: After observing the two exact-boundary Coconut
+  intermediate cap failures, the trajectory estimand was clarified as a
+  transparent post-result methodological amendment. The registered strict
+  `<5%` rule remains decisive for cap adequacy: coco-u1 K2 and coco-u2 K4 have
+  no scalar point estimate because each had 3/60 nonterminations (exactly
+  5.0%) at its maximum registered ceiling. That cap rule is not treated as a
+  checkpoint-discard rule. Fresh official, evaluator-blind generations at the
+  already registered maximum ceilings (16,000 for u1 K2; 5,120 for u2 K4) are
+  authorized solely for partial-identification bounds. The lower bound assigns
+  every nontermination StrongREJECT score 0; the upper assigns every one score
+  1, while EOS-completed rows receive the pinned judge score. Thus all 60
+  prompts remain in the estimand, no missing score is imputed, no completed-case
+  mean replaces the target, and calibration generations remain prohibited from
+  judging. Figure 1 will show intervals, not point estimates, at these cells
+  and report the nontermination rates. The boundary call and its post-result
+  timing are recorded before these fresh generations or bounded scores exist.
+
+  The M0-to-cot-u1 paired-prompt bootstrap (10,000 resamples, seed 42) gives
+  `+0.03871998`, 95% CI `[+0.00060739, +0.07722926]`. This supports the wording
+  "transient drift detected in this run and resolved by u2," with two explicit
+  limits: three registered trajectory checkpoints were inspected without a
+  multiplicity correction, and one training seed cannot establish seed
+  recurrence. A format-shock explanation is hypothesis only. The public full
+  and skip0 model cards report the training recipe and label their uploaded
+  endpoints converged but report no GSM8K metric. Their weights remained
+  inaccessible, and no self-trained full-stage0 checkpoint exists in home1 or
+  scratch1, so the capability result is framed as our reproduction of the
+  published skip0 schedule; skip0-specificity versus full Coconut cannot be
+  tested without new training.

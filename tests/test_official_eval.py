@@ -1,6 +1,7 @@
 import pytest
 
 from mats_latent_safety.official_eval import resolve_final_safety_cap
+from mats_latent_safety.official_eval import partition_official_safety_rows_for_bounds
 from mats_latent_safety.official_eval import validate_official_safety_rows
 
 
@@ -75,6 +76,24 @@ def test_official_rows_reject_incomplete_at_registered_aggregate_threshold():
             "coco_u3_k6",
             max_incomplete_rate=0.5,
         )
+
+
+def test_bounded_official_rows_partition_without_discarding_prompts():
+    rows = [generation("a", "hash-a"), generation("b", "hash-b")]
+    rows[1].update(truncated=True, stop_reason="length")
+    completed, incomplete = partition_official_safety_rows_for_bounds(
+        rows, manifest(), "coco_u3_k6"
+    )
+    assert [row["prompt_id"] for row in completed] == ["a"]
+    assert [row["prompt_id"] for row in incomplete] == ["b"]
+
+
+def test_bounded_official_rows_still_reject_calibration_cache():
+    rows = [generation("a", "hash-a"), generation("b", "hash-b")]
+    rows[1].update(truncated=True, stop_reason="length")
+    rows[0]["generation_purpose"] = "calibration"
+    with pytest.raises(ValueError, match="non-official"):
+        partition_official_safety_rows_for_bounds(rows, manifest(), "coco_u3_k6")
 
 
 def test_final_safety_cap_requires_endpoint_freeze_for_each_branch():

@@ -5,6 +5,34 @@ evaluation_config: configs/evaluation.yaml
 manifest: manifests/strongreject_small_60.json
 generation_purpose: official_safety_evaluation
 conditions:
+  coco_u1_k2:
+    branch: coconut_skip0
+    train_config: configs/fallback_4b_skip0.yaml
+    checkpoint_subdir: fallback_4b_skip0/stage1
+    checkpoint_stage: 1
+    checkpoint_sha256: 36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25
+    checkpoint_k: 2
+    k: 2
+    scaffold_kind: coconut_latent
+    max_new_tokens: 16000
+    generation_status: authorized
+    authorization_basis: >-
+      dated_post_result_estimand_clarification_fresh_official_generation_for_bounds_only;
+      no_registered_cap_passed_and_no_scalar_point_estimate_is_authorized
+  coco_u2_k4:
+    branch: coconut_skip0
+    train_config: configs/fallback_4b_skip0.yaml
+    checkpoint_subdir: fallback_4b_skip0/stage2
+    checkpoint_stage: 2
+    checkpoint_sha256: bb70e8a9c7984029bdc7e77ec3dc412ff3ea5b7201636267507d135e8212c1d0
+    checkpoint_k: 4
+    k: 4
+    scaffold_kind: coconut_latent
+    max_new_tokens: 5120
+    generation_status: authorized
+    authorization_basis: >-
+      dated_post_result_estimand_clarification_fresh_official_generation_for_bounds_only;
+      no_registered_cap_passed_and_no_scalar_point_estimate_is_authorized
   cot_u1:
     branch: explicit_cot
     train_config: configs/matched_4b_cot.yaml
@@ -48,3 +76,5 @@ launch_guard:
   calibration_generations_may_be_reused: false
   official_conditions_regenerate_from_scratch: true
   evaluator_must_not_load: true
+  failed_cap_conditions_may_only_produce_partial_identification_bounds: true
+  nonterminations_are_retained_as_unknown_scores_in_zero_one_interval: true
