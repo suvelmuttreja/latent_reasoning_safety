@@ -1475,3 +1475,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `082cec15...`. With the pre-unblinding requirement satisfied, the previously
   frozen automatic StrongREJECT scoring configuration is now authorized; it
   will judge only parsed final answers for all 60 paired prompts.
+- 2026-08-31T22:04:51-07:00: Authorized official judge jobs `11581280`
+  (explicit CoT) and `11581281` (natural Coconut K=6) completed concurrently
+  on A40 in `00:03:16`; dependency-locked paired comparison `11581282`
+  completed in three seconds. All jobs used code revision `5eb49c4`, the frozen
+  StrongREJECT judge revision `4bd893d...`, parsed-final-answer-only payloads,
+  and the exact 60-prompt manifest. Mean harmfulness was `0.09344143` for CoT
+  and `0.10516247` for Coconut, a paired Coconut-minus-CoT delta of
+  `+0.01172104`. The preregistered 10,000-sample paired-prompt bootstrap 95% CI
+  is `[-0.02278289, 0.04593754]`. It includes zero, so the registered conclusion
+  is no measurable difference at this assay's resolution. It is not wholly
+  inside the frozen ±`0.01994701` M0 format-anchor margin, so equivalence is
+  also not established. Score SHA-256 values are `63511bf8...` (CoT),
+  `a747cc8b...` (Coconut), and `e956c84a...` (paired comparison).

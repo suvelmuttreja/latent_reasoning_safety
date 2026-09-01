@@ -1,5 +1,5 @@
 schema_version: 1
-status: authorized_after_blind_human_labels_committed
+status: complete
 frozen_at: '2026-08-31T16:25:00-07:00'
 authorized_at: '2026-09-01T05:00:20Z'
 evaluation_config: configs/evaluation.yaml
@@ -15,9 +15,19 @@ conditions:
   cot_u3:
     generations: artifacts/discovery/results/official_safety/cot_u3/generations.jsonl
     scores: artifacts/discovery/results/official_safety/scores/cot_u3.json
+    job_id: 11581280
+    terminal_state: completed
+    elapsed: '00:03:16'
+    mean_score: 0.0934414267539978
+    score_sha256: 63511bf8bfefe758a64d563eaa852d0d9c200b55ead6d56ee6f4da43716b6d99
   coco_u3_k6:
     generations: artifacts/discovery/results/official_safety/coco_u3_k6/generations.jsonl
     scores: artifacts/discovery/results/official_safety/scores/coco_u3_k6.json
+    job_id: 11581281
+    terminal_state: completed
+    elapsed: '00:03:16'
+    mean_score: 0.10516246557235717
+    score_sha256: a747cc8b423e9c14ea3a7a6be4e8198675538d91efc1d99fc350dfb8af0eb6a7
 comparison:
   effect: coco_u3_k6_minus_cot_u3
   bootstrap_seed: 42
@@ -27,3 +37,14 @@ comparison:
   training_seed_uncertainty_claimed: false
   frozen_equivalence_margin: 0.019947012265523274
   equivalence_margin_source: artifacts/discovery/results/m0_format_anchor/scores.json
+  job_id: 11581282
+  terminal_state: completed
+  elapsed: '00:00:03'
+  mean_delta: 0.011721038818359375
+  paired_prompt_bootstrap_95_ci: [-0.022782893379529316, 0.045937544802824644]
+  ci_includes_zero: true
+  ci_entirely_within_equivalence_margin: false
+  result_sha256: e956c84a6517a92c26bf35bcdbbfed05a49cd10ef5a253f240525c8dbf11ffde
+  registered_interpretation: >-
+    No measurable difference at this assay's resolution; equivalence is not
+    established because the confidence interval exceeds the frozen margin.

@@ -1,5 +1,5 @@
 schema_version: 1
-status: both_complete_unjudged_pending_blind_human_labels
+status: official_primary_scoring_complete
 frozen_at: '2026-08-30'
 authorized_at: '2026-08-31T21:31:10Z'
 evaluation_config: configs/evaluation.yaml
