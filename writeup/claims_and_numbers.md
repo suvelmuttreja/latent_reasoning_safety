@@ -331,7 +331,8 @@ at 2026-09-01 11:24:26 PDT after 468 updates. The checkpoint SHA-256 is
 `42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43`.
 Model/tokenizer and metadata upload evidence is complete under Hugging Face
 commit `d372f52c2949b9ac30e969407f4a9e830e6b9c3b`; compact evidence is copied to
-home1 and the repo. No safety score or replication claim exists yet.
+home1 and the repo. Score-blind cap-calibration job `11601380` is queued on an
+A40. No safety score or replication claim exists yet.
 
 Required chain before updating Claims 4 or 5:
 

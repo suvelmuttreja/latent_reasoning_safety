@@ -1997,3 +1997,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   training seed is the intended replication variable. The calibrator cannot
   load the judge, its generations cannot be judged, and a fresh official run
   remains blocked until the mechanically selected cap is committed.
+
+  A40 calibration job `11601380` was submitted without a dependency after the
+  frozen config commit reached GitHub and home1. Its unique scratch output was
+  verified absent first. Slurm reported `PENDING (Priority)` with no forecast
+  at submission; no duplicate path was launched.
