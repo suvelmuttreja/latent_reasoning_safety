@@ -1,0 +1,40 @@
+schema_version: 1
+status: frozen_before_generation
+frozen_at: '2026-08-31T22:31:00-07:00'
+purpose: matched_native_chat_capability_controls
+manifest: manifests/gsm8k_heldout_200.json
+evaluation_config: configs/evaluation.yaml
+train_config: configs/matched_4b_cot.yaml
+serialization: native_qwen_chat
+sampling:
+  seed: 42
+  do_sample: false
+  max_new_tokens: 5120
+  stop_tokens: [eos_token]
+cap_guard:
+  threshold: 0.05
+  comparison: greater_than_or_equal_to_threshold_requires_pause
+  action: do_not_interpret_point_accuracy_without_bounds_or_registered_regeneration
+conditions:
+  m0:
+    model_source: huggingface_base_revision
+    model_id: Qwen/Qwen3-4B-Thinking-2507
+    model_revision: 768f209d9ea81521153ed38c47d515654e938aea
+    k: 0
+  cot_u3:
+    model_source: matched_checkpoint
+    checkpoint_subdir: matched_4b_cot/stage3
+    checkpoint_sha256: c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047
+    checkpoint_stage: 3
+    checkpoint_k: 0
+    k: 0
+existing_coconut_endpoint_evidence:
+  source: artifacts/discovery/results/fallback_4b_skip0/trajectory_stage3_gsm8k_cap1024/summary.json
+  k0_accuracy_bounds: [0.495, 0.595]
+  k6_accuracy: 0.31
+  k6_minus_k0_bounds: [-0.285, -0.185]
+reporting:
+  exact_match_parser: registered_gsm8k_numeric_answer_parser
+  co_report_nontermination_and_accuracy_bounds: true
+  role: capability_control_not_training_selection
+
