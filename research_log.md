@@ -1847,3 +1847,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   Final PNG/SVG SHA-256 values are `ecc40cfe...` / `c7a10085...`. The failed
   `afterok` correctly left seed job `11591087` DependencyNeverSatisfied; it must
   be replaced only after this recovered figure commit is durable.
+
+  Completed bounds and the visually verified figure were committed and pushed
+  as `2468b58`, transferred to home1, and hash-verified there. Only then was
+  never-runnable seed job `11591087` cancelled and replaced by clean A40 job
+  `11598619`, with a same-day 10:32 PDT Slurm forecast at submission.

@@ -47,8 +47,10 @@ forbidden_changes:
   lora: false
   quantized_weights: false
 slurm:
-  job_id: 11591087
-  dependency: afterok:11589620
-  submitted_at: '2026-09-01T07:56:00-07:00'
+  superseded_job_id: 11591087
+  superseded_terminal_state: dependency_never_satisfied_after_figure_renderer_failure
+  job_id: 11598619
+  dependency: null
+  submitted_at: '2026-09-01T09:38:00-07:00'
   hardware: NVIDIA_A40
-  status_at_submission: pending_dependency
+  status_at_submission: pending_priority
