@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "generation_complete_unjudged",
+  "condition": "m0",
+  "rows": 60,
+  "truncations": 0,
+  "cap_guard_threshold": 0.05,
+  "cap_guard_passed": true,
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "generation_config_sha256": "201fe7e28a376143f81943abb514954c33fc729b7d16b746b6f9bb52da613236",
+  "generation_implementation_sha256": "25012bf93ff4eec9181ac50e2c1797fa156ed39373a2770ad345dfe2ac434b83",
+  "generations_sha256": "06e51d8ae2f8defaa74af6a104e43d2c4671c31e97d37ada77276e8e55ecb78e",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "config_sha256": "842114b2a164586065b08d86bdf58e31f35756949ee8227c0743b9d912e5502a",
+  "evaluator_loaded": false
+}

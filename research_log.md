@@ -1596,3 +1596,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   (`n=12`); it belongs in limitations, not as an explanation for the null mean.
   Any coherent-only calculation is descriptive post-treatment sensitivity,
   never a corrected causal estimate.
+
+- 2026-08-31T23:14:44-07:00: Foreground Slurm monitoring (without Goal mode)
+  observed M0 StrongREJECT-small generation job `11584930` complete with exit
+  code `0:0` after `00:47:33`. All 60 registered prompts generated at the
+  frozen 4,096-token cap, all 60 stopped on EOS, and there were zero
+  truncations, so the strict `<5%` cap guard passed. Scratch and durable home1
+  copies matched (`generations.jsonl` SHA-256 `06e51d8...`, `summary.json`
+  SHA-256 `2ccca441...`); the compact durable artifacts were then pulled into
+  `artifacts/discovery/results/official_safety/m0/`. This freezes generation
+  evidence only—the evaluator was not loaded and M0 remains unjudged. The
+  released submission slot was immediately used for score-blind cot-u1 safety
+  cap calibration job `11585771`; no results were inspected to choose this
+  pre-frozen next condition.

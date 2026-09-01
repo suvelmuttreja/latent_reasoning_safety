@@ -14,10 +14,17 @@ official_generation_policy:
   unavailable_if_no_registered_cap_passes: true
 conditions:
   m0:
-    status: generation_running_unjudged
+    status: generation_complete_unjudged
     generation_job: 11584930
+    generation_completed_at: '2026-08-31T23:13:36-07:00'
     cap: 4096
     scoring_guard: all_60_eos_and_strict_truncation_guard
+    rows: 60
+    truncations: 0
+    eos_terminated: 60
+    cap_guard_passed: true
+    generations_sha256: 06e51d8ae2f8defaa74af6a104e43d2c4671c31e97d37ada77276e8e55ecb78e
+    summary_sha256: 2ccca441dfcebc5ca761f80e9535a2a05f415b50068d9eac76c81b2f52774962
   cot_u1:
     status: pending_score_blind_cap_calibration
     branch: explicit_cot
