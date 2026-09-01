@@ -1889,3 +1889,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   pending; it does not reclassify the suggestive result as detected. The
   revised figure was visually inspected; final PNG/SVG SHA-256 values are
   `70eb297b...` / `46c2cee6...`.
+
+- 2026-09-01T10:34:00-07:00: A requested layer-wise endpoint weight diff is
+  authorized as a new, explicitly post-hoc descriptive appendix while the
+  second CoT seed trains. It does not reopen the registered Phase-7 mechanism
+  slice or the frozen fixed-weight inference ablations, consumes no GPU, and
+  cannot alter a primary conclusion. The analysis reports per-layer and
+  per-component update norms relative to exact M0 plus alignment between CoT
+  and Coconut update vectors. It must not be described as locating where the
+  capability damage "lives": weight movement is scale-dependent and is not
+  causal attribution. Expanded embedding matrices compare only vocabulary rows
+  present in public M0. A null or unstructured result is retained rather than
+  silently omitted. Latent substitution remains cut under the Aug 31 scope
+  freeze because no implementation/smoke test exists; token-mode readout
+  remains cut with the rest of Phase 7.
