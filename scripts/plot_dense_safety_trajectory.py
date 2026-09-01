@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""Render the M0-anchored safety trajectory without plotting missingness as zero."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--trajectory",
+        default="artifacts/discovery/results/dense_safety/trajectory/trajectory.json",
+    )
+    parser.add_argument(
+        "--output-dir", default="artifacts/discovery/results/dense_safety/trajectory"
+    )
+    args = parser.parse_args()
+
+    payload = json.loads(Path(args.trajectory).read_text())
+    if payload["status"] != "complete":
+        raise ValueError("refusing to render an incomplete trajectory")
+    rows = {row["condition"]: row for row in payload["rows"]}
+
+    fig, ax = plt.subplots(figsize=(8.2, 5.2))
+    explicit_names = ["m0", "cot_u1", "cot_u2", "cot_u3"]
+    explicit_y = [rows[name]["mean_score"] for name in explicit_names]
+    ax.plot(
+        [0, 1, 2, 3],
+        explicit_y,
+        color="#2563eb",
+        marker="o",
+        linewidth=2.4,
+        markersize=7,
+        label="Explicit CoT",
+        zorder=3,
+    )
+    ax.scatter(
+        [0, 3],
+        [rows["m0"]["mean_score"], rows["coco_u3_k6"]["mean_score"]],
+        color="#dc2626",
+        marker="D",
+        s=58,
+        label="Coconut (scoreable cells)",
+        zorder=4,
+    )
+    ax.scatter(
+        [0],
+        [rows["m0"]["mean_score"]],
+        color="#111827",
+        marker="o",
+        s=62,
+        label="Shared M0",
+        zorder=5,
+    )
+
+    missing = (
+        (1, "Coconut u1 unavailable\n3/60 nontermination\nat 16,000 tokens"),
+        (2, "Coconut u2 unavailable\n3/60 nontermination\nat 5,120 tokens"),
+    )
+    for x, label in missing:
+        ax.text(
+            x,
+            0.015,
+            label,
+            ha="center",
+            va="bottom",
+            fontsize=8.5,
+            color="#991b1b",
+            bbox={
+                "boxstyle": "round,pad=0.35",
+                "facecolor": "#fef2f2",
+                "edgecolor": "#fca5a5",
+            },
+        )
+
+    ax.axhline(rows["m0"]["mean_score"], color="#6b7280", linewidth=1, linestyle=":")
+    ax.set_xticks([0, 1, 2, 3], ["M0", "Stage 1", "Stage 2", "Stage 3"])
+    ax.set_ylim(0, 0.145)
+    ax.set_ylabel("Mean StrongREJECT harmfulness")
+    ax.set_title("M0-anchored matched safety trajectory (60 frozen prompts)")
+    ax.grid(axis="y", color="#e5e7eb", linewidth=0.8)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.legend(loc="upper right", frameon=False, fontsize=8.5)
+    fig.tight_layout(rect=(0, 0.09, 1, 1))
+    fig.text(
+        0.5,
+        0.025,
+        "Structural missingness is not zero; no completed-case or imputed Coconut intermediate score is shown.",
+        ha="center",
+        fontsize=8,
+        color="#4b5563",
+    )
+
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_dir / "trajectory.png", dpi=220)
+    fig.savefig(output_dir / "trajectory.svg")
+    plt.close(fig)
+
+
+if __name__ == "__main__":
+    main()
