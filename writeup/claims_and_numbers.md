@@ -43,8 +43,10 @@ load-bearing for termination but deleterious for capability in this run. The
 endpoint Coconut-minus-CoT harmfulness estimate was +0.01172 (paired-prompt
 bootstrap 95% CI [-0.02278, +0.04594]); this is an inconclusive null, not
 evidence of equivalence. Mid-training results suggest substrate-dependent
-trajectory structure, but their conservative uncertainty region crosses zero
-and the branches lack matched capability/coherence controls at that update.
+trajectory structure: the directional CoT u1 elevation and strictly positive
+pointwise CoT-minus-Coconut identified set appeared under both CoT seeds, but
+seed 43's M0 contrast and both conservative substrate regions cross zero. The
+branches also lack matched capability/coherence controls at that update.
 Post-hoc model diffing and token-mode readout add descriptive mechanism clues,
 not causal or faithful explanations.
 
@@ -55,8 +57,8 @@ not causal or faithful explanations.
 | Endpoint Coconut − CoT safety | registered primary substrate comparison | inconclusive null; equivalence not established |
 | Matched endpoint capability | required registered co-report | 61-point CoT advantage over our skip0 reproduction |
 | Coconut endpoint K=0 vs K=6 | registered fixed-weights primary | safety scalar undefined at K=0; latents load-bearing for termination but harmful to capability |
-| CoT safety trajectory | registered trajectory | transient single-seed u1 elevation |
-| CoT − Coconut at u1 | post-hoc bounded contrast on registered trajectory data | suggestive structure; not a detected 95% interaction |
+| CoT safety trajectory | registered trajectory plus post-hoc second-seed diagnostic | directional u1 elevation in both point estimates; only seed 42 excludes zero |
+| CoT − Coconut at u1 | post-hoc bounded contrast on registered trajectory data | both CoT-seed pointwise sets are positive; neither conservative region excludes zero |
 | Human audit | registered qualitative validation | coherence asymmetry; judge-deflation concern not demonstrated |
 | Weight diff | post hoc descriptive | update magnitude and alignment differ; no causal localization |
 | Token-mode readout | post hoc descriptive | period-two decodability; no faithfulness claim |
@@ -124,7 +126,7 @@ and the stage-3 Coconut capability summary recorded in
 | Update | explicit CoT | Coconut identified set | Coconut nontermination basis |
 |---|---:|---:|---|
 | M0 | 0.0880096555 | same M0 | none |
-| u1 | 0.1267296394 | [0.0509530584, 0.0842863917] | fresh bounds run: 2/60; score-blind calibration: 3/60 through 16k |
+| u1 | seed 42: 0.1267296394; seed 43: 0.1135835012 | [0.0509530584, 0.0842863917] | fresh bounds run: 2/60; score-blind calibration: 3/60 through 16k |
 | u2 | 0.0948836009 | [0.0836456140, 0.1336456140] | 3/60 at 5,120 |
 | u3 | 0.0934414268 | 0.1051624656 | 0/60 |
 
@@ -133,20 +135,29 @@ The Coconut bounds assign each missing outcome the theoretical assay extremes
 nonterminations does not retroactively make the original 3/60 calibration pass
 the strict `<5%` rule and does not authorize a point estimate.
 
-CoT u1 − M0: +0.0387199839, paired-prompt bootstrap 95% CI
-[+0.0006073858, +0.0772292611]. Three endpoints were inspected; no
-multiplicity adjustment was applied.
+CoT u1 − M0:
+
+- seed 42: +0.0387199839, paired-prompt bootstrap 95% CI
+  [+0.0006073858, +0.0772292611];
+- seed 43: +0.0255738457, paired-prompt bootstrap 95% CI
+  [-0.0092438617, +0.0612922352].
+
+The observed seed-43-minus-seed-42 difference is -0.0131461382, paired-prompt
+95% CI [-0.0454932489, +0.0190783025]. This is not a seed confidence interval.
+Three seed-42 endpoints were inspected; no multiplicity adjustment was applied.
 
 At u1, CoT − Coconut:
 
-- pointwise identified set: [+0.0424432476, +0.0757765810];
-- lower-endpoint 95% CI: [-0.0214918616, +0.0997356698];
-- upper-endpoint 95% CI: [+0.0331138500, +0.1200593761];
-- conservative confidence region: [-0.0214918616, +0.1200593761].
+- seed-42 pointwise identified set: [+0.0424432476, +0.0757765810];
+  conservative confidence region: [-0.0214918616, +0.1200593761];
+- seed-43 pointwise identified set: [+0.0292971094, +0.0626304428];
+  conservative confidence region: [-0.0339444330, +0.1008435236].
 
 Provenance:
 `artifacts/discovery/results/dense_safety/trajectory/trajectory.json` and
-`artifacts/discovery/results/dense_safety/trajectory/cot_minus_coconut_u1_bounded_bootstrap.json`.
+`artifacts/discovery/results/dense_safety/trajectory/cot_minus_coconut_u1_bounded_bootstrap.json`,
+plus
+`artifacts/discovery/results/matched_4b_cot_seed43/cot_u1_seed_comparison.json`.
 
 ### Coconut capability/coherence trajectory
 
@@ -212,35 +223,41 @@ K=0 is an inference-only necessity ablation and is out-of-distribution for a
 skip0-trained endpoint. Do not complete-case score it, impute a safety scalar,
 or describe nontermination as a missing experiment.
 
-### Claim 4 — explicit-CoT safety elevation was transient and single-seed
+### Claim 4 — the directional explicit-CoT u1 elevation appears under two seeds
 
 Approved wording:
 
-> The explicit-CoT trajectory rose from 0.08801 at M0 to 0.12673 at u1, then
-> returned to 0.09488 at u2 and 0.09344 at u3. The paired-prompt u1-minus-M0
-> interval was [+0.00061, +0.07723]. This is a transient within-run elevation;
-> it comes from one training seed, three checkpoints were examined without a
-> multiplicity correction, and the interval captures prompt rather than seed
-> variation.
+> The explicit-CoT u1 mean exceeded M0 under both training seeds: 0.12673 for
+> seed 42 and 0.11358 for seed 43, versus 0.08801 at M0. Their paired-prompt
+> contrasts were +0.03872 [0.00061, 0.07723] and +0.02557 [-0.00924, 0.06129],
+> respectively. Thus the directional elevation recurred in the second point
+> estimate, but only seed 42's prompt-level interval excluded zero. The observed
+> seed-43-minus-seed-42 difference was -0.01315 [-0.04549, 0.01908].
 
 “Early format shock” may appear only as a labeled hypothesis, not an
-explanation. Update this card only after the seed-43 pipeline is complete.
+explanation. Seed 42 returned near M0 at u2/u3; seed 43 was evaluated only at
+u1. These intervals represent prompt uncertainty, not training-seed
+uncertainty, and three seed-42 checkpoints were inspected without multiplicity
+correction.
 
 ### Claim 5 — u1 has suggestive bounded substrate structure, not a detected interaction
 
 Approved wording:
 
-> At u1, the CoT-minus-Coconut contrast had a strictly positive pointwise
-> identified set, [+0.04244, +0.07578], after assigning Coconut's
-> nonterminating outcomes the theoretical score extremes 0 and 1. However,
-> its conservative confidence region, [-0.02149, +0.12006], crossed zero.
-> This is suggestive transient substrate-dependent trajectory structure, not
-> a detected 95% interaction.
+> At u1, the CoT-minus-Coconut pointwise identified set was strictly positive
+> under both CoT seeds: [+0.04244, +0.07578] for seed 42 and
+> [+0.02930, +0.06263] for seed 43, assigning Coconut's two nonterminating
+> outcomes the theoretical score extremes 0 and 1. Both conservative regions
+> crossed zero (seed 42: [-0.02149, +0.12006]; seed 43:
+> [-0.03394, +0.10084]). The directional substrate pattern therefore repeats
+> across the two CoT point estimates, but it is not a detected 95% interaction.
 
 Mandatory context: Coconut-u1 K=2 GSM8K was 65.5%, and its blind coherence
 mean was 1.3/2 with 4/10 fully coherent outputs. There is no matched native
 CoT-u1 capability or human-coherence control, so the safety contrast cannot
-be presented as unconfounded. Coconut u1/u2 are bound bars, not points.
+be presented as unconfounded. The same single Coconut seed anchors both
+comparisons, so this does not estimate Coconut seed variability. Coconut u1/u2
+are bound bars, not points.
 
 ### Claim 6 — the human audit reveals asymmetry, but not judge-score deflation
 
@@ -349,25 +366,19 @@ direction claim) must be verified against the source paper or vendored repo
 before it enters a draft — never cited from memory. Directional consistency
 with the Coconut paper may be claimed only after that check.
 
-## Pending evidence not yet claimable
+## Second-seed diagnostic
 
-The seed-43 explicit-CoT u1 checkpoint exists, but no completed, committed
-official safety result is included in the evidence cutoff. Score-blind length
-calibration selected 4,096 tokens: 2,048 produced 3/60 projected truncations
-(exactly 5.0%, failing the strict `<5%` rule), while 4,096 produced 0/60.
-Therefore:
+Seed 43 is a completed post-hoc noise-floor diagnostic, not a second registered
+primary. Its official 60-prompt generation used a mechanically selected
+4,096-token cap and had zero truncations. Score-blind calibration rejected
+2,048 at exactly 3/60 projected truncations (5.0%, failing the strict `<5%`
+rule) and selected 4,096 at 0/60.
 
-- Claims 4 and 5 remain based on the primary seed only.
-- Do not say that the u1 elevation replicated or failed to replicate.
-- When the frozen evaluation completes, add its mean, prompt-level interval,
-  and comparison with seed 42 here regardless of direction.
-- Treat the result as a second-seed noise-floor diagnostic. Two CoT seeds do
-  not yield a seed confidence interval, and there is no second Coconut seed.
-
-Checkpoint provenance is in
-`artifacts/discovery/results/matched_4b_cot_seed43/stage1/`; cap provenance is
-in the adjacent `safety_cap_calibration_stage1/` directory. Operational status
-and the evaluation chain remain solely in `research_log.md`.
+Use Claims 4 and 5 for interpretation. Two CoT seeds do not yield a seed
+confidence interval, and the shared single Coconut seed prevents claims about
+Coconut seed variability. Provenance is under
+`artifacts/discovery/results/matched_4b_cot_seed43/`; operational chronology
+remains solely in `research_log.md`.
 
 ## Power and frozen scope
 
@@ -406,7 +417,7 @@ are future work unless explicitly reopened in a dated amendment.
 - Never treat completed outputs as if termination were pre-treatment.
 - Never present coherent-only scoring as a corrected estimate.
 - Never turn prompt-bootstrap intervals into across-seed uncertainty.
-- Never call the seed-43 run a seed CI.
+- Never call the seed-43 run a seed CI or an independent 95% replication.
 - Never claim the readout is faithful, causal, monitorable, or content-free.
 - Never claim the layer diff localizes where capability was damaged.
 - Never generalize from “our skip0 reproduction” to Coconut as a method class.
@@ -444,8 +455,8 @@ endpoint safety comparison's registered-primary status.
 
 Plot all updates. CoT uses points; Coconut u1/u2 use identified-set bound bars.
 Give the CoT-u1 interval, the u1 bounded substrate contrast, multiplicity and
-single-seed cautions, and mandatory u1 capability/coherence context. Incorporate
-seed 43 only after the full pending chain finishes.
+seed-role cautions, and mandatory u1 capability/coherence context. Show seed 43
+as a separate u1-only point and give both bounded substrate regions.
 
 ### 6. Human validation and measurement limitations
 
@@ -469,7 +480,8 @@ detection from evidence of absence.
 
 ### 9. Limitations and next experiments
 
-List one primary seed per branch, n=60 safety prompts, prompt-level CIs,
+List one primary seed per branch plus the post-hoc CoT seed, n=60 safety
+prompts, prompt-level CIs rather than seed CIs,
 nontermination, missing matched u1 capability/coherence controls, inaccessible
 public checkpoints, and post-hoc interpretability analyses. Highest-value future
 tests: slot-aware latent substitution (mean/noise/A↔B swap), alternate
@@ -482,8 +494,9 @@ powered safety assay.
    range and nontermination annotation.
 2. Endpoint safety forest/equivalence plot: M0 context; Coconut−CoT estimate
    and CI; frozen ±0.01995 margin.
-3. Full safety trajectory: CoT dots/line; Coconut u1/u2 vertical bound bars;
-   u1 contrast uncertainty; nontermination counts.
+3. Full safety trajectory: seed-42 CoT dots/line; seed-43 u1-only marker;
+   Coconut u1/u2 vertical bound bars; both u1 contrast regions;
+   nontermination counts.
 4. Human audit table: behavior and coherence counts plus judge-vs-human check.
 5. Appendix weight-diff plot: relative norms and cosine alignment, explicitly
    descriptive.
@@ -499,7 +512,8 @@ powered safety assay.
 - [ ] K=0 safety remains undefined.
 - [ ] Prompt uncertainty is not described as seed uncertainty.
 - [ ] Capability/coherence/termination context accompanies safety comparisons.
-- [ ] Seed-43 text is updated only after its complete frozen pipeline.
+- [ ] Seed 43 is labeled a noise-floor diagnostic, not a seed CI or independent
+      95% replication.
 - [ ] Exploratory analyses are labeled post hoc.
 - [ ] Readout text says decodability only.
 - [ ] Layer-diff text makes no causal localization claim.

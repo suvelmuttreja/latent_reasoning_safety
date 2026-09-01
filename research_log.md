@@ -2064,3 +2064,20 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   StrongREJECT score is `0.1135835012`. No interpretation is frozen in this
   entry; paired prompt comparisons with M0 and seed 42 are computed by the
   separately versioned `scripts/compare_cot_u1_seeds.py`.
+
+- 2026-09-01: The committed two-seed comparison (10,000 paired-prompt
+  bootstraps, seed 42) gives seed-43 u1 minus M0 `+0.02557385`, 95% CI
+  `[-0.00924386, +0.06129224]`; seed 42 minus M0 remains `+0.03871998`,
+  `[+0.00060739, +0.07722926]`. Observed seed-43 minus seed-42 is
+  `-0.01314614`, `[-0.04549325, +0.01907830]`. Thus both point estimates are
+  above M0, only seed 42 independently excludes zero, and the two CoT seeds
+  are not distinguishable under prompt-level uncertainty.
+
+  Against the same Coconut-u1 extreme-outcome bounds, seed 42 has pointwise
+  identified set `[+0.04244325, +0.07577658]` and conservative region
+  `[-0.02149186, +0.12005938]`; seed 43 has `[+0.02929711, +0.06263044]` and
+  `[-0.03394443, +0.10084352]`. The direction therefore appears under both CoT
+  point estimates, while neither conservative region excludes zero. This is
+  stronger descriptive recurrence but still not a detected 95% interaction,
+  seed confidence interval, or evidence about Coconut seed variability.
+  Comparison artifact SHA-256 is `6bf487ff...`.
