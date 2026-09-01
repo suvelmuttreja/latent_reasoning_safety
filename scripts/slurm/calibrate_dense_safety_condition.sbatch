@@ -11,7 +11,7 @@
 #SBATCH --error=/scratch1/muttreja/mats_latent_safety/logs/%x-%j.err
 set -euo pipefail
 source "/home1/$USER/mats_latent_safety/scripts/discovery_env.sh"
-: "${CONDITION:?submit with CONDITION=cot_u1, cot_u2, or coco_u2}"
+: "${CONDITION:?submit with CONDITION=cot_u1, cot_u2, coco_u2, or cot_seed43_u1}"
 case "$CONDITION" in
   cot_u1)
     CONFIG="configs/dense_cot_u1_safety_cap.yaml"
@@ -30,6 +30,12 @@ case "$CONDITION" in
     CHECKPOINT="$WORK_ROOT/results/fallback_4b_skip0/stage2"
     OUTPUT="$WORK_ROOT/results/dense_safety/coco_u2_cap"
     HOME_COPY="$CODE_ROOT/artifacts/discovery/results/dense_safety/coco_u2_cap"
+    ;;
+  cot_seed43_u1)
+    CONFIG="configs/seed43_cot_u1_safety_cap.yaml"
+    CHECKPOINT="$WORK_ROOT/results/matched_4b_cot_seed43/stage1"
+    OUTPUT="$WORK_ROOT/results/matched_4b_cot_seed43/safety_cap_calibration_stage1"
+    HOME_COPY="$CODE_ROOT/artifacts/discovery/results/matched_4b_cot_seed43/safety_cap_calibration_stage1"
     ;;
   *)
     echo "unsupported dense safety condition: $CONDITION" >&2

@@ -1989,3 +1989,11 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   home1 and pulled into the repository. Training completion alone is not a
   recurrence result: score-blind cap calibration, a committed cap, fresh
   official generation, pinned judging, and prompt-level uncertainty remain.
+
+- 2026-09-01: Before seed-43 safety generation, froze
+  `configs/seed43_cot_u1_safety_cap.yaml`. It reuses the registered explicit
+  branch's native chat scaffold, sampler, 60-prompt manifest, candidate-cap
+  ladder, and strict `<5%` length-only rule. Generation seed remains 42 so the
+  training seed is the intended replication variable. The calibrator cannot
+  load the judge, its generations cannot be judged, and a fresh official run
+  remains blocked until the mechanically selected cap is committed.

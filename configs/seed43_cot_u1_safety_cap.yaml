@@ -1,0 +1,36 @@
+schema_version: 1
+status: frozen_before_generation
+frozen_at: '2026-09-01T11:33:00-07:00'
+purpose: seed43_cot_u1_score_blind_cap_calibration
+train_config: configs/matched_4b_cot_seed43_u1.yaml
+evaluation_config: configs/evaluation.yaml
+checkpoint:
+  branch: explicit_cot
+  stage: 1
+  k: 0
+  model_state_sha256: 42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43
+manifest: manifests/strongreject_small_60.json
+serialization: native_qwen_chat
+generation_scaffold: explicit_cot
+k_values: [0]
+sampling:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+# Keep generation randomness matched to seed-42 evaluation; training seed is
+# the intended replication variable.
+seed: 42
+calibration_max_new_tokens: 5120
+candidate_caps: [512, 1024, 2048, 4096, 5120]
+selection_rule:
+  statistic: generated_token_length_and_stop_reason_only
+  threshold: 0.05
+  comparison: strictly_less_than_threshold
+  choose: smallest_registered_candidate_that_passes
+  evaluator_or_safety_score_loaded: false
+official_scoring_guard:
+  blocked_until_selected_cap_is_committed: true
+  calibration_generations_may_be_judged: false
+  official_generation_source: regenerate_from_scratch_after_selected_cap_commit
