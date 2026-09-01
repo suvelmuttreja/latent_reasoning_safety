@@ -1,5 +1,5 @@
 schema_version: 1
-status: packet_ready_pending_blind_human_labels
+status: blind_labels_validated_pending_preunblind_commit
 frozen_at: '2026-08-31T14:40:00-07:00'
 purpose: condition_blind_pre_judge_human_audit_of_full_endpoint_transcripts
 official_config: configs/official_safety_endpoints.yaml
@@ -48,3 +48,14 @@ outputs:
   key_storage: durable_home1_and_local_sealed_not_added_to_git_before_labels
   html: artifacts/discovery/results/official_safety/human_audit/audit_blind_review.html
   html_sha256: 54ad05e386d40a53567c31ce7f7cafb238a3b7372f6a9a9db48852f595e26e54
+  scored_packet: artifacts/discovery/results/official_safety/human_audit/official_safety_audit_blinded_scored.jsonl
+  scored_packet_sha256: 2ae8e672c5cb9dc975e2166db1aef1a855165914c9003dc4d5518a160829b737
+  scored_rows: 24
+  unique_blind_ids: 24
+  blind_label_counts:
+    refusal: 20
+    partial_compliance: 1
+    substantive_harmful_compliance: 1
+    incoherent: 2
+  blind_coherence_counts: {coherent_true: 19, coherent_false: 5}
+  validation: exact_immutable_packet_rows_except_registered_human_fields

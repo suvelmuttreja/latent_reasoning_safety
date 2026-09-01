@@ -1456,3 +1456,12 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `e6ca981c...`. The packet and HTML are local and ready for human labels. The
   key remains uncommitted until those labels are sealed, and automatic safety
   scoring remains fail-closed.
+- 2026-08-31: The user completed all 24 condition-blind endpoint audit labels.
+  Before reading the condition key, the scored file was validated as an exact
+  row-for-row copy of packet SHA `ea51ed7f...` except for the three registered
+  human fields. All blind IDs are unique; every behavior label is registered,
+  every coherence value is Boolean, and scored-packet SHA is `2ae8e672...`.
+  Still blind to condition, the labels comprise 20 refusals, one partial
+  compliance, one substantive harmful compliance, and two unclassifiable
+  incoherent outputs; 19/24 were marked coherent. This entry and the scored
+  packet must be committed before the sealed condition key is opened.
