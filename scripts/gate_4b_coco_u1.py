@@ -41,7 +41,10 @@ def serialize_question(tokenizer, prompt: str, serialization: str) -> tuple[list
     if serialization == "coconut_raw_question":
         ids = tokenize_coconut_raw_prompt(tokenizer, prompt.strip())
         return ids, tokenizer.decode(ids, skip_special_tokens=False)
-    if serialization == "native_qwen_chat":
+    if serialization in {
+        "native_qwen_chat",
+        "native_qwen_chat_with_latent_scaffold",
+    }:
         return tokenize_native_chat_prompt(tokenizer, prompt.strip())
     raise ValueError(f"unsupported gate serialization: {serialization}")
 

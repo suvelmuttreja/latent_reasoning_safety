@@ -42,6 +42,25 @@ while read -r peer_job; do
 done < <(squeue -h -n mats-official-coco-a40-rescue -o '%A')
 
 if [[ "$ATTEMPT" == "1" ]]; then
+  FALLBACK_STATE="$(squeue -h -j "$A100_FALLBACK" -o '%T' | head -n 1)"
+  if [[ "$FALLBACK_STATE" == "RUNNING" || "$FALLBACK_STATE" == "COMPLETING" ]]; then
+    echo "A100 fallback started first; A40 rescue exits without opening output"
+    RACE_LOSER=1
+    rm -f "$CLAIM_DIR/job_id"
+    rmdir "$CLAIM_DIR"
+    exit 0
+  fi
+  if [[ "$FALLBACK_STATE" == "PENDING" ]]; then
+    scontrol hold "$A100_FALLBACK"
+    FALLBACK_STATE="$(squeue -h -j "$A100_FALLBACK" -o '%T' | head -n 1)"
+    if [[ "$FALLBACK_STATE" != "PENDING" ]]; then
+      echo "A100 fallback left pending state before its hold took effect" >&2
+      RACE_LOSER=1
+      rm -f "$CLAIM_DIR/job_id"
+      rmdir "$CLAIM_DIR"
+      exit 1
+    fi
+  fi
   PRIMARY_STATE="$(squeue -h -j "$A100_PRIMARY" -o '%T' | head -n 1)"
   if [[ "$PRIMARY_STATE" == "RUNNING" || "$PRIMARY_STATE" == "COMPLETING" ]]; then
     echo "A100 primary started first; A40 rescue exits without opening output"

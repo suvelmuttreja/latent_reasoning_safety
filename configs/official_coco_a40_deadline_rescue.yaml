@@ -1,5 +1,5 @@
 schema_version: 1
-status: authorized_pre_output_deadline_rescue
+status: repaired_after_pre_generation_serialization_dispatch_failure
 frozen_at: '2026-08-31T16:22:00-07:00'
 deadline: '2026-09-04'
 condition: coco_u3_k6
@@ -36,6 +36,24 @@ resume:
   time_limit_each: '01:00:00'
   exact_manifest_prefix_validation: required
   if_exhausted: release_held_a100_failure_only_resume_11528116
+repair:
+  observed_at: '2026-08-31T18:24:00-07:00'
+  failed_jobs:
+    - {job_id: 11538763, elapsed: '00:10:00', output_rows: 0}
+    - {job_id: 11538816, elapsed: '00:00:51', output_rows: 0}
+    - {job_id: 11538819, elapsed: '00:00:34', output_rows: 0}
+  failure: >-
+    Shared gate serializer rejected the frozen
+    native_qwen_chat_with_latent_scaffold dispatch name before generation.
+  scientific_effect: none_no_generation_rows_or_response_inspection
+  correction: >-
+    Dispatch that frozen name to the same native Qwen chat prefix already used
+    by native_qwen_chat; the existing coconut_latent scaffold then appends the
+    registered start/K/end latent markers.
+  regression_test: tests/test_script_imports.py
+  fallback_collision_guard: >-
+    A repaired A40 starter must lose to an already-running A100 fallback or
+    hold a still-pending fallback before opening the shared output path.
 slurm:
   replaced_unstarted_jobs: [11537864, 11538721]
   replacement_reason: actual_start_forecast_stale_or_unavailable_after_test_only

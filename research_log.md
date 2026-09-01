@@ -1404,3 +1404,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   A100 path or opening official outputs. A short winner may persist a partial
   prefix and submit the next bounded attempt. This is queue-latency hedging,
   not duplicate generation, and no response content is inspected.
+- 2026-08-31T18:24:00-07:00: A40 candidate `11538763` started first at
+  16:34:13, atomically cancelled the still-pending A100 primary and its A40
+  peer, and loaded the frozen base/checkpoint on A40. It then failed before
+  generation because the reused gate serializer rejected the frozen official
+  dispatch name `native_qwen_chat_with_latent_scaffold`. Automatic attempts
+  `11538816` and `11538819` reproduced the same error; all three wrote zero
+  generation rows, so no response content or score was available and the
+  scientific cache remains absent. The missing dispatch now maps to the
+  already-tested native Qwen chat prefix; the separately frozen
+  `coconut_latent` scaffold continues to append the registered start/K=6/end
+  markers. A regression test verifies this exact path. The repaired rescue
+  also treats the released A100 fallback as a race participant: it loses if
+  that fallback is running, otherwise holds it before opening the shared path.
+  Checkpoint, prompts/order, seeds, sampler, cap, and estimand are unchanged.
