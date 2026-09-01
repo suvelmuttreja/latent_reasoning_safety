@@ -19,6 +19,9 @@ conditions:
     authorization_basis: >-
       dated_post_result_estimand_clarification_fresh_official_generation_for_bounds_only;
       no_registered_cap_passed_and_no_scalar_point_estimate_is_authorized
+    job_id: 11588972
+    submitted_at: '2026-09-01T07:46:00-07:00'
+    submission_state: pending_priority
   coco_u2_k4:
     branch: coconut_skip0
     train_config: configs/fallback_4b_skip0.yaml
@@ -33,6 +36,9 @@ conditions:
     authorization_basis: >-
       dated_post_result_estimand_clarification_fresh_official_generation_for_bounds_only;
       no_registered_cap_passed_and_no_scalar_point_estimate_is_authorized
+    job_id: 11588973
+    submitted_at: '2026-09-01T07:46:00-07:00'
+    submission_state: pending_priority
   cot_u1:
     branch: explicit_cot
     train_config: configs/matched_4b_cot.yaml

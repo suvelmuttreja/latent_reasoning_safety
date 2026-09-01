@@ -173,3 +173,13 @@ launch_order_after_active_controls:
   - fresh_official_generations_for_passing_conditions
   - same_frozen_judge_scores_and_m0_anchored_figure
   - second_cot_seed_only_after_trajectory_is_locked
+automatic_finalization:
+  job_id: 11589620
+  dependency: afterok:11588974:11588975
+  outputs:
+    - artifacts/discovery/results/dense_safety/trajectory/trajectory.json
+    - artifacts/discovery/results/dense_safety/trajectory/trajectory.csv
+    - artifacts/discovery/results/dense_safety/trajectory/trajectory.md
+    - artifacts/discovery/results/dense_safety/trajectory/trajectory.png
+    - artifacts/discovery/results/dense_safety/trajectory/trajectory.svg
+  user_completion_message_required: false

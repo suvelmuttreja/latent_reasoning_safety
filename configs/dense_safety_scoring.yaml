@@ -19,6 +19,8 @@ conditions:
     scoring_status: authorized_bounds_only
     point_estimate_authorized: false
     calibration_generations_prohibited: true
+    score_job: 11588974
+    dependency: afterok:11588972
   coco_u2_k4:
     generations: artifacts/discovery/results/dense_safety/coco_u2_k4/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/coco_u2_k4_bounds.json
@@ -26,6 +28,8 @@ conditions:
     scoring_status: authorized_bounds_only
     point_estimate_authorized: false
     calibration_generations_prohibited: true
+    score_job: 11588975
+    dependency: afterok:11588973
   cot_u1:
     generations: artifacts/discovery/results/dense_safety/cot_u1/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/cot_u1.json

@@ -1782,3 +1782,27 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   scratch1, so the capability result is framed as our reproduction of the
   published skip0 schedule; skip0-specificity versus full Coconut cannot be
   tested without new training.
+
+- 2026-09-01T07:50:48-07:00: The bounds-only amendment was committed and
+  pushed as `aceca77` before fresh outputs existed; the paired-CI/write-up
+  qualification followed as `94f77f9`, and automatic finalization as
+  `7c28257`. Discovery's checkout was found to have an old Git ref despite
+  later synchronized working files. Before submission, the complete Git history
+  was imported from a verified bundle, the ref was advanced without overwriting
+  result directories, and every relevant on-disk job file was blob-matched to
+  the committed version. Focused Discovery tests passed (13/13); a broader
+  import-only test hit an environment-level Python segfault and was not used as
+  evidence, while the complete local suite had already passed 85/85.
+
+  Fresh evaluator-blind official generation jobs `11588972` (coco-u1 K2,
+  16,000-token ceiling) and `11588973` (coco-u2 K4, 5,120-token ceiling) were
+  submitted concurrently on A40s into distinct, pre-verified-clear scratch and
+  home1 paths. Bounds-only pinned-judge jobs `11588974/11588975` depend directly
+  on successful generation. CPU finalizer `11589620` depends on both scores and
+  will rebuild the JSON/CSV/Markdown trajectory plus PNG/SVG figure
+  automatically; no user completion message is required to advance the chain.
+  At logging, generation jobs were pending for priority with same-day Slurm
+  forecasts. Non-submitting tests forecast September 3 for L40S and both A100
+  classes, so A40 was retained as both earlier and consistent with the existing
+  official trajectory. The second CoT seed remains after the locked figure, as
+  registered, and is not allowed to delay these bounds.
