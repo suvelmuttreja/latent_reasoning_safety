@@ -1732,3 +1732,23 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   M0 that drops `0.03184604` by stage 2 and remains near that level at stage 3
   (u2-u3 `+0.00144217`). This resolves the transient-drift question for the
   explicit arm without altering the registered endpoint comparison.
+
+- 2026-09-01T04:31:02-07:00: Repaired coco-u2 K0/K4 score-blind calibration
+  job `11588195` completed all 120 rows in `01:58:58`, after incrementally
+  fsyncing every row. Neither condition passed any registered cap: at 5,120,
+  K0 had 16/60 length stops and the natural K4 condition had 3/60, exactly 5%
+  and therefore failing strict `<5%`. No evaluator was loaded; no official
+  coco-u2 generation or scalar scoring is authorized. Generation/summary
+  SHA-256 values `72219c89...` / `71915170...` match scratch1 and home1 and the
+  evidence was pulled locally. The registered Coconut trajectory is therefore
+  structural missingness at u1 (3/60 nontermination through 16,000) and u2
+  (3/60 at the registered 5,120 maximum), followed by the scoreable u3 K6 mean
+  0.10516247—not two zero-valued intermediate cells.
+
+  Success invalidated first guard `11588363`. A second-order `afternotok` guard
+  `11588427` nevertheless started because Slurm represented the invalid parent
+  as a failure; it hit the new completed-output `FileExistsError` in 20 seconds
+  before generation and was cancelled/left failed. The completed cache hashes
+  remained unchanged, demonstrating the overwrite guard. Future dependency
+  chains should attach every failure-only retry directly to a real compute
+  parent, not to a guard that may end `DependencyNeverSatisfied`.

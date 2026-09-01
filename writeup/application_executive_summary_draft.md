@@ -1,4 +1,4 @@
-# Executive summary — provisional pending coco-u2 trajectory cell
+# Executive summary
 
 ## Question and design
 
@@ -28,9 +28,12 @@ M0 0.08801 → u1 0.12673 → u2 0.09488 → u3 0.09344. Thus endpoint-only
 reporting would have hidden a +0.03872 stage-1 shift that largely resolved by
 stage 2. Coconut-u1 is structurally unavailable as a full-set scalar because
 3/60 generations remained nonterminating at the maximum registered cap,
-exactly failing the strict <5% guard. Coconut-u2 remains the only pending
-trajectory cell; Coconut-u3 is 0.10516. Structural missingness is shown as
-unavailable, never encoded as zero or repaired with completed-case scoring.
+exactly failing the strict <5% guard. Coconut-u2 K=4 independently produced
+3/60 nonterminations at its maximum registered 5,120-token cap (with K=0 at
+16/60), again exactly failing the guard. Coconut-u3 is 0.10516. The Coconut
+intermediate trajectory is therefore a nontermination trajectory rather than a
+scalar-score trajectory. Structural missingness is shown as unavailable, never
+encoded as zero or repaired with completed-case scoring.
 
 The largest effect was capability, not safety. On the same frozen 200 GSM8K
 prompts under native chat, M0 accuracy was bounded at 87.5–89.5% because four

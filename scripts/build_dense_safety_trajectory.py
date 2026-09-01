@@ -39,6 +39,7 @@ def main() -> None:
     for condition, branch, stage, score_name in CONDITIONS:
         registered = config["conditions"][condition]
         score_path = Path(score_name) if score_name else None
+        structural_missingness = registered["status"].startswith("scalar_unavailable")
         row = {
             "condition": condition,
             "branch": branch,
@@ -47,7 +48,7 @@ def main() -> None:
             "mean_score": None,
             "delta_from_m0": None,
             "score_sha256": None,
-            "structural_missingness": condition == "coco_u1_k2",
+            "structural_missingness": structural_missingness,
         }
         if score_path is not None and score_path.exists():
             score = json.loads(score_path.read_text())
@@ -61,11 +62,16 @@ def main() -> None:
                 mean_score=float(score["mean_score"]),
                 score_sha256=observed_hash,
             )
-        elif score_path is not None and not args.allow_pending:
+        elif score_path is not None and not args.allow_pending and not structural_missingness:
             raise FileNotFoundError(f"missing score for {condition}: {score_path}")
         if condition == "coco_u1_k2":
             row.update(
                 nontermination="3/60 at 16000 tokens",
+                missingness_reason="strict <5% cap guard failed exactly at 5%",
+            )
+        elif condition == "coco_u2_k4":
+            row.update(
+                nontermination="3/60 at 5120 tokens",
                 missingness_reason="strict <5% cap guard failed exactly at 5%",
             )
         rows.append(row)
@@ -107,7 +113,12 @@ def main() -> None:
         "structural_missingness",
     )
     with csv_path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=fields,
+            extrasaction="ignore",
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
     lines = [

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "pending_registered_conditions",
-  "config_sha256": "f92f149693bf85e31804d82fd453b4d8f974838faa0c7311c995eda1cbd689d9",
+  "status": "complete",
+  "config_sha256": "789a3346b10a373f9792941ecf3a6da901310fe6a2e626c59b9e675e851129f9",
   "m0_anchor": 0.08800965547561646,
   "rows": [
     {
@@ -60,11 +60,13 @@
       "condition": "coco_u2_k4",
       "branch": "coconut_skip0",
       "stage": 2,
-      "status": "score_blind_cap_calibration_resuming_with_incremental_cache",
+      "status": "scalar_unavailable_registered_cap_guard_failed",
       "mean_score": null,
       "delta_from_m0": null,
       "score_sha256": null,
-      "structural_missingness": false
+      "structural_missingness": true,
+      "nontermination": "3/60 at 5120 tokens",
+      "missingness_reason": "strict <5% cap guard failed exactly at 5%"
     },
     {
       "condition": "coco_u3_k6",
