@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import statistics
 from pathlib import Path
 
@@ -12,13 +13,21 @@ import torch
 import yaml
 from transformers import AutoTokenizer
 
-from gate_4b_coco_u1 import generate, read_manifest, write_jsonl
+from gate_4b_coco_u1 import generate, read_manifest
 from mats_latent_safety.cap_calibration import select_smallest_cap_by_k_or_none
 from mats_latent_safety.cap_calibration import select_smallest_cap_or_none
+from mats_latent_safety.cap_calibration import validate_partial_calibration_prefix
 from mats_latent_safety.hashing import sha256_file, sha256_json
 from mats_latent_safety.runtime import git_revision, slurm_job_id
 from mats_latent_safety.serialization import ensure_latent_tokens
 from train_4b_skip0_stage import load_model
+
+
+def append_row(path: Path, row: dict) -> None:
+    with path.open("a") as handle:
+        handle.write(json.dumps(row) + "\n")
+        handle.flush()
+        os.fsync(handle.fileno())
 
 
 def main() -> None:
@@ -62,9 +71,19 @@ def main() -> None:
         raise ValueError("checkpoint lacks durable model/tokenizer evidence")
 
     output_dir = Path(args.output_dir)
-    if output_dir.exists() and any(output_dir.iterdir()):
-        raise FileExistsError("refusing to overwrite safety-cap calibration")
     output_dir.mkdir(parents=True, exist_ok=True)
+    rows_path = output_dir / "generations.jsonl"
+    partial_path = output_dir / "generations.partial.jsonl"
+    summary_path = output_dir / "summary.json"
+    if rows_path.exists() or summary_path.exists():
+        raise FileExistsError("refusing to overwrite completed safety-cap calibration")
+    unexpected_outputs = [
+        path for path in output_dir.iterdir() if path != partial_path
+    ]
+    if unexpected_outputs:
+        raise FileExistsError(
+            f"refusing calibration output directory with unexpected files: {unexpected_outputs}"
+        )
     code_revision = git_revision()
     manifest_path = Path(config["manifest"])
     records = read_manifest(manifest_path)
@@ -75,6 +94,7 @@ def main() -> None:
     }
     if "generation_scaffold" in config:
         settings["scaffold_kind"] = config["generation_scaffold"]
+    settings_sha256 = sha256_json(settings)
     if settings.get("scaffold_kind") == "explicit_cot" and config["k_values"] != [0]:
         raise ValueError("explicit-CoT calibration requires exactly k_values: [0]")
     prior_rows = []
@@ -105,6 +125,28 @@ def main() -> None:
         if observed_length_stops != continuation["parent_length_stops_by_k"]:
             raise ValueError("prior length-stop counts differ from continuation config")
 
+    grid = [
+        (int(k), index, record)
+        for k in config["k_values"]
+        for index, record in enumerate(records)
+    ]
+    partial_rows = (
+        [json.loads(line) for line in partial_path.read_text().splitlines() if line]
+        if partial_path.exists()
+        else []
+    )
+    validate_partial_calibration_prefix(
+        partial_rows,
+        [
+            {"k": k, "prompt_id": record["id"], "prompt_sha256": record["sha256"]}
+            for k, _, record in grid
+        ],
+        model_id=train["model_id"],
+        model_revision=train["model_revision"],
+        checkpoint_sha256=checkpoint_hash,
+        partial_run_config_sha256=settings_sha256,
+    )
+
     tokenizer = AutoTokenizer.from_pretrained(train["model_id"], revision=train["model_revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -114,66 +156,74 @@ def main() -> None:
     load_result = model.load_state_dict(state, strict=True)
     model.eval()
 
-    rows = []
+    rows = list(partial_rows)
     reused_rows = 0
     extended_rows = 0
     decoded_prefix_matches = 0
-    for k in config["k_values"]:
-        for index, record in enumerate(records):
-            prior = prior_by_key.get((int(k), record["id"]))
-            if prior is not None:
-                if (
-                    prior["prompt_sha256"] != record["sha256"]
-                    or prior["model_id"] != train["model_id"]
-                    or prior["model_revision"] != train["model_revision"]
-                    or prior["serialization"] != config["serialization"]
-                ):
-                    raise ValueError("prior calibration provenance differs from continuation")
-                if prior["stop_reason"] != "length":
-                    reused = dict(prior)
-                    reused["calibration_source"] = "prior_completed_generation"
-                    rows.append(reused)
-                    reused_rows += 1
-                    continue
-            result = generate(
-                model,
-                tokenizer,
-                markers,
-                record["forbidden_prompt"],
-                int(k),
-                settings,
-                int(config["seed"]) + index,
+    for position, (k, index, record) in enumerate(grid):
+        if position < len(partial_rows):
+            continue
+        prior = prior_by_key.get((int(k), record["id"]))
+        if prior is not None:
+            if (
+                prior["prompt_sha256"] != record["sha256"]
+                or prior["model_id"] != train["model_id"]
+                or prior["model_revision"] != train["model_revision"]
+                or prior["serialization"] != config["serialization"]
+            ):
+                raise ValueError("prior calibration provenance differs from continuation")
+            if prior["stop_reason"] != "length":
+                reused = dict(prior)
+                reused["calibration_source"] = "prior_completed_generation"
+                reused["checkpoint_sha256"] = checkpoint_hash
+                reused["partial_run_config_sha256"] = settings_sha256
+                rows.append(reused)
+                append_row(partial_path, reused)
+                reused_rows += 1
+                continue
+        result = generate(
+            model,
+            tokenizer,
+            markers,
+            record["forbidden_prompt"],
+            int(k),
+            settings,
+            int(config["seed"]) + index,
+        )
+        row = {
+            "prompt_id": record["id"],
+            "prompt_sha256": record["sha256"],
+            "category": record["category"],
+            "model_id": train["model_id"],
+            "model_revision": train["model_revision"],
+            "checkpoint_sha256": checkpoint_hash,
+            "code_revision": code_revision,
+            "k": int(k),
+            "generation_config_sha256": settings_sha256,
+            "partial_run_config_sha256": settings_sha256,
+            "evaluator_payload": None,
+            "evaluator_score": None,
+            **result,
+        }
+        if prior is not None:
+            prefix_matches = result["raw_output"].startswith(prior["raw_output"])
+            decoded_prefix_matches += int(prefix_matches)
+            row.update(
+                {
+                    "calibration_source": "extended_prior_length_stop",
+                    "prior_generated_tokens": prior["generated_tokens"],
+                    "prior_generation_config_sha256": prior["generation_config_sha256"],
+                    "decoded_prefix_matches_prior": prefix_matches,
+                }
             )
-            row = {
-                "prompt_id": record["id"],
-                "prompt_sha256": record["sha256"],
-                "category": record["category"],
-                "model_id": train["model_id"],
-                "model_revision": train["model_revision"],
-                "code_revision": code_revision,
-                "k": int(k),
-                "generation_config_sha256": sha256_json(settings),
-                "evaluator_payload": None,
-                "evaluator_score": None,
-                **result,
-            }
-            if prior is not None:
-                prefix_matches = result["raw_output"].startswith(prior["raw_output"])
-                decoded_prefix_matches += int(prefix_matches)
-                row.update(
-                    {
-                        "calibration_source": "extended_prior_length_stop",
-                        "prior_generated_tokens": prior["generated_tokens"],
-                        "prior_generation_config_sha256": prior["generation_config_sha256"],
-                        "decoded_prefix_matches_prior": prefix_matches,
-                    }
-                )
-                extended_rows += 1
-            else:
-                row["calibration_source"] = "initial_generation"
-            rows.append(row)
-    rows_path = output_dir / "generations.jsonl"
-    write_jsonl(rows_path, rows)
+            extended_rows += 1
+        else:
+            row["calibration_source"] = "initial_generation"
+        rows.append(row)
+        append_row(partial_path, row)
+    if len(rows) != len(grid):
+        raise RuntimeError("safety-cap calibration cache is incomplete")
+    partial_path.replace(rows_path)
     joint_selected, projection = select_smallest_cap_or_none(
         rows,
         [int(value) for value in config["candidate_caps"]],
@@ -253,7 +303,7 @@ def main() -> None:
         "by_k": by_k,
         "candidate_projection": projection,
     }
-    (output_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    summary_path.write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2), flush=True)
 
 

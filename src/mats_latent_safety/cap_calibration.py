@@ -3,6 +3,36 @@
 from __future__ import annotations
 
 
+def validate_partial_calibration_prefix(
+    rows: list[dict],
+    expected_grid: list[dict],
+    *,
+    model_id: str,
+    model_revision: str,
+    checkpoint_sha256: str,
+    partial_run_config_sha256: str,
+) -> None:
+    """Fail closed unless a partial cache is an exact, unjudged grid prefix."""
+
+    expected_prefix = [
+        (int(cell["k"]), cell["prompt_id"]) for cell in expected_grid[: len(rows)]
+    ]
+    observed_prefix = [(int(row.get("k", -1)), row.get("prompt_id")) for row in rows]
+    if observed_prefix != expected_prefix:
+        raise ValueError("partial calibration cache is not a frozen K/prompt-grid prefix")
+    for row, cell in zip(rows, expected_grid):
+        if (
+            row.get("prompt_sha256") != cell["prompt_sha256"]
+            or row.get("model_id") != model_id
+            or row.get("model_revision") != model_revision
+            or row.get("checkpoint_sha256") != checkpoint_sha256
+            or row.get("partial_run_config_sha256") != partial_run_config_sha256
+            or row.get("evaluator_payload") is not None
+            or row.get("evaluator_score") is not None
+        ):
+            raise ValueError("partial calibration cache provenance differs from this run")
+
+
 def cap_projection(rows: list[dict], candidates: list[int]) -> dict[str, dict[str, dict]]:
     if not rows:
         raise ValueError("cap calibration requires generation rows")

@@ -85,11 +85,15 @@ conditions:
     strict_threshold_result: failed_exactly_5_percent
     score_imputation_or_complete_case_replacement: prohibited
   coco_u2_k4:
-    status: pending_score_blind_cap_calibration
+    status: score_blind_cap_calibration_resuming_with_incremental_cache
     branch: coconut_skip0
     checkpoint_stage: 2
     checkpoint_k: 4
     checkpoint_sha256: bb70e8a9c7984029bdc7e77ec3dc412ff3ea5b7201636267507d135e8212c1d0
+    initial_calibration_job: 11586174
+    initial_terminal_state: timeout_no_rows_persisted
+    resumability_fix_status: committed_before_continuation_release
+    continuation_job: 11588195
   coco_u3_k6:
     status: scored_complete
     branch: coconut_skip0

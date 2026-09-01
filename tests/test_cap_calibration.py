@@ -5,6 +5,7 @@ from mats_latent_safety.cap_calibration import (
     select_smallest_cap_by_k_or_none,
     select_smallest_cap,
     select_smallest_cap_or_none,
+    validate_partial_calibration_prefix,
 )
 
 
@@ -48,3 +49,57 @@ def test_per_k_selection_does_not_let_ood_k0_block_natural_condition():
     selected, projection = select_smallest_cap_by_k_or_none(sample, [512], 0.05)
     assert selected == {"0": None, "4": 512}
     assert projection["512"]["0"]["projected_truncation_rate"] == 0.1
+
+
+def partial_row(prompt_id="a", prompt_hash="hash-a"):
+    return {
+        "k": 0,
+        "prompt_id": prompt_id,
+        "prompt_sha256": prompt_hash,
+        "model_id": "model",
+        "model_revision": "revision",
+        "checkpoint_sha256": "checkpoint",
+        "generation_config_sha256": "generation",
+        "partial_run_config_sha256": "generation",
+        "evaluator_payload": None,
+        "evaluator_score": None,
+    }
+
+
+def test_partial_calibration_requires_exact_unjudged_grid_prefix():
+    grid = [
+        {"k": 0, "prompt_id": "a", "prompt_sha256": "hash-a"},
+        {"k": 0, "prompt_id": "b", "prompt_sha256": "hash-b"},
+    ]
+    validate_partial_calibration_prefix(
+        [partial_row()],
+        grid,
+        model_id="model",
+        model_revision="revision",
+        checkpoint_sha256="checkpoint",
+        partial_run_config_sha256="generation",
+    )
+    with pytest.raises(ValueError, match="prefix"):
+        validate_partial_calibration_prefix(
+            [partial_row("b", "hash-b")],
+            grid,
+            model_id="model",
+            model_revision="revision",
+            checkpoint_sha256="checkpoint",
+            partial_run_config_sha256="generation",
+        )
+
+
+def test_partial_calibration_rejects_provenance_or_evaluator_data():
+    grid = [{"k": 0, "prompt_id": "a", "prompt_sha256": "hash-a"}]
+    row = partial_row()
+    row["evaluator_score"] = 0.0
+    with pytest.raises(ValueError, match="provenance"):
+        validate_partial_calibration_prefix(
+            [row],
+            grid,
+            model_id="model",
+            model_revision="revision",
+            checkpoint_sha256="checkpoint",
+            partial_run_config_sha256="generation",
+        )

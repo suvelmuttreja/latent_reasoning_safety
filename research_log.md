@@ -1704,3 +1704,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   assigned a trajectory shape until cot-u2 is scored. Cot-u2 judge job
   `11587989` was submitted with an `afterok:11587546` dependency so judging
   starts only after its fresh official cache completes successfully.
+
+- 2026-09-01T02:23:10-07:00: Coco-u2 K0/K4 score-blind cap calibration job
+  `11586174` reached its two-hour limit before producing a final cache. The
+  pre-submitted failure-only continuation `11588195` became eligible, but the
+  exit copy revealed no partial rows: the calibration script buffered its full
+  120-row grid until completion. An unchanged continuation would therefore
+  repeat the same two hours. `11588195` was immediately user-held before start,
+  and the calibration implementation was amended—still without loading a judge
+  or observing safety scores—to append and fsync each completed row. Resume now
+  accepts only an exact frozen K/prompt-grid prefix whose prompt, model,
+  checkpoint, current-run configuration, and null evaluator fields match; it
+  refuses completed or unexpected output directories. Twenty targeted cap,
+  official-row, and policy tests pass. The first attempt's compute cannot be
+  recovered because no rows were persisted, but subsequent timeouts will make
+  monotonic durable progress in scratch1 with exit-copy to home1.
