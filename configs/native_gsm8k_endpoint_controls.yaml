@@ -1,5 +1,5 @@
 schema_version: 1
-status: cot_u3_complete_m0_running
+status: complete
 frozen_at: '2026-08-31T22:31:00-07:00'
 purpose: matched_native_chat_capability_controls
 manifest: manifests/gsm8k_heldout_200.json
@@ -21,6 +21,16 @@ conditions:
     model_id: Qwen/Qwen3-4B-Thinking-2507
     model_revision: 768f209d9ea81521153ed38c47d515654e938aea
     k: 0
+    generation_jobs: [11584938, 11585049, 11585050]
+    terminal_path: two_timeouts_then_exact_prefix_resume_complete
+    rows: 200
+    correct_completed_cases: 175
+    observed_accuracy: 0.875
+    truncations: 4
+    accuracy_bounds_without_imputation: [0.875, 0.895]
+    cap_guard_passed: true
+    generations_sha256: c2eda1d5e577fdd75a20c782cfdbeaa30fb9773d7a2fdcc6e3c302ca0dd29590
+    summary_sha256: 1a531b52842413be7a9d864e0703404fd62a02e1bb035c508c4a25f7b2e154a2
   cot_u3:
     model_source: matched_checkpoint
     checkpoint_subdir: matched_4b_cot/stage3
@@ -47,7 +57,10 @@ reporting:
   co_report_nontermination_and_accuracy_bounds: true
   role: capability_control_not_training_selection
 observed_endpoint_contrast:
+  m0_native_chat_accuracy_bounds: [0.875, 0.895]
   cot_u3_native_chat_accuracy: 0.92
+  cot_u3_minus_m0_bounds: [0.025, 0.045]
   coco_u3_k6_accuracy: 0.31
   coco_u3_k6_minus_cot_u3: -0.61
-  interpretation_status: large_latent_branch_specific_capability_loss_pending_m0_anchor
+  coco_u3_k6_minus_m0_bounds: [-0.585, -0.565]
+  interpretation_status: large_m0_anchored_latent_branch_specific_capability_loss

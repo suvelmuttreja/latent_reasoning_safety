@@ -1651,3 +1651,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   effect is the separately measured Coconut capability/coherence degradation.
   M0 is a descriptive shared-pretraining anchor, not a correction constant or
   a post-hoc redefinition of the registered branch contrast.
+
+- 2026-09-01T00:55:43-07:00: M0 native-chat GSM8K control completed through
+  exact-prefix jobs `11584938 -> 11585049 -> 11585050`; the first two reached
+  the one-hour debug limit and the final resume completed in `00:23:51`. On the
+  frozen 200 prompts, M0 had 175 correct completed outputs and four 5,120-token
+  truncations, giving observed accuracy 87.5% and registered no-imputation
+  bounds `[87.5%, 89.5%]`; the 2% truncation rate passes strict `<5%`.
+  Scratch/home1 hashes matched (`generations.jsonl` `c2eda1d5...`, summary
+  `1a531b52...`) and final evidence was pulled locally. CoT-u3 at 92.0% is
+  `+2.5` to `+4.5` points versus M0, consistent with preserved or modestly
+  improved capability. Natural Coconut-u3 K6 at 31.0% is `-56.5` to `-58.5`
+  points versus M0. The dominant capability collapse is therefore both
+  M0-anchored and specific to the latent branch under the matched training
+  design; no completed-case imputation was used.
