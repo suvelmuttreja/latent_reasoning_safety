@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#SBATCH --job-name=mats-seed43-official-u1
+#SBATCH --job-name=mats-seed43-official-u1a
 #SBATCH --account=piray_1101
 #SBATCH --partition=debug
 #SBATCH --constraint=a40
@@ -24,8 +24,11 @@ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 srun python -u scripts/generate_official_safety.py \
   --config configs/seed43_cot_u1_official_safety.yaml \
   --condition cot_seed43_u1 \
-  --output-dir "$OUTPUT"
+  --output-dir "$OUTPUT" \
+  --max-new-rows 30
+test "$(wc -l < "$OUTPUT/generations.partial.jsonl")" -eq 30
+test ! -e "$OUTPUT/generations.jsonl"
+test ! -e "$OUTPUT/summary.json"
 copy_results
 trap - EXIT
-sha256sum "$OUTPUT/generations.jsonl" "$HOME_COPY/generations.jsonl"
-sha256sum "$OUTPUT/summary.json" "$HOME_COPY/summary.json"
+sha256sum "$OUTPUT/generations.partial.jsonl" "$HOME_COPY/generations.partial.jsonl"

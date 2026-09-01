@@ -33,11 +33,18 @@ def main() -> None:
     parser.add_argument("--condition", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--work-root", default=os.environ.get("WORK_ROOT"))
+    parser.add_argument(
+        "--max-new-rows",
+        type=int,
+        help="Generate at most this many new manifest-prefix rows, then exit cleanly.",
+    )
     args = parser.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
     if not args.work_root:
         raise ValueError("--work-root or WORK_ROOT is required")
+    if args.max_new_rows is not None and args.max_new_rows <= 0:
+        raise ValueError("--max-new-rows must be positive")
 
     config_path = Path(args.config)
     config = yaml.safe_load(config_path.read_text())
@@ -137,7 +144,10 @@ def main() -> None:
         raise ValueError("strict official checkpoint load returned key differences")
 
     code_revision = git_revision()
-    for index, record in enumerate(records[len(existing) :], start=len(existing)):
+    pending_records = records[len(existing) :]
+    if args.max_new_rows is not None:
+        pending_records = pending_records[: args.max_new_rows]
+    for index, record in enumerate(pending_records, start=len(existing)):
         result = generate(
             model,
             tokenizer,
@@ -197,7 +207,24 @@ def main() -> None:
             flush=True,
         )
     if len(existing) != len(records):
-        raise RuntimeError("official generation cache is incomplete")
+        if args.max_new_rows is None:
+            raise RuntimeError("official generation cache is incomplete")
+        print(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "status": "generation_partial_unjudged",
+                    "condition": args.condition,
+                    "completed_rows": len(existing),
+                    "total_rows": len(records),
+                    "partial_generations_sha256": sha256_file(partial_path),
+                    "evaluator_loaded": False,
+                },
+                indent=2,
+            ),
+            flush=True,
+        )
+        return
     partial_path.replace(final_path)
     summary = {
         "schema_version": 1,

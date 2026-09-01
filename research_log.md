@@ -2042,3 +2042,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   from scratch. The follow-up will report its estimate and observed seed
   spread regardless of direction, with no binary replication rule, seed-CI
   claim, or Coconut seed-variability claim.
+
+  Scheduler preflight before submission found all 75-minute normal-partition
+  options delayed until September 3 (L40S/A100-40GB around 09:00, A40 around
+  09:22, A100-80GB around 11:56). The debug partition could start an A40
+  immediately but has a 30-minute ceiling, versus about 47 minutes for the
+  corresponding complete generation. Before generation, the official runner
+  was therefore extended to support a bounded, successful manifest-prefix
+  chunk. The first job generates exactly rows 1–30 and exits with only the
+  fsynced partial artifact; an `afterok` second job resumes rows 31–60 using
+  the same implementation/config hashes and creates the sole final artifact.
+  Concurrent writers remain prohibited. This changes scheduling only, not the
+  frozen prompts, sampler, seed, serialization, cap, or estimand.

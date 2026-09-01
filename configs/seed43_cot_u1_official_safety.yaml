@@ -25,5 +25,7 @@ conditions:
 guards:
   calibration_generations_may_be_reused: false
   official_condition_regenerates_from_scratch: true
+  generation_may_resume_exact_manifest_prefix_across_sequential_jobs: true
+  concurrent_writers_to_output_path: prohibited
   evaluator_must_not_load_during_generation: true
   aggregate_incomplete_rate_must_be_strictly_below: 0.05
