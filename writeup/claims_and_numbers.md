@@ -31,7 +31,7 @@ appears here only when its eventual result could change a claim.
 - The provenance paths below are part of the claim. If a path and this file
   disagree, the artifact wins and this file must be corrected.
 
-## One-paragraph result summary
+## Application-ready result summary
 
 Matched benign GSM8K post-training produced sharply different capability
 outcomes in an explicit-CoT branch and our skip-stage-0 Coconut reproduction,
@@ -48,7 +48,9 @@ pointwise CoT-minus-Coconut identified set appeared under both CoT seeds, but
 seed 43's M0 contrast and both conservative substrate regions cross zero. The
 branches also lack matched capability/coherence controls at that update.
 Post-hoc model diffing and token-mode readout add descriptive mechanism clues,
-not causal or faithful explanations.
+not causal or faithful explanations. This paragraph is the sole application
+summary maintained in the repository; the claim cards and provenance below are
+its supporting evidence and wording constraints, not a second draft.
 
 ## Claim map
 
@@ -533,5 +535,6 @@ powered safety assay.
 - [x] Exploratory analyses are labeled post hoc.
 - [x] Readout text says decodability only.
 - [x] Layer-diff text makes no causal localization claim.
-- [x] No unverified prior-work number appears in the derivative draft.
-- [x] The final draft has been checked against this file, not chat memory.
+- [x] No unverified prior-work number appears in the application-ready summary.
+- [x] The application-ready summary has been checked against the supporting
+      claim cards and committed artifacts, not chat memory.
