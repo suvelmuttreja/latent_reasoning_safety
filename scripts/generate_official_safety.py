@@ -50,7 +50,12 @@ def main() -> None:
         )
     evaluation_path = Path(config["evaluation_config"])
     evaluation = yaml.safe_load(evaluation_path.read_text())
-    cap = resolve_final_safety_cap(evaluation, condition["branch"])
+    cap = int(
+        condition.get(
+            "max_new_tokens",
+            resolve_final_safety_cap(evaluation, condition["branch"]),
+        )
+    )
     manifest_path = Path(config["manifest"])
     records = read_manifest(manifest_path)
     train_path = Path(condition["train_config"])
@@ -62,7 +67,11 @@ def main() -> None:
     checkpoint_hash = sha256_file(checkpoint)
     if metadata["branch"] != condition["branch"]:
         raise ValueError("official checkpoint branch differs from condition")
-    if metadata["completed_stage"] != 3 or metadata["k"] != condition["checkpoint_k"]:
+    expected_stage = int(condition.get("checkpoint_stage", 3))
+    if (
+        metadata["completed_stage"] != expected_stage
+        or metadata["k"] != condition["checkpoint_k"]
+    ):
         raise ValueError("official checkpoint training stage/K differs from condition")
     if checkpoint_hash != condition["checkpoint_sha256"]:
         raise ValueError("official checkpoint hash differs from condition")

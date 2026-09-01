@@ -1609,3 +1609,18 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   released submission slot was immediately used for score-blind cot-u1 safety
   cap calibration job `11585771`; no results were inspected to choose this
   pre-frozen next condition.
+
+- 2026-09-01T00:14:00-07:00: Score-blind cot-u1 safety-cap calibration job
+  `11585771` completed on A40 in `00:49:27`, with the evaluator unloaded. All
+  60 outputs reached EOS at the 5,120-token calibration ceiling; the smallest
+  registered cap satisfying strict `<5%` truncation was mechanically 4,096
+  tokens (zero projected truncations, maximum observed length 3,173; 2,048
+  projected 4/60 and failed). Scratch/home1 hashes matched
+  (`generations.jsonl` `2e054701...`, summary `66e521ba...`). Cap 4,096 is now
+  frozen for cot-u1 before any judging, and calibration generations remain
+  prohibited from official scoring. Fresh official generation is authorized
+  via `configs/dense_official_safety_trajectory.yaml`. The generic official
+  generator was extended to verify a registered intermediate checkpoint stage
+  and an explicitly frozen per-condition cap; stage-3 endpoint defaults remain
+  unchanged. The released submission slot was used for pre-frozen coco-u2
+  calibration job `11586174`.
