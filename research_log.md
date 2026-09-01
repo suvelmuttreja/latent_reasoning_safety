@@ -1624,3 +1624,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   and an explicitly frozen per-condition cap; stage-3 endpoint defaults remain
   unchanged. The released submission slot was used for pre-frozen coco-u2
   calibration job `11586174`.
+
+- 2026-09-01T00:41:05-07:00: Exact-prefix CoT-u3 native-chat GSM8K control
+  resume `11586182` completed after initial job `11584939` reached its debug
+  limit. Across the frozen 200-prompt manifest, the matched explicit-CoT stage-3
+  endpoint scored `184/200 = 92.0%`, with 200 EOS stops and zero 5,120-token
+  truncations. Scratch/home1 copies matched (`generations.jsonl` SHA-256
+  `70cf4e02...`, summary `783ac6cd...`) and the compact final evidence was
+  pulled locally. Against the already frozen natural Coconut-u3 K6 result of
+  31.0%, this is a `-61` percentage-point Coconut-minus-CoT capability gap.
+  The large endpoint capability loss is therefore latent-branch-specific under
+  the matched training design, not a generic consequence of the explicit-CoT
+  branch's benign GSM8K SFT. Absolute drift from the common base remains
+  pending the running M0 control, so that anchor is not inferred early.

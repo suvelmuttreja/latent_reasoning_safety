@@ -1,5 +1,5 @@
 schema_version: 1
-status: frozen_before_generation
+status: cot_u3_complete_m0_running
 frozen_at: '2026-08-31T22:31:00-07:00'
 purpose: matched_native_chat_capability_controls
 manifest: manifests/gsm8k_heldout_200.json
@@ -28,6 +28,15 @@ conditions:
     checkpoint_stage: 3
     checkpoint_k: 0
     k: 0
+    generation_jobs: [11584939, 11586182]
+    terminal_path: timeout_then_exact_prefix_resume_complete
+    rows: 200
+    correct: 184
+    accuracy: 0.92
+    truncations: 0
+    cap_guard_passed: true
+    generations_sha256: 70cf4e020a71fbfc65c4a8d0a2bd3ea4925ecdd4bf41cf45e5dee8992c5f1030
+    summary_sha256: 783ac6cddae542484563a88ec75a0d2126885ebc3d82bf6dfea3e828ce53ed17
 existing_coconut_endpoint_evidence:
   source: artifacts/discovery/results/fallback_4b_skip0/trajectory_stage3_gsm8k_cap1024/summary.json
   k0_accuracy_bounds: [0.495, 0.595]
@@ -37,4 +46,8 @@ reporting:
   exact_match_parser: registered_gsm8k_numeric_answer_parser
   co_report_nontermination_and_accuracy_bounds: true
   role: capability_control_not_training_selection
-
+observed_endpoint_contrast:
+  cot_u3_native_chat_accuracy: 0.92
+  coco_u3_k6_accuracy: 0.31
+  coco_u3_k6_minus_cot_u3: -0.61
+  interpretation_status: large_latent_branch_specific_capability_loss_pending_m0_anchor
