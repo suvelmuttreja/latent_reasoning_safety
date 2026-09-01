@@ -36,3 +36,25 @@ reporting:
   include_all_mechanically_selected_prompts: true
   retain_null_or_uninterpretable_pattern: true
   primary_or_registered_result: false
+observed:
+  job_id: 11601053
+  terminal_state: completed
+  elapsed: '00:01:34'
+  prompts: 10
+  latent_depths_per_prompt: 6
+  maximum_native_projection_error_bf16: 0.0625
+  raw_json_sha256: 6067d53c8c82158215588f401ca54f85ba857e687642e19989a28436ad389d85
+  complete_table_sha256: fca2410c094b52922763da955f673c7a8082c145acbc681ba8c5007b852d172a
+  gsm8k_top1_consensus:
+    depth_2: {token: 这张, prompts: 5_of_5}
+    depth_3: {token: ' the', prompts: 5_of_5}
+    depth_4: {token: 这张, prompts: 5_of_5}
+    depth_5: {token: ' the', prompts: 5_of_5}
+    depth_6: {token: 这张, prompts: 5_of_5}
+  gsm8k_mean_pairwise_top10_jaccard_by_depth:
+    [0.609, 0.873, 0.686, 1.000, 0.542, 0.873]
+  strongreject_mean_pairwise_top10_jaccard_by_depth:
+    [0.522, 0.199, 0.226, 0.092, 0.271, 0.256]
+  interpretation: >-
+    strong_depth_and_format_phase_signature_without_obvious_natural_language_latent_rationale;
+    distributed_task_content_not_ruled_out

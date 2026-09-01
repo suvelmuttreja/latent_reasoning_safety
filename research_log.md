@@ -1939,3 +1939,15 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   deferred because it requires a new intervention implementation, validation,
   multiple generation cells, and matched capability/coherence reporting; it is
   not a quick single pass in the current codebase.
+
+  Debug A40 job `11601053` completed the full preselected readout in `00:01:34`.
+  Scratch1 and home1 hashes match; raw JSON/table SHA-256 values are
+  `6067d53c...` / `fca2410c...`. For GSM8K, depths 2/4/6 project the same top-1
+  token (`这张`) on all five prompts and depths 3/5 project ` the` on all five;
+  depth-4 top-ten sets are identical across prompts. StrongREJECT is less
+  invariant (mean pairwise top-ten Jaccard `0.092–0.522`) but remains dominated
+  by generic reasoning/format/punctuation/syntactic tokens rather than an
+  obvious harmful or refusal trajectory. The retained interpretation is a
+  strong depth/scaffold phase signature without an obvious natural-language
+  latent rationale. It does not rule out distributed task content and does not
+  support faithfulness or monitorability claims.

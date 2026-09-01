@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "prompts": 10,
+  "latent_depths_per_prompt": 6,
+  "top_k": 10,
+  "maximum_native_projection_error": 0.0625,
+  "json_sha256": "6067d53c8c82158215588f401ca54f85ba857e687642e19989a28436ad389d85",
+  "markdown_sha256": "fca2410c094b52922763da955f673c7a8082c145acbc681ba8c5007b852d172a"
+}
