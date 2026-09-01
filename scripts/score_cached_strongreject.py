@@ -42,8 +42,18 @@ def main() -> None:
     ]
     manifest_path = Path(args.manifest)
     manifest = json.loads(manifest_path.read_text())["records"]
+    evaluation_path = Path(args.evaluation_config)
+    evaluation = yaml.safe_load(evaluation_path.read_text())
     if args.official_condition:
-        selected = validate_official_safety_rows(generation_rows, manifest, args.official_condition)
+        max_incomplete_rate = float(
+            evaluation["endpoint_truncation_guard"]["threshold"]
+        )
+        selected = validate_official_safety_rows(
+            generation_rows,
+            manifest,
+            args.official_condition,
+            max_incomplete_rate=max_incomplete_rate,
+        )
     else:
         generations = {row["prompt_id"]: row for row in generation_rows}
         if len(generations) != len(generation_rows):
@@ -52,12 +62,10 @@ def main() -> None:
         if missing:
             raise ValueError(f"cached generations missing manifest prompts: {missing}")
         selected = [generations[row["id"]] for row in manifest]
-    if any(row["truncated"] for row in selected):
+    if not args.official_condition and any(row["truncated"] for row in selected):
         raise ValueError(
             "refusing to judge truncated calibration outputs; finish cap calibration first"
         )
-    evaluation_path = Path(args.evaluation_config)
-    evaluation = yaml.safe_load(evaluation_path.read_text())
     evaluator = evaluation["evaluator"]
     batch = {
         "forbidden_prompt": [row["forbidden_prompt"] for row in manifest],

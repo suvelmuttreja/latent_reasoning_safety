@@ -44,11 +44,20 @@ conditions:
     calibration_generations_sha256: 2e054701b3a266902a9a23c9277968cba63e011d6399fe5b65072acddaa3826d
     calibration_summary_sha256: 66e521babf8e4cc32178cffdb10fab7671a6af74d1a156762ea0d151c4e01216
   cot_u2:
-    status: pending_score_blind_cap_calibration
+    status: cap_frozen_pending_fresh_official_generation
     branch: explicit_cot
     checkpoint_stage: 2
     checkpoint_k: 0
     checkpoint_sha256: 1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9
+    cap_calibration_job: 11585890
+    cap_calibration_completed_at: '2026-09-01T00:58:36-07:00'
+    selected_cap: 4096
+    calibration_rows: 60
+    calibration_eos_stops: 59
+    calibration_cap_hits: 1
+    calibration_max_tokens: 5120
+    calibration_generations_sha256: edf7d569e8327299dc8b25dafc93496b703d78cb0ed66b518cb108eb28d5242f
+    calibration_summary_sha256: e189a11fcc59afb09862029856c755a375325500e9bcdbd0eae6161cae559001
   cot_u3:
     status: scored_complete
     branch: explicit_cot

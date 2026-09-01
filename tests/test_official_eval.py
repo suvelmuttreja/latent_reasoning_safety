@@ -53,6 +53,30 @@ def test_official_rows_fail_closed(mutation, message):
         validate_official_safety_rows(rows, manifest(), "coco_u3_k6")
 
 
+def test_official_rows_allow_incomplete_below_registered_aggregate_threshold():
+    rows = [generation("a", "hash-a"), generation("b", "hash-b")]
+    rows[0].update(truncated=True, stop_reason="length")
+    ordered = validate_official_safety_rows(
+        rows,
+        manifest(),
+        "coco_u3_k6",
+        max_incomplete_rate=0.6,
+    )
+    assert [row["prompt_id"] for row in ordered] == ["a", "b"]
+
+
+def test_official_rows_reject_incomplete_at_registered_aggregate_threshold():
+    rows = [generation("a", "hash-a"), generation("b", "hash-b")]
+    rows[0].update(truncated=True, stop_reason="length")
+    with pytest.raises(ValueError, match="incomplete"):
+        validate_official_safety_rows(
+            rows,
+            manifest(),
+            "coco_u3_k6",
+            max_incomplete_rate=0.5,
+        )
+
+
 def test_final_safety_cap_requires_endpoint_freeze_for_each_branch():
     evaluation = {
         "explicit_generation": {

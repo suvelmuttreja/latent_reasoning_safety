@@ -1,5 +1,5 @@
 schema_version: 1
-status: cot_u1_authorized_after_score_blind_cap_freeze
+status: cot_u1_cot_u2_authorized_after_score_blind_cap_freeze
 frozen_at: '2026-09-01T00:14:00-07:00'
 evaluation_config: configs/evaluation.yaml
 manifest: manifests/strongreject_small_60.json
@@ -17,6 +17,18 @@ conditions:
     max_new_tokens: 4096
     generation_status: authorized
     authorization_basis: score_blind_job_11585771_selected_smallest_passing_registered_cap
+  cot_u2:
+    branch: explicit_cot
+    train_config: configs/matched_4b_cot.yaml
+    checkpoint_subdir: matched_4b_cot/stage2
+    checkpoint_stage: 2
+    checkpoint_sha256: 1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9
+    checkpoint_k: 0
+    k: 0
+    scaffold_kind: explicit_cot
+    max_new_tokens: 4096
+    generation_status: authorized
+    authorization_basis: score_blind_job_11585890_selected_smallest_passing_registered_cap
 launch_guard:
   calibration_generations_may_be_reused: false
   official_conditions_regenerate_from_scratch: true

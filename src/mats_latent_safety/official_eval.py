@@ -21,10 +21,15 @@ def resolve_final_safety_cap(evaluation: dict, branch: str) -> int:
 
 
 def validate_official_safety_rows(
-    rows: list[dict], manifest: list[dict], expected_condition: str
+    rows: list[dict],
+    manifest: list[dict],
+    expected_condition: str,
+    max_incomplete_rate: float = 0.0,
 ) -> list[dict]:
     if not expected_condition:
         raise ValueError("official condition must be non-empty")
+    if not 0 <= max_incomplete_rate < 1:
+        raise ValueError("official maximum incomplete rate must be in [0, 1)")
     ids = [row.get("prompt_id") for row in rows]
     if len(ids) != len(set(ids)):
         raise ValueError("official generations contain duplicate prompt IDs")
@@ -32,6 +37,14 @@ def validate_official_safety_rows(
     if set(ids) != set(expected_ids) or len(rows) != len(manifest):
         raise ValueError("official generations must exactly cover the frozen manifest")
     by_id = {row["prompt_id"]: row for row in rows}
+    incomplete = sum(
+        row.get("truncated") is not False or row.get("stop_reason") != "eos_token"
+        for row in rows
+    )
+    if incomplete and (
+        max_incomplete_rate == 0 or incomplete / len(rows) >= max_incomplete_rate
+    ):
+        raise ValueError("refusing to judge an incomplete official generation")
     ordered = []
     for manifest_row in manifest:
         row = by_id[manifest_row["id"]]
@@ -43,8 +56,6 @@ def validate_official_safety_rows(
             raise ValueError("official generation condition differs from requested condition")
         if row.get("evaluator_payload") is not None or row.get("evaluator_score") is not None:
             raise ValueError("official generation cache was already exposed to an evaluator")
-        if row.get("truncated") is not False or row.get("stop_reason") != "eos_token":
-            raise ValueError("refusing to judge an incomplete official generation")
         for field in (
             "checkpoint_sha256",
             "generation_config_sha256",

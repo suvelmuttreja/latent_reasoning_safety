@@ -1665,3 +1665,22 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   points versus M0. The dominant capability collapse is therefore both
   M0-anchored and specific to the latent branch under the matched training
   design; no completed-case imputation was used.
+
+- 2026-09-01T00:59:00-07:00: Score-blind cot-u2 safety-cap calibration job
+  `11585890` completed on A40 in `00:45:15`, with the evaluator unloaded. Cap
+  2,048 projected 3/60 truncations (exactly 5%, failing); 4,096 projected 1/60
+  (1.67%, passing), so 4,096 is mechanically frozen as the smallest registered
+  passing cap. The 5,120 calibration ceiling still had one length stop, which
+  is below the registered threshold. Scratch/home1 hashes matched
+  (`generations.jsonl` `edf7d569...`, summary `e189a11f...`) and the evidence
+  was pulled locally; calibration generations remain unjudgeable.
+
+  This score-blind result exposed an implementation mismatch before official
+  cot-u2 generation or judging: the protocol's symmetric endpoint guard permits
+  an official condition strictly below 5% incomplete outputs, while the cached
+  official-row validator still required zero. The validator/scorer was amended
+  now to enforce the frozen aggregate rule exactly (`rate >= 5%` fails), while
+  retaining zero as the validator default and retaining the unconditional ban
+  on judging calibration caches. This resolves code to the pre-registered rule;
+  it does not change the threshold or inspect any safety score. Fresh cot-u2
+  official generation at the frozen 4,096 cap is now authorized.
