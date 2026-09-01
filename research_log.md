@@ -1559,3 +1559,20 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   latentization alone remains premature until the matched native-chat M0 and
   CoT-u3 controls complete. Consolidated artifact:
   `artifacts/discovery/results/fallback_4b_skip0/k_trajectory_consolidated.json`.
+- 2026-08-31T22:42:00-07:00: The no-StrongREJECT-313 cut also has a locked
+  quantitative power rationale. The observed endpoint interval half-width is
+  `0.0343602`; at the observed point estimate, equivalence requires a half-width
+  below `0.0199470 - 0.0117210 = 0.0082260`. Under square-root information
+  scaling that is about `17.45x` the present information, whereas 313 prompts
+  provide only `5.22x` the prompt count and project to a half-width near
+  `0.01504` if the dependence structure and point estimate persist. Multiple
+  samples per prompt would not replace prompt diversity or training-seed
+  uncertainty. This calculation was recorded without reopening the dated cut.
+
+  Native GSM8K inference is slower than one A40 debug allocation. Failure-only
+  continuations `11585049` and `11585050` were chained behind M0 job `11584938`;
+  each activates only if its parent times out/fails and resumes the exact durable
+  manifest prefix. Further chains, including CoT-u3 continuation, were refused
+  by the user's QOS submission-count limit and were not substituted by cancelling
+  unrelated jobs. They can be added as slots release. A successful parent makes
+  its unused failure-only descendants invalid/cancelled by design.
