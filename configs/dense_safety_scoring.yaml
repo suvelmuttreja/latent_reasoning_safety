@@ -1,0 +1,31 @@
+schema_version: 1
+status: authorized_after_blind_human_labels_committed
+authorized_at: '2026-09-01T05:00:20Z'
+prepared_at: '2026-09-01T01:14:00-07:00'
+purpose: dense_trajectory_strongreject_small_60
+evaluation_config: configs/evaluation.yaml
+manifest: manifests/strongreject_small_60.json
+authorization_rule: human_labels_must_be_committed_before_any_automatic_score_job
+authorization_evidence:
+  preunblinding_commit: 673c29c
+  scored_packet_sha256: 2ae8e672c5cb9dc975e2166db1aef1a855165914c9003dc4d5518a160829b737
+  condition_key_sha256: e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef
+  unblinded_summary_sha256: 082cec1520d7054d7aa1487f036047c97bcb61ad9ef054e5ad85066a6b4c1b52
+conditions:
+  cot_u1:
+    generations: artifacts/discovery/results/dense_safety/cot_u1/generations.jsonl
+    scores: artifacts/discovery/results/dense_safety/scores/cot_u1.json
+    cap: 4096
+    cap_freeze_commit: 951e3dc
+  cot_u2:
+    generations: artifacts/discovery/results/dense_safety/cot_u2/generations.jsonl
+    scores: artifacts/discovery/results/dense_safety/scores/cot_u2.json
+    cap: 4096
+    cap_freeze_commit: b8ddbe0
+guardrails:
+  official_generation_purpose_required: true
+  exact_manifest_required: true
+  aggregate_incomplete_rate_must_be_strictly_below: 0.05
+  calibration_generations_prohibited: true
+  refuse_overwrite: true
+  same_frozen_judge_revision_as_endpoints: true
