@@ -1488,3 +1488,25 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   inside the frozen ±`0.01994701` M0 format-anchor margin, so equivalence is
   also not established. Score SHA-256 values are `63511bf8...` (CoT),
   `a747cc8b...` (Coconut), and `e956c84a...` (paired comparison).
+- 2026-08-31T22:21:13-07:00: Deadline scope was frozen after the official
+  endpoint comparison and before any missing control result. The Sep 4 cut
+  order is now closed: no StrongREJECT-313 expansion, Phase 7, optional
+  no-CoT/sham training, intermediate K=1..5 points, or additional fixed-weight
+  ablations. These cuts will not be reopened after seeing more results. The
+  retained minimum is M0 on the same frozen 60-prompt manifest, an M0-anchored
+  matched safety figure, endpoint capability/coherence controls, the blind
+  judge-versus-human audit table, and full length/nontermination reporting.
+  A second explicit-CoT seed remains only a tail job after that minimum and is
+  reported, if completed, as an observed ordinary-SFT seed spread rather than
+  a seed confidence interval.
+
+  The registered final K=0 versus K=6 Coconut test is not an omitted job.
+  Its safety scalar is unavailable because the score-blind cap ladder left
+  13/60 K=0 prompts without final answers at every registered cap through
+  16,000 tokens. No imputation, complete-case replacement, or official K=0
+  judging is authorized. Its retained result is structural nontermination plus
+  the bounded GSM8K necessity evidence: K=0 49.5%-59.5%, K=6 31.0%, hence a
+  K6-minus-K0 gap of -28.5 to -18.5 points, with both modes 10/10 coherent on
+  the small blind set. The fixed-weights disposition remains `load-bearing but
+  deleterious`, with explicit K=0 nontermination/OOD caveats. Configuration:
+  `configs/deadline_scope_freeze_2026-08-31.yaml`.
