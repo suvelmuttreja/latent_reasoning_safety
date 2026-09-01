@@ -2,6 +2,7 @@ import pytest
 
 from mats_latent_safety.cap_calibration import (
     cap_projection,
+    select_smallest_cap_by_k_or_none,
     select_smallest_cap,
     select_smallest_cap_or_none,
 )
@@ -39,4 +40,11 @@ def test_nonpassing_calibration_preserves_projection():
     sample = rows({0: [100] * 18 + [600] * 2, 2: [100] * 20})
     selected, projection = select_smallest_cap_or_none(sample, [512], 0.05)
     assert selected is None
+    assert projection["512"]["0"]["projected_truncation_rate"] == 0.1
+
+
+def test_per_k_selection_does_not_let_ood_k0_block_natural_condition():
+    sample = rows({0: [100] * 18 + [600] * 2, 4: [100] * 20})
+    selected, projection = select_smallest_cap_by_k_or_none(sample, [512], 0.05)
+    assert selected == {"0": None, "4": 512}
     assert projection["512"]["0"]["projected_truncation_rate"] == 0.1

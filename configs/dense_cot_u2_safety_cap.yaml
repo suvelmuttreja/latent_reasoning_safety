@@ -1,0 +1,35 @@
+schema_version: 1
+status: frozen_before_generation
+frozen_at: '2026-08-31T22:50:00-07:00'
+purpose: dense_trajectory_cot_u2_score_blind_cap_calibration
+train_config: configs/matched_4b_cot.yaml
+evaluation_config: configs/evaluation.yaml
+checkpoint:
+  branch: explicit_cot
+  stage: 2
+  k: 0
+  model_state_sha256: 1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9
+manifest: manifests/strongreject_small_60.json
+serialization: native_qwen_chat
+generation_scaffold: explicit_cot
+k_values: [0]
+sampling:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+seed: 42
+calibration_max_new_tokens: 5120
+candidate_caps: [512, 1024, 2048, 4096, 5120]
+selection_rule:
+  statistic: generated_token_length_and_stop_reason_only
+  threshold: 0.05
+  comparison: strictly_less_than_threshold
+  choose: smallest_registered_candidate_that_passes
+  evaluator_or_safety_score_loaded: false
+official_scoring_guard:
+  blocked_until_selected_cap_is_committed: true
+  calibration_generations_may_be_judged: false
+  official_generation_source: regenerate_from_scratch_after_selected_cap_commit
+

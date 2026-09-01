@@ -58,3 +58,24 @@ def select_smallest_cap_or_none(
         if all(rate < threshold for rate in rates):
             return candidate, projection
     return None, projection
+
+
+def select_smallest_cap_by_k_or_none(
+    rows: list[dict], candidates: list[int], threshold: float
+) -> tuple[dict[str, int | None], dict[str, dict[str, dict]]]:
+    """Select caps independently for natural conditions sharing one calibration run."""
+
+    _, projection = select_smallest_cap_or_none(rows, candidates, threshold)
+    conditions = sorted({int(row["k"]) for row in rows})
+    selected: dict[str, int | None] = {}
+    for k in conditions:
+        selected[str(k)] = next(
+            (
+                candidate
+                for candidate in candidates
+                if projection[str(candidate)][str(k)]["projected_truncation_rate"]
+                < threshold
+            ),
+            None,
+        )
+    return selected, projection

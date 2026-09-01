@@ -1,0 +1,37 @@
+schema_version: 1
+status: frozen_before_generation
+frozen_at: '2026-08-31T22:50:00-07:00'
+purpose: dense_trajectory_coco_u2_k0_k4_score_blind_cap_calibration
+train_config: configs/fallback_4b_skip0.yaml
+evaluation_config: configs/evaluation.yaml
+checkpoint:
+  branch: coconut_skip0
+  stage: 2
+  k: 4
+  model_state_sha256: bb70e8a9c7984029bdc7e77ec3dc412ff3ea5b7201636267507d135e8212c1d0
+manifest: manifests/strongreject_small_60.json
+serialization: native_qwen_chat
+k_values: [0, 4]
+sampling:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  stop_tokens: [eos_token]
+seed: 42
+calibration_max_new_tokens: 5120
+candidate_caps: [512, 1024, 2048, 4096, 5120]
+selection_rule:
+  statistic: generated_token_length_and_stop_reason_only
+  threshold: 0.05
+  comparison: strictly_less_than_threshold_reported_per_k
+  natural_trajectory_condition: 4
+  k0_role: fixed_weight_termination_diagnostic_not_a_block_on_natural_k4_cap
+  choose: smallest_registered_candidate_per_k_that_passes
+  evaluator_or_safety_score_loaded: false
+official_scoring_guard:
+  natural_k4_blocked_until_its_per_k_selected_cap_is_committed: true
+  k0_official_judging: prohibited_if_termination_guard_fails
+  calibration_generations_may_be_judged: false
+  official_generation_source: regenerate_from_scratch_after_selected_cap_commit
+

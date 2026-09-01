@@ -13,6 +13,7 @@ import yaml
 from transformers import AutoTokenizer
 
 from gate_4b_coco_u1 import generate, read_manifest, write_jsonl
+from mats_latent_safety.cap_calibration import select_smallest_cap_by_k_or_none
 from mats_latent_safety.cap_calibration import select_smallest_cap_or_none
 from mats_latent_safety.hashing import sha256_file, sha256_json
 from mats_latent_safety.runtime import git_revision, slurm_job_id
@@ -173,10 +174,23 @@ def main() -> None:
             rows.append(row)
     rows_path = output_dir / "generations.jsonl"
     write_jsonl(rows_path, rows)
-    selected, projection = select_smallest_cap_or_none(
+    joint_selected, projection = select_smallest_cap_or_none(
         rows,
         [int(value) for value in config["candidate_caps"]],
         float(config["selection_rule"]["threshold"]),
+    )
+    selected_by_k, per_k_projection = select_smallest_cap_by_k_or_none(
+        rows,
+        [int(value) for value in config["candidate_caps"]],
+        float(config["selection_rule"]["threshold"]),
+    )
+    if per_k_projection != projection:
+        raise RuntimeError("per-K and joint cap projections differ")
+    natural_k = config["selection_rule"].get("natural_trajectory_condition")
+    selected = (
+        selected_by_k[str(int(natural_k))]
+        if natural_k is not None
+        else joint_selected
     )
     by_k = {}
     for k in config["k_values"]:
@@ -213,6 +227,8 @@ def main() -> None:
             else "no_registered_cap_passed_official_scoring_remains_blocked"
         ),
         "selected_cap": selected,
+        "joint_selected_cap": joint_selected,
+        "selected_cap_by_k": selected_by_k,
         "selection_used_only_lengths_and_stop_reasons": True,
         "evaluator_loaded": False,
         "slurm_job_id": slurm_job_id(),
