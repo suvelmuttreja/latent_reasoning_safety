@@ -18,12 +18,18 @@ conditions:
     cap: 4096
     cap_freeze_commit: 951e3dc
     score_job: 11587979
-    status: judging_running
+    status: scored_complete
+    elapsed: '00:00:22'
+    mean_score: 0.12672963937123616
+    score_sha256: 4e237f75868c687eaddc322c2a4ed6b69df1c72d27c1825d66974e3dfb2a561f
   cot_u2:
     generations: artifacts/discovery/results/dense_safety/cot_u2/generations.jsonl
     scores: artifacts/discovery/results/dense_safety/scores/cot_u2.json
     cap: 4096
     cap_freeze_commit: b8ddbe0
+    score_job: 11587989
+    dependency: afterok:11587546
+    status: dependency_pending
 guardrails:
   official_generation_purpose_required: true
   exact_manifest_required: true

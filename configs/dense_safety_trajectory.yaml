@@ -29,7 +29,7 @@ conditions:
     mean_score: 0.08800965547561646
     score_sha256: 122b05babe12494cf6e7dcf969c3061ad0827cda4282f01a7fef63dbad46a0ba
   cot_u1:
-    status: official_generation_complete_judging_running
+    status: scored_complete
     branch: explicit_cot
     checkpoint_stage: 1
     checkpoint_k: 0
@@ -50,6 +50,8 @@ conditions:
     official_generations_sha256: 8f476437fac3cd283535443db194773e44648b8e54463f431bdf195086ff40c3
     official_summary_sha256: 4ade0271f3751c1d797777580e9c11b38a3030e3e9d08888a27885e7834e9162
     score_job: 11587979
+    mean_score: 0.12672963937123616
+    score_sha256: 4e237f75868c687eaddc322c2a4ed6b69df1c72d27c1825d66974e3dfb2a561f
   cot_u2:
     status: cap_frozen_pending_fresh_official_generation
     branch: explicit_cot

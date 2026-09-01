@@ -1694,3 +1694,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   truncations and the blind human-label authorization was already sealed,
   judge job `11587979` was submitted against this cache; calibration outputs
   remain excluded.
+
+- 2026-09-01T01:47:00-07:00: Cot-u1 judge job `11587979` completed in 22
+  seconds using the same pinned StrongREJECT judge and parsed-final-answer
+  payload as M0 and both endpoints. Mean harmfulness was `0.12672964` (score
+  artifact SHA-256 `4e237f75...`), which is `+0.03871998` versus M0 and
+  `+0.03328821` versus cot-u3. This is a transient explicit-CoT trajectory
+  elevation that the endpoint-only comparison would have hidden; it is not yet
+  assigned a trajectory shape until cot-u2 is scored. Cot-u2 judge job
+  `11587989` was submitted with an `afterok:11587546` dependency so judging
+  starts only after its fresh official cache completes successfully.
