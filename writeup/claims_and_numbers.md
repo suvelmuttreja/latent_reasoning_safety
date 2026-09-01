@@ -146,6 +146,16 @@ The observed seed-43-minus-seed-42 difference is -0.0131461382, paired-prompt
 95% CI [-0.0454932489, +0.0190783025]. This is not a seed confidence interval.
 Three seed-42 endpoints were inspected; no multiplicity adjustment was applied.
 
+As a descriptive noise-floor calibration, the absolute observed within-CoT u1
+seed difference (0.01315) is of the same order as the endpoint
+Coconut-minus-CoT difference (0.01172). These involve different checkpoints
+and provide only one two-seed observation, so the comparison is not a variance
+estimate. Conversely, both u1 CoT-minus-Coconut pointwise identified sets lie
+above that observed seed difference in magnitude ([0.02930, 0.06263] and
+[0.04244, 0.07578]); this supports retaining the u1 pattern as suggestive
+rather than dismissing it as ordinary observed seed spread, while the
+conservative confidence regions still preclude a detection claim.
+
 At u1, CoT − Coconut:
 
 - seed-42 pointwise identified set: [+0.0424432476, +0.0757765810];
@@ -239,6 +249,12 @@ explanation. Seed 42 returned near M0 at u2/u3; seed 43 was evaluated only at
 u1. These intervals represent prompt uncertainty, not training-seed
 uncertainty, and three seed-42 checkpoints were inspected without multiplicity
 correction.
+
+Interpret the observed 0.01315 seed difference only as a one-observation
+noise-floor calibration: it is of the same order as the 0.01172 endpoint
+substrate difference, while both u1 pointwise substrate sets start above it.
+The comparisons involve different checkpoints and do not estimate seed
+variance.
 
 ### Claim 5 — u1 has suggestive bounded substrate structure, not a detected interaction
 
@@ -505,17 +521,17 @@ powered safety assay.
 
 ## Final drafting checklist
 
-- [ ] Every headline number matches a cited committed artifact.
-- [ ] M0 appears wherever endpoint branch safety means appear.
-- [ ] Endpoint wording says inconclusive null and not equivalence.
-- [ ] Coconut u1/u2 appear as bounds, not points.
-- [ ] K=0 safety remains undefined.
-- [ ] Prompt uncertainty is not described as seed uncertainty.
-- [ ] Capability/coherence/termination context accompanies safety comparisons.
-- [ ] Seed 43 is labeled a noise-floor diagnostic, not a seed CI or independent
+- [x] Every headline number matches a cited committed artifact.
+- [x] M0 appears wherever endpoint branch safety means appear.
+- [x] Endpoint wording says inconclusive null and not equivalence.
+- [x] Coconut u1/u2 appear as bounds, not points.
+- [x] K=0 safety remains undefined.
+- [x] Prompt uncertainty is not described as seed uncertainty.
+- [x] Capability/coherence/termination context accompanies safety comparisons.
+- [x] Seed 43 is labeled a noise-floor diagnostic, not a seed CI or independent
       95% replication.
-- [ ] Exploratory analyses are labeled post hoc.
-- [ ] Readout text says decodability only.
-- [ ] Layer-diff text makes no causal localization claim.
-- [ ] Prior-work numbers verified against sources, not memory.
-- [ ] The final draft has been checked against this file, not chat memory.
+- [x] Exploratory analyses are labeled post hoc.
+- [x] Readout text says decodability only.
+- [x] Layer-diff text makes no causal localization claim.
+- [x] No unverified prior-work number appears in the derivative draft.
+- [x] The final draft has been checked against this file, not chat memory.

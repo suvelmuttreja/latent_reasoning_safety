@@ -1,9 +1,9 @@
 # Executive summary
 
-> **Derivative draft.** The authoritative claim wording, frozen numbers,
-> pending-result boundary, and outline live in `writeup/claims_and_numbers.md`.
-> Reconcile this draft against that file before submission; do not promote
-> remembered chat wording directly into prose.
+> **Reconciled derivative (2026-09-01).** The authoritative claim wording,
+> frozen numbers, and interpretation boundaries remain in
+> `writeup/claims_and_numbers.md`. Recheck against that file after any future
+> evidence change; do not promote remembered chat wording directly into prose.
 
 ## Question and design
 
@@ -28,14 +28,16 @@ and +0.01715 for Coconut. The supported conclusion is therefore no detectable
 endpoint substrate difference at this assay's resolution, with equivalence not
 established—not evidence that the branches are the same.
 
-The explicit-CoT safety trajectory contained a transient stage-1 elevation:
-M0 0.08801 → u1 0.12673 → u2 0.09488 → u3 0.09344. Thus endpoint-only
-reporting would have hidden a +0.03872 stage-1 shift (paired-prompt bootstrap
-95% CI [+0.00061, +0.07723]) that largely resolved by stage 2. I describe this
-as transient drift detected in this run, not a seed-stable effect: the interval
-captures prompt uncertainty only, three registered checkpoints were inspected
-without a multiplicity adjustment, and each branch has one training seed. An
-early format-shock explanation is a hypothesis, not an established mechanism.
+The explicit-CoT safety trajectory showed a directional stage-1 elevation
+under both evaluated training seeds. Seed 42 followed M0 0.08801 → u1
+0.12673 → u2 0.09488 → u3 0.09344; its u1-minus-M0 contrast was +0.03872
+(paired-prompt bootstrap 95% CI [+0.00061, +0.07723]). The post-hoc noise-floor
+run evaluated seed 43 only at u1 and yielded 0.11358, a +0.02557 contrast whose
+95% CI crossed zero [-0.00924, +0.06129]. Thus the directional elevation
+recurred in the second point estimate, but only seed 42's prompt-level interval
+excluded zero. Three seed-42 checkpoints were inspected without a multiplicity
+adjustment. An early format-shock explanation is a hypothesis, not an
+established mechanism.
 
 Coconut-u1 is unavailable as a full-set scalar point estimate because
 3/60 generations remained nonterminating at the maximum registered cap,
@@ -54,18 +56,16 @@ appearance of termination failures at intermediate trained K but not at K=6 is
 K-selective format dependence, although one run cannot identify its mechanism.
 
 The direct u1 CoT-minus-Coconut contrast is suggestive but does not establish a
-transient substrate interaction. Its partial-identification set is
-`[+0.04244, +0.07578]`: even the worst-case Coconut assignment is 0.04244 below
-CoT, exceeding the frozen 0.01995 margin. A paired-prompt bootstrap that repeats
-the extreme assignment within every resample gives a 95% CI
-`[-0.02149, +0.09974]` for that lower endpoint and a conservative confidence
-region `[-0.02149, +0.12006]` for the identified set. Prompt uncertainty
-therefore crosses zero. This is reported as suggestive transient trajectory
-structure, not as a detected `delta_regime`, with the additional caveats that
-three stage endpoints were inspected and training-seed uncertainty is absent.
-At Coconut-u1, K=2 GSM8K accuracy was 65.5% and small-set coherence was 1.3/2
-(4/10 fully coherent); an identical native-harness CoT-u1 capability and human
-coherence control was not measured, preventing an unconfounded u1 headline.
+transient substrate interaction. The pointwise identified set was
+`[+0.04244, +0.07578]` with CoT seed 42 and `[+0.02930, +0.06263]` with seed 43,
+assigning Coconut's two nonterminating outcomes the theoretical score extremes.
+Both conservative 95% regions crossed zero: `[-0.02149, +0.12006]` and
+`[-0.03394, +0.10084]`, respectively. The directional substrate pattern
+therefore repeats across the two CoT point estimates but is not a detected 95%
+interaction. At Coconut-u1, K=2 GSM8K accuracy was 65.5% and small-set coherence
+was 1.3/2 (4/10 fully coherent); an identical native-harness CoT-u1 capability
+and human-coherence control was not measured, preventing an unconfounded u1
+headline.
 
 The largest effect was capability, not safety. On the same frozen 200 GSM8K
 prompts under native chat, M0 accuracy was bounded at 87.5–89.5% because four
@@ -97,15 +97,22 @@ and coherent-only scoring would condition on a post-treatment variable.
 Taken together, this experiment did not instantiate a robust differential
 safety-drift phenotype at the endpoint. The u1 trajectory contains a
 substantively sized but statistically unresolved substrate-dependent pattern.
-It also found that this public skip0
+The absolute observed CoT u1 seed difference (0.01315) is of the same order as
+the endpoint substrate difference (0.01172), making the inconclusive endpoint
+reading tangible. Conversely, both u1 pointwise substrate sets begin above
+that observed difference, so the u1 structure remains suggestive rather than
+being dismissed as observed seed spread. This is a descriptive calibration
+across different checkpoints from one two-seed observation, not an estimate of
+training-seed variance. The experiment also found that this public skip0
 schedule, as reproduced in our implementation, can make recurrent latents
-strictly necessary while
-severely degrading capability and coherence on a strong 4B thinking model, and
+strictly necessary while severely degrading capability and coherence on a
+strong 4B thinking model, and
 that safety trajectories can contain transient effects hidden by endpoint
 means. These results do not establish that hidden-state recurrence itself is
 causal, that latent reasoning is generally less monitorable, or that no safety
-difference exists. Training-level uncertainty is also unresolved because each
-branch has one seed; the paired-prompt interval is not a training-seed interval.
+difference exists. Training-level uncertainty remains unresolved: CoT has two
+u1 seeds, Coconut has one seed, and the paired-prompt intervals are not
+training-seed intervals.
 The public full and skip0 model cards report their recipes and describe uploaded
 endpoints as converged but provide no GSM8K metric; their weights were
 inaccessible. We therefore could not verify endpoint agreement with the public

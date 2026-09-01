@@ -26,6 +26,13 @@ def main() -> None:
             "cot_minus_coconut_u1_bounded_bootstrap.json"
         ),
     )
+    parser.add_argument(
+        "--seed-comparison",
+        default=(
+            "artifacts/discovery/results/matched_4b_cot_seed43/"
+            "cot_u1_seed_comparison.json"
+        ),
+    )
     args = parser.parse_args()
 
     payload = json.loads(Path(args.trajectory).read_text())
@@ -37,6 +44,11 @@ def main() -> None:
         raise ValueError("refusing to render an incomplete u1 comparison")
     if u1["effect"] != "cot_u1_minus_coco_u1_k2":
         raise ValueError("unexpected u1 comparison orientation")
+    seed_comparison = json.loads(Path(args.seed_comparison).read_text())
+    if seed_comparison["status"] != "complete":
+        raise ValueError("refusing to render an incomplete seed comparison")
+    if seed_comparison["analysis_role"] != "two_seed_cot_u1_noise_floor_diagnostic":
+        raise ValueError("unexpected seed-comparison analysis role")
 
     fig, ax = plt.subplots(figsize=(10.4, 5.4))
     explicit_names = ["m0", "cot_u1", "cot_u2", "cot_u3"]
@@ -48,8 +60,19 @@ def main() -> None:
         marker="o",
         linewidth=2.4,
         markersize=7,
-        label="Explicit CoT",
+        label="Explicit CoT seed 42",
         zorder=3,
+    )
+    ax.scatter(
+        [1],
+        [seed_comparison["means"]["seed43"]],
+        facecolors="white",
+        edgecolors="#2563eb",
+        marker="o",
+        linewidths=2.0,
+        s=70,
+        label="Explicit CoT seed 43 (u1 only)",
+        zorder=5,
     )
     ax.scatter(
         [0, 3],
@@ -113,20 +136,22 @@ def main() -> None:
     ax.legend(loc="lower left", frameon=False, fontsize=8.5)
     fig.subplots_adjust(left=0.09, right=0.70, bottom=0.18, top=0.90)
 
-    identified = u1["identified_set"]
-    lower_ci = u1["lower_endpoint_bootstrap_95_ci"]
-    upper_ci = u1["upper_endpoint_bootstrap_95_ci"]
-    confidence_region = u1["conservative_identified_set_95_confidence_region"]
+    seed42 = seed_comparison["bounded_substrate_contrasts"]["seed42"]
+    seed43 = seed_comparison["bounded_substrate_contrasts"]["seed43"]
+    if seed42["identified_set"] != u1["identified_set"]:
+        raise ValueError("seed-42 identified set disagrees across source artifacts")
     annotation = (
         "Stage-1 CoT − Coconut\n"
-        f"identified set: [{identified[0]:+.3f}, {identified[1]:+.3f}]\n\n"
-        "Paired-prompt bootstrap (95%)\n"
-        f"lower endpoint: [{lower_ci[0]:+.3f}, {lower_ci[1]:+.3f}]\n"
-        f"upper endpoint: [{upper_ci[0]:+.3f}, {upper_ci[1]:+.3f}]\n"
-        f"conservative region: [{confidence_region[0]:+.3f}, "
-        f"{confidence_region[1]:+.3f}]\n\n"
-        "Prompt uncertainty only;\n"
-        "single training seed"
+        f"seed 42 set: [{seed42['identified_set'][0]:+.3f}, "
+        f"{seed42['identified_set'][1]:+.3f}]\n"
+        f"95% region: [{seed42['conservative_identified_set_95_confidence_region'][0]:+.3f}, "
+        f"{seed42['conservative_identified_set_95_confidence_region'][1]:+.3f}]\n\n"
+        f"seed 43 set: [{seed43['identified_set'][0]:+.3f}, "
+        f"{seed43['identified_set'][1]:+.3f}]\n"
+        f"95% region: [{seed43['conservative_identified_set_95_confidence_region'][0]:+.3f}, "
+        f"{seed43['conservative_identified_set_95_confidence_region'][1]:+.3f}]\n\n"
+        "Paired-prompt uncertainty only;\n"
+        "one shared Coconut seed"
     )
     fig.text(
         0.73,

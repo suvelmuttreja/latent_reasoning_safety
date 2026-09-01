@@ -225,5 +225,9 @@ automatic_finalization:
   failure_reason: discovery_environment_missing_matplotlib
   data_artifacts_built_successfully: true
   figure_recovered_locally_from_durable_data: true
-  figure_png_sha256: 70eb297bed697d2e01cd5e3c960f0e0c0882ad9a4f1ba8846aa433aa0d233d60
-  figure_svg_sha256: 46c2cee6c563e6b42e44411723f448c5df6c9195ece8c1f3b1b5c76871a15850
+  seed43_overlay:
+    role: posthoc_noise_floor_u1_only
+    artifact: artifacts/discovery/results/matched_4b_cot_seed43/cot_u1_seed_comparison.json
+    artifact_sha256: 6bf487ff477230cd937c4141a630d697805af53a81f22b7aab6adef390844903
+  figure_png_sha256: 27cc8850f4bf384dd4f94c1d3e4238ecfad833984c916fe527e0a94123925e44
+  figure_svg_sha256: f12598be549e3201e27ddac93c456ab4b2fb78ffc3b6f0c709e92430a7fb4c55
