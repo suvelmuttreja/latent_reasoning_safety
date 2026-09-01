@@ -66,6 +66,13 @@ repair:
   control_plane_repair: >-
     Query job state through a helper that maps missing/expired Slurm IDs to an
     empty terminal state without weakening errors in generation or durability.
+  control_plane_repair_commit: 675b87639cae6053071ff7d965a954531251ba08
+  relaunched_job:
+    job_id: 11552289
+    submitted_at: '2026-08-31T19:20:57-07:00'
+    started_at: '2026-08-31T19:20:58-07:00'
+    time_limit: '01:00:00'
+    initial_state: running_immediately_on_b11-09
 slurm:
   replaced_unstarted_jobs: [11537864, 11538721]
   replacement_reason: actual_start_forecast_stale_or_unavailable_after_test_only

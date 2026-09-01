@@ -1435,3 +1435,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   exists. The A100 fallback remains safely user-held. The control-plane query
   now explicitly maps missing/expired IDs to an empty terminal state while
   retaining strict failures for model generation and result copying.
+- 2026-08-31T19:20:57-07:00: Control-plane repair commit `675b876` was
+  pushed and synchronized to home1. After verifying the stale claim belonged
+  to terminal zero-output job `11548589`, it was removed and a single repaired
+  job `11552289` was submitted. It started immediately on A40 node `b11-09`,
+  crossed the collision guard, reported the expected 46,068 MiB A40, and left
+  A100 fallback `11528116` safely held. Model loading/generation is in progress.
