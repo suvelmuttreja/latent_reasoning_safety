@@ -1852,3 +1852,27 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   as `2468b58`, transferred to home1, and hash-verified there. Only then was
   never-runnable seed job `11591087` cancelled and replaced by clean A40 job
   `11598619`, with a same-day 10:32 PDT Slurm forecast at submission.
+
+- 2026-09-01T10:19:21-07:00: After the bounded u1 trajectory was available, a
+  requested post-hoc paired bootstrap tested the direct intermediate substrate
+  contrast. Effect orientation is cot-u1 minus coco-u1 K2. On every one of
+  10,000 prompt resamples (seed 42), the two nonterminating Coconut prompts are
+  retained: assigning them score 1 defines the lower effect endpoint and score
+  0 the upper endpoint. The observed identified set is
+  `[+0.04244325, +0.07577658]`, wholly above the frozen `0.01994701` margin.
+  However, the lower endpoint bootstrap CI is
+  `[-0.02149186, +0.09973567]`, the upper endpoint CI is
+  `[+0.03311385, +0.12005938]`, and the conservative identified-set confidence
+  region is `[-0.02149186, +0.12005938]`. Thus the pointwise partial bounds are
+  substantively separated, but their prompt-resampling region includes zero.
+  This is labeled suggestive transient substrate structure, not a detected u1
+  interaction and not a replacement primary endpoint. Three registered stage
+  points were inspected and no training-seed uncertainty is represented.
+
+  Required co-reporting currently provides Coconut-u1 K2 GSM8K-200 accuracy
+  `65.5%` and small-set coherence mean `1.3/2` (4/10 fully coherent). No
+  identical native-harness CoT-u1 GSM8K or human coherence control exists; the
+  original stage-1 process metrics were unavailable after the historical
+  metadata-finalization failure. This missing matched comparator independently
+  prevents an unconfounded u1 safety headline. Durable analysis artifact
+  `cot_minus_coconut_u1_bounded_bootstrap.json` has SHA-256 `9c41b6ca...`.

@@ -179,6 +179,30 @@ observed_coconut_trajectory:
   interpretation: >-
     intermediate_point_estimates_unavailable; worst_case_bounds_complete;
     nontermination_present_at_intermediate_trained_K_but_absent_at_K6_endpoint
+observed_u1_bounded_regime_contrast:
+  analysis_timing: posthoc_after_bounded_scores
+  effect: cot_u1_minus_coco_u1_k2
+  identified_set: [0.04244324763615926, 0.0757765809694926]
+  frozen_equivalence_margin: 0.019947012265523274
+  pointwise_lower_bound_exceeds_margin: true
+  lower_endpoint_paired_bootstrap_95_ci: [-0.021491861641407012, 0.09973566979169843]
+  upper_endpoint_paired_bootstrap_95_ci: [0.03311384995778402, 0.12005937606096266]
+  conservative_identified_set_95_confidence_region: [-0.021491861641407012, 0.12005937606096266]
+  sign_identified_with_prompt_uncertainty: false
+  bootstrap_seed: 42
+  bootstrap_samples: 10000
+  multiple_checkpoints_caveat: three_registered_stage_endpoints_inspected
+  training_seed_uncertainty_claimed: false
+  interpretation: suggestive_transient_substrate_structure_not_detected_interaction
+  artifact: artifacts/discovery/results/dense_safety/trajectory/cot_minus_coconut_u1_bounded_bootstrap.json
+  artifact_sha256: 9c41b6cadacb50d5e3a205e89d4af99ac8334ec198cd5bcf3548f262437e1cfc
+  capability_coherence_context:
+    coconut_u1_k2_gsm8k_200_accuracy: 0.655
+    coconut_u1_k2_coherence_mean_0_to_2: 1.3
+    coconut_u1_k2_normal_coherence_rate: 0.4
+    coherence_prompts: 10
+    matched_cot_u1_gsm8k_and_human_coherence: not_measured
+    reporting_consequence: cannot_make_unconfounded_u1_substrate_claim
 launch_order_after_active_controls:
   - cot_u1_cot_u2_coco_u2_score_blind_cap_calibrations
   - freeze_each_passing_cap_or_structural_unavailability_before_judging

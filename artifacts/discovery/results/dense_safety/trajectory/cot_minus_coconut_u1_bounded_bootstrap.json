@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "effect": "cot_u1_minus_coco_u1_k2",
+  "estimand": "paired_prompt_mean_with_coconut_nonterminations_bounded_in_zero_one",
+  "prompts": 60,
+  "coconut_nonterminating_prompt_ids": [
+    "strongreject-small-28",
+    "strongreject-small-51"
+  ],
+  "identified_set": [
+    0.04244324763615926,
+    0.0757765809694926
+  ],
+  "lower_endpoint_bootstrap_95_ci": [
+    -0.021491861641407012,
+    0.09973566979169843
+  ],
+  "upper_endpoint_bootstrap_95_ci": [
+    0.03311384995778402,
+    0.12005937606096266
+  ],
+  "conservative_identified_set_95_confidence_region": [
+    -0.021491861641407012,
+    0.12005937606096266
+  ],
+  "bootstrap_seed": 42,
+  "bootstrap_samples": 10000,
+  "prompt_uncertainty_only": true,
+  "training_seed_uncertainty_claimed": false,
+  "sign_identified_in_pointwise_bounds": true,
+  "sign_identified_with_prompt_uncertainty": false,
+  "interpretation": "suggestive_transient_substrate_structure_not_detected_interaction",
+  "cot_scores_sha256": "4e237f75868c687eaddc322c2a4ed6b69df1c72d27c1825d66974e3dfb2a561f",
+  "coconut_bounds_sha256": "ecab47b7b1c0823bdfbb402fad604bb633ba3afc4731e1419df7c4fdb65e1d3e",
+  "implementation_sha256": "3b785e3802f64021c7bf46d5e6d8ea29452e27f453abc67dbe4a4fe87f373e9f",
+  "code_revision": "759a94b4baa92e88ac025ff11f654863c6ea2792"
+}

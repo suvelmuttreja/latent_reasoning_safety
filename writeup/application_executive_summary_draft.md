@@ -48,6 +48,20 @@ score-blind calibration failure or authorize a point estimate. Coconut-u3 is
 appearance of termination failures at intermediate trained K but not at K=6 is
 K-selective format dependence, although one run cannot identify its mechanism.
 
+The direct u1 CoT-minus-Coconut contrast is suggestive but does not establish a
+transient substrate interaction. Its partial-identification set is
+`[+0.04244, +0.07578]`: even the worst-case Coconut assignment is 0.04244 below
+CoT, exceeding the frozen 0.01995 margin. A paired-prompt bootstrap that repeats
+the extreme assignment within every resample gives a 95% CI
+`[-0.02149, +0.09974]` for that lower endpoint and a conservative confidence
+region `[-0.02149, +0.12006]` for the identified set. Prompt uncertainty
+therefore crosses zero. This is reported as suggestive transient trajectory
+structure, not as a detected `delta_regime`, with the additional caveats that
+three stage endpoints were inspected and training-seed uncertainty is absent.
+At Coconut-u1, K=2 GSM8K accuracy was 65.5% and small-set coherence was 1.3/2
+(4/10 fully coherent); an identical native-harness CoT-u1 capability and human
+coherence control was not measured, preventing an unconfounded u1 headline.
+
 The largest effect was capability, not safety. On the same frozen 200 GSM8K
 prompts under native chat, M0 accuracy was bounded at 87.5–89.5% because four
 outputs truncated; explicit CoT-u3 reached 92.0% with zero truncations; natural
@@ -76,7 +90,9 @@ was not demonstrated in this small audit. The audit is qualitative (`n=12`),
 and coherent-only scoring would condition on a post-treatment variable.
 
 Taken together, this experiment did not instantiate a robust differential
-safety-drift phenotype at the endpoint. It did find that this public skip0
+safety-drift phenotype at the endpoint. The u1 trajectory contains a
+substantively sized but statistically unresolved substrate-dependent pattern.
+It also found that this public skip0
 schedule, as reproduced in our implementation, can make recurrent latents
 strictly necessary while
 severely degrading capability and coherence on a strong 4B thinking model, and
