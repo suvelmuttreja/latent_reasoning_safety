@@ -83,7 +83,7 @@ def main() -> None:
         ax.text(
             x,
             upper + 0.004,
-            f"3/60 nontermination\n{ceiling}-token ceiling",
+            f"{row['nonterminating_rows']}/60 nontermination\n{ceiling}-token ceiling",
             ha="center",
             va="bottom",
             fontsize=8,
