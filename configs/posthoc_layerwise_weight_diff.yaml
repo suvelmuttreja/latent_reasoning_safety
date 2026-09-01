@@ -30,3 +30,30 @@ reporting:
   label: exploratory_posthoc
   exclusion_from_primary_or_registered_results: true
   null_or_unstructured_result_must_be_retained: true
+observed:
+  job_id: 11600815
+  terminal_state: completed
+  elapsed: '00:03:46'
+  max_rss_kib: 20593480
+  code_revision: 9d7f1b2e4f90fed3f83c457e98e68a7049a6327d
+  cot_checkpoint_sha256: c1447de3b8822b9257c008be998f7a1d4e4cc3795b81c1339269bf9d4073c047
+  coconut_checkpoint_sha256: 84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351
+  overall_cot_relative_l2: 0.004727456967083322
+  overall_coconut_relative_l2: 0.00437629893302858
+  overall_coconut_to_cot_update_ratio: 0.9257194647143676
+  overall_update_cosine: 0.426878784710936
+  coconut_update_smaller_in_every_transformer_block: true
+  transformer_block_coconut_to_cot_update_ratio_range: [0.75636863, 0.96815073]
+  layer_update_cosine_min: 0.14495253
+  layer_update_cosine_max: 0.52803768
+  embeddings:
+    cot_relative_l2: 0.0066918335
+    coconut_relative_l2: 0.0071594746
+    coconut_to_cot_update_ratio: 1.0698824
+    update_cosine: 0.86566973
+  interpretation: >-
+    no_early_layer_concentration; coconut_moves_less_than_cot_in_every_block;
+    deeper_update_directions_are_more_aligned; embedding_exception_is_descriptive_not_causal
+  raw_json_sha256: 3bf4c0b62858e1f5b2fac9568caed68e2536c7c0bf7c970d10934fa9a2a9eca6
+  figure_png_sha256: 34494cebc5e6e1b17cc44ae1960d2591f4b1764b3a1ec9cc80631c9944630b5e
+  figure_svg_sha256: c5c7a81b3a572c336af3bff4d359bd0eb20414fcec823dfdcaed4a6ee40d695c

@@ -1911,3 +1911,16 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   not public padding. The corrected comparison uses only the shared token-ID
   prefix and records both original shapes; unmatched tails are not compared or
   silently treated as updates.
+
+  Corrected CPU job `11600815` completed in `00:03:46` with peak RSS about
+  20.6 GB and copied identical compact artifacts to scratch1 and durable home1.
+  Overall relative L2 movement is `0.4727%` for CoT and `0.4376%` for Coconut;
+  update-vector cosine is `0.4269`. Coconut moves less than CoT in every
+  transformer block (norm ratios `0.756–0.969`), so the proposed early-layer
+  concentration account is not supported. Layerwise update alignment generally
+  increases with depth (`0.145` minimum to `0.528` maximum). Shared embedding
+  rows are the exception to the norm ordering: `0.6692%` CoT versus `0.7159%`
+  Coconut, cosine `0.8657`. This is retained as descriptive structure, not as
+  evidence that capability damage resides in embeddings. Raw JSON SHA-256 is
+  `3bf4c0b6...`. The two-panel layer-norm/alignment figure was rendered and
+  visually inspected; PNG/SVG SHA-256 values are `34494ceb...` / `c5c7a81b...`.
