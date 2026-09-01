@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "status": "sealed_pending_condition_blind_human_labels",
+  "shuffle_seed": 42,
+  "packet_sha256": "ea51ed7f57d800d5d79483dc39d823aeb0f458baada52050bef7b79ab1cbec31",
+  "config_sha256": "ffd8735dae53ecd08801015b8aae23459cd94aa47ee991a154460ac4f5d65050",
+  "official_config_sha256": "6968a872504a68d80e8a0554a3493b449610d0ba1811b553ae5bbcfd55e26505",
+  "audit_manifest_sha256": "2bddeb54c4a1bd22adb5b6468b48c114c189d3f1943afb4bc6ab4fb51cc40ec4",
+  "generation_sha256_by_condition": {
+    "cot_u3": "d0d8ab7dba5753c472c2780627d58cb80e1976ace8fc8969e90c11d5c7cb54a0",
+    "coco_u3_k6": "a00c96e3997e8b3983aff061ac3a802d0086cf257dae800d91d90a405c3affab"
+  },
+  "records": [
+    {
+      "blind_id": "endpoint-audit-blind-0000",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-14",
+      "prompt_sha256": "cb110c4267962c4a4ea0d1fa72a4fbe4ceff721022bb092eb4d507e3cafd335b",
+      "displayed_sha256": "697ea1a88b179b4c8cd5c936a4e5273f99c3c0607021d78b70fc8d4d081e5de4"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0001",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-28",
+      "prompt_sha256": "c92ac34928971a39889d1543909f49b045dbb6d085adb40730206b4e9450a9cb",
+      "displayed_sha256": "83cd967666308c6c11d1ec364ead14fb54b8bce4f1a782c9a2780b97004f5f83"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0002",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-30",
+      "prompt_sha256": "535e9b89610a66f3af1740676162167aab557adb04930fb36bcb421521c6de85",
+      "displayed_sha256": "68d5bb348f2a2bb2e1c8318e97e2ba37ac438492bd5a8578f9f5358259c3affb"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0003",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-56",
+      "prompt_sha256": "c7488f21416611c0374369d8c93074a22a5cbb935fc97865fe8a3be8c6c58177",
+      "displayed_sha256": "4f50a0ef89a2651332411b4e92b7c84583daa57171091ff84725f4754113af66"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0004",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-03",
+      "prompt_sha256": "3d5322556f6dfd1a10c76a264df65bbce85c503a5c62180f420c8cce55459629",
+      "displayed_sha256": "7f1d615260ae709ba01283e999948a67a08aa6e50f4153feb7609dace87453fc"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0005",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-51",
+      "prompt_sha256": "6c64eb1eb851249bfa892d1b3b8d2ddfe6d437c53ba720526ccd9675f47d100e",
+      "displayed_sha256": "3c4c42aa8f7d52c6e57553905a1826359d43e6781524fc3b02b13e403e76eb81"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0006",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-28",
+      "prompt_sha256": "c92ac34928971a39889d1543909f49b045dbb6d085adb40730206b4e9450a9cb",
+      "displayed_sha256": "fd147d8adf5d23c8cee71639cde33f7cd95b0a01d78d1969dfe1a1fb0f469543"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0007",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-56",
+      "prompt_sha256": "c7488f21416611c0374369d8c93074a22a5cbb935fc97865fe8a3be8c6c58177",
+      "displayed_sha256": "55375645a072031a529783c965ce67141e867fa548b7b59864ea2224afea2621"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0008",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-13",
+      "prompt_sha256": "69ecd70dc31309c8e1b89855fcac99bf0dbb182e9b276820ac937c0130573e49",
+      "displayed_sha256": "d082c42053cf9c0018a0bbc205d83b58c180ca1b3f851150cb67bbca86b91b1c"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0009",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-21",
+      "prompt_sha256": "64265c52eeb81e06160beb79d0f3bbb368bd3c8b6b6b105e0e07aa54d4cef64e",
+      "displayed_sha256": "a6e245cfa118b870af50238e0d72f487839acc63d7544a34f26ba36dc196efc4"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0010",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-03",
+      "prompt_sha256": "3d5322556f6dfd1a10c76a264df65bbce85c503a5c62180f420c8cce55459629",
+      "displayed_sha256": "db90398e6d66cc903f45905291689f089facacb1f0852869d6602a8dbf4b58c4"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0011",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-02",
+      "prompt_sha256": "ae97a0c7074b45dad4cf506b9f3ec3abbb5b5bad2ca6b800ab2d0fb1decf875d",
+      "displayed_sha256": "aa9c4302f40342123b1c0e97ccbfc236c425c13d5442ce2b91493dd4a83c31a0"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0012",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-49",
+      "prompt_sha256": "8f6452aec06f1fca4fa6e1f0658a9fc663390b13c43d53bb387d7ff3f3aadf93",
+      "displayed_sha256": "7e8351ad26606db2393a8a624b61f3ee3cbd34c54c9c91d1b6920c8e005db4aa"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0013",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-30",
+      "prompt_sha256": "535e9b89610a66f3af1740676162167aab557adb04930fb36bcb421521c6de85",
+      "displayed_sha256": "85d1132a754673aadd3f3809072f53b852a5b680b95d543f4d41e00a833da4ab"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0014",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-49",
+      "prompt_sha256": "8f6452aec06f1fca4fa6e1f0658a9fc663390b13c43d53bb387d7ff3f3aadf93",
+      "displayed_sha256": "38ec95f9cb4ccb250d706997d2cae436281f9d5cf672dea4ccf24dd0b3a7143d"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0015",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-13",
+      "prompt_sha256": "69ecd70dc31309c8e1b89855fcac99bf0dbb182e9b276820ac937c0130573e49",
+      "displayed_sha256": "c9fb4a8ba4c7b8a29e5e34e0223f2b2575e14479fd43651ad896f8aea2a5fa4a"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0016",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-51",
+      "prompt_sha256": "6c64eb1eb851249bfa892d1b3b8d2ddfe6d437c53ba720526ccd9675f47d100e",
+      "displayed_sha256": "79a5167de70c33837de074091f9af01491c9313044bca42a30f3a7c59e71ea40"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0017",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-21",
+      "prompt_sha256": "64265c52eeb81e06160beb79d0f3bbb368bd3c8b6b6b105e0e07aa54d4cef64e",
+      "displayed_sha256": "014f21b90b264d64db3df40d2166dde59cb4b4125da57a44e1d8ac034fbd733a"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0018",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-31",
+      "prompt_sha256": "3c684ccdf3248f54a4c93ade585f31a5435e72e42cd4608f2c99804292dfe454",
+      "displayed_sha256": "411b83f93ec9210079d25dd4afc34910a8f9a9dae8411c051682c2c9c5ef2066"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0019",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-31",
+      "prompt_sha256": "3c684ccdf3248f54a4c93ade585f31a5435e72e42cd4608f2c99804292dfe454",
+      "displayed_sha256": "db21bd0092da9e9a36fa11881758270cbfad532ab9e674d3cb4627f255e02253"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0020",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-40",
+      "prompt_sha256": "4b7436a53e742e75ff0114b17e5f96d3d69deb97c58b2223c725245ab7c3e186",
+      "displayed_sha256": "28c1bb646f01da32fa6ccf7946b483647ad219ac57730924adaccf63026b2054"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0021",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-02",
+      "prompt_sha256": "ae97a0c7074b45dad4cf506b9f3ec3abbb5b5bad2ca6b800ab2d0fb1decf875d",
+      "displayed_sha256": "7a8dd18198bbd51c79c6e92a19a7aeb6780878205607aa2e323999f6c63cea52"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0022",
+      "source_condition": "cot_u3",
+      "prompt_id": "strongreject-small-14",
+      "prompt_sha256": "cb110c4267962c4a4ea0d1fa72a4fbe4ceff721022bb092eb4d507e3cafd335b",
+      "displayed_sha256": "c87b5a24f9d3768c58cd130543f64f2f875c82e5fc120c779e8b42760c9090f6"
+    },
+    {
+      "blind_id": "endpoint-audit-blind-0023",
+      "source_condition": "coco_u3_k6",
+      "prompt_id": "strongreject-small-40",
+      "prompt_sha256": "4b7436a53e742e75ff0114b17e5f96d3d69deb97c58b2223c725245ab7c3e186",
+      "displayed_sha256": "f58f31bfb0cfd3a54855483dc1bd14ba5f3c30f2a1ed3fc38bc7819ff952f6f8"
+    }
+  ]
+}

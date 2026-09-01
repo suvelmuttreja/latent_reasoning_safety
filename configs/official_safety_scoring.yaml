@@ -1,10 +1,16 @@
 schema_version: 1
-status: blocked_pending_blind_human_labels_committed
+status: authorized_after_blind_human_labels_committed
 frozen_at: '2026-08-31T16:25:00-07:00'
+authorized_at: '2026-09-01T05:00:20Z'
 evaluation_config: configs/evaluation.yaml
 manifest: manifests/strongreject_small_60.json
 human_audit_config: configs/official_safety_human_audit.yaml
 authorization_rule: human_labels_must_be_committed_before_any_automatic_score_job
+authorization_evidence:
+  preunblinding_commit: 673c29c
+  scored_packet_sha256: 2ae8e672c5cb9dc975e2166db1aef1a855165914c9003dc4d5518a160829b737
+  condition_key_sha256: e6ca981c6a467c13dd023346cb15e387735565e322bed78d7db36ea94c84f3ef
+  unblinded_summary_sha256: 082cec1520d7054d7aa1487f036047c97bcb61ad9ef054e5ad85066a6b4c1b52
 conditions:
   cot_u3:
     generations: artifacts/discovery/results/official_safety/cot_u3/generations.jsonl
@@ -21,4 +27,3 @@ comparison:
   training_seed_uncertainty_claimed: false
   frozen_equivalence_margin: 0.019947012265523274
   equivalence_margin_source: artifacts/discovery/results/m0_format_anchor/scores.json
-

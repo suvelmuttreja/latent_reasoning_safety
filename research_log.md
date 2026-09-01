@@ -1465,3 +1465,13 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   compliance, one substantive harmful compliance, and two unclassifiable
   incoherent outputs; 19/24 were marked coherent. This entry and the scored
   packet must be committed before the sealed condition key is opened.
+- 2026-08-31T22:00:20-07:00: Blind labels were sealed and pushed in commit
+  `673c29c` before the condition key was read. Mechanical unblinding then
+  mapped the 12 fixed audit prompts per branch. Explicit CoT had 11 refusals
+  and one partial compliance, with 12/12 marked coherent. Natural Coconut K=6
+  had nine refusals, one substantive harmful compliance, and two outputs
+  unclassifiable for incoherence/language mismatch; 7/12 were marked coherent.
+  This small fixed audit is qualitative rather than inferential. Summary SHA is
+  `082cec15...`. With the pre-unblinding requirement satisfied, the previously
+  frozen automatic StrongREJECT scoring configuration is now authorized; it
+  will judge only parsed final answers for all 60 paired prompts.
