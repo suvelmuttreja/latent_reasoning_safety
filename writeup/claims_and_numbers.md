@@ -36,31 +36,41 @@ and dated decisions belong in `research_log.md`, not here.
 
 ## Application-ready result summary
 
-Matched benign GSM8K post-training produced sharply different capability
-outcomes in an explicit-CoT branch and our skip-stage-0 Coconut reproduction,
-despite an inconclusive endpoint safety contrast. Explicit CoT reached 92.0%
-GSM8K accuracy, while Coconut at its trained K=6 reached 31.0%, a 61-point
-matched-branch gap. At the Coconut endpoint, removing latents caused structural
-nontermination, yet retaining them still underperformed: the latents were
-load-bearing for termination but deleterious for capability in this run. The
-endpoint Coconut-minus-CoT harmfulness estimate was +0.01172 (paired-prompt
-bootstrap 95% CI [-0.02278, +0.04594]); this is an inconclusive null, not
-evidence of equivalence. Mid-training results suggest substrate-dependent
-trajectory structure: the directional CoT u1 elevation and strictly positive
-pointwise CoT-minus-Coconut identified set appeared with both CoT point
-estimates against the same single Coconut run, but seed 43's M0 contrast and
-both conservative substrate regions cross zero. The branches also lack matched
-capability/coherence controls at that update.
-Post-hoc model diffing and token-mode readout add descriptive mechanism clues,
-not causal or faithful explanations.
+I set out to test whether replacing explicit reasoning with recurrent latent
+reasoning during matched benign post-training changes safety drift. The
+experiment did not produce a capability-matched latent model, so it could not
+cleanly answer that question. Explicit CoT reached 92.0% GSM8K accuracy, while
+our independent Meta-style implementation of the public skip-stage-0
+configuration reached 31.0% at its trained K=6, a 61-point gap. This result
+cannot be generalized to Coconut: the exact Qwen training wrapper, processed
+training file, and reference weights were inaccessible, so implementation or
+recipe divergence remains a live explanation.
+
+The failure had structure. Across the Coconut trajectory, trained-depth GSM8K
+accuracy declined from 65.5% to 46.0% to 31.0%. At the endpoint, removing the
+latents caused structural nontermination, yet retaining them reduced capability
+further: the latent states were load-bearing for termination but deleterious for
+GSM8K performance in this run. A second explicit-CoT seed repeated the direction
+of an early safety elevation, but not its nominal prompt-level significance;
+both bounded CoT-minus-Coconut regions crossed zero and lacked matched
+capability/coherence controls.
+
+The registered endpoint Coconut-minus-CoT harmfulness estimate was +0.01172
+(paired-prompt bootstrap 95% CI [-0.02278, +0.04594]). The interval includes
+zero and exceeds the frozen equivalence margin. More importantly, the 61-point
+capability divergence makes the safety contrast capability-confounded. It is an
+underpowered, inconclusive registered result, not evidence of substrate safety,
+harm, equivalence, or no effect. Post-hoc model diffing and token-mode readout
+are descriptive clues only and do not validate the implementation or explain
+the failure causally.
 
 ## Claim map
 
 | Claim | Analysis role | Supported conclusion |
 |---|---|---|
-| Endpoint Coconut − CoT safety | registered primary substrate comparison | inconclusive null; equivalence not established |
-| Matched endpoint capability | required registered co-report | 61-point CoT advantage over our skip0 reproduction |
+| Matched endpoint capability | model-organism validity check and required co-report | 61-point CoT advantage; intended substrate comparison became capability-confounded |
 | Coconut endpoint K=0 vs K=6 | registered fixed-weights primary | safety scalar undefined at K=0; latents load-bearing for termination but harmful to capability |
+| Endpoint Coconut − CoT safety | registered primary estimand, narratively demoted after validity failure | underpowered and capability-confounded inconclusive result; equivalence not established |
 | CoT safety trajectory | registered trajectory plus post-hoc second-seed diagnostic | directional u1 elevation in both point estimates; only seed 42 excludes zero |
 | CoT − Coconut at u1 | post-hoc bounded contrast on registered trajectory data | both CoT-seed pointwise sets are positive; neither conservative region excludes zero |
 | Human audit | registered qualitative validation | coherence asymmetry; judge-deflation concern not demonstrated |
@@ -181,7 +191,22 @@ and the stage-specific blind-coherence artifacts under the same directory.
 
 ## Claim cards: approved wording and ceilings
 
-### Claim 1 — endpoint safety is an inconclusive null, not equivalence
+### Claim 1 — the intended substrate comparison failed its capability-validity condition
+
+Approved wording:
+
+> Matched benign post-training did not produce a capability-matched latent
+> model. Explicit CoT reached 92.0% GSM8K accuracy, whereas our independent
+> Meta-style implementation of the public skip-stage-0 configuration reached
+> 31.0% at K=6, a 61-point gap. The registered safety contrast is therefore
+> capability-confounded and cannot cleanly answer whether reasoning substrate
+> changes safety.
+
+The endpoint safety contrast remains the registered primary estimand and must
+still be reported. Narrative demotion records a model-organism validity failure;
+it does not relabel the capability result as a pre-registered safety endpoint.
+
+### Claim 2 — endpoint safety is underpowered, inconclusive, and not equivalence
 
 Approved wording:
 
@@ -195,25 +220,28 @@ Do not write “no effect,” “the methods are equally safe,” “equivalent,
 “the null was proven.” The interval is prompt-level uncertainty from one
 endpoint training seed per branch.
 
-### Claim 2 — matched benign training sharply diverged in capability
+### Claim 3 — matched benign training sharply diverged in capability
 
 Approved wording:
 
 > Under matched benign post-training, explicit CoT reached 92.0% GSM8K
-> accuracy, whereas our skip-stage-0 Coconut reproduction reached 31.0% at
+> accuracy, whereas our independent Meta-style implementation of the public
+> skip-stage-0 configuration reached 31.0% at
 > K=6, a 61-point matched-branch gap. Relative to M0's no-imputation range
 > [87.5%, 89.5%], CoT changed by +2.5 to +4.5 points and Coconut by -58.5 to
 > -56.5 points.
 
-Use “our reproduction of the published skip0 recipe,” not an unqualified
-claim about Coconut generally. Public checkpoint access was unavailable, so
-we did not verify weight-level agreement with the reference implementation.
-The public full and skip0 model cards document the recipes and describe their
-uploaded endpoints as converged, but report no GSM8K metric against which to
-validate our 31.0% result. Do not say where the “damage lives”; the completed
-weight diff does not identify a causal locus.
+Use “our independent Meta-style implementation of the public skip-stage-0
+configuration,” not “a faithful reproduction” or an unqualified claim about
+Coconut generally. Public checkpoint access was unavailable, so we did not
+verify weight-level agreement with the reference implementation. The public
+cards expose headline hyperparameters but not the exact Qwen wrapper, processed
+training file, or a GSM8K result against which to validate our 31.0% outcome.
+Implementation or recipe divergence therefore remains a live explanation and
+must appear in the executive summary. Do not say where the “damage lives”; the
+completed weight diff does not identify a causal locus.
 
-### Claim 3 — latents are load-bearing for termination, not beneficial overall
+### Claim 4 — latents are load-bearing for termination, not beneficial overall
 
 Approved wording:
 
@@ -228,7 +256,7 @@ K=0 is an inference-only necessity ablation and is out-of-distribution for a
 skip0-trained endpoint. Do not complete-case score it, impute a safety scalar,
 or describe nontermination as a missing experiment.
 
-### Claim 4 — the directional explicit-CoT u1 elevation appears under two seeds
+### Claim 5 — the directional explicit-CoT u1 elevation appears under two seeds
 
 Approved wording:
 
@@ -256,7 +284,7 @@ score-blind selected 4,096-token ceiling and had zero truncations. Two CoT
 seeds do not yield a seed confidence interval, and the shared single Coconut
 seed prevents claims about Coconut seed variability.
 
-### Claim 5 — u1 has suggestive bounded substrate structure, not a detected interaction
+### Claim 6 — u1 has suggestive bounded substrate structure, not a detected interaction
 
 Approved wording:
 
@@ -275,7 +303,7 @@ be presented as unconfounded. The same single Coconut seed anchors both
 comparisons, so this does not estimate Coconut seed variability. Coconut u1/u2
 are bound bars, not points.
 
-### Claim 6 — the human audit reveals asymmetry, but not judge-score deflation
+### Claim 7 — the human audit reveals asymmetry, but not judge-score deflation
 
 Frozen audit counts:
 
@@ -297,10 +325,22 @@ Approved wording:
 A coherent-only estimate is post-treatment conditioning and may be shown only
 as a descriptive sensitivity check, never as a corrected primary estimate.
 
+Post-hoc descriptive addendum (2026-09-01, derived from committed endpoint
+generations by a character-class rule, share of CJK Unified Ideographs among
+all characters > 0.30, all 60 prompts English): 12/60 Coconut u3 K=6 reasoning
+fields and 7/60 final answers crossed the threshold; M0 and explicit CoT were
+0/60 on both. Approved wording: "Twelve Coconut reasoning fields and seven
+final answers crossed a >30%-CJK character threshold on English prompts;
+neither comparison condition did." The rule is not a language identifier. Do
+not call this a cause of the capability loss or of the safety scores; the judge
+was not validated on these CJK-heavy answers, making the seven final-answer
+scores a condition-specific measurement gap. Provenance:
+`writeup/figures/language_switch_counts.json` and the script beside it.
+
 Provenance: `artifacts/discovery/results/official_safety/judge_human/` and
 `artifacts/discovery/results/official_safety/human_audit/`.
 
-### Claim 7 — post-hoc weight diffing shows distributed, differently aligned updates
+### Claim 8 — post-hoc weight diffing shows distributed, differently aligned updates
 
 Frozen results:
 
@@ -328,7 +368,7 @@ Approved wording:
 Provenance:
 `artifacts/discovery/results/posthoc_layerwise_weight_diff/layerwise_weight_updates.json`.
 
-### Claim 8 — token projections show period-two decodability only
+### Claim 9 — token projections show period-two decodability only
 
 Protocol: first five frozen GSM8K prompts and first five frozen StrongREJECT
 prompts; six latent positions; six depths; native output head; top-10 overlap;
@@ -364,7 +404,7 @@ Provenance:
 `artifacts/discovery/results/posthoc_token_mode_readout/period_two_analysis.json`
 and `token_mode_readout.json` in the same directory.
 
-### Claim 9 — relation to self-jailbreaking literature is bounded
+### Claim 10 — relation to self-jailbreaking literature is bounded
 
 Approved wording:
 
@@ -383,6 +423,14 @@ before it enters a draft — never cited from memory. Directional consistency
 with the Coconut paper may be claimed only after that check.
 
 ## Power limitation and analysis scope
+
+The project did not conduct and act on a prospective equivalence-power analysis
+once the frozen margin and baseline variability were available. That was a
+design mistake, not a virtue of pre-registration. Under simple scaling and a
+zero-centered effect, the observed endpoint half-width of ~0.0344 would need to
+fall below 0.01995, requiring roughly 3× the information. The exact 17× figure
+below additionally depends on the observed nonzero endpoint estimate and could
+not have been known prospectively.
 
 To put the endpoint CI inside the equivalence margin around the observed
 estimate requires a half-width near 0.0082 rather than the current ~0.0344,
@@ -422,7 +470,8 @@ analyses are outside this evidence set and belong in future work.
 - Never call the seed-43 run a seed CI or an independent 95% replication.
 - Never claim the readout is faithful, causal, monitorable, or content-free.
 - Never claim the layer diff localizes where capability was damaged.
-- Never generalize from “our skip0 reproduction” to Coconut as a method class.
+- Never generalize from “our independent skip0 implementation” to Coconut as a
+  method class.
 - Never select a checkpoint, cap, or implementation by safety-score direction.
 
 ## Write-up outline
@@ -439,70 +488,89 @@ Specify M0, data, frozen order, seed, optimizer, effective batch, the shared
 1×32 micro-batch configuration, explicit-CoT versus skip0 Coconut, K schedule,
 StrongREJECT-60, GSM8K-200, human review, cap policy, and ±0.01995 margin.
 
-### 3. Capability and termination result
+### 3. Model-organism validity failure: capability collapse
 
 Show M0, CoT-u3, Coconut-u3 K=6, and the K=0 capability range. State the
-61-point matched-branch gap and the load-bearing/deleterious distinction. Name
-the inaccessible-reference limitation and avoid a universal Coconut claim.
+61-point matched-branch gap and conclude immediately that the intended safety
+comparison became capability-confounded. Use “independent Meta-style
+implementation of the public skip-stage-0 configuration,” not “faithful
+reproduction.” Name the inaccessible wrapper/data/weights limitation in the
+executive summary and avoid a universal Coconut claim.
 
-### 4. Endpoint registered primary result
+### 4. What the trajectory and K=0 ablation reveal about the failure
+
+Show the trained-depth capability decline across u1/u2/u3, then the endpoint
+K=0 result: removing latents raises the capability range but causes structural
+nontermination. Explain the narrow conclusion—latents are load-bearing for
+termination but deleterious for GSM8K performance in this run—before discussing
+any safety trajectory.
+
+### 5. Registered safety result: reported, but narratively demoted
 
 Give the estimate and CI against the frozen margin immediately after the
-capability result. Use Claim 1 exactly: inconclusive null, not equivalence.
-Show M0 in the table/figure so branch means are interpretable as drift. Leading
-the results narrative with the larger capability finding does not change the
-endpoint safety comparison's registered-primary status.
+failure diagnosis. Use Claim 2 exactly: underpowered, capability-confounded,
+inconclusive, and not equivalence. Own the missing prospective power analysis
+as a design mistake. Show M0 in the table/figure so branch means are
+interpretable as drift. Narrative demotion does not change the endpoint safety
+comparison's registered-primary status.
 
-### 5. Safety trajectory
+### 6. Safety trajectory and second-seed diagnostic
 
 Plot all updates. CoT uses points; Coconut u1/u2 use identified-set bound bars.
 Give the CoT-u1 interval, the u1 bounded substrate contrast, multiplicity and
 seed-role cautions, and mandatory u1 capability/coherence context. Show seed 43
 as a separate u1-only point and give both bounded substrate regions.
 
-### 6. Human validation and measurement limitations
+### 7. Human validation and measurement limitations
 
 Report the blind-audit counts, harmful example and judge score, coherence
 asymmetry, non-demonstrated judge-deflation concern, length correlation, cap
 calibration, and contamination disclosures. Label coherent-only analysis as
 post-treatment and descriptive.
 
-### 7. Post-hoc mechanistic observations
+### 8. Post-hoc mechanistic observations — appendix by default
 
-Put layer-wise diffing and token-mode readout in a clearly exploratory section.
-Use Claim 7's nonlocalizing language and Claim 8's decodability-only ceiling.
-The period-two/`c_thought=2` match is a consistency observation, not causation.
+Put layer-wise diffing and token-mode readout in a clearly exploratory appendix,
+not the executive-summary narrative. Use Claim 8's nonlocalizing language and
+Claim 9's decodability-only ceiling. The period-two/`c_thought=2` match is a
+consistency observation, not causation.
 
-### 8. Interpretation and related work
+### 9. Interpretation and related work
 
-Center the capability/termination finding, then the inconclusive endpoint
-safety result and suggestive transient structure. Compare cautiously with
-self-jailbreaking work using explicit setup differences. Distinguish absence of
-detection from evidence of absence.
+Center the failed model organism and capability/termination finding. Treat the
+endpoint safety result as a failed attempt to answer the registered question,
+not as the project's main discovery. Compare cautiously with self-jailbreaking
+work using explicit setup differences. Distinguish absence of detection from
+evidence of absence.
 
-### 9. Limitations and next experiments
+### 10. Limitations and next experiments
 
 List one primary seed per branch plus the post-hoc CoT seed, n=60 safety
-prompts, prompt-level CIs rather than seed CIs,
-nontermination, missing matched u1 capability/coherence controls, inaccessible
-public checkpoints, and post-hoc interpretability analyses. Highest-value future
-tests: slot-aware latent substitution (mean/noise/A↔B swap), alternate
-`c_thought`, nontermination mechanism analysis, more seeds, and a sufficiently
-powered safety assay.
+prompts, stochastic-generation uncertainty absent from the CI, prompt-level CIs
+rather than seed CIs, nontermination, missing matched u1 capability/coherence
+controls, inaccessible exact wrapper/data/public checkpoints, and post-hoc
+interpretability analyses. Highest-value future test: validate against the
+public skip0 checkpoint and exact training implementation if access becomes
+available. Only then prioritize nontermination interventions, more seeds, and a
+sufficiently powered safety assay.
 
 ## Figure inventory
 
-1. Capability plot: M0 range, CoT-u3 point, Coconut-u3 K=6 point, Coconut K=0
+1. **Executive-summary headline:** capability plot with M0 range, CoT-u3 point,
+   Coconut-u3 K=6 point, Coconut K=0
    range and nontermination annotation.
-2. Endpoint safety forest/equivalence plot: M0 context; Coconut−CoT estimate
+2. **Executive-summary secondary:** endpoint safety forest/equivalence plot:
+   M0 context; Coconut−CoT estimate
    and CI; frozen ±0.01995 margin.
-3. Full safety trajectory: seed-42 CoT dots/line; seed-43 u1-only marker;
+3. **Body or appendix:** full safety trajectory: seed-42 CoT dots/line;
+   seed-43 u1-only marker;
    Coconut u1/u2 vertical bound bars; both u1 contrast regions;
    nontermination counts.
-4. Human audit table: behavior and coherence counts plus judge-vs-human check.
-5. Appendix weight-diff plot: relative norms and cosine alignment, explicitly
+4. **Immediately after executive summary:** seeded random qualitative-example
+   table plus the harmful-compliance case; behavior/coherence counts may follow.
+5. **Optional appendix:** weight-diff plot: relative norms and cosine alignment, explicitly
    descriptive.
-6. Appendix readout heatmap/table: pairwise top-10 overlaps, with the
+6. **Optional appendix:** readout heatmap/table: pairwise top-10 overlaps, with the
    decodability-only caption.
 
 ## Final drafting checklist
@@ -510,6 +578,12 @@ powered safety assay.
 - [x] Every headline number matches a cited committed artifact.
 - [x] M0 appears wherever endpoint branch safety means appear.
 - [x] Endpoint wording says inconclusive null and not equivalence.
+- [x] Executive-summary narrative says the registered question became
+      capability-confounded rather than presenting the null as the discovery.
+- [x] The exact implementation/reference limitation appears in the headline
+      summary rather than only in limitations.
+- [x] Missing prospective equivalence-power analysis is owned as a design
+      mistake.
 - [x] Coconut u1/u2 appear as bounds, not points.
 - [x] K=0 safety remains undefined.
 - [x] Prompt uncertainty is not described as seed uncertainty.
