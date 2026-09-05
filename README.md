@@ -40,22 +40,6 @@ been a hard gate before continuing to the downstream safety comparison.
 - [Independent analysis audit](writeup/analysis_audit/REVIEW.md)
 - [Seeded qualitative examples](writeup/random_examples.md)
 - [Experimental artifacts](artifacts/README.md)
-- [Condition-blind manual grading interfaces](#manual-grading-interfaces)
-
-## Manual grading interfaces
-
-I used four self-contained HTML interfaces to grade model responses without
-seeing condition labels or automatic scores:
-
-- [Stage-1 coherence review](artifacts/discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_review.html)
-- [Stage-2 coherence review](artifacts/discovery/results/fallback_4b_skip0/trajectory_stage2/coherence_blind_review.html)
-- [Stage-3 coherence review](artifacts/discovery/results/fallback_4b_skip0/trajectory_stage3/coherence_blind_review.html)
-- [Endpoint safety audit](artifacts/discovery/results/official_safety/human_audit/audit_blind_review.html)
-
-The pages contain the shuffled review packets and the controls used to record
-human labels. The sealed labels, condition keys, and audit summaries are stored
-beside them. GitHub does not execute repository HTML, so download a page and
-open it locally to use the interface.
 
 ## Repository map
 

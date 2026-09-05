@@ -30,21 +30,6 @@ an error log does not by itself invalidate a later successful run. Use the
 [script/job mapping](../scripts/README.md) and
 [research log](../research_log.md) to trace a particular job.
 
-## Manual grading interfaces
-
-The condition-blind human reviews were performed with self-contained HTML
-interfaces generated from the frozen review packets:
-
-- [Stage-1 coherence review](discovery/results/fallback_4b_skip0/gate_stage1_v2_coherence_adequate_cap/coherence_adequate_cap_review.html)
-- [Stage-2 coherence review](discovery/results/fallback_4b_skip0/trajectory_stage2/coherence_blind_review.html)
-- [Stage-3 coherence review](discovery/results/fallback_4b_skip0/trajectory_stage3/coherence_blind_review.html)
-- [Endpoint safety audit](discovery/results/official_safety/human_audit/audit_blind_review.html)
-
-Each page hides condition labels and automatic scores while presenting the full
-responses for manual grading. The exported labels, blind keys, and summaries
-are stored in the same result directories. Download and open the HTML locally;
-GitHub displays repository HTML as source rather than running it.
-
 ## Reading a record
 
 Generation JSONL files generally identify the prompt, raw serialized input,
