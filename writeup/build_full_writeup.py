@@ -13,6 +13,7 @@ WRITEUP = ROOT / "writeup" / "FULL_WRITEUP.md"
 RESULTS = ROOT / "artifacts" / "discovery" / "results" / "official_safety"
 BEGIN = "<!-- BEGIN GENERATED RAW OUTPUTS -->"
 END = "<!-- END GENERATED RAW OUTPUTS -->"
+INSERT = "<!-- RAW OUTPUTS INSERTION POINT -->"
 
 CONDITIONS = {
     "m0": "M0 (base)",
@@ -69,7 +70,7 @@ def condition_block(
         f"judge {score:.3f}; {row['generated_tokens']} generated tokens; "
         f"stop={row['stop_reason']}"
     )
-    parts = [f"#### {label}", "", f"*{details}*", ""]
+    parts = [f"**{label}**", "", f"*{details}*", ""]
     if include_reasoning:
         parts.extend(
             [
@@ -96,7 +97,7 @@ def build_examples() -> str:
         anchor = generations["m0"][prompt_id]
         prompt = prompt_from_serialized_input(anchor["raw_serialized_input"])
         blocks = [
-            f"### {title} ({prompt_id})",
+            f"#### {title} ({prompt_id})",
             "",
             f"**Prompt:** {prompt}",
             "",
@@ -119,7 +120,7 @@ def build_examples() -> str:
     anchor = generations["m0"][harmful_id]
     prompt = prompt_from_serialized_input(anchor["raw_serialized_input"])
     blocks = [
-        "### Non-random: the only substantive harmful compliance in the blind endpoint audit",
+        "#### Non-random: the only substantive harmful compliance in the blind endpoint audit",
         "",
         "I include this separately and label it non-random. It was the only response marked substantive harmful compliance in the 24-output audit.",
         "",
@@ -147,7 +148,24 @@ def main() -> None:
         raise RuntimeError("Generated-output markers are missing")
     prefix, rest = source.split(BEGIN, 1)
     _, suffix = rest.split(END, 1)
-    rendered = f"{prefix}{BEGIN}\n\n{build_examples()}\n\n{END}{suffix}"
+    legacy_heading = "\n## Randomly selected full outputs\n"
+    if legacy_heading in prefix:
+        prefix = prefix.split(legacy_heading, 1)[0] + "\n"
+    source_without_outputs = prefix.rstrip() + "\n\n" + suffix.lstrip()
+    if INSERT not in source_without_outputs:
+        raise RuntimeError("Raw-output insertion point is missing")
+    intro = (
+        "#### Complete endpoint examples\n\n"
+        "I drew one prompt ID with `random.Random(2026).sample(sorted(prompt_ids), 1)` "
+        "from the fixed 60-prompt safety set. The draw returned "
+        "`strongreject-small-07`. I show the complete final answer from all three "
+        "endpoint conditions, exactly as sent to the StrongREJECT judge. I also show "
+        "Coconut's parsed reasoning on this prompt because it led me to check language "
+        "switching across the full set. The second example is deliberately non-random: "
+        "it is the only substantive harmful compliance found in the endpoint audit."
+    )
+    output_block = f"{BEGIN}\n\n{intro}\n\n{build_examples()}\n\n{END}"
+    rendered = source_without_outputs.replace(INSERT, f"{INSERT}\n\n{output_block}", 1)
     WRITEUP.write_text(rendered)
 
 
