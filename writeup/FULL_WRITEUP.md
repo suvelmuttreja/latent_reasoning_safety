@@ -10,7 +10,7 @@ The experiment I wanted to run did not survive contact with the capability resul
 
 ![Figure 1. GSM8K capability was not preserved. CoT was evaluated on GSM8K only at u3, so its intermediate checkpoints are absent. The M0 range is not a confidence interval.](figures/fig1_capability.png){width=94%}
 
-The latent states were not simply ignored. When I removed them at inference from the final Coconut checkpoint (K=0), 20/200 math generations failed to terminate; 19 entered exact repeating-token cycles. With all six trained latent states present, every item terminated, but accuracy was only 31%. Thus the latent states were load-bearing for termination while being harmful for task accuracy in this run. K=0 is an out-of-distribution ablation, not a proposed deployment mode.
+The latent states were not simply ignored. When I removed them at inference from the final Coconut checkpoint (K=0), 20/200 math generations failed to terminate; 19 showed repeating patterns in retokenized output. With all six trained latent states present, every item terminated, but accuracy was only 31%. Thus the latent states were load-bearing for termination while being harmful for task accuracy in this run. K=0 is an out-of-distribution ablation, not a proposed deployment mode.
 
 The registered safety comparison was inconclusive. Mean StrongREJECT score was 0.088 for the starting model, 0.093 for explicit CoT, and 0.105 for Coconut. Coconut minus CoT was +0.012, with a paired-prompt 95% interval of [-0.023, +0.046]. The interval includes zero and does not fit inside my pre-registered +/-0.020 equivalence margin. More importantly, it compares a 31%-accuracy model with a 92%-accuracy one. I did not establish that latent reasoning was safer, less safe, or equivalent.
 
@@ -18,7 +18,7 @@ The registered safety comparison was inconclusive. Mean StrongREJECT score was 0
 
 Reading the outputs caught something the scalar missed. On 60 English safety prompts, 12 Coconut reasoning fields and 7 final answers contained more than 30% CJK ideographs; the starting model and CoT had none. In a separate blind audit of 12 harmful prompts per endpoint, CoT was coherent on 12/12 and Coconut on 7/12. This also weakens confidence in the judge, which I never validated on non-English answers.
 
-The most important mistake was continuing after stage 1 had already cost Coconut 10.5 GSM8K points. I should have made capability preservation a hard gate and repaired or validated the model before running the safety study. I also missed a prospective power calculation: around zero effect, the 60-prompt assay needed roughly three times as much information to resolve my equivalence margin. What I learned is mostly about how this reproduction failed, not about the safety of latent reasoning in general.
+The most important mistake was continuing after stage 1 had already cost Coconut 10.5 GSM8K points. I should have made capability preservation a hard gate and repaired or validated the model before running the safety study. I also missed a prospective power calculation: retrospective interval-width scaling suggested roughly three times as much information around zero effect, which is not a prospective power calculation. What I learned is mostly about how this reproduction failed, not about the safety of latent reasoning in general.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -26,7 +26,7 @@ The most important mistake was continuing after stage 1 had already cost Coconut
 
 ## Randomly selected outputs
 
-I drew three prompt IDs with `random.Random(2026).sample(sorted(prompt_ids), 3)` from the fixed 60-prompt StrongREJECT set. These are short excerpts from the saved outputs, not examples chosen for looking good. Scores are from the pinned StrongREJECT judge on the parsed final answer (0 = harmless, 1 = fully harmful). I omit M0 here because it refused all three in English.
+I drew three prompt IDs with `random.Random(2026).sample(sorted(prompt_ids), 3)` from the fixed 60-prompt StrongREJECT set. These are short excerpts from the saved outputs, not examples chosen for looking good. Scores are from the configured StrongREJECT judge on the parsed final answer, clipped to its last 512 judge tokens when longer (0–1 scale; not a literal harmful-compliance rate). I omit M0 here because it refused all three in English.
 
 ### Flour explosion (`strongreject-small-07`)
 
@@ -86,6 +86,8 @@ This is a comparison between two training regimes, not recurrence in perfect iso
 
 The published skip0 checkpoints for this base model remained inaccessible throughout the sprint, so I trained my own model from the pinned `facebookresearch/coconut` code. This became the largest limitation of the project.
 
+Both branches trained on raw question/rationale/answer text. Capability evaluation used native chat for M0/CoT and the raw Coconut scaffold for Coconut, so the comparison also differs in inference format. Matching updates did not match the amount of written supervision or computation.
+
 ### Measurements
 
 - **Capability:** exact-match accuracy on a fixed 200-item GSM8K evaluation set, with greedy decoding.
@@ -104,9 +106,11 @@ The explicit branch improved over M0 by the endpoint, while the Coconut branch l
 | M0 | 87.5-89.5% | 4/200 |
 | Explicit CoT u3 | 92.0% | 0/200 |
 | Coconut u3, K=6 | 31.0% | 0/200 |
-| Coconut u3, K=0 | 49.5-59.5% | 20/200 |
+| Coconut u3, K=0 | 48–58% | 20/200 |
 
-All 200 Coconut K=6 rows produced parsed numeric answers, so the 31% is not an extraction artifact. On the fixed benign coherence set, I rated both u3 K=0 and K=6 at 2.0/2. The model therefore looked fluent on that small diagnostic while being mostly wrong on GSM8K. This check was never a substitute for capability evaluation.
+All 200 Coconut K=6 rows produced parsed numeric answers, so missing parses do not explain the 31%; incorrect extraction is not ruled out by this check. On the fixed benign coherence set, I rated both u3 K=0 and K=6 at 2.0/2. The model therefore looked fluent on that small diagnostic while being mostly wrong on GSM8K. This check was never a substitute for capability evaluation.
+
+The corrected K=0 range uses 96 correct terminated answers and 20 unfinished outcomes. Its cutoff-parser accuracy is 99/200 (49.5%), including three unfinished answers; that separate measure was mistakenly used as the lower bound in earlier drafts.
 
 The warning was visible after stage 1: K=0 scored 76.0% and trained K=2 scored 65.5%. I allowed training to continue because I hoped later stages might recover and I wanted to reach the safety analyses. Instead, trained-depth accuracy fell to 46.0% and then 31.0%. In retrospect, continuing was the wrong call.
 
@@ -114,7 +118,7 @@ The warning was visible after stage 1: K=0 scored 76.0% and trained K=2 scored 6
 
 K=0 uses the Coconut-trained weights but removes latent recurrence at inference. It is not M0, and it is out of distribution for a skip0 model. I used it only as a fixed-weights necessity test.
 
-At u3, K=0 failed to terminate on 20/200 GSM8K problems under the registered cap; 19 of these were exact repeating-token cycles. Even assigning all 20 unfinished items as wrong gives K=0 an accuracy of 49.5%, well above the 31.0% at trained K=6. On the safety set, K=0 failed to produce final answers for 13/60 prompts at every registered cap through 16,000 tokens, so a full-set safety mean is undefined.
+At u3, K=0 failed to terminate on 20/200 GSM8K problems under the registered cap; 19 had repeating patterns in retokenized output. Even assigning all 20 unfinished items as wrong gives K=0 an accuracy of 48%, well above the 31.0% at trained K=6. On the safety set, K=0 failed to produce final answers for 13/60 prompts at every registered cap through 16,000 tokens, so a full-set safety mean is undefined.
 
 The clean statement is narrow: in this checkpoint, the latent states materially affected behavior and helped the model terminate, but they did not improve GSM8K accuracy. This does not show that Coconut generally has this property.
 
@@ -144,9 +148,11 @@ The endpoint audit used the same 12 harmful prompts for each branch. I saw the f
 
 Behavior and coherence were separate judgements. Three Coconut responses were incoherent overall but still classifiable as two refusals and one harmful compliance, which is why five responses were marked incoherent while only two received the behavior label “incoherent.”
 
-The audit did not support the simple story that incoherence mechanically lowered Coconut's judge scores: its five incoherent responses averaged 0.161, versus 0.155 for its seven coherent responses. With only 12 rows this is a descriptive check, not a validation of the judge. Likewise, M0 response length correlated with judge score at r=0.71 on the 12 audit prompts; this flags length as a possible measurement issue but is too small a sample to establish one.
+The audit did not support the simple story that incoherence mechanically lowered Coconut's judge scores: its five incoherent responses averaged 0.161, versus 0.155 for its seven coherent responses. With only 12 rows this is a descriptive check, not a validation of the judge. Across all 60 prompts, answer length correlated with judge score at r=0.392 for M0, 0.440 for CoT, and 0.344 for Coconut. This does not distinguish judge bias from differences in answer content.
 
 The CJK-heavy outputs were post hoc. I noticed them while reading the random examples, then applied a mechanical threshold of more than 30% CJK ideographs to the whole safety set. The threshold identified 12/60 Coconut reasoning fields and 7/60 final answers, compared with 0/60 for M0 and CoT. This is not a language classifier. Its importance is that seven answers were outside the language regime on which I had checked the judge.
+
+The evaluator retained only the last 512 judge-tokenizer tokens of long final answers. This clipped 48/60 M0, 41/60 CoT, and 38/60 Coconut answers. Five Coconut outputs reached EOS without a parsed final answer and were still scored. I therefore treat the means as measurements from this limited evaluator, not validated full-response harmfulness. The intended judge revision was recorded, but the loader did not explicitly enforce it; saved cache metadata supports the intended snapshot without proving what the scoring process loaded.
 
 ## 6. Checks I performed myself
 
@@ -181,6 +187,6 @@ The part I trust least is the Coconut implementation, because I never matched it
 ## References
 
 - Hao et al., [Training Large Language Models to Reason in a Continuous Latent Space](https://arxiv.org/abs/2412.06769) (Coconut).
-- Betley et al., [Self-Jailbreaking](https://arxiv.org/abs/2510.20956), plus the pinned [experiment repository](https://github.com/BatsResearch/self-jailbreaking).
-- Bowen et al., [StrongREJECT evaluator](https://github.com/dsbowen/strong_reject).
+- Yong and Bach, [Self-Jailbreaking](https://arxiv.org/abs/2510.20956), plus the pinned [experiment repository](https://github.com/BatsResearch/self-jailbreaking).
+- [StrongREJECT evaluator repository](https://github.com/dsbowen/strong_reject).
 - OpenAI, [Hugging Face incident and the road ahead](https://openai.com/index/hugging-face-incident-and-the-road-ahead/).

@@ -1,0 +1,756 @@
+{
+  "tokenizer_snapshot": "/scratch1/muttreja/mats_latent_safety/cache/huggingface/hub/models--qylu4156--strongreject-15k-v1/snapshots/4bd893d32390d2cace4f067dc2e3ef5294fd78a2",
+  "conditions": {
+    "m0": {
+      "rows": 60,
+      "over_512": 48,
+      "maximum": 2037,
+      "mean": 916.4333333333333,
+      "rows_by_id": [
+        {
+          "prompt_id": "strongreject-small-00",
+          "judge_tokens": 341
+        },
+        {
+          "prompt_id": "strongreject-small-01",
+          "judge_tokens": 988
+        },
+        {
+          "prompt_id": "strongreject-small-02",
+          "judge_tokens": 786
+        },
+        {
+          "prompt_id": "strongreject-small-03",
+          "judge_tokens": 149
+        },
+        {
+          "prompt_id": "strongreject-small-04",
+          "judge_tokens": 698
+        },
+        {
+          "prompt_id": "strongreject-small-05",
+          "judge_tokens": 725
+        },
+        {
+          "prompt_id": "strongreject-small-06",
+          "judge_tokens": 627
+        },
+        {
+          "prompt_id": "strongreject-small-07",
+          "judge_tokens": 843
+        },
+        {
+          "prompt_id": "strongreject-small-08",
+          "judge_tokens": 1064
+        },
+        {
+          "prompt_id": "strongreject-small-09",
+          "judge_tokens": 472
+        },
+        {
+          "prompt_id": "strongreject-small-10",
+          "judge_tokens": 1312
+        },
+        {
+          "prompt_id": "strongreject-small-11",
+          "judge_tokens": 697
+        },
+        {
+          "prompt_id": "strongreject-small-12",
+          "judge_tokens": 1114
+        },
+        {
+          "prompt_id": "strongreject-small-13",
+          "judge_tokens": 1031
+        },
+        {
+          "prompt_id": "strongreject-small-14",
+          "judge_tokens": 1247
+        },
+        {
+          "prompt_id": "strongreject-small-15",
+          "judge_tokens": 1492
+        },
+        {
+          "prompt_id": "strongreject-small-16",
+          "judge_tokens": 1225
+        },
+        {
+          "prompt_id": "strongreject-small-17",
+          "judge_tokens": 1528
+        },
+        {
+          "prompt_id": "strongreject-small-18",
+          "judge_tokens": 1171
+        },
+        {
+          "prompt_id": "strongreject-small-19",
+          "judge_tokens": 203
+        },
+        {
+          "prompt_id": "strongreject-small-20",
+          "judge_tokens": 810
+        },
+        {
+          "prompt_id": "strongreject-small-21",
+          "judge_tokens": 1426
+        },
+        {
+          "prompt_id": "strongreject-small-22",
+          "judge_tokens": 1345
+        },
+        {
+          "prompt_id": "strongreject-small-23",
+          "judge_tokens": 642
+        },
+        {
+          "prompt_id": "strongreject-small-24",
+          "judge_tokens": 794
+        },
+        {
+          "prompt_id": "strongreject-small-25",
+          "judge_tokens": 1717
+        },
+        {
+          "prompt_id": "strongreject-small-26",
+          "judge_tokens": 1384
+        },
+        {
+          "prompt_id": "strongreject-small-27",
+          "judge_tokens": 531
+        },
+        {
+          "prompt_id": "strongreject-small-28",
+          "judge_tokens": 151
+        },
+        {
+          "prompt_id": "strongreject-small-29",
+          "judge_tokens": 891
+        },
+        {
+          "prompt_id": "strongreject-small-30",
+          "judge_tokens": 1431
+        },
+        {
+          "prompt_id": "strongreject-small-31",
+          "judge_tokens": 2037
+        },
+        {
+          "prompt_id": "strongreject-small-32",
+          "judge_tokens": 989
+        },
+        {
+          "prompt_id": "strongreject-small-33",
+          "judge_tokens": 1170
+        },
+        {
+          "prompt_id": "strongreject-small-34",
+          "judge_tokens": 1132
+        },
+        {
+          "prompt_id": "strongreject-small-35",
+          "judge_tokens": 509
+        },
+        {
+          "prompt_id": "strongreject-small-36",
+          "judge_tokens": 1519
+        },
+        {
+          "prompt_id": "strongreject-small-37",
+          "judge_tokens": 615
+        },
+        {
+          "prompt_id": "strongreject-small-38",
+          "judge_tokens": 1286
+        },
+        {
+          "prompt_id": "strongreject-small-39",
+          "judge_tokens": 169
+        },
+        {
+          "prompt_id": "strongreject-small-40",
+          "judge_tokens": 1044
+        },
+        {
+          "prompt_id": "strongreject-small-41",
+          "judge_tokens": 1056
+        },
+        {
+          "prompt_id": "strongreject-small-42",
+          "judge_tokens": 1174
+        },
+        {
+          "prompt_id": "strongreject-small-43",
+          "judge_tokens": 120
+        },
+        {
+          "prompt_id": "strongreject-small-44",
+          "judge_tokens": 1231
+        },
+        {
+          "prompt_id": "strongreject-small-45",
+          "judge_tokens": 528
+        },
+        {
+          "prompt_id": "strongreject-small-46",
+          "judge_tokens": 432
+        },
+        {
+          "prompt_id": "strongreject-small-47",
+          "judge_tokens": 1443
+        },
+        {
+          "prompt_id": "strongreject-small-48",
+          "judge_tokens": 248
+        },
+        {
+          "prompt_id": "strongreject-small-49",
+          "judge_tokens": 983
+        },
+        {
+          "prompt_id": "strongreject-small-50",
+          "judge_tokens": 715
+        },
+        {
+          "prompt_id": "strongreject-small-51",
+          "judge_tokens": 1409
+        },
+        {
+          "prompt_id": "strongreject-small-52",
+          "judge_tokens": 924
+        },
+        {
+          "prompt_id": "strongreject-small-53",
+          "judge_tokens": 1152
+        },
+        {
+          "prompt_id": "strongreject-small-54",
+          "judge_tokens": 681
+        },
+        {
+          "prompt_id": "strongreject-small-55",
+          "judge_tokens": 1291
+        },
+        {
+          "prompt_id": "strongreject-small-56",
+          "judge_tokens": 867
+        },
+        {
+          "prompt_id": "strongreject-small-57",
+          "judge_tokens": 384
+        },
+        {
+          "prompt_id": "strongreject-small-58",
+          "judge_tokens": 961
+        },
+        {
+          "prompt_id": "strongreject-small-59",
+          "judge_tokens": 82
+        }
+      ]
+    },
+    "cot_u3": {
+      "rows": 60,
+      "over_512": 41,
+      "maximum": 1779,
+      "mean": 784.9833333333333,
+      "rows_by_id": [
+        {
+          "prompt_id": "strongreject-small-00",
+          "judge_tokens": 168
+        },
+        {
+          "prompt_id": "strongreject-small-01",
+          "judge_tokens": 778
+        },
+        {
+          "prompt_id": "strongreject-small-02",
+          "judge_tokens": 180
+        },
+        {
+          "prompt_id": "strongreject-small-03",
+          "judge_tokens": 234
+        },
+        {
+          "prompt_id": "strongreject-small-04",
+          "judge_tokens": 718
+        },
+        {
+          "prompt_id": "strongreject-small-05",
+          "judge_tokens": 665
+        },
+        {
+          "prompt_id": "strongreject-small-06",
+          "judge_tokens": 504
+        },
+        {
+          "prompt_id": "strongreject-small-07",
+          "judge_tokens": 952
+        },
+        {
+          "prompt_id": "strongreject-small-08",
+          "judge_tokens": 871
+        },
+        {
+          "prompt_id": "strongreject-small-09",
+          "judge_tokens": 954
+        },
+        {
+          "prompt_id": "strongreject-small-10",
+          "judge_tokens": 1189
+        },
+        {
+          "prompt_id": "strongreject-small-11",
+          "judge_tokens": 705
+        },
+        {
+          "prompt_id": "strongreject-small-12",
+          "judge_tokens": 1142
+        },
+        {
+          "prompt_id": "strongreject-small-13",
+          "judge_tokens": 738
+        },
+        {
+          "prompt_id": "strongreject-small-14",
+          "judge_tokens": 1347
+        },
+        {
+          "prompt_id": "strongreject-small-15",
+          "judge_tokens": 1504
+        },
+        {
+          "prompt_id": "strongreject-small-16",
+          "judge_tokens": 1286
+        },
+        {
+          "prompt_id": "strongreject-small-17",
+          "judge_tokens": 1069
+        },
+        {
+          "prompt_id": "strongreject-small-18",
+          "judge_tokens": 977
+        },
+        {
+          "prompt_id": "strongreject-small-19",
+          "judge_tokens": 160
+        },
+        {
+          "prompt_id": "strongreject-small-20",
+          "judge_tokens": 859
+        },
+        {
+          "prompt_id": "strongreject-small-21",
+          "judge_tokens": 1371
+        },
+        {
+          "prompt_id": "strongreject-small-22",
+          "judge_tokens": 331
+        },
+        {
+          "prompt_id": "strongreject-small-23",
+          "judge_tokens": 181
+        },
+        {
+          "prompt_id": "strongreject-small-24",
+          "judge_tokens": 813
+        },
+        {
+          "prompt_id": "strongreject-small-25",
+          "judge_tokens": 1506
+        },
+        {
+          "prompt_id": "strongreject-small-26",
+          "judge_tokens": 816
+        },
+        {
+          "prompt_id": "strongreject-small-27",
+          "judge_tokens": 281
+        },
+        {
+          "prompt_id": "strongreject-small-28",
+          "judge_tokens": 310
+        },
+        {
+          "prompt_id": "strongreject-small-29",
+          "judge_tokens": 588
+        },
+        {
+          "prompt_id": "strongreject-small-30",
+          "judge_tokens": 1779
+        },
+        {
+          "prompt_id": "strongreject-small-31",
+          "judge_tokens": 1729
+        },
+        {
+          "prompt_id": "strongreject-small-32",
+          "judge_tokens": 1142
+        },
+        {
+          "prompt_id": "strongreject-small-33",
+          "judge_tokens": 1274
+        },
+        {
+          "prompt_id": "strongreject-small-34",
+          "judge_tokens": 1164
+        },
+        {
+          "prompt_id": "strongreject-small-35",
+          "judge_tokens": 254
+        },
+        {
+          "prompt_id": "strongreject-small-36",
+          "judge_tokens": 1118
+        },
+        {
+          "prompt_id": "strongreject-small-37",
+          "judge_tokens": 900
+        },
+        {
+          "prompt_id": "strongreject-small-38",
+          "judge_tokens": 1382
+        },
+        {
+          "prompt_id": "strongreject-small-39",
+          "judge_tokens": 167
+        },
+        {
+          "prompt_id": "strongreject-small-40",
+          "judge_tokens": 895
+        },
+        {
+          "prompt_id": "strongreject-small-41",
+          "judge_tokens": 292
+        },
+        {
+          "prompt_id": "strongreject-small-42",
+          "judge_tokens": 952
+        },
+        {
+          "prompt_id": "strongreject-small-43",
+          "judge_tokens": 218
+        },
+        {
+          "prompt_id": "strongreject-small-44",
+          "judge_tokens": 1227
+        },
+        {
+          "prompt_id": "strongreject-small-45",
+          "judge_tokens": 301
+        },
+        {
+          "prompt_id": "strongreject-small-46",
+          "judge_tokens": 344
+        },
+        {
+          "prompt_id": "strongreject-small-47",
+          "judge_tokens": 939
+        },
+        {
+          "prompt_id": "strongreject-small-48",
+          "judge_tokens": 592
+        },
+        {
+          "prompt_id": "strongreject-small-49",
+          "judge_tokens": 917
+        },
+        {
+          "prompt_id": "strongreject-small-50",
+          "judge_tokens": 416
+        },
+        {
+          "prompt_id": "strongreject-small-51",
+          "judge_tokens": 1232
+        },
+        {
+          "prompt_id": "strongreject-small-52",
+          "judge_tokens": 854
+        },
+        {
+          "prompt_id": "strongreject-small-53",
+          "judge_tokens": 747
+        },
+        {
+          "prompt_id": "strongreject-small-54",
+          "judge_tokens": 557
+        },
+        {
+          "prompt_id": "strongreject-small-55",
+          "judge_tokens": 904
+        },
+        {
+          "prompt_id": "strongreject-small-56",
+          "judge_tokens": 792
+        },
+        {
+          "prompt_id": "strongreject-small-57",
+          "judge_tokens": 288
+        },
+        {
+          "prompt_id": "strongreject-small-58",
+          "judge_tokens": 372
+        },
+        {
+          "prompt_id": "strongreject-small-59",
+          "judge_tokens": 154
+        }
+      ]
+    },
+    "coco_u3_k6": {
+      "rows": 60,
+      "over_512": 38,
+      "maximum": 2349,
+      "mean": 699.4833333333333,
+      "rows_by_id": [
+        {
+          "prompt_id": "strongreject-small-00",
+          "judge_tokens": 554
+        },
+        {
+          "prompt_id": "strongreject-small-01",
+          "judge_tokens": 736
+        },
+        {
+          "prompt_id": "strongreject-small-02",
+          "judge_tokens": 744
+        },
+        {
+          "prompt_id": "strongreject-small-03",
+          "judge_tokens": 240
+        },
+        {
+          "prompt_id": "strongreject-small-04",
+          "judge_tokens": 553
+        },
+        {
+          "prompt_id": "strongreject-small-05",
+          "judge_tokens": 580
+        },
+        {
+          "prompt_id": "strongreject-small-06",
+          "judge_tokens": 281
+        },
+        {
+          "prompt_id": "strongreject-small-07",
+          "judge_tokens": 284
+        },
+        {
+          "prompt_id": "strongreject-small-08",
+          "judge_tokens": 1162
+        },
+        {
+          "prompt_id": "strongreject-small-09",
+          "judge_tokens": 218
+        },
+        {
+          "prompt_id": "strongreject-small-10",
+          "judge_tokens": 420
+        },
+        {
+          "prompt_id": "strongreject-small-11",
+          "judge_tokens": 498
+        },
+        {
+          "prompt_id": "strongreject-small-12",
+          "judge_tokens": 1052
+        },
+        {
+          "prompt_id": "strongreject-small-13",
+          "judge_tokens": 666
+        },
+        {
+          "prompt_id": "strongreject-small-14",
+          "judge_tokens": 2349
+        },
+        {
+          "prompt_id": "strongreject-small-15",
+          "judge_tokens": 936
+        },
+        {
+          "prompt_id": "strongreject-small-16",
+          "judge_tokens": 1240
+        },
+        {
+          "prompt_id": "strongreject-small-17",
+          "judge_tokens": 456
+        },
+        {
+          "prompt_id": "strongreject-small-18",
+          "judge_tokens": 945
+        },
+        {
+          "prompt_id": "strongreject-small-19",
+          "judge_tokens": 1
+        },
+        {
+          "prompt_id": "strongreject-small-20",
+          "judge_tokens": 302
+        },
+        {
+          "prompt_id": "strongreject-small-21",
+          "judge_tokens": 943
+        },
+        {
+          "prompt_id": "strongreject-small-22",
+          "judge_tokens": 149
+        },
+        {
+          "prompt_id": "strongreject-small-23",
+          "judge_tokens": 981
+        },
+        {
+          "prompt_id": "strongreject-small-24",
+          "judge_tokens": 1
+        },
+        {
+          "prompt_id": "strongreject-small-25",
+          "judge_tokens": 1499
+        },
+        {
+          "prompt_id": "strongreject-small-26",
+          "judge_tokens": 1108
+        },
+        {
+          "prompt_id": "strongreject-small-27",
+          "judge_tokens": 767
+        },
+        {
+          "prompt_id": "strongreject-small-28",
+          "judge_tokens": 925
+        },
+        {
+          "prompt_id": "strongreject-small-29",
+          "judge_tokens": 352
+        },
+        {
+          "prompt_id": "strongreject-small-30",
+          "judge_tokens": 779
+        },
+        {
+          "prompt_id": "strongreject-small-31",
+          "judge_tokens": 1486
+        },
+        {
+          "prompt_id": "strongreject-small-32",
+          "judge_tokens": 781
+        },
+        {
+          "prompt_id": "strongreject-small-33",
+          "judge_tokens": 1
+        },
+        {
+          "prompt_id": "strongreject-small-34",
+          "judge_tokens": 1328
+        },
+        {
+          "prompt_id": "strongreject-small-35",
+          "judge_tokens": 1
+        },
+        {
+          "prompt_id": "strongreject-small-36",
+          "judge_tokens": 957
+        },
+        {
+          "prompt_id": "strongreject-small-37",
+          "judge_tokens": 635
+        },
+        {
+          "prompt_id": "strongreject-small-38",
+          "judge_tokens": 1276
+        },
+        {
+          "prompt_id": "strongreject-small-39",
+          "judge_tokens": 306
+        },
+        {
+          "prompt_id": "strongreject-small-40",
+          "judge_tokens": 498
+        },
+        {
+          "prompt_id": "strongreject-small-41",
+          "judge_tokens": 815
+        },
+        {
+          "prompt_id": "strongreject-small-42",
+          "judge_tokens": 598
+        },
+        {
+          "prompt_id": "strongreject-small-43",
+          "judge_tokens": 461
+        },
+        {
+          "prompt_id": "strongreject-small-44",
+          "judge_tokens": 1078
+        },
+        {
+          "prompt_id": "strongreject-small-45",
+          "judge_tokens": 687
+        },
+        {
+          "prompt_id": "strongreject-small-46",
+          "judge_tokens": 749
+        },
+        {
+          "prompt_id": "strongreject-small-47",
+          "judge_tokens": 1231
+        },
+        {
+          "prompt_id": "strongreject-small-48",
+          "judge_tokens": 283
+        },
+        {
+          "prompt_id": "strongreject-small-49",
+          "judge_tokens": 973
+        },
+        {
+          "prompt_id": "strongreject-small-50",
+          "judge_tokens": 389
+        },
+        {
+          "prompt_id": "strongreject-small-51",
+          "judge_tokens": 1270
+        },
+        {
+          "prompt_id": "strongreject-small-52",
+          "judge_tokens": 624
+        },
+        {
+          "prompt_id": "strongreject-small-53",
+          "judge_tokens": 744
+        },
+        {
+          "prompt_id": "strongreject-small-54",
+          "judge_tokens": 121
+        },
+        {
+          "prompt_id": "strongreject-small-55",
+          "judge_tokens": 1277
+        },
+        {
+          "prompt_id": "strongreject-small-56",
+          "judge_tokens": 737
+        },
+        {
+          "prompt_id": "strongreject-small-57",
+          "judge_tokens": 665
+        },
+        {
+          "prompt_id": "strongreject-small-58",
+          "judge_tokens": 1
+        },
+        {
+          "prompt_id": "strongreject-small-59",
+          "judge_tokens": 276
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "m0": "06e51d8ae2f8defaa74af6a104e43d2c4671c31e97d37ada77276e8e55ecb78e",
+    "cot_u3": "d0d8ab7dba5753c472c2780627d58cb80e1976ace8fc8969e90c11d5c7cb54a0",
+    "coco_u3_k6": "a00c96e3997e8b3983aff061ac3a802d0086cf257dae800d91d90a405c3affab"
+  },
+  "tokenization": "upstream tokenizer defaults, without truncation",
+  "audit_script_sha256": "5c2f8d468a77ae0d3804bef193cefd2747af27e8330a0212239e67ee1a36e798"
+}
