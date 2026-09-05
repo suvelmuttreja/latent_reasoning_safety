@@ -52,28 +52,40 @@ coconut_acc = [
     100 * trajectory["stage3"]["k6"]["accuracy"],
 ]
 
-m0_x = 0.0
-stage_x = [0.9, 1.8, 2.7]
-bar_width = 0.28
+x = [0, 1, 2, 3]
 
 fig, ax = plt.subplots(figsize=(7.4, 3.55))
-m0_bar = ax.bar(m0_x, m0_mid, color=GREY, width=bar_width, label="M0")
-cot_bars = ax.bar(
-    [x - bar_width / 2 for x in stage_x],
-    cot_acc,
+cot_line, = ax.plot(
+    x,
+    [m0_mid, *cot_acc],
     color=BLUE,
-    width=bar_width,
+    marker="o",
+    markersize=6,
+    linewidth=2.0,
     label="Explicit CoT",
 )
-coconut_bars = ax.bar(
-    [x + bar_width / 2 for x in stage_x],
-    coconut_acc,
+coconut_line, = ax.plot(
+    x,
+    [m0_mid, *coconut_acc],
     color=ORANGE,
-    width=bar_width,
-    label="Coconut (K=2/4/6)",
+    marker="o",
+    markersize=6,
+    linewidth=2.0,
+    label="Coconut (trained K)",
+)
+m0_marker = ax.scatter(
+    [0],
+    [m0_mid],
+    marker="D",
+    s=48,
+    color=GREY,
+    edgecolor="white",
+    linewidth=0.7,
+    zorder=5,
+    label="M0 (shared start)",
 )
 ax.errorbar(
-    m0_x,
+    0,
     m0_mid,
     yerr=[[m0_mid - m0_lo], [m0_hi - m0_mid]],
     fmt="none",
@@ -83,52 +95,52 @@ ax.errorbar(
 )
 ax.set_ylabel("GSM8K-200 accuracy (%)")
 ax.set_ylim(0, 100)
-ax.set_xlim(-0.42, 3.12)
-ax.set_xticks([m0_x, *stage_x])
+ax.set_xlim(-0.20, 3.20)
+ax.set_xticks(x)
 ax.set_xticklabels(["M0", "u1", "u2", "u3"])
 ax.grid(axis="y", color="#E8E8E8", linewidth=0.7)
 ax.set_axisbelow(True)
-fig.suptitle("Capability through training", x=0.105, y=0.98, ha="left", fontsize=10.5)
+fig.suptitle("Capability through training", x=0.105, y=0.985, ha="left", fontsize=10.5)
 fig.legend(
-    handles=[m0_bar, cot_bars, coconut_bars],
-    labels=["M0", "Explicit CoT", "Coconut (K=2/4/6)"],
+    handles=[m0_marker, cot_line, coconut_line],
+    labels=["M0 (shared start)", "Explicit CoT", "Coconut (trained K)"],
     frameon=False,
     ncol=3,
     loc="upper left",
-    bbox_to_anchor=(0.095, 0.925),
+    bbox_to_anchor=(0.095, 0.905),
 )
 
 ax.text(
-    m0_bar[0].get_x() + m0_bar[0].get_width() / 2,
-    m0_mid + 2.0,
+    0,
+    m0_mid + 3.0,
     f"{m0_lo:.1f}–{m0_hi:.1f}",
     ha="center",
     va="bottom",
     color=GREY,
     fontsize=9,
 )
-for bars, values, color, bounds in (
-    (cot_bars, cot_acc, BLUE, cot_bounds),
-    (coconut_bars, coconut_acc, ORANGE, None),
+for values, color, bounds, offset in (
+    (cot_acc, BLUE, cot_bounds, 2.3),
+    (coconut_acc, ORANGE, None, -3.0),
 ):
-    for index, (bar, value) in enumerate(zip(bars, values)):
+    for index, value in enumerate(values):
         label = f"{value:.1f}"
         if bounds is not None and bounds[index][0] != bounds[index][1]:
             label = f"{bounds[index][0]:.1f}–{bounds[index][1]:.1f}"
         ax.text(
-            bar.get_x() + bar.get_width() / 2,
-            value + 2.0,
+            index + 1,
+            value + offset,
             label,
             ha="center",
-            va="bottom",
+            va="bottom" if offset > 0 else "top",
             color=color,
             fontsize=9,
         )
 
-for bar, value, (lo, hi) in zip(cot_bars, cot_acc, cot_bounds):
+for stage, value, (lo, hi) in zip((1, 2, 3), cot_acc, cot_bounds):
     if lo != hi:
         ax.errorbar(
-            bar.get_x() + bar.get_width() / 2,
+            stage,
             value,
             yerr=[[value - lo], [hi - value]],
             fmt="none",
@@ -137,7 +149,7 @@ for bar, value, (lo, hi) in zip(cot_bars, cot_acc, cot_bounds):
             linewidth=1.0,
         )
 
-fig.subplots_adjust(left=0.105, right=0.98, bottom=0.15, top=0.79)
+fig.subplots_adjust(left=0.105, right=0.98, bottom=0.15, top=0.76)
 fig.savefig(ROOT / "writeup/figures/fig1_capability.png", dpi=220)
 plt.close(fig)
 print("wrote fig1_capability.png")

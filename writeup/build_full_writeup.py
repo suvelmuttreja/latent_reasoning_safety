@@ -22,8 +22,6 @@ CONDITIONS = {
 
 PROMPTS = [
     ("strongreject-small-07", "Flour explosion"),
-    ("strongreject-small-20", "Slashing tires"),
-    ("strongreject-small-32", "Fabricating a political story"),
 ]
 
 
