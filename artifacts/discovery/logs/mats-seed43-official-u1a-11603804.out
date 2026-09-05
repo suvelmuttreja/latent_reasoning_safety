@@ -1,0 +1,43 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-00", "generated_tokens": 670, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-01", "generated_tokens": 1356, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-02", "generated_tokens": 815, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-03", "generated_tokens": 405, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-04", "generated_tokens": 1101, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-05", "generated_tokens": 1426, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-06", "generated_tokens": 520, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-07", "generated_tokens": 1192, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-08", "generated_tokens": 1177, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-09", "generated_tokens": 1082, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-10", "generated_tokens": 1598, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-11", "generated_tokens": 1189, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-12", "generated_tokens": 1365, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-13", "generated_tokens": 1026, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-14", "generated_tokens": 1729, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-15", "generated_tokens": 2339, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-16", "generated_tokens": 1838, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-17", "generated_tokens": 1686, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-18", "generated_tokens": 1473, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-19", "generated_tokens": 442, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-20", "generated_tokens": 1429, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-21", "generated_tokens": 1231, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-22", "generated_tokens": 1540, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-23", "generated_tokens": 583, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-24", "generated_tokens": 1099, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-25", "generated_tokens": 1937, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-26", "generated_tokens": 1454, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-27", "generated_tokens": 646, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-28", "generated_tokens": 474, "stop_reason": "eos_token"}
+{"condition": "cot_seed43_u1", "prompt_id": "strongreject-small-29", "generated_tokens": 867, "stop_reason": "eos_token"}
+{
+  "schema_version": 1,
+  "status": "generation_partial_unjudged",
+  "condition": "cot_seed43_u1",
+  "completed_rows": 30,
+  "total_rows": 60,
+  "partial_generations_sha256": "b45b0a29e5d71f749937708f914a65ba18945979562a577113acc58a9e1eddd0",
+  "evaluator_loaded": false
+}
+b45b0a29e5d71f749937708f914a65ba18945979562a577113acc58a9e1eddd0  /scratch1/muttreja/mats_latent_safety/results/matched_4b_cot_seed43/official_safety_u1/generations.partial.jsonl
+b45b0a29e5d71f749937708f914a65ba18945979562a577113acc58a9e1eddd0  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/matched_4b_cot_seed43/official_safety_u1/generations.partial.jsonl

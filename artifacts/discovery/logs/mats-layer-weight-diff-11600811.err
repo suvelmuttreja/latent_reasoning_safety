@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home1/muttreja/mats_latent_safety/scripts/compare_layerwise_weight_updates.py", line 247, in <module>
+    main()
+  File "/home1/muttreja/mats_latent_safety/scripts/compare_layerwise_weight_updates.py", line 188, in main
+    base, cot, coconut, comparison = comparable_views(base, cot, coconut)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home1/muttreja/mats_latent_safety/scripts/compare_layerwise_weight_updates.py", line 84, in comparable_views
+    raise ValueError(f"M0/endpoint shape mismatch: {base.shape} != {cot.shape}")
+ValueError: M0/endpoint shape mismatch: torch.Size([151936, 2560]) != torch.Size([151672, 2560])
+srun: error: d06-25: task 0: Exited with exit code 1

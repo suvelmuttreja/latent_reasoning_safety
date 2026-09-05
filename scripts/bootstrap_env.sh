@@ -14,13 +14,13 @@ fi
 quota_line="$(myquota | awk -v root="/home1/$USER" '$1 == root {print $2, $4}')"
 read -r home_used home_limit <<<"$quota_line"
 if [[ -z "${home_used:-}" || -z "${home_limit:-}" ]]; then
-  echo "could not parse home1 usage from myquota; stop for user direction" >&2
+  echo "could not parse home1 usage from myquota; aborting" >&2
   exit 3
 fi
 home_free="$(python3 -c 'import sys; print(float(sys.argv[2])-float(sys.argv[1]))' "$home_used" "$home_limit")"
 if ! python3 -c 'import sys; raise SystemExit(0 if float(sys.argv[1]) >= float(sys.argv[2]) else 1)' "$home_free" "$MIN_HOME_FREE_GIB"; then
   echo "home1 has only ${home_free} GiB free; at least ${MIN_HOME_FREE_GIB} GiB is required" >&2
-  echo "environment was not created or relocated; ask the user how to proceed" >&2
+  echo "environment was not created; free space on home1 or raise MIN_HOME_FREE_GIB deliberately" >&2
   exit 4
 fi
 

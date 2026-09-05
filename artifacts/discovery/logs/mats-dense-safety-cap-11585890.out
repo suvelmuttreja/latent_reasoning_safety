@@ -1,0 +1,87 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{
+  "schema_version": 1,
+  "status": "length_calibration_complete_pending_cap_freeze_commit",
+  "selected_cap": 4096,
+  "joint_selected_cap": 4096,
+  "selected_cap_by_k": {
+    "0": 4096
+  },
+  "selection_used_only_lengths_and_stop_reasons": true,
+  "evaluator_loaded": false,
+  "slurm_job_id": "11585890",
+  "code_revision": "65fe16ab72ed1d5030e05c5a744aeb283a9864bd",
+  "implementation_files_sha256": {
+    "scripts/calibrate_coconut_safety_cap.py": "b51a0e50acff6d421bdc2faf57b916863d11b6097b64842dc65b22534cba96c7",
+    "scripts/gate_4b_coco_u1.py": "9c6f97a3b982af617f4f79d3ec60bd972a05359d21ac5d2ac093d47747cbb6cc",
+    "scripts/train_4b_skip0_stage.py": "4710467d9e411959034c7103fbe0e9bc55b871084a86143d14c1498d122ebd70",
+    "src/mats_latent_safety/coconut.py": "bc8511c036c18161cdc51b939b1d55fab6b744652a231efb35fc1f1953185e87",
+    "src/mats_latent_safety/serialization.py": "44bb5e34a4c98d65b60ed7b2ea5713768c8181b8c692f44b6543e7f53d0ef19a"
+  },
+  "implementation_sha256": "a5519616542ccfe80c2018f16228b4c86566b2b9927feea50c4fa2dfebfed1ab",
+  "checkpoint_sha256": "1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9",
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "c9789233c22bacd5ca476ad967584284de28920ec54c0e44411e32fe705ef057",
+  "evaluation_config_sha256": "d2eeb92ffd38c0a5d9252410654b1b5f23abc6af5c7bf07ba69faf7a876f3dcd",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "generations_sha256": "edf7d569e8327299dc8b25dafc93496b703d78cb0ed66b518cb108eb28d5242f",
+  "continuation": {
+    "prior_generations_sha256": null,
+    "prior_rows_reused": 0,
+    "prior_length_stops_extended": 0,
+    "decoded_prefix_matches": 0
+  },
+  "by_k": {
+    "0": {
+      "outputs": 60,
+      "eos_stops": 59,
+      "calibration_cap_hits": 1,
+      "mean_tokens": 1211.3833333333334,
+      "p95_tokens": 2002,
+      "max_tokens": 5120
+    }
+  },
+  "candidate_projection": {
+    "512": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 50,
+        "projected_truncation_rate": 0.8333333333333334
+      }
+    },
+    "1024": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 36,
+        "projected_truncation_rate": 0.6
+      }
+    },
+    "2048": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 3,
+        "projected_truncation_rate": 0.05
+      }
+    },
+    "4096": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 1,
+        "projected_truncation_rate": 0.016666666666666666
+      }
+    },
+    "5120": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 1,
+        "projected_truncation_rate": 0.016666666666666666
+      }
+    }
+  }
+}
+edf7d569e8327299dc8b25dafc93496b703d78cb0ed66b518cb108eb28d5242f  /scratch1/muttreja/mats_latent_safety/results/dense_safety/cot_u2_cap/generations.jsonl
+edf7d569e8327299dc8b25dafc93496b703d78cb0ed66b518cb108eb28d5242f  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/dense_safety/cot_u2_cap/generations.jsonl
+e189a11fcc59afb09862029856c755a375325500e9bcdbd0eae6161cae559001  /scratch1/muttreja/mats_latent_safety/results/dense_safety/cot_u2_cap/summary.json
+e189a11fcc59afb09862029856c755a375325500e9bcdbd0eae6161cae559001  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/dense_safety/cot_u2_cap/summary.json

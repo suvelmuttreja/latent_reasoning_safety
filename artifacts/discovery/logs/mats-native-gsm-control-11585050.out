@@ -1,0 +1,62 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"condition": "m0", "prompt_id": "gsm8k-test-1125", "correct": true, "generated_tokens": 723, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1130", "correct": true, "generated_tokens": 2012, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1133", "correct": true, "generated_tokens": 1326, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1134", "correct": false, "generated_tokens": 495, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1140", "correct": true, "generated_tokens": 1697, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1149", "correct": true, "generated_tokens": 553, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1161", "correct": false, "generated_tokens": 3754, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1169", "correct": true, "generated_tokens": 1441, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1180", "correct": true, "generated_tokens": 1277, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1182", "correct": true, "generated_tokens": 1824, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1195", "correct": true, "generated_tokens": 1911, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1197", "correct": true, "generated_tokens": 1028, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1204", "correct": true, "generated_tokens": 1067, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1205", "correct": true, "generated_tokens": 703, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1206", "correct": true, "generated_tokens": 1136, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1209", "correct": true, "generated_tokens": 713, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1220", "correct": true, "generated_tokens": 1291, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1221", "correct": true, "generated_tokens": 614, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1226", "correct": true, "generated_tokens": 1349, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1232", "correct": true, "generated_tokens": 579, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1236", "correct": true, "generated_tokens": 1356, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1242", "correct": true, "generated_tokens": 836, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1247", "correct": true, "generated_tokens": 3416, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1266", "correct": true, "generated_tokens": 730, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1280", "correct": true, "generated_tokens": 714, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1285", "correct": true, "generated_tokens": 977, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1287", "correct": false, "generated_tokens": 1271, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1292", "correct": true, "generated_tokens": 775, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1300", "correct": true, "generated_tokens": 1104, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1301", "correct": true, "generated_tokens": 1022, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1308", "correct": true, "generated_tokens": 376, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1309", "correct": false, "generated_tokens": 1491, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1310", "correct": true, "generated_tokens": 2244, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1312", "correct": true, "generated_tokens": 1712, "stop_reason": "eos_token"}
+{"condition": "m0", "prompt_id": "gsm8k-test-1316", "correct": true, "generated_tokens": 640, "stop_reason": "eos_token"}
+{
+  "schema_version": 1,
+  "status": "complete",
+  "condition": "m0",
+  "rows": 200,
+  "correct": 175,
+  "observed_accuracy": 0.875,
+  "truncations": 4,
+  "accuracy_bounds_without_imputation": [
+    0.875,
+    0.895
+  ],
+  "cap_guard_threshold": 0.05,
+  "cap_guard_passed": true,
+  "checkpoint_sha256": "768f209d9ea81521153ed38c47d515654e938aea",
+  "generation_config_sha256": "ca5434538354ba3adf2f5e0efc49f506ebd0ffd2cb4eaa3afd74c32af9d66643",
+  "generation_implementation_sha256": "5aa46bd6b8e4d54059ced609adc46fd44ad25755017b3476602376ed03bff648",
+  "generations_sha256": "c2eda1d5e577fdd75a20c782cfdbeaa30fb9773d7a2fdcc6e3c302ca0dd29590",
+  "manifest_sha256": "64dbc2d98d0d7435cb0b77798045cb28776a4c0b913f3ff05cec4150f552dcb4",
+  "config_sha256": "17a5bbb46417bf9a05b9b2171575730998e636ac51957c0b773c0cd5ff15976a"
+}
+c2eda1d5e577fdd75a20c782cfdbeaa30fb9773d7a2fdcc6e3c302ca0dd29590  /scratch1/muttreja/mats_latent_safety/results/native_gsm8k_controls/m0/generations.jsonl
+c2eda1d5e577fdd75a20c782cfdbeaa30fb9773d7a2fdcc6e3c302ca0dd29590  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/native_gsm8k_controls/m0/generations.jsonl
+1a531b52842413be7a9d864e0703404fd62a02e1bb035c508c4a25f7b2e154a2  /scratch1/muttreja/mats_latent_safety/results/native_gsm8k_controls/m0/summary.json
+1a531b52842413be7a9d864e0703404fd62a02e1bb035c508c4a25f7b2e154a2  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/native_gsm8k_controls/m0/summary.json

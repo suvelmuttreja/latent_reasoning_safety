@@ -1,0 +1,104 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"stage": 1, "epoch": 0, "stage_update": 10, "seconds": 5.89522700663656, "loss": 0.4670168258784455}
+{"stage": 1, "epoch": 0, "stage_update": 20, "seconds": 5.817975033074617, "loss": 0.36494576800280826}
+{"stage": 1, "epoch": 0, "stage_update": 30, "seconds": 5.873485347256064, "loss": 0.4512869009387352}
+{"stage": 1, "epoch": 0, "stage_update": 40, "seconds": 5.9396245973184705, "loss": 0.39075754195777646}
+{"stage": 1, "epoch": 0, "stage_update": 50, "seconds": 5.857166909612715, "loss": 0.363346015911522}
+{"stage": 1, "epoch": 0, "stage_update": 60, "seconds": 5.849156165495515, "loss": 0.38726866141290406}
+{"stage": 1, "epoch": 0, "stage_update": 70, "seconds": 5.739065770991147, "loss": 0.4053413971125731}
+{"stage": 1, "epoch": 0, "stage_update": 80, "seconds": 5.958391756750643, "loss": 0.3735181916213661}
+{"stage": 1, "epoch": 0, "stage_update": 90, "seconds": 5.979525736533105, "loss": 0.4379691579634465}
+{"stage": 1, "epoch": 0, "stage_update": 100, "seconds": 5.786158147267997, "loss": 0.3800234645839899}
+{"stage": 1, "epoch": 0, "stage_update": 110, "seconds": 6.016931894235313, "loss": 0.39815754332099595}
+{"stage": 1, "epoch": 0, "stage_update": 120, "seconds": 6.29237774759531, "loss": 0.4027657186707401}
+{"stage": 1, "epoch": 0, "stage_update": 130, "seconds": 5.903525911271572, "loss": 0.4055789555901}
+{"stage": 1, "epoch": 0, "stage_update": 140, "seconds": 5.878660835325718, "loss": 0.3795229457756594}
+{"stage": 1, "epoch": 0, "stage_update": 150, "seconds": 5.933499448932707, "loss": 0.4199358919924052}
+{"stage": 1, "epoch": 0, "stage_update": 160, "seconds": 5.864643934182823, "loss": 0.43119816338779327}
+{"stage": 1, "epoch": 0, "stage_update": 170, "seconds": 5.8735350500792265, "loss": 0.3510651433655105}
+{"stage": 1, "epoch": 0, "stage_update": 180, "seconds": 5.778281553648412, "loss": 0.33797784232085765}
+{"stage": 1, "epoch": 0, "stage_update": 190, "seconds": 5.951002211309969, "loss": 0.425246233598697}
+{"stage": 1, "epoch": 0, "stage_update": 200, "seconds": 6.0838307132944465, "loss": 0.40553199191933637}
+{"stage": 1, "epoch": 0, "stage_update": 210, "seconds": 5.942434071563184, "loss": 0.37762049740458475}
+{"stage": 1, "epoch": 0, "stage_update": 220, "seconds": 5.839630912989378, "loss": 0.33794802656367745}
+{"stage": 1, "epoch": 0, "stage_update": 230, "seconds": 6.031202735379338, "loss": 0.4057851843209634}
+{"stage": 1, "epoch": 1, "stage_update": 240, "seconds": 5.77354608476162, "loss": 0.28134584032799587}
+{"stage": 1, "epoch": 1, "stage_update": 250, "seconds": 5.998101550154388, "loss": 0.32530927754024147}
+{"stage": 1, "epoch": 1, "stage_update": 260, "seconds": 5.927071667276323, "loss": 0.37697499005715296}
+{"stage": 1, "epoch": 1, "stage_update": 270, "seconds": 5.869241691194475, "loss": 0.3135560065713738}
+{"stage": 1, "epoch": 1, "stage_update": 280, "seconds": 5.859473298303783, "loss": 0.3893701385757537}
+{"stage": 1, "epoch": 1, "stage_update": 290, "seconds": 5.82750493939966, "loss": 0.31866402799618576}
+{"stage": 1, "epoch": 1, "stage_update": 300, "seconds": 6.107813416048884, "loss": 0.34091630428438013}
+{"stage": 1, "epoch": 1, "stage_update": 310, "seconds": 5.832805019803345, "loss": 0.38265304481682216}
+{"stage": 1, "epoch": 1, "stage_update": 320, "seconds": 6.184371467679739, "loss": 0.4132203558939793}
+{"stage": 1, "epoch": 1, "stage_update": 330, "seconds": 5.75268130004406, "loss": 0.3557871528986769}
+{"stage": 1, "epoch": 1, "stage_update": 340, "seconds": 5.862796952947974, "loss": 0.3434218900638708}
+{"stage": 1, "epoch": 1, "stage_update": 350, "seconds": 5.941813196055591, "loss": 0.3457571753843583}
+{"stage": 1, "epoch": 1, "stage_update": 360, "seconds": 6.013799322769046, "loss": 0.32235915070951127}
+{"stage": 1, "epoch": 1, "stage_update": 370, "seconds": 5.851331613957882, "loss": 0.32426670298305915}
+{"stage": 1, "epoch": 1, "stage_update": 380, "seconds": 5.8304013684391975, "loss": 0.34835360808371224}
+{"stage": 1, "epoch": 1, "stage_update": 390, "seconds": 5.874237015843391, "loss": 0.33601909504520855}
+{"stage": 1, "epoch": 1, "stage_update": 400, "seconds": 5.955496285110712, "loss": 0.324260834469107}
+{"stage": 1, "epoch": 1, "stage_update": 410, "seconds": 5.7351986756548285, "loss": 0.31145017507426087}
+{"stage": 1, "epoch": 1, "stage_update": 420, "seconds": 5.943215772509575, "loss": 0.34486820676931484}
+{"stage": 1, "epoch": 1, "stage_update": 430, "seconds": 5.886415428481996, "loss": 0.3354769410011355}
+{"stage": 1, "epoch": 1, "stage_update": 440, "seconds": 5.76580704562366, "loss": 0.3380675160441304}
+{"stage": 1, "epoch": 1, "stage_update": 450, "seconds": 6.082612194120884, "loss": 0.31261948697093167}
+{"stage": 1, "epoch": 1, "stage_update": 460, "seconds": 6.112867149524391, "loss": 0.3218903301254557}
+{
+  "schema_version": 1,
+  "status": "stage_complete",
+  "label": "posthoc_explicit_cot_seed43_stage1_replication",
+  "branch": "explicit_cot",
+  "model_id": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "code_revision": "878250773b8461f6ee96772d14140243ad2a09a1",
+  "slurm_job_id": "11598619",
+  "config_sha256": "67f8dc1e1e0261d2a2e8dac70080c0284398417027443d8fc92145c80d1041cd",
+  "data_sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+  "completed_stage": 1,
+  "k": 0,
+  "epochs": 2,
+  "stage_optimizer_updates": 468,
+  "cumulative_optimizer_updates": 468,
+  "order_sha256_by_epoch": [
+    "14b66867c32c59d576ec754a67dc4c0655e06484b044a4913f6b55ef15f50925",
+    "5de3765677173bf993f7e4364e862c8801fca5a00b902dde587714219e5fdf28"
+  ],
+  "training_seconds": 2753.640555930324,
+  "mean_update_seconds": 5.872076822727378,
+  "median_update_seconds": 5.8662966401316226,
+  "p95_update_seconds": 6.047000521700829,
+  "mean_loss": 0.37802446434892273,
+  "loss_normalization": "shifted_nonignored_token_count_over_effective_batch",
+  "examples": 14946,
+  "nonpadding_tokens": 2726766,
+  "supervised_tokens": 1835268,
+  "peak_cuda_allocated_bytes": 40709627904,
+  "peak_cuda_reserved_bytes": 43505418240,
+  "optimizer_state_bytes": 16087170616,
+  "model_state": "/scratch1/muttreja/mats_latent_safety/results/matched_4b_cot_seed43/stage1/model_state.pt",
+  "model_state_sha256": "42e2c4e95697cf8db4d170355c1a41f9f6de48db9529499ff5f43fb06f025e43",
+  "optimizer_state": "/scratch1/muttreja/mats_latent_safety/results/matched_4b_cot_seed43/stage1/optimizer_state.pt",
+  "optimizer_state_sha256": "25741db5af765bb68a61a03b60a91535ea808ef2877c4c5de24ff2a800747082",
+  "checkpoint_io": {
+    "model_save_seconds": 5.810428466647863,
+    "optimizer_save_seconds": 11.495734143070877,
+    "checkpoint_hash_seconds": 85.44969204813242
+  },
+  "gate_required_before_next_stage": false,
+  "training_authorization_basis": "inline_gate_passed",
+  "matched_training_authorized": true,
+  "durability": {
+    "status": "model_and_tokenizer_uploaded",
+    "repo_id": "suvelmuttreja/mats-latent-safety-checkpoints",
+    "path_in_repo": "matched_4b_cot_seed43/stage1",
+    "model_commit_oid": "d372f52c2949b9ac30e969407f4a9e830e6b9c3b",
+    "model_commit_url": "https://huggingface.co/suvelmuttreja/mats-latent-safety-checkpoints/commit/d372f52c2949b9ac30e969407f4a9e830e6b9c3b",
+    "model_and_tokenizer_upload_seconds": 86.99854457657784,
+    "metadata_upload_required_for_stage_success": true,
+    "optimizer_state_uploaded": false,
+    "optimizer_regeneration": "replay_frozen_training_from_previous_durable_stage"
+  }
+}

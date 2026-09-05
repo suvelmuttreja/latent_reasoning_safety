@@ -37,8 +37,8 @@ with a 95% prompt-bootstrap interval of [-0.023, +0.046].
 | --- | --- |
 | `project_plan/` | The frozen execution protocol (v6.3) and kickoff plan. The protocol is the preregistration; code must not silently change the registered method. |
 | `src/mats_latent_safety/` | Project library: Coconut training and inference on Qwen3, GSM8K evaluation, StrongREJECT scoring, provenance helpers. |
-| `scripts/` | Entry points for every training, generation, scoring, and audit step. `scripts/slurm/` holds the exact SLURM submissions that produced the results. |
-| `configs/` | Frozen YAML/JSON configs for each run, plus `pins.json` (upstream commit pins) and the storage policy. |
+| `scripts/` | Entry points for every training, generation, scoring, and audit step, indexed by pipeline stage in `scripts/README.md`. `scripts/slurm/` holds the exact SLURM submissions that produced the results. |
+| `configs/` | Frozen YAML/JSON configs for each run, plus `pins.json` (upstream commit pins) and `storage_policy.yaml` (which cluster tier holds what). |
 | `manifests/` | Fixed prompt and example manifests: GSM8K train/held-out splits, the 60-prompt StrongREJECT set, audit and coherence subsets. |
 | `artifacts/discovery/results/` | Compact result records: generations, scores, summaries, gate decisions, and audits for every run referenced in the write-up. |
 | `artifacts/discovery/logs/` | SLURM stdout/stderr for those runs. |

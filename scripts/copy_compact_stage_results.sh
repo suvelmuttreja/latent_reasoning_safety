@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copy a finished stage's compact JSON/metrics records from scratch1 to home1 (usage: BRANCH_ROOT STAGE).
 set -euo pipefail
 
 if [[ $# -ne 2 ]]; then

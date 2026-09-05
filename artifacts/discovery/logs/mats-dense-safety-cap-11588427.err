@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home1/muttreja/mats_latent_safety/scripts/calibrate_coconut_safety_cap.py", line 311, in <module>
+    main()
+  File "/home1/muttreja/mats_latent_safety/scripts/calibrate_coconut_safety_cap.py", line 79, in main
+    raise FileExistsError("refusing to overwrite completed safety-cap calibration")
+FileExistsError: refusing to overwrite completed safety-cap calibration
+srun: error: b10-10: task 0: Exited with exit code 1
