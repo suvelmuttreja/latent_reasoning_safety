@@ -74,9 +74,9 @@ Capability was exact-match accuracy on one fixed 200-item GSM8K set under greedy
 
 The ±0.020 equivalence margin needs to be read as a study-specific decision rule, not a universal safety threshold. I froze it before seeing branch scores, using the change in M0’s mean score under an alternative serialization on a 12-prompt anchor. That made it defensible against result-dependent movement, but not substantively well calibrated. I also failed to check whether 60 prompts could resolve it before committing to the assay.
 
-## The capability check changed the question
+## Capability was not preserved
 
-The two explicit checkpoints that had been missing from the first draft were evaluated after the main experiment, with the same manifest, native-chat serialization, deterministic decoder, 5,120-token cap, and numeric-answer parser used at u3. These are post-hoc capability controls, not newly declared primary outcomes.
+For completeness, I evaluated the explicit u1 and u2 checkpoints with the same manifest, native-chat serialization, deterministic decoder, 5,120-token cap, and numeric-answer parser used at u3. These are post-hoc capability controls, not newly declared primary outcomes.
 
 | Condition                | GSM8K-200 exact match | Did not terminate |
 |--------------------------|----------------------:|------------------:|
@@ -142,7 +142,7 @@ I trust the headline arithmetic more than the causal story. I recomputed all thr
 
 The human review was not perfectly blind. At stage 1, an agent surfaced pre-scores and unblinded aggregates before my pass. During the endpoint audit, a session message identified two anomalous outputs before I finished. I still labelled the full endpoint packet before opening its key, but I record both leaks rather than calling the process clean.
 
-I used GPT 5.6 (Sol) and Claude (Fable) for brainstorming, literature search, design criticism, code, job submission, debugging, analysis, and drafts. The agents wrote most of the code; I did not inspect every line. I made the experimental and scope decisions, read raw outputs, performed the manual ratings, and independently checked the numbers above. The part I trust least is the Coconut implementation. During review I also rejected two agent-generated explanations that were too convenient: a pause-token control would not validate the wrapper, and the power shortfall was not a deliberate conservative choice. I simply missed the prospective calculation.
+I used GPT 5.6 (Sol) and Claude (Fable) for brainstorming, literature search, design criticism, code, job submission, debugging, analysis, and drafts. The agents wrote most of the code; I did not inspect every line. I made the experimental and scope decisions, read raw outputs, performed the manual ratings, and independently checked the numbers above. The part I trust least is the Coconut implementation. I also rejected two agent-generated explanations that were too convenient: a pause-token control would not validate the wrapper, and the power shortfall was not a deliberate conservative choice. I simply missed the prospective calculation.
 
 ## Bottom line
 
