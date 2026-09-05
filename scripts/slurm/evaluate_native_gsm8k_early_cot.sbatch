@@ -28,6 +28,14 @@ if [[ ! -d "$OUTPUT" && -d "$HOME_COPY" ]]; then
   rsync -a "$HOME_COPY/" "$OUTPUT/"
 fi
 trap copy_results EXIT
+if [[ -f "$OUTPUT/generations.jsonl" && -f "$OUTPUT/summary.json" ]]; then
+  copy_results
+  trap - EXIT
+  echo "$CONDITION is already complete; verified copies follow"
+  sha256sum "$OUTPUT/generations.jsonl" "$HOME_COPY/generations.jsonl"
+  sha256sum "$OUTPUT/summary.json" "$HOME_COPY/summary.json"
+  exit 0
+fi
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 srun python -u scripts/evaluate_native_gsm8k_control.py \
   --config configs/native_gsm8k_early_cot_controls.yaml \
