@@ -1,0 +1,37 @@
+schema_version: 1
+status: frozen_before_generation
+frozen_at: '2026-09-05T00:00:00-07:00'
+purpose: posthoc_earlier_explicit_cot_native_chat_capability_controls
+manifest: manifests/gsm8k_heldout_200.json
+evaluation_config: configs/evaluation.yaml
+train_config: configs/matched_4b_cot.yaml
+serialization: native_qwen_chat
+sampling:
+  seed: 42
+  do_sample: false
+  max_new_tokens: 5120
+  stop_tokens: [eos_token]
+cap_guard:
+  threshold: 0.05
+  comparison: greater_than_or_equal_to_threshold_requires_pause
+  action: do_not_interpret_point_accuracy_without_bounds_or_registered_regeneration
+conditions:
+  cot_u1:
+    model_source: matched_checkpoint
+    checkpoint_subdir: matched_4b_cot/stage1
+    checkpoint_sha256: d3cac61e18def5332e0d0fcb0de30634476ab6d9b10dfbe3dea7197ecbfb2e59
+    checkpoint_stage: 1
+    checkpoint_k: 0
+    k: 0
+  cot_u2:
+    model_source: matched_checkpoint
+    checkpoint_subdir: matched_4b_cot/stage2
+    checkpoint_sha256: 1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9
+    checkpoint_stage: 2
+    checkpoint_k: 0
+    k: 0
+reporting:
+  exact_match_parser: registered_gsm8k_numeric_answer_parser
+  co_report_nontermination_and_accuracy_bounds: true
+  role: posthoc_missing_stage_capability_controls
+  comparison_contract: same_manifest_serialization_sampling_and_parser_as_endpoint_controls
