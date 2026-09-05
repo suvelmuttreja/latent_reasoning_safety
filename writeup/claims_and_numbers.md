@@ -1,5 +1,8 @@
 # Claims, numbers, and write-up source of truth
 
+> **Analysis correction (2026-09-05):** The independent [analysis audit](analysis_audit/REVIEW.md) supersedes older K=0 bounds, language-gap interpretations, embedding-inclusive training-update claims, and evaluator visibility assumptions. Frozen raw results remain unchanged. Final K=0 bounds are 48–58%; 49.5% is cutoff-parser accuracy, including three unfinished correct parses.
+
+
 Evidence cutoff: committed artifacts available on 2026-09-01.
 
 This is the application's canonical **interpretation layer**: the numbers worth
@@ -85,9 +88,9 @@ the failure causally.
 - Primary branches start from the same M0 and use the same 7,473 GSM8K
   examples, frozen order, seed 42, optimizer, and effective batch size 32.
 - Both branches use micro-batch 1 × gradient accumulation 32 at every stage.
-  Loss normalization is token-count-correct. This is a documented,
-  expectation-preserving deviation from the public recipe's 2 × 16; it is not
-  bit-identical to that arithmetic.
+  Loss is weighted by supervised token count across accumulation. This is a
+  documented deviation from the public recipe's 2 × 16 microbatch-loss averaging;
+  different example lengths can change the weighting.
 - Training dose: three stages × two epochs. Coconut uses `c_thought=2` and
   trained depths K=2, 4, 6.
 - Safety assay: frozen StrongREJECT-60 with the pinned judge.
@@ -180,7 +183,7 @@ plus
 |---|---:|---:|---:|
 | u1, K=2 | 76.0% (8/200 length stops; 4.0%) | 65.5% | 1.9 / 1.3 |
 | u2, K=4 | 69.5% (5/200 length stops; 2.5%) | 46.0% | 2.0 / 2.0 |
-| u3, K=6 | [49.5%, 59.5%] (20/200 structural length stops) | 31.0% | 2.0 / 2.0 |
+| u3, K=6 | [48%, 58%] (20/200 structural length stops) | 31.0% | 2.0 / 2.0 |
 
 The stage-1 trained-depth cost is 10.5 points. The trajectory dates the loss
 of robust K=0 viability; it does not show that K=0 was in-distribution at u3.
@@ -248,8 +251,8 @@ Approved wording:
 > At the final Coconut checkpoint, K=0 caused structural nontermination on
 > 13/60 safety prompts even with a 16,000-token ceiling, so its safety mean and
 > the K=6-minus-K=0 safety scalar are undefined. On GSM8K, K=0 accuracy was
-> bounded at [49.5%, 59.5%], versus 31.0% at K=6, giving a K=6-minus-K=0
-> capability effect of [-28.5, -18.5] points. The latents were therefore
+> bounded at [48%, 58%], versus 31.0% at K=6, giving a K=6-minus-K=0
+> capability effect of [-27, -17] points. The latents were therefore
 > load-bearing for termination but deleterious for capability at this endpoint.
 
 K=0 is an inference-only necessity ablation and is out-of-distribution for a
@@ -415,6 +418,10 @@ Approved wording:
 > small training dose.
 
 Do not write that self-jailbreaking “does not replicate” in general.
+
+Verified 2026-09-05 from arXiv 2412.06769 (HTML, Table 1, GPT-2 GSM8k): CoT 42.9±0.2, No-CoT 16.5±0.5, Coconut 34.1±1.5, Pause as thought 24.1±0.7, Coconut w/o thought 21.6±0.5, Pause token 16.4±1.8. Directional consistency (latent below explicit CoT) may now be claimed; magnitude differs (9 vs 61 points).
+
+Post-hoc descriptive addendum (2026-09-05, `writeup/figures/posthoc_output_anatomy.json`): Coconut stage-3 K=6 GSM8K outputs have median 6 generated tokens (bare answer); stage-2 K=4 median 41; stage-3 K=0 terminating rows median 65 (terse text steps). K=0 vs K=6 identical predicted answer on 42/200. Coconut endpoint Chinese-thinking rows (12) mean judge 0.044 vs English-thinking rows (48) 0.120; paired Coconut−CoT +0.002 vs +0.014. Answer-length vs judge Pearson r at n=60: M0 0.39, CoT 0.44, Coconut 0.34 (supersedes the n=12 r=0.708 as the quoted figure).
 
 Related-work citation rule: any specific number quoted from prior work (e.g.
 the Coconut paper's GPT-2 GSM8K accuracies for the latent-below-explicit

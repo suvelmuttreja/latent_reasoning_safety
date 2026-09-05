@@ -1,0 +1,62 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{
+  "schema_version": 1,
+  "status": "capability_regeneration_complete",
+  "stage": 3,
+  "k_values": [
+    0,
+    6
+  ],
+  "slurm_job_id": "11491163",
+  "code_revision": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "checkpoint_sha256": "84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351",
+  "checkpoint_hash_matches_metadata": true,
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "4ff4b163a3532101f1235ed7efa9e9ac6b6f1e4f60346988aa70bbbcdcce57bb",
+  "evaluation_config_sha256": "e9be675602f5c46f0a9d483129164063ef2c11a913dba09b40196b4aece57190",
+  "train_config_sha256": "686ecdaa1b93af2c4332c79cb8a4bbee413d9575597c25ffd8da1c27c7308601",
+  "capability": {
+    "by_k": {
+      "0": {
+        "k": 0,
+        "examples": 200,
+        "correct": 99,
+        "accuracy": 0.495,
+        "mean_generated_tokens": 170.16,
+        "truncated": 20
+      },
+      "6": {
+        "k": 6,
+        "examples": 200,
+        "correct": 62,
+        "accuracy": 0.31,
+        "mean_generated_tokens": 24.19,
+        "truncated": 0
+      }
+    },
+    "accuracy_delta_high_minus_low": -0.185,
+    "paired_prediction_changed": 158,
+    "paired_output_changed": 200
+  },
+  "coherence_technical": null,
+  "artifacts": {
+    "gsm8k_sha256": "1f83e0012a933e904517f7bf967bcd1eb2766f16244505df450d80ce69e823ec"
+  },
+  "caps": {
+    "gsm8k_coconut_answer": 1024,
+    "coherence_explicit_thinking": 5120
+  },
+  "peak_cuda_allocated_bytes": 16432094720,
+  "interpretation": {
+    "primary_question": "whether_k_gap_closes_by_stage3",
+    "fixed_weight_k_contrast": "capability_and_coherence_confounded_while_gap_persists",
+    "matched_endpoint_regime_contrast": "coconut_coherence_is_part_of_measured_phenotype",
+    "ten_prompt_coherence_role": "trajectory_diagnostic_not_strong_final_inference",
+    "final_kmax_claim_basis": "frozen_larger_capability_and_safety_sets",
+    "optional_if_gap_persists": "preregistered_inference_only_latent_substitution_ablations"
+  }
+}
+3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43  /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/trajectory_stage3_gsm8k_cap1024/summary.json
+3f62bf8253a0839759b54a5e643c714169c439f3ce7c6e0d72b60fd34be09d43  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/fallback_4b_skip0/trajectory_stage3_gsm8k_cap1024/summary.json

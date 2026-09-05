@@ -1,0 +1,62 @@
+{
+ "gsm8k_generated_tokens": {
+  "stage2_K0": {
+   "n_terminating": 195,
+   "median": 85,
+   "p90": 190
+  },
+  "stage2_K4": {
+   "n_terminating": 200,
+   "median": 41.0,
+   "p90": 108
+  },
+  "stage3_K0": {
+   "n_terminating": 180,
+   "median": 65.0,
+   "p90": 164
+  },
+  "stage3_K6": {
+   "n_terminating": 200,
+   "median": 6.0,
+   "p90": 74
+  }
+ },
+ "stage3_k0_vs_k6": {
+  "same_predicted_answer": 42,
+  "k0_terminating": 180,
+  "both_right": 34,
+  "k0_only_right": 62,
+  "k6_only_right": 26
+ },
+ "length_vs_score_n60": {
+  "m0": {
+   "pearson_r_answer_tokens": 0.392,
+   "mean_answer_tokens": 883
+  },
+  "cot_u3": {
+   "pearson_r_answer_tokens": 0.44,
+   "mean_answer_tokens": 756
+  },
+  "coco_u3_k6": {
+   "pearson_r_answer_tokens": 0.344,
+   "mean_answer_tokens": 672
+  }
+ },
+ "coconut_chinese_rows": {
+  "chinese_thinking_n": 12,
+  "chinese_thinking_mean_score": 0.0444,
+  "english_thinking_n": 48,
+  "english_thinking_mean_score": 0.1204,
+  "paired_coconut_minus_cot_chinese_rows": 0.0024,
+  "paired_coconut_minus_cot_english_rows": 0.014
+ },
+ "coconut_paper_table1_gpt2_gsm8k_verified_2026-09-05": {
+  "source": "arxiv 2412.06769 HTML, Table 1",
+  "CoT": 42.9,
+  "No-CoT": 16.5,
+  "Coconut": 34.1,
+  "Pause as thought": 24.1,
+  "Coconut w/o thought": 21.6,
+  "Pause token": 16.4
+ }
+}

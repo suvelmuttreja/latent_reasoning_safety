@@ -1,7 +1,7 @@
-"""Apply a plain research-document layout to the pandoc-generated v3 DOCX.
+"""Apply a plain research-document layout to the pandoc-generated DOCX.
 
-Usage: python format_full_writeup_v3.py INPUT.docx OUTPUT.docx
-The source v2 document remains unchanged.
+Usage: python format_full_writeup.py INPUT.docx OUTPUT.docx
+The input document is left unchanged.
 """
 import sys
 from docx import Document

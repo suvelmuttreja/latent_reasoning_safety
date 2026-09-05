@@ -1,0 +1,92 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{
+  "schema_version": 1,
+  "status": "technical_complete_pending_blind_coherence_scores",
+  "stage": 3,
+  "k_values": [
+    0,
+    6
+  ],
+  "slurm_job_id": "11463021",
+  "code_revision": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "checkpoint_sha256": "84709f445be62feafc3bdd1e8d449aeb067769f7ef4d2b4727e31487cf46b351",
+  "checkpoint_hash_matches_metadata": true,
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "29416721f331fcb36f195eb5a5f21424f327956ab5b528ac7500aa0757fbe5e6",
+  "evaluation_config_sha256": "5d7c68390625163960efa5e41241fc9d0e012f731437185796cc408758bb7ef4",
+  "train_config_sha256": "686ecdaa1b93af2c4332c79cb8a4bbee413d9575597c25ffd8da1c27c7308601",
+  "capability": {
+    "by_k": {
+      "0": {
+        "k": 0,
+        "examples": 200,
+        "correct": 99,
+        "accuracy": 0.495,
+        "mean_generated_tokens": 118.96,
+        "truncated": 20
+      },
+      "6": {
+        "k": 6,
+        "examples": 200,
+        "correct": 62,
+        "accuracy": 0.31,
+        "mean_generated_tokens": 24.19,
+        "truncated": 0
+      }
+    },
+    "accuracy_delta_high_minus_low": -0.185,
+    "paired_prediction_changed": 157,
+    "paired_output_changed": 200
+  },
+  "coherence_technical": {
+    "overall": {
+      "outputs": 20,
+      "cap_hits": 0,
+      "eos_stops": 20,
+      "missing_closing_think": 0,
+      "mean_generated_tokens": 1185.75,
+      "mean_seconds": 43.002395785832775
+    },
+    "by_k": {
+      "0": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "eos_stops": 10,
+        "missing_closing_think": 0,
+        "mean_generated_tokens": 1331.2,
+        "mean_seconds": 48.183447619713846
+      },
+      "6": {
+        "outputs": 10,
+        "cap_hits": 0,
+        "eos_stops": 10,
+        "missing_closing_think": 0,
+        "mean_generated_tokens": 1040.3,
+        "mean_seconds": 37.82134395195171
+      }
+    }
+  },
+  "artifacts": {
+    "gsm8k_sha256": "6451e66a7c86e31e3fac5753a44e2cfd666a0accd70aa23fb583916f727bf8fa",
+    "coherence_sha256": "dcb094301302938cda5eb6649480a8c2691b79b47a3856fff1b5f4b98eb3d3e6",
+    "blind_packet_sha256": "1944faec1fe1eeef914a0ba207fd9b8011164abfc9b7c2ff532402e301410919",
+    "blind_key_sha256": "4bb9ea4a83b2ca5ca153feac782120d02a43d26ab249fb11d5b3ad98eff922b6"
+  },
+  "caps": {
+    "gsm8k_coconut_answer": 512,
+    "coherence_explicit_thinking": 5120
+  },
+  "peak_cuda_allocated_bytes": 16527417344,
+  "interpretation": {
+    "primary_question": "whether_k_gap_closes_by_stage3",
+    "fixed_weight_k_contrast": "capability_and_coherence_confounded_while_gap_persists",
+    "matched_endpoint_regime_contrast": "coconut_coherence_is_part_of_measured_phenotype",
+    "ten_prompt_coherence_role": "trajectory_diagnostic_not_strong_final_inference",
+    "final_kmax_claim_basis": "frozen_larger_capability_and_safety_sets",
+    "optional_if_gap_persists": "preregistered_inference_only_latent_substitution_ablations"
+  }
+}
+a8960023c80caf2daf2241a1d3aaf05d7e269cfb5f3ce295744d5fb38918631c  /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/trajectory_stage3/summary.json
+a8960023c80caf2daf2241a1d3aaf05d7e269cfb5f3ce295744d5fb38918631c  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/fallback_4b_skip0/trajectory_stage3/summary.json

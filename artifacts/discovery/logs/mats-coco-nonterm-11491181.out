@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "status": "content_blind_structural_diagnostic_complete",
+  "source_generations_sha256": "55ae65788fdf8b474cf91788c1bfe9e5304673dd326f125a960debe814917770",
+  "config_sha256": "47d7a7de8fce741d6d40b8553855f6e0520ec4972d723ee16284125c3884818d",
+  "evaluator_loaded": false,
+  "raw_content_emitted": false,
+  "by_group": {
+    "k0_eos_token": {
+      "rows": 47,
+      "closing_think_present": 36,
+      "structural_nontermination_flags": 0,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 47,
+        "mean": 0.9604879756821422,
+        "median": 0.9708520179372198,
+        "minimum": 0.8178438661710037,
+        "maximum": 0.9946236559139785
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 47,
+        "mean": 0.44183325068744495,
+        "median": 0.4472020233955106,
+        "minimum": 0.3605005072708827,
+        "maximum": 0.5269035532994923
+      }
+    },
+    "k0_length": {
+      "rows": 13,
+      "closing_think_present": 0,
+      "structural_nontermination_flags": 5,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 13,
+        "mean": 0.0117359413202934,
+        "median": 0.0034229828850855745,
+        "minimum": 0.0009779951100244498,
+        "maximum": 0.11638141809290954
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 13,
+        "mean": 0.03829118599648794,
+        "median": 0.053360884891211866,
+        "minimum": 0.004296875,
+        "maximum": 0.07825839499146273
+      }
+    },
+    "k6_eos_token": {
+      "rows": 59,
+      "closing_think_present": 53,
+      "structural_nontermination_flags": 0,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 59,
+        "mean": 0.9451406161110024,
+        "median": 0.9705069124423963,
+        "minimum": 0.20684596577017114,
+        "maximum": 1.0
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 59,
+        "mean": 1.089554701733888,
+        "median": 0.4456986488797674,
+        "minimum": 0.22094382575524518,
+        "maximum": 8.0
+      }
+    },
+    "k6_length": {
+      "rows": 1,
+      "closing_think_present": 1,
+      "structural_nontermination_flags": 0,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 1,
+        "mean": 0.021026894865525673,
+        "median": 0.021026894865525673,
+        "minimum": 0.021026894865525673,
+        "maximum": 0.021026894865525673
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 1,
+        "mean": 0.16142875720664096,
+        "median": 0.16142875720664096,
+        "minimum": 0.16142875720664096,
+        "maximum": 0.16142875720664096
+      }
+    }
+  }
+}
+2ae55225c5bac8a2584bed2dba5dbdb9074be2ac61a056967e2e9c0e78991463  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/fallback_4b_skip0/safety_nontermination_stage3.json

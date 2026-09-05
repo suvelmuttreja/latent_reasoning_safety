@@ -1,0 +1,142 @@
+name, memory.total [MiB], driver_version
+NVIDIA L40S, 46068 MiB, 580.159.04
+{
+  "schema_version": 1,
+  "status": "no_registered_cap_passed_official_scoring_remains_blocked",
+  "selected_cap": null,
+  "selection_used_only_lengths_and_stop_reasons": true,
+  "evaluator_loaded": false,
+  "slurm_job_id": "11461798",
+  "code_revision": "c8a392f0dd2a7865d97c4a9cf7465e9075e8483e",
+  "checkpoint_sha256": "36218731f3159b0e7f96c8352578f3125c2cf81e9ac07d686a6447dd7e803a25",
+  "strict_load_missing": [],
+  "strict_load_unexpected": [],
+  "config_sha256": "dad3bda03f6ea6135e38c58eb522fcb3cbdcab8442a4798732514c06ddb1be53",
+  "evaluation_config_sha256": "a42fc7c1f4c332ed220a46ebd42a4ceee1d4153defcb0d82d341ed9f2e344d86",
+  "manifest_sha256": "2e8a8641d43bbcfb5017eb8c3f4f6de0647e289f185342c4399360da89015819",
+  "generations_sha256": "b15ea2f0cf2e10553b4d97de02415eb1d7a11f26104942dbbf913cbd5f29c905",
+  "continuation": {
+    "prior_generations_sha256": "c7fa767b9b4a76370ec9f3f76a7003b2016569c5bc64fb438dce24885efb2c64",
+    "prior_rows_reused": 103,
+    "prior_length_stops_extended": 17,
+    "decoded_prefix_matches": 17
+  },
+  "by_k": {
+    "0": {
+      "outputs": 60,
+      "eos_stops": 48,
+      "calibration_cap_hits": 12,
+      "mean_tokens": 4101.083333333333,
+      "p95_tokens": 16000,
+      "max_tokens": 16000
+    },
+    "2": {
+      "outputs": 60,
+      "eos_stops": 57,
+      "calibration_cap_hits": 3,
+      "mean_tokens": 1975.2666666666667,
+      "p95_tokens": 7650,
+      "max_tokens": 16000
+    }
+  },
+  "candidate_projection": {
+    "512": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 53,
+        "projected_truncation_rate": 0.8833333333333333
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 58,
+        "projected_truncation_rate": 0.9666666666666667
+      }
+    },
+    "1024": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 40,
+        "projected_truncation_rate": 0.6666666666666666
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 26,
+        "projected_truncation_rate": 0.43333333333333335
+      }
+    },
+    "2048": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 13,
+        "projected_truncation_rate": 0.21666666666666667
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 7,
+        "projected_truncation_rate": 0.11666666666666667
+      }
+    },
+    "4096": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 12,
+        "projected_truncation_rate": 0.2
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 5,
+        "projected_truncation_rate": 0.08333333333333333
+      }
+    },
+    "5120": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 12,
+        "projected_truncation_rate": 0.2
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 5,
+        "projected_truncation_rate": 0.08333333333333333
+      }
+    },
+    "8192": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 12,
+        "projected_truncation_rate": 0.2
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 3,
+        "projected_truncation_rate": 0.05
+      }
+    },
+    "12288": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 12,
+        "projected_truncation_rate": 0.2
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 3,
+        "projected_truncation_rate": 0.05
+      }
+    },
+    "16000": {
+      "0": {
+        "outputs": 60,
+        "projected_truncations": 12,
+        "projected_truncation_rate": 0.2
+      },
+      "2": {
+        "outputs": 60,
+        "projected_truncations": 3,
+        "projected_truncation_rate": 0.05
+      }
+    }
+  }
+}
+d09e8e6d844dcf170a8ad9502788caa336db853245d3fd5d91df91b8dbb0ace2  /scratch1/muttreja/mats_latent_safety/results/fallback_4b_skip0/safety_cap_calibration_stage1_extension1/summary.json
+d09e8e6d844dcf170a8ad9502788caa336db853245d3fd5d91df91b8dbb0ace2  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/fallback_4b_skip0/safety_cap_calibration_stage1_extension1/summary.json

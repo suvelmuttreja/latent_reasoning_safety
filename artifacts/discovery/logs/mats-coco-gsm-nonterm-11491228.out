@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "content_blind_structural_diagnostic_complete",
+  "source_generations_sha256": "1f83e0012a933e904517f7bf967bcd1eb2766f16244505df450d80ce69e823ec",
+  "config_sha256": "e743d67e8d0a3bd9ee773225a27d521309e17b8558a94de0fa1a0347926b0e69",
+  "evaluator_loaded": false,
+  "raw_content_emitted": false,
+  "by_group": {
+    "k0_eos_token": {
+      "rows": 180,
+      "closing_think_present": 0,
+      "structural_nontermination_flags": 0,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 180,
+        "mean": 0.9125437120189613,
+        "median": 0.9388717661343047,
+        "minimum": 0.616580310880829,
+        "maximum": 1.0
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 180,
+        "mean": 1.026680517272931,
+        "median": 0.7950064806603452,
+        "minimum": 0.2846270928462709,
+        "maximum": 2.142857142857143
+      }
+    },
+    "k0_length": {
+      "rows": 20,
+      "closing_think_present": 0,
+      "structural_nontermination_flags": 19,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 20,
+        "mean": 0.050348610550978466,
+        "median": 0.0058823529411764705,
+        "minimum": 0.0019588638589618022,
+        "maximum": 0.7198824681684622
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 20,
+        "mean": 0.0420884046706001,
+        "median": 0.020209059233449476,
+        "minimum": 0.0126953125,
+        "maximum": 0.3867924528301887
+      }
+    },
+    "k6_eos_token": {
+      "rows": 200,
+      "closing_think_present": 0,
+      "structural_nontermination_flags": 0,
+      "token_4gram_unique_ratio_last_2048": {
+        "count": 200,
+        "mean": 0.9710545826310983,
+        "median": 1.0,
+        "minimum": 0.6785714285714286,
+        "maximum": 1.0
+      },
+      "utf8_zlib_compression_ratio": {
+        "count": 200,
+        "mean": 1.8432068265223052,
+        "median": 2.142857142857143,
+        "minimum": 0.4169230769230769,
+        "maximum": 2.6
+      }
+    }
+  }
+}
+11fa2d456f196b57eeeee3a0074d2dca08a6579e8f98ee2c5dd508b7e89dacbe  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/fallback_4b_skip0/gsm8k_nontermination_stage3.json

@@ -25,3 +25,7 @@ artifacts/**/tokenizer/
 .env
 *.token
 token
+
+# Editor lock files and in-progress generation dumps.
+~$*
+*.partial.jsonl
