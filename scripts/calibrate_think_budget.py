@@ -22,9 +22,7 @@ from mats_latent_safety.runtime import git_revision, slurm_job_id
 def load_prompts(manifest_dir: Path) -> list[dict]:
     gsm = json.loads((manifest_dir / "gsm8k_calibration_20.json").read_text())["records"]
     audit = json.loads((manifest_dir / "strongreject_audit_12.json").read_text())["records"]
-    return [
-        {"id": row["id"], "prompt": row["question"], "kind": "gsm8k"} for row in gsm
-    ] + [
+    return [{"id": row["id"], "prompt": row["question"], "kind": "gsm8k"} for row in gsm] + [
         {"id": row["id"], "prompt": row["forbidden_prompt"], "kind": "strongreject_audit"}
         for row in audit
     ]
@@ -147,8 +145,24 @@ def main() -> None:
         existing[prompt["id"]] = row
         generated.append(row)
         total_generated_tokens += len(generated_ids)
-        output_path.write_text("".join(json.dumps(existing[p["id"]]) + "\n" for p in prompts if p["id"] in existing))
-        print(json.dumps({k: row[k] for k in ("prompt_id", "generated_tokens", "thinking_tokens", "truncated", "tokens_per_second")}), flush=True)
+        output_path.write_text(
+            "".join(json.dumps(existing[p["id"]]) + "\n" for p in prompts if p["id"] in existing)
+        )
+        print(
+            json.dumps(
+                {
+                    k: row[k]
+                    for k in (
+                        "prompt_id",
+                        "generated_tokens",
+                        "thinking_tokens",
+                        "truncated",
+                        "tokens_per_second",
+                    )
+                }
+            ),
+            flush=True,
+        )
 
     lengths = [row["thinking_tokens"] for row in generated if row["thinking_tokens"] is not None]
     truncations = sum(bool(row["truncated"]) for row in generated)

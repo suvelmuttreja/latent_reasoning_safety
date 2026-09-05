@@ -2,8 +2,8 @@
 # Reproducible Discovery environment setup. Run on a login node after --push.
 set -euo pipefail
 
-CODE_ROOT="/home1/$USER/mats_latent_safety"
-WORK_ROOT="/scratch1/$USER/mats_latent_safety"
+CODE_ROOT="${CODE_ROOT:-/home1/$USER/mats_latent_safety}"
+WORK_ROOT="${WORK_ROOT:-/scratch1/$USER/mats_latent_safety}"
 MIN_HOME_FREE_GIB=20
 
 if [[ ! -f "$CODE_ROOT/uv.lock" ]]; then
@@ -32,7 +32,7 @@ export UV_CACHE_DIR="$WORK_ROOT/cache/uv"
 export UV_LINK_MODE=copy
 export UV_PROJECT_ENVIRONMENT="$CODE_ROOT/.venv"
 export HF_HOME="$WORK_ROOT/cache/huggingface"
-export HF_TOKEN_PATH="/home1/$USER/.cache/huggingface/token"
+export HF_TOKEN_PATH="${HF_TOKEN_PATH:-/home1/$USER/.cache/huggingface/token}"
 export OPENBLAS_NUM_THREADS=1
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1

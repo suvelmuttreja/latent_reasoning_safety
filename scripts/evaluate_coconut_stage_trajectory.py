@@ -44,20 +44,15 @@ def enrich_rows(
     generation_hash = sha256_json(settings)
     for row in rows:
         prefix = row.pop("raw_serialized_prefix")
-        scaffold = (
-            prefix
-            + START_LATENT
-            + LATENT * int(row["k"])
-            + END_LATENT
-        )
+        scaffold = prefix + START_LATENT + LATENT * int(row["k"]) + END_LATENT
         row["prompt_sha256"] = prompt_hashes[row["prompt_id"]]
         row["model_id"] = model_id
         row["model_revision"] = model_revision
         row["code_revision"] = code_revision
         row["raw_serialized_input"] = scaffold
-        row["input_tokens"] = len(tokenizer.encode(prefix, add_special_tokens=False)) + int(
-            row["k"]
-        ) + 2
+        row["input_tokens"] = (
+            len(tokenizer.encode(prefix, add_special_tokens=False)) + int(row["k"]) + 2
+        )
         row["thinking_tokens"] = len(
             tokenizer.encode(row["parsed_thinking"] or "", add_special_tokens=False)
         )
@@ -130,9 +125,7 @@ def main() -> None:
 
     train_path = Path(config["train_config"])
     train = yaml.safe_load(train_path.read_text())
-    expected_k = stage_k_values(
-        args.stage, int(train["c_thought"]), int(train["max_latent_stage"])
-    )
+    expected_k = stage_k_values(args.stage, int(train["c_thought"]), int(train["max_latent_stage"]))
     checkpoint_dir = Path(args.checkpoint_dir)
     metadata = json.loads((checkpoint_dir / "metadata.json").read_text())
     checkpoint = checkpoint_dir / "model_state.pt"
@@ -143,9 +136,10 @@ def main() -> None:
         raise ValueError("checkpoint stage/K differs from the registered trajectory")
     if metadata["model_state_sha256"] != checkpoint_hash:
         raise ValueError("checkpoint hash differs from stage metadata")
-    if metadata["model_id"] != train["model_id"] or metadata["model_revision"] != train[
-        "model_revision"
-    ]:
+    if (
+        metadata["model_id"] != train["model_id"]
+        or metadata["model_revision"] != train["model_revision"]
+    ):
         raise ValueError("checkpoint base model differs from frozen training config")
     if metadata["config_sha256"] != sha256_json(train):
         raise ValueError("checkpoint training config hash differs from frozen config")
@@ -159,9 +153,7 @@ def main() -> None:
     torch.manual_seed(config["seed"])
     torch.cuda.manual_seed_all(config["seed"])
     torch.cuda.reset_peak_memory_stats()
-    tokenizer = AutoTokenizer.from_pretrained(
-        train["model_id"], revision=train["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(train["model_id"], revision=train["model_revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
     markers = ensure_latent_tokens(tokenizer)
@@ -175,9 +167,7 @@ def main() -> None:
     coherence_settings = {**config["coherence"], "k_values": expected_k}
     capability_manifest = read_manifest(Path(config["capability"]["manifest"]))
     coherence_manifest = (
-        []
-        if args.capability_only
-        else read_manifest(Path(config["coherence"]["manifest"]))
+        [] if args.capability_only else read_manifest(Path(config["coherence"]["manifest"]))
     )
     capability = evaluate_capability(
         model,
@@ -187,11 +177,7 @@ def main() -> None:
         capability_settings,
         config["seed"],
     )
-    capability_rows = [
-        row
-        for k in expected_k
-        for row in capability["by_k"][str(k)].pop("outputs")
-    ]
+    capability_rows = [row for k in expected_k for row in capability["by_k"][str(k)].pop("outputs")]
     coherence_rows = []
     if not args.capability_only:
         coherence_rows = evaluate_coherence(

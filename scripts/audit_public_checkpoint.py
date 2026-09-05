@@ -33,9 +33,7 @@ def main() -> None:
     parser.add_argument("--revision", required=True)
     parser.add_argument("--filename", required=True)
     parser.add_argument("--base-model", default="Qwen/Qwen3-4B-Thinking-2507")
-    parser.add_argument(
-        "--base-revision", default="768f209d9ea81521153ed38c47d515654e938aea"
-    )
+    parser.add_argument("--base-revision", default="768f209d9ea81521153ed38c47d515654e938aea")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     path = hf_hub_download(args.repo_id, args.filename, revision=args.revision)
@@ -80,4 +78,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

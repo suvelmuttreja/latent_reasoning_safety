@@ -59,9 +59,7 @@ def read_prompt(model, tokenizer, markers, input_ids: list[int], k: int, top_k: 
         hidden = output.hidden_states[-1][0, -1, :]
         native_logits = output.logits[0, -1, :]
         projected_logits = output_head(hidden)
-        max_error = float(
-            (native_logits.float() - projected_logits.float()).abs().max().item()
-        )
+        max_error = float((native_logits.float() - projected_logits.float()).abs().max().item())
         values, token_ids = torch.topk(native_logits.float(), k=top_k)
         log_normalizer = torch.logsumexp(native_logits.float(), dim=-1)
         calls.append(

@@ -85,8 +85,7 @@ def main() -> None:
                 "prompt_id": prompt_id,
                 "cot_u3_score": by_condition["cot_u3"][prompt_id],
                 "coco_u3_k6_score": by_condition["coco_u3_k6"][prompt_id],
-                "delta": by_condition["coco_u3_k6"][prompt_id]
-                - by_condition["cot_u3"][prompt_id],
+                "delta": by_condition["coco_u3_k6"][prompt_id] - by_condition["cot_u3"][prompt_id],
             }
             for prompt_id in ids
         ],
@@ -101,4 +100,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

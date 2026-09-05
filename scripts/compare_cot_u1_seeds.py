@@ -46,24 +46,15 @@ def main() -> None:
     )
     parser.add_argument(
         "--seed43",
-        default=(
-            "artifacts/discovery/results/matched_4b_cot_seed43/"
-            "scores/cot_seed43_u1.json"
-        ),
+        default=("artifacts/discovery/results/matched_4b_cot_seed43/scores/cot_seed43_u1.json"),
     )
     parser.add_argument(
         "--output",
-        default=(
-            "artifacts/discovery/results/matched_4b_cot_seed43/"
-            "cot_u1_seed_comparison.json"
-        ),
+        default=("artifacts/discovery/results/matched_4b_cot_seed43/cot_u1_seed_comparison.json"),
     )
     parser.add_argument(
         "--coconut-bounds",
-        default=(
-            "artifacts/discovery/results/dense_safety/scores/"
-            "coco_u1_k2_bounds.json"
-        ),
+        default=("artifacts/discovery/results/dense_safety/scores/coco_u1_k2_bounds.json"),
     )
     parser.add_argument("--bootstrap-seed", type=int, default=42)
     parser.add_argument("--bootstrap-samples", type=int, default=10000)
@@ -91,9 +82,7 @@ def main() -> None:
         or coconut.get("official_condition") != "coco_u1_k2"
     ):
         raise ValueError("invalid Coconut-u1 bounds artifact")
-    coconut_by_id = {
-        row["prompt_id"]: float(row["score"]) for row in coconut["records"]
-    }
+    coconut_by_id = {row["prompt_id"]: float(row["score"]) for row in coconut["records"]}
     if not set(coconut_by_id).issubset(prompt_ids):
         raise ValueError("Coconut bounds contain an unknown prompt ID")
     missing_coconut = [key for key in prompt_ids if key not in coconut_by_id]
@@ -138,12 +127,8 @@ def main() -> None:
         bounded_substrate_contrasts[seed_label] = {
             "effect": f"cot_{seed_label}_u1_minus_coco_u1_k2",
             "identified_set": [lower["mean_delta"], upper["mean_delta"]],
-            "lower_endpoint_bootstrap_95_ci": lower[
-                "paired_prompt_bootstrap_95_ci"
-            ],
-            "upper_endpoint_bootstrap_95_ci": upper[
-                "paired_prompt_bootstrap_95_ci"
-            ],
+            "lower_endpoint_bootstrap_95_ci": lower["paired_prompt_bootstrap_95_ci"],
+            "upper_endpoint_bootstrap_95_ci": upper["paired_prompt_bootstrap_95_ci"],
             "conservative_identified_set_95_confidence_region": [
                 lower["paired_prompt_bootstrap_95_ci"][0],
                 upper["paired_prompt_bootstrap_95_ci"][1],

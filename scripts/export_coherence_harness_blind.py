@@ -30,12 +30,8 @@ def main() -> None:
     m0 = read_jsonl(m0_path)
     if len(stage) != 20 or len(m0) != 20:
         raise ValueError("combined blind packet requires 20 stage and 20 M0 rows")
-    tagged = [
-        (f"stage1_k{row['k']}", row)
-        for row in stage
-    ] + [
-        (f"m0_replicate_{row['replicate']}", row)
-        for row in m0
+    tagged = [(f"stage1_k{row['k']}", row) for row in stage] + [
+        (f"m0_replicate_{row['replicate']}", row) for row in m0
     ]
     random.Random(args.seed).shuffle(tagged)
     blinded, key = [], []

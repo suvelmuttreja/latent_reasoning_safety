@@ -252,7 +252,9 @@ class StandardCoconut(nn.Module):
                 stop_reason = "eos_token"
                 break
             current_length += 1
-            step_mask = torch.ones((1, current_length), dtype=attention_mask.dtype, device=input_ids.device)
+            step_mask = torch.ones(
+                (1, current_length), dtype=attention_mask.dtype, device=input_ids.device
+            )
             step_position = torch.tensor([[current_length - 1]], device=input_ids.device)
             step = self.base_causallm(
                 input_ids=token.view(1, 1),
@@ -267,7 +269,9 @@ class StandardCoconut(nn.Module):
         return CoconutGeneration(generated, stop_reason, len(generated))
 
 
-def initialize_latent_embeddings(model: nn.Module, marker_ids: dict[str, int], anchor_id: int) -> None:
+def initialize_latent_embeddings(
+    model: nn.Module, marker_ids: dict[str, int], anchor_id: int
+) -> None:
     """Copy one known embedding into all three new marker rows, as Meta does."""
     with torch.no_grad():
         input_weight = model.get_input_embeddings().weight
@@ -276,4 +280,3 @@ def initialize_latent_embeddings(model: nn.Module, marker_ids: dict[str, int], a
             input_weight[marker_id].copy_(input_weight[anchor_id])
             if output is not None and output.weight.shape[0] > marker_id:
                 output.weight[marker_id].copy_(output.weight[anchor_id])
-

@@ -29,3 +29,16 @@ token
 # Editor lock files and in-progress generation dumps.
 ~$*
 *.partial.jsonl
+
+# Local run outputs, packaging, and source-export provenance.
+results/
+dist/
+build/
+*.egg-info/
+.source-revision
+.env.*
+!.env.example
+*.pem
+*.key
+.idea/
+.vscode/

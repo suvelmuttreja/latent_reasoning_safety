@@ -30,9 +30,7 @@ def test_matched_branch_configs_share_registered_training_fields():
         "attention_implementation",
         "save_only_improve",
     )
-    assert {field: coconut[field] for field in fields} == {
-        field: cot[field] for field in fields
-    }
+    assert {field: coconut[field] for field in fields} == {field: cot[field] for field in fields}
     assert coconut["branch"] == "coconut_skip0"
     assert cot["branch"] == "explicit_cot"
     assert coconut["submission_status"] == "inline_gate_passed"
@@ -50,7 +48,5 @@ def test_batching_policy_requires_one_choice_for_every_branch_and_stage():
     )
     assert policy["effective_batch_size"] == 32
     assert policy["data_order_policy"] == "frozen_seeded_order_unchanged"
-    assert policy["loss_normalization"] == (
-        "shifted_nonignored_token_count_over_effective_batch"
-    )
+    assert policy["loss_normalization"] == ("shifted_nonignored_token_count_over_effective_batch")
     assert "safety_outcome" in policy["decision_must_not_use"]

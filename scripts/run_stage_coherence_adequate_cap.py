@@ -25,15 +25,12 @@ def summarize(rows: list[dict], max_new_tokens: int) -> dict:
         return {
             "outputs": len(group),
             "cap_hits": sum(
-                row["stop_reason"] == "length"
-                or row["generated_tokens"] >= max_new_tokens
+                row["stop_reason"] == "length" or row["generated_tokens"] >= max_new_tokens
                 for row in group
             ),
             "missing_closing_think": sum("</think>" not in row["raw_output"] for row in group),
             "eos_stops": sum(row["stop_reason"] == "eos_token" for row in group),
-            "mean_generated_tokens": statistics.mean(
-                row["generated_tokens"] for row in group
-            ),
+            "mean_generated_tokens": statistics.mean(row["generated_tokens"] for row in group),
         }
 
     return {

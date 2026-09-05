@@ -1,0 +1,7 @@
+# Keep research evidence visible while making code reviews and language stats useful.
+artifacts/** linguist-generated=true
+manifests/** linguist-generated=true
+writeup/*.built.md linguist-generated=true
+uv.lock linguist-generated=true
+*.png binary
+*.docx binary

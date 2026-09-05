@@ -47,11 +47,30 @@ def main() -> None:
     rows = [json.loads(line) for line in source.decode().splitlines() if line.strip()]
     if len(rows) != 24:
         raise ValueError("endpoint audit page requires exactly 24 rows")
-    required = {"blind_id", "category", "forbidden_prompt", "full_response", "parsed_final_answer", "human_label", "coherent", "note"}
-    if any(set(row) != required or row["human_label"] is not None or row["coherent"] is not None or row["note"] != "" for row in rows):
+    required = {
+        "blind_id",
+        "category",
+        "forbidden_prompt",
+        "full_response",
+        "parsed_final_answer",
+        "human_label",
+        "coherent",
+        "note",
+    }
+    if any(
+        set(row) != required
+        or row["human_label"] is not None
+        or row["coherent"] is not None
+        or row["note"] != ""
+        for row in rows
+    ):
         raise ValueError("audit packet fields or initial labels are invalid")
     encoded = base64.b64encode(json.dumps(rows, ensure_ascii=False).encode()).decode()
-    rendered = HTML.replace("__HASH__", digest).replace("__DATA__", encoded).replace("__N__", str(len(rows)))
+    rendered = (
+        HTML.replace("__HASH__", digest)
+        .replace("__DATA__", encoded)
+        .replace("__N__", str(len(rows)))
+    )
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(rendered)

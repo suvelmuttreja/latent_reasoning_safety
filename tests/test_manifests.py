@@ -6,9 +6,7 @@ from mats_latent_safety.hashing import sha256_json, sha256_text
 
 
 def test_canonical_json_normalizes_yaml_dates_to_iso_strings():
-    assert sha256_json({"day": date(2026, 8, 27)}) == sha256_json(
-        {"day": "2026-08-27"}
-    )
+    assert sha256_json({"day": date(2026, 8, 27)}) == sha256_json({"day": "2026-08-27"})
 
 
 MANIFESTS = Path(__file__).parents[1] / "manifests"

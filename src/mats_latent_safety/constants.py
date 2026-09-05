@@ -24,4 +24,3 @@ def optimizer_updates(
     if examples <= 0 or epochs <= 0 or effective_batch_size <= 0:
         raise ValueError("examples, epochs, and effective_batch_size must be positive")
     return ((examples + effective_batch_size - 1) // effective_batch_size) * epochs
-

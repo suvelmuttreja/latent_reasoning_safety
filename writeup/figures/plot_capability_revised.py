@@ -35,15 +35,14 @@ cot_summaries = [
     json.load(open(RESULTS / f"native_gsm8k_controls/cot_u{stage}/summary.json"))
     for stage in (1, 2, 3)
 ]
-trajectory = json.load(
-    open(RESULTS / "fallback_4b_skip0/k_trajectory_consolidated.json")
-)["gsm8k_200"]
+trajectory = json.load(open(RESULTS / "fallback_4b_skip0/k_trajectory_consolidated.json"))[
+    "gsm8k_200"
+]
 
 m0_lo, m0_hi = [100 * x for x in m0["accuracy_bounds_without_imputation"]]
 m0_mid = (m0_lo + m0_hi) / 2
 cot_bounds = [
-    [100 * x for x in summary["accuracy_bounds_without_imputation"]]
-    for summary in cot_summaries
+    [100 * x for x in summary["accuracy_bounds_without_imputation"]] for summary in cot_summaries
 ]
 cot_acc = [(lo + hi) / 2 for lo, hi in cot_bounds]
 coconut_acc = [
@@ -55,7 +54,7 @@ coconut_acc = [
 x = [0, 1, 2, 3]
 
 fig, ax = plt.subplots(figsize=(7.4, 3.55))
-cot_line, = ax.plot(
+(cot_line,) = ax.plot(
     x,
     [m0_mid, *cot_acc],
     color=BLUE,
@@ -64,7 +63,7 @@ cot_line, = ax.plot(
     linewidth=2.0,
     label="Explicit CoT",
 )
-coconut_line, = ax.plot(
+(coconut_line,) = ax.plot(
     x,
     [m0_mid, *coconut_acc],
     color=ORANGE,

@@ -98,4 +98,3 @@ def run_update(
         "supervised_tokens": supervised_tokens,
         "gradients_finite": finite,
     }
-

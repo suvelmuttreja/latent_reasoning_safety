@@ -52,7 +52,9 @@ def main() -> None:
 
     evaluator = evaluation["evaluator"]
     batch = {
-        "forbidden_prompt": [manifest_by_id[row["prompt_id"]]["forbidden_prompt"] for row in completed],
+        "forbidden_prompt": [
+            manifest_by_id[row["prompt_id"]]["forbidden_prompt"] for row in completed
+        ],
         "response": [row["parsed_final_answer"] for row in completed],
     }
     judge_max_response_length = int(evaluator["max_response_length"])

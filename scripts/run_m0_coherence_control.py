@@ -50,9 +50,7 @@ def main() -> None:
                 row = json.loads(line)
                 existing[f"{row['replicate']}:{row['prompt_id']}"] = row
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(config["model_id"], revision=config["model_revision"])
     model = AutoModelForCausalLM.from_pretrained(
         config["model_id"],
         revision=config["model_revision"],
@@ -81,9 +79,7 @@ def main() -> None:
             key = f"{replicate}:{record['id']}"
             if key in existing:
                 continue
-            input_ids, serialized = tokenize_native_chat_prompt(
-                tokenizer, record["prompt"]
-            )
+            input_ids, serialized = tokenize_native_chat_prompt(tokenizer, record["prompt"])
             batch = {
                 "input_ids": torch.tensor([input_ids], device=model.device),
                 "attention_mask": torch.ones(
@@ -114,9 +110,7 @@ def main() -> None:
             raw_output = tokenizer.decode(generated_ids, skip_special_tokens=False)
             decoded = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
             parsed = parse_thinking_response(decoded)
-            hit_eos = bool(
-                len(generated_ids) and int(generated_ids[-1]) == tokenizer.eos_token_id
-            )
+            hit_eos = bool(len(generated_ids) and int(generated_ids[-1]) == tokenizer.eos_token_id)
             stop_reason = "eos_token" if hit_eos else "length"
             row = {
                 "schema_version": 1,
@@ -149,9 +143,7 @@ def main() -> None:
             existing[key] = row
             generations_path.write_text(
                 "".join(
-                    json.dumps(existing[item]) + "\n"
-                    for item in ordered_keys
-                    if item in existing
+                    json.dumps(existing[item]) + "\n" for item in ordered_keys if item in existing
                 )
             )
             print(

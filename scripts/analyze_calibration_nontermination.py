@@ -41,9 +41,7 @@ def main() -> None:
     if sha256_file(generations_path) != config["source_generations_sha256"]:
         raise ValueError("generation cache differs from preregistered source hash")
     rows = [json.loads(line) for line in generations_path.read_text().splitlines() if line]
-    tokenizer = AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(config["model_id"], revision=config["model_revision"])
     metrics = config["metrics"]
     suffix = metrics["exact_suffix_cycle"]
     tail_tokens = int(metrics["token_4gram_unique_ratio_last_tokens"])
@@ -108,7 +106,11 @@ def main() -> None:
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps({key: value for key, value in result.items() if key != "length_stop_records"}, indent=2))
+    print(
+        json.dumps(
+            {key: value for key, value in result.items() if key != "length_stop_records"}, indent=2
+        )
+    )
 
 
 if __name__ == "__main__":

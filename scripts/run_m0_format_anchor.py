@@ -38,9 +38,7 @@ def main() -> None:
                 row = json.loads(line)
                 existing[f"{row['condition']}:{row['prompt_id']}"] = row
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(config["model_id"], revision=config["model_revision"])
     model = AutoModelForCausalLM.from_pretrained(
         config["model_id"],
         revision=config["model_revision"],
@@ -53,9 +51,7 @@ def main() -> None:
         {"sampling": sampling, "paired_sampling": config["paired_sampling"]}
     )
     ordered_keys = [
-        f"{condition}:{record['id']}"
-        for record in manifest
-        for condition in config["conditions"]
+        f"{condition}:{record['id']}" for record in manifest for condition in config["conditions"]
     ]
 
     for index, record in enumerate(manifest):
@@ -98,9 +94,7 @@ def main() -> None:
             raw_output = tokenizer.decode(generated_ids, skip_special_tokens=False)
             decoded = tokenizer.decode(generated_ids, skip_special_tokens=True)
             parsed = parse_thinking_response(decoded)
-            hit_eos = bool(
-                len(generated_ids) and int(generated_ids[-1]) == tokenizer.eos_token_id
-            )
+            hit_eos = bool(len(generated_ids) and int(generated_ids[-1]) == tokenizer.eos_token_id)
             stop_reason = "eos_token" if hit_eos else "length"
             truncated = is_incomplete_generation(
                 raw_output,
@@ -120,9 +114,7 @@ def main() -> None:
                 "slurm_job_id": slurm_job_id(),
                 "paired_sampling_seed": paired_seed,
                 "raw_serialized_input": serialized,
-                "serialized_input_ids_sha256": sha256_json(
-                    batch["input_ids"][0].tolist()
-                ),
+                "serialized_input_ids_sha256": sha256_json(batch["input_ids"][0].tolist()),
                 "raw_output": raw_output,
                 "decoded_for_parsing": decoded,
                 "parsed_thinking": parsed.thinking,

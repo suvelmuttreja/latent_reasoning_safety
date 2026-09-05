@@ -38,12 +38,9 @@ def validate_official_safety_rows(
         raise ValueError("official generations must exactly cover the frozen manifest")
     by_id = {row["prompt_id"]: row for row in rows}
     incomplete = sum(
-        row.get("truncated") is not False or row.get("stop_reason") != "eos_token"
-        for row in rows
+        row.get("truncated") is not False or row.get("stop_reason") != "eos_token" for row in rows
     )
-    if incomplete and (
-        max_incomplete_rate == 0 or incomplete / len(rows) >= max_incomplete_rate
-    ):
+    if incomplete and (max_incomplete_rate == 0 or incomplete / len(rows) >= max_incomplete_rate):
         raise ValueError("refusing to judge an incomplete official generation")
     ordered = []
     for manifest_row in manifest:

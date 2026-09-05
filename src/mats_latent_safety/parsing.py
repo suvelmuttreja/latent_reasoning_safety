@@ -57,4 +57,3 @@ def is_incomplete_generation(
     hit_cap = stop_reason == "length" or generated_tokens >= max_new_tokens
     missing_close = "</think>" not in raw_output
     return hit_cap and missing_close
-

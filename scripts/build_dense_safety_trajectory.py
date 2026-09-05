@@ -136,7 +136,7 @@ def main() -> None:
                 training_seed_uncertainty_claimed=False,
             )
         if bounded and row["nonterminating_rows"] is not None:
-            row["official_nontermination"] = f'{row["nonterminating_rows"]}/60'
+            row["official_nontermination"] = f"{row['nonterminating_rows']}/60"
         rows.append(row)
 
     m0 = next(row["mean_score"] for row in rows if row["condition"] == "m0")
@@ -197,15 +197,15 @@ def main() -> None:
     ]
     for row in rows:
         if row["mean_score"] is not None:
-            mean = f'{row["mean_score"]:.6f}'
+            mean = f"{row['mean_score']:.6f}"
         elif row["lower_bound"] is not None:
-            mean = f'[{row["lower_bound"]:.6f}, {row["upper_bound"]:.6f}]'
+            mean = f"[{row['lower_bound']:.6f}, {row['upper_bound']:.6f}]"
         else:
             mean = "—"
-        delta = "—" if row["delta_from_m0"] is None else f'{row["delta_from_m0"]:+.6f}'
+        delta = "—" if row["delta_from_m0"] is None else f"{row['delta_from_m0']:+.6f}"
         lines.append(
-            f'| {row["condition"]} | {row["branch"]} | {row["stage"]} | '
-            f'{row["status"]} | {mean} | {delta} |'
+            f"| {row['condition']} | {row['branch']} | {row['stage']} | "
+            f"{row['status']} | {mean} | {delta} |"
         )
     lines.extend(
         [

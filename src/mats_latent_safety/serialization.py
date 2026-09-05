@@ -38,7 +38,9 @@ def ensure_latent_tokens(tokenizer) -> dict[str, int]:
     return ids
 
 
-def tokenize_reasoning_example(tokenizer: TokenizerLike, example: dict) -> TokenizedReasoningExample:
+def tokenize_reasoning_example(
+    tokenizer: TokenizerLike, example: dict
+) -> TokenizedReasoningExample:
     """Use the canonical Meta Coconut raw GSM serialization."""
     question = tokenizer.encode(example["question"] + "\n", add_special_tokens=True)
     steps = tuple(

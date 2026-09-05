@@ -28,10 +28,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--seed-comparison",
-        default=(
-            "artifacts/discovery/results/matched_4b_cot_seed43/"
-            "cot_u1_seed_comparison.json"
-        ),
+        default=("artifacts/discovery/results/matched_4b_cot_seed43/cot_u1_seed_comparison.json"),
     )
     args = parser.parse_args()
 

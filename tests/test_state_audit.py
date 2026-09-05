@@ -29,4 +29,3 @@ def test_explicit_allowlist_is_persisted_but_not_material():
     assert audit.clean
     assert audit.allowed_missing == ("new.embedding",)
     assert audit.allowed_unexpected == ("metadata.version",)
-

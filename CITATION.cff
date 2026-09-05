@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this code or its experimental results, please cite this repository and the upstream work listed in THIRD_PARTY_NOTICES.md."
+type: software
+title: "Safety drift under explicit and latent reasoning fine-tuning"
+authors:
+  - family-names: Muttreja
+    given-names: Suvel
+repository-code: "https://github.com/suvelmuttreja/latent_reasoning_safety"
+license: MIT

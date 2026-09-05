@@ -46,10 +46,14 @@ def accuracy_summary(rows):
         "correct_terminated": correct_complete,
         "correct_at_cutoff_among_unfinished": correct_missing,
         "all_row_cutoff_parser_accuracy": (correct_complete + correct_missing) / n,
-        "unknown_unfinished_outcome_bounds": [correct_complete / n,
-                                               (correct_complete + len(missing)) / n],
+        "unknown_unfinished_outcome_bounds": [
+            correct_complete / n,
+            (correct_complete + len(missing)) / n,
+        ],
         "terminated_and_correct_fraction": correct_complete / n,
-        "complete_case_accuracy_descriptive": correct_complete / len(complete) if complete else None,
+        "complete_case_accuracy_descriptive": correct_complete / len(complete)
+        if complete
+        else None,
         "unfinished_correct_ids": [r["prompt_id"] for r in missing if truth(r["correct"])],
     }
 
@@ -79,7 +83,9 @@ def pearson(x, y):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output", type=Path, default=ROOT / "writeup/analysis_audit/recomputed_checks.json")
+    parser.add_argument(
+        "--output", type=Path, default=ROOT / "writeup/analysis_audit/recomputed_checks.json"
+    )
     args = parser.parse_args()
     hashes = {}
 
@@ -87,7 +93,11 @@ def main():
         p = ROOT / path
         raw = p.read_bytes()
         hashes[str(p.relative_to(ROOT))] = hashlib.sha256(raw).hexdigest()
-        return [json.loads(l) for l in raw.splitlines() if l.strip()] if p.suffix == ".jsonl" else json.loads(raw)
+        return (
+            [json.loads(line) for line in raw.splitlines() if line.strip()]
+            if p.suffix == ".jsonl"
+            else json.loads(raw)
+        )
 
     def indexed(rows):
         result = {r["prompt_id"]: r for r in rows}
@@ -115,14 +125,22 @@ def main():
             summary = accuracy_summary(subset)
             complete_tokens = [r["generated_tokens"] for r in subset if not unfinished(r)]
             summary["terminating_generated_tokens_median"] = st.median(complete_tokens)
-            summary["terminating_generated_tokens_p90_linear"] = percentile(complete_tokens, .9)
+            summary["terminating_generated_tokens_p90_linear"] = percentile(complete_tokens, 0.9)
             changed = []
             for r in subset:
                 try:
-                    equivalent = Decimal(str(r["predicted_answer"])) == Decimal(str(r["reference_answer"]))
+                    equivalent = Decimal(str(r["predicted_answer"])) == Decimal(
+                        str(r["reference_answer"])
+                    )
                     if equivalent != truth(r["correct"]):
-                        changed.append({"prompt_id": r["prompt_id"], "stored_correct": truth(r["correct"]),
-                                        "decimal_equal": equivalent, "unfinished": unfinished(r)})
+                        changed.append(
+                            {
+                                "prompt_id": r["prompt_id"],
+                                "stored_correct": truth(r["correct"]),
+                                "decimal_equal": equivalent,
+                                "unfinished": unfinished(r),
+                            }
+                        )
                 except InvalidOperation:
                     pass
             summary["decimal_normalization_sensitivity_disagreements"] = changed
@@ -133,17 +151,34 @@ def main():
     assert set(k0) == set(k6)
     complete_ids = [p for p in k0 if not unfinished(k0[p]) and not unfinished(k6[p])]
     paired = {"both_terminated_n": len(complete_ids), "all_prompts_n": len(k0)}
-    for name, left, right in (("both_correct", True, True), ("k0_only_correct", True, False),
-                              ("k6_only_correct", False, True), ("both_wrong", False, False)):
-        paired[name] = sum(truth(k0[p]["correct"]) == left and truth(k6[p]["correct"]) == right for p in complete_ids)
-    paired["same_prediction_all_rows"] = sum(k0[p]["predicted_answer"] == k6[p]["predicted_answer"] for p in k0)
-    paired["same_prediction_both_terminated"] = sum(k0[p]["predicted_answer"] == k6[p]["predicted_answer"] for p in complete_ids)
-    paired["k6_correct_on_k0_unfinished_rows"] = sum(truth(k6[p]["correct"]) for p in k0 if unfinished(k0[p]))
+    for name, left, right in (
+        ("both_correct", True, True),
+        ("k0_only_correct", True, False),
+        ("k6_only_correct", False, True),
+        ("both_wrong", False, False),
+    ):
+        paired[name] = sum(
+            truth(k0[p]["correct"]) == left and truth(k6[p]["correct"]) == right
+            for p in complete_ids
+        )
+    paired["same_prediction_all_rows"] = sum(
+        k0[p]["predicted_answer"] == k6[p]["predicted_answer"] for p in k0
+    )
+    paired["same_prediction_both_terminated"] = sum(
+        k0[p]["predicted_answer"] == k6[p]["predicted_answer"] for p in complete_ids
+    )
+    paired["k6_correct_on_k0_unfinished_rows"] = sum(
+        truth(k6[p]["correct"]) for p in k0 if unfinished(k0[p])
+    )
 
-    score_paths = {"m0": "official_safety/scores/m0.json", "cot_u1": "dense_safety/scores/cot_u1.json",
-                   "cot_u2": "dense_safety/scores/cot_u2.json", "cot_u3": "official_safety/scores/cot_u3.json",
-                   "coco_u3": "official_safety/scores/coco_u3_k6.json",
-                   "cot_seed43_u1": "matched_4b_cot_seed43/scores/cot_seed43_u1.json"}
+    score_paths = {
+        "m0": "official_safety/scores/m0.json",
+        "cot_u1": "dense_safety/scores/cot_u1.json",
+        "cot_u2": "dense_safety/scores/cot_u2.json",
+        "cot_u3": "official_safety/scores/cot_u3.json",
+        "coco_u3": "official_safety/scores/coco_u3_k6.json",
+        "cot_seed43_u1": "matched_4b_cot_seed43/scores/cot_seed43_u1.json",
+    }
     scores, means = {}, {}
     for condition, path in score_paths.items():
         payload = read(prefix + path)
@@ -156,12 +191,27 @@ def main():
     ids = list(scores["m0"])
     assert all(set(s) == set(ids) for s in scores.values())
     effects = {}
-    for left, right in (("coco_u3", "cot_u3"), ("cot_u1", "m0"), ("cot_u2", "m0"),
-                        ("cot_u3", "m0"), ("cot_seed43_u1", "m0"), ("cot_seed43_u1", "cot_u1")):
+    for left, right in (
+        ("coco_u3", "cot_u3"),
+        ("cot_u1", "m0"),
+        ("cot_u2", "m0"),
+        ("cot_u3", "m0"),
+        ("cot_seed43_u1", "m0"),
+        ("cot_seed43_u1", "cot_u1"),
+    ):
         diffs = [scores[left][p] - scores[right][p] for p in ids]
-        effects[f"{left}_minus_{right}"] = {"mean": st.mean(diffs), "paired_prompt_percentile_95_ci": bootstrap(diffs)}
+        effects[f"{left}_minus_{right}"] = {
+            "mean": st.mean(diffs),
+            "paired_prompt_percentile_95_ci": bootstrap(diffs),
+        }
     official = read(prefix + "official_safety/scores/paired_comparison.json")
-    assert all(abs(a - b) < 1e-12 for a, b in zip(effects["coco_u3_minus_cot_u3"]["paired_prompt_percentile_95_ci"], official["paired_prompt_bootstrap_95_ci"]))
+    assert all(
+        abs(a - b) < 1e-12
+        for a, b in zip(
+            effects["coco_u3_minus_cot_u3"]["paired_prompt_percentile_95_ci"],
+            official["paired_prompt_bootstrap_95_ci"],
+        )
+    )
     bounds = {}
     for condition in ("coco_u1_k2", "coco_u2_k4"):
         payload = read(prefix + f"dense_safety/scores/{condition}_bounds.json")
@@ -180,21 +230,35 @@ def main():
         assert set(rows) == set(ids)
         generations[condition] = rows
         anatomy[condition] = {
-            "n": len(rows), "unfinished": sum(unfinished(r) for r in rows.values()),
+            "n": len(rows),
+            "unfinished": sum(unfinished(r) for r in rows.values()),
             "missing_closing_think": sum("</think>" not in r["raw_output"] for r in rows.values()),
             "empty_parsed_final": sum(not r["parsed_final_answer"].strip() for r in rows.values()),
-            "pearson_answer_tokens_vs_score": pearson([rows[p]["answer_tokens"] for p in ids], [scores[score_key][p] for p in ids]),
+            "pearson_answer_tokens_vs_score": pearson(
+                [rows[p]["answer_tokens"] for p in ids], [scores[score_key][p] for p in ids]
+            ),
             "mean_answer_tokens": st.mean(rows[p]["answer_tokens"] for p in ids),
         }
     strata = {}
     for field in ("parsed_thinking", "parsed_final_answer"):
         for above in (True, False):
-            subset = [p for p in ids if (len(CJK.findall(generations["coco_u3_k6"][p][field] or "")) /
-                      max(1, len(generations["coco_u3_k6"][p][field] or "")) > .3) == above]
+            subset = [
+                p
+                for p in ids
+                if (
+                    len(CJK.findall(generations["coco_u3_k6"][p][field] or ""))
+                    / max(1, len(generations["coco_u3_k6"][p][field] or ""))
+                    > 0.3
+                )
+                == above
+            ]
             strata[f"{field}_cjk_above_30pct_{above}"] = {
-                "n": len(subset), "ids": subset,
+                "n": len(subset),
+                "ids": subset,
                 "coconut_mean": st.mean(scores["coco_u3"][p] for p in subset),
-                "paired_coconut_minus_cot_mean": st.mean(scores["coco_u3"][p] - scores["cot_u3"][p] for p in subset),
+                "paired_coconut_minus_cot_mean": st.mean(
+                    scores["coco_u3"][p] - scores["cot_u3"][p] for p in subset
+                ),
                 "interpretation": "post-treatment selected descriptive subgroup, not a causal language effect",
             }
 
@@ -204,10 +268,16 @@ def main():
     cot_sq = sum(r["cot_update_l2"] ** 2 for r in blocks)
     coco_sq = sum(r["coconut_update_l2"] ** 2 for r in blocks)
     cross = sum(r["update_cosine"] * r["cot_update_l2"] * r["coconut_update_l2"] for r in blocks)
-    block_summary = {"blocks": len(blocks), "cot_relative_l2": math.sqrt(cot_sq/base_sq),
-                     "coconut_relative_l2": math.sqrt(coco_sq/base_sq), "update_cosine": cross/math.sqrt(cot_sq*coco_sq),
-                     "coconut_smaller_in_every_block": all(r["coconut_update_l2"] < r["cot_update_l2"] for r in blocks),
-                     "scope": "transformer blocks only; excludes embeddings, head and final norm"}
+    block_summary = {
+        "blocks": len(blocks),
+        "cot_relative_l2": math.sqrt(cot_sq / base_sq),
+        "coconut_relative_l2": math.sqrt(coco_sq / base_sq),
+        "update_cosine": cross / math.sqrt(cot_sq * coco_sq),
+        "coconut_smaller_in_every_block": all(
+            r["coconut_update_l2"] < r["cot_update_l2"] for r in blocks
+        ),
+        "scope": "transformer blocks only; excludes embeddings, head and final norm",
+    }
 
     readout = read(prefix + "posthoc_token_mode_readout/token_mode_readout.json")
     periodicity = {}
@@ -219,24 +289,47 @@ def main():
                 for row in readout["rows"]:
                     if row["task"] != task:
                         continue
-                    sets = [{t["token_id"] for t in r["top_tokens"][:top_n]} for r in row["readouts"]]
-                    for a, b in itertools.combinations(range(1 if exclude_first else 0, len(sets)), 2):
+                    sets = [
+                        {t["token_id"] for t in r["top_tokens"][:top_n]} for r in row["readouts"]
+                    ]
+                    for a, b in itertools.combinations(
+                        range(1 if exclude_first else 0, len(sets)), 2
+                    ):
                         value = len(sets[a] & sets[b]) / len(sets[a] | sets[b])
-                        (same if (a-b) % 2 == 0 else opposite).append(value)
+                        (same if (a - b) % 2 == 0 else opposite).append(value)
                 results[f"top{top_n}_exclude_first_{exclude_first}"] = {
-                    "same_parity_mean": st.mean(same), "opposite_parity_mean": st.mean(opposite)}
+                    "same_parity_mean": st.mean(same),
+                    "opposite_parity_mean": st.mean(opposite),
+                }
         periodicity[task] = results
 
-    result = {"status": "complete", "role": "posthoc_analysis_audit_not_replacement_primary",
-              "capability": capability, "k0_k6_paired_outcomes": paired, "safety_means": means,
-              "safety_effects": effects, "safety_missingness_bounds": bounds,
-              "endpoint_output_anatomy": anatomy, "cjk_strata": strata,
-              "transformer_blocks_weight_diff": block_summary, "readout_sensitivity": periodicity,
-              "source_sha256": hashes}
+    result = {
+        "status": "complete",
+        "role": "posthoc_analysis_audit_not_replacement_primary",
+        "capability": capability,
+        "k0_k6_paired_outcomes": paired,
+        "safety_means": means,
+        "safety_effects": effects,
+        "safety_missingness_bounds": bounds,
+        "endpoint_output_anatomy": anatomy,
+        "cjk_strata": strata,
+        "transformer_blocks_weight_diff": block_summary,
+        "readout_sensitivity": periodicity,
+        "source_sha256": hashes,
+    }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps({"output": str(args.output), "source_files": len(hashes),
-                      "corrected_k0": capability["coco_u3_k0"], "weight_blocks": block_summary}, indent=2))
+    print(
+        json.dumps(
+            {
+                "output": str(args.output),
+                "source_files": len(hashes),
+                "corrected_k0": capability["coco_u3_k0"],
+                "weight_blocks": block_summary,
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

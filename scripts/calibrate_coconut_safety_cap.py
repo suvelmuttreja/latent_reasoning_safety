@@ -77,9 +77,7 @@ def main() -> None:
     summary_path = output_dir / "summary.json"
     if rows_path.exists() or summary_path.exists():
         raise FileExistsError("refusing to overwrite completed safety-cap calibration")
-    unexpected_outputs = [
-        path for path in output_dir.iterdir() if path != partial_path
-    ]
+    unexpected_outputs = [path for path in output_dir.iterdir() if path != partial_path]
     if unexpected_outputs:
         raise FileExistsError(
             f"refusing calibration output directory with unexpected files: {unexpected_outputs}"
@@ -126,9 +124,7 @@ def main() -> None:
             raise ValueError("prior length-stop counts differ from continuation config")
 
     grid = [
-        (int(k), index, record)
-        for k in config["k_values"]
-        for index, record in enumerate(records)
+        (int(k), index, record) for k in config["k_values"] for index, record in enumerate(records)
     ]
     partial_rows = (
         [json.loads(line) for line in partial_path.read_text().splitlines() if line]
@@ -237,11 +233,7 @@ def main() -> None:
     if per_k_projection != projection:
         raise RuntimeError("per-K and joint cap projections differ")
     natural_k = config["selection_rule"].get("natural_trajectory_condition")
-    selected = (
-        selected_by_k[str(int(natural_k))]
-        if natural_k is not None
-        else joint_selected
-    )
+    selected = selected_by_k[str(int(natural_k))] if natural_k is not None else joint_selected
     by_k = {}
     for k in config["k_values"]:
         group = [row for row in rows if int(row["k"]) == int(k)]

@@ -75,10 +75,7 @@ def main() -> None:
     if metadata["branch"] != condition["branch"]:
         raise ValueError("official checkpoint branch differs from condition")
     expected_stage = int(condition.get("checkpoint_stage", 3))
-    if (
-        metadata["completed_stage"] != expected_stage
-        or metadata["k"] != condition["checkpoint_k"]
-    ):
+    if metadata["completed_stage"] != expected_stage or metadata["k"] != condition["checkpoint_k"]:
         raise ValueError("official checkpoint training stage/K differs from condition")
     if checkpoint_hash != condition["checkpoint_sha256"]:
         raise ValueError("official checkpoint hash differs from condition")

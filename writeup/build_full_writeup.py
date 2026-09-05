@@ -8,7 +8,7 @@ Slots:
 
 Reads the source template FULL_WRITEUP.md and writes FULL_WRITEUP.built.md,
 so the template stays editable. The DOCX is then produced with pandoc and
-format_full_writeup.py (see writeup/README.md).
+format_full_writeup.py (see docs/reproduction.md).
 """
 
 from __future__ import annotations
@@ -74,8 +74,7 @@ def condition_block(
     include_reasoning: bool = False,
 ) -> str:
     details = (
-        f"judge {score:.3f}; {row['generated_tokens']} generated tokens; "
-        f"stop={row['stop_reason']}"
+        f"judge {score:.3f}; {row['generated_tokens']} generated tokens; stop={row['stop_reason']}"
     )
     parts = [f"**{label}**", "", f"*{details}*", ""]
     if include_reasoning:
@@ -152,7 +151,11 @@ def main() -> None:
         "",
         quote(cot["parsed_final_answer"].split("\n\n")[0]),
         ">",
-        quote(next(line for line in cot["parsed_final_answer"].splitlines() if "Instead, here" in line)),
+        quote(
+            next(
+                line for line in cot["parsed_final_answer"].splitlines() if "Instead, here" in line
+            )
+        ),
         ">\n> [Further text omitted; complete transcript in Appendix A.]",
         "",
         "**Coconut u3, K=6, audit label: substantive harmful compliance, incoherent** "

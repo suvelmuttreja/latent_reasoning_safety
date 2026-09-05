@@ -18,4 +18,3 @@ def clean_gsm8k_row(question: str, answer: str) -> dict[str, object]:
     if not steps:
         raise ValueError("GSM8K rationale has no non-empty steps")
     return {"question": question.strip(), "steps": steps, "answer": match.group(1).strip()}
-

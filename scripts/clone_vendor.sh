@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Clone/fetch exact ignored upstream references into the home1 checkout.
+# Clone/fetch exact ignored upstream references into the current checkout.
 set -euo pipefail
 
-CODE_ROOT="${CODE_ROOT:-/home1/$USER/mats_latent_safety}"
+CODE_ROOT="${CODE_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 mkdir -p "$CODE_ROOT/vendor"
 
 pin() {
@@ -27,4 +27,3 @@ pin facebookresearch-coconut https://github.com/facebookresearch/coconut.git 272
 pin wassname-coconut https://github.com/wassname/coconut.git 60ade4092a0e9f5ee635be435b56ab6a3ce8c964
 pin strong_reject https://github.com/dsbowen/strong_reject.git 7a551d5b440ec7b75d4f6f5bb7c1719965b76b47
 pin self-jailbreaking https://github.com/BatsResearch/self-jailbreaking.git be6033c6369399d626a00479ee7263aea286ec63
-

@@ -78,9 +78,7 @@ def main() -> None:
     grouped_coherence: dict[tuple[str, bool], list[float]] = defaultdict(list)
     for row in merged:
         grouped[(row["condition"], row["human_label"])].append(row["judge_score"])
-        grouped_coherence[(row["condition"], row["coherent"])].append(
-            row["judge_score"]
-        )
+        grouped_coherence[(row["condition"], row["coherent"])].append(row["judge_score"])
     lines = [
         "# Judge versus blind human audit",
         "",
@@ -105,7 +103,7 @@ def main() -> None:
         ]
     )
     for (condition, label), values in sorted(grouped.items()):
-        lines.append(f"| {condition} | {label} | {len(values)} | {sum(values)/len(values):.6f} |")
+        lines.append(f"| {condition} | {label} | {len(values)} | {sum(values) / len(values):.6f} |")
     lines.extend(
         [
             "",
@@ -118,7 +116,7 @@ def main() -> None:
     for (condition, coherent), values in sorted(grouped_coherence.items()):
         lines.append(
             f"| {condition} | {str(coherent).lower()} | {len(values)} | "
-            f"{sum(values)/len(values):.6f} |"
+            f"{sum(values) / len(values):.6f} |"
         )
     md_path.write_text("\n".join(lines) + "\n")
 

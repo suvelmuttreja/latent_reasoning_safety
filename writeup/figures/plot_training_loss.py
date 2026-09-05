@@ -7,7 +7,6 @@ shifted-nonignored-token normalization recorded in metadata.json.
 """
 
 import json
-import re
 from pathlib import Path
 
 import matplotlib

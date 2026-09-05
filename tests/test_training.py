@@ -60,17 +60,10 @@ def test_token_weighted_update_is_microbatch_partition_invariant():
     micro1, weight1 = run_partition(1)
     micro2, weight2 = run_partition(2)
     assert micro1["loss_tokens"] == micro2["loss_tokens"] == 12
-    assert micro1["token_weighted_loss"] == pytest.approx(
-        micro2["token_weighted_loss"], rel=1e-7
-    )
+    assert micro1["token_weighted_loss"] == pytest.approx(micro2["token_weighted_loss"], rel=1e-7)
     assert weight1 == pytest.approx(weight2, rel=1e-7)
-    assert micro1["mean_microbatch_loss"] != pytest.approx(
-        micro2["mean_microbatch_loss"], rel=1e-3
-    )
-    assert (
-        micro1["loss_normalization"]
-        == "shifted_nonignored_token_count_over_effective_batch"
-    )
+    assert micro1["mean_microbatch_loss"] != pytest.approx(micro2["mean_microbatch_loss"], rel=1e-3)
+    assert micro1["loss_normalization"] == "shifted_nonignored_token_count_over_effective_batch"
 
 
 def test_update_rejects_microbatch_without_supervised_loss_tokens():
@@ -84,4 +77,3 @@ def test_update_rejects_microbatch_without_supervised_loss_tokens():
     optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
     with pytest.raises(ValueError, match="supervised loss token"):
         run_update(model, optimizer, [empty], accumulation=1, check_gradients=True)
-

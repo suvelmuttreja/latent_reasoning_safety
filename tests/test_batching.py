@@ -18,9 +18,7 @@ def test_pad_causal_records_preserves_boundaries():
             "labels": [IGNORE_INDEX, 5],
         },
     ]
-    batch = pad_causal_records(
-        records, pad_token_id=0, device=torch.device("cpu"), pad_to_length=4
-    )
+    batch = pad_causal_records(records, pad_token_id=0, device=torch.device("cpu"), pad_to_length=4)
     assert batch["input_ids"].tolist() == [[1, 2, 3, 0], [4, 5, 0, 0]]
     assert batch["attention_mask"].tolist() == [[1, 1, 1, 0], [1, 1, 0, 0]]
     assert batch["labels"].tolist() == [
@@ -33,9 +31,7 @@ def test_pad_causal_records_preserves_boundaries():
 def test_pad_causal_records_rejects_short_target():
     records = [{"input_ids": [1, 2], "attention_mask": [1, 1], "labels": [1, 2]}]
     with pytest.raises(ValueError, match="below observed"):
-        pad_causal_records(
-            records, pad_token_id=0, device=torch.device("cpu"), pad_to_length=1
-        )
+        pad_causal_records(records, pad_token_id=0, device=torch.device("cpu"), pad_to_length=1)
 
 
 def test_pad_coconut_records_aligns_first_latent_then_right_pads():
@@ -73,7 +69,4 @@ def test_pad_coconut_records_requires_latent_token():
         "position_ids": [0, 1],
     }
     with pytest.raises(ValueError, match="must contain"):
-        pad_coconut_records(
-            [record], latent_token_id=9, pad_token_id=0, device=torch.device("cpu")
-        )
-
+        pad_coconut_records([record], latent_token_id=9, pad_token_id=0, device=torch.device("cpu"))

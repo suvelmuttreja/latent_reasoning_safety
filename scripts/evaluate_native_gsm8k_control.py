@@ -61,18 +61,14 @@ def main() -> None:
     implementation_sha256 = sha256_json(
         {
             "evaluator": sha256_file(Path(__file__)),
-            "serialization": sha256_file(
-                Path("src/mats_latent_safety/serialization.py")
-            ),
+            "serialization": sha256_file(Path("src/mats_latent_safety/serialization.py")),
             "parser": sha256_file(Path("src/mats_latent_safety/parsing.py")),
         }
     )
 
     train_path = Path(config["train_config"])
     train = yaml.safe_load(train_path.read_text())
-    tokenizer = AutoTokenizer.from_pretrained(
-        train["model_id"], revision=train["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(train["model_id"], revision=train["model_revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -96,10 +92,9 @@ def main() -> None:
         checkpoint_identity = sha256_file(checkpoint)
         if metadata["branch"] != "explicit_cot":
             raise ValueError("native CoT control requires an explicit-CoT checkpoint")
-        if (
-            metadata["completed_stage"] != int(condition["checkpoint_stage"])
-            or metadata["k"] != int(condition["checkpoint_k"])
-        ):
+        if metadata["completed_stage"] != int(condition["checkpoint_stage"]) or metadata[
+            "k"
+        ] != int(condition["checkpoint_k"]):
             raise ValueError("CoT checkpoint stage/K differs from frozen control")
         if checkpoint_identity != condition["checkpoint_sha256"]:
             raise ValueError("CoT checkpoint hash differs from frozen control")
@@ -124,9 +119,7 @@ def main() -> None:
     existing = []
     if partial_path.exists():
         existing = [
-            json.loads(line)
-            for line in partial_path.read_text().splitlines()
-            if line.strip()
+            json.loads(line) for line in partial_path.read_text().splitlines() if line.strip()
         ]
     if [row.get("prompt_id") for row in existing] != [
         row["id"] for row in records[: len(existing)]
@@ -159,8 +152,7 @@ def main() -> None:
             generated_ids = sequence[0, batch["input_ids"].shape[1] :]
             stop_reason = (
                 "eos_token"
-                if len(generated_ids)
-                and int(generated_ids[-1]) == int(tokenizer.eos_token_id)
+                if len(generated_ids) and int(generated_ids[-1]) == int(tokenizer.eos_token_id)
                 else "length"
             )
         else:
@@ -202,9 +194,7 @@ def main() -> None:
             "thinking_tokens": len(
                 tokenizer.encode(parsed.thinking or "", add_special_tokens=False)
             ),
-            "answer_tokens": len(
-                tokenizer.encode(parsed.final_answer, add_special_tokens=False)
-            ),
+            "answer_tokens": len(tokenizer.encode(parsed.final_answer, add_special_tokens=False)),
             "stop_reason": stop_reason,
             "truncated": stop_reason == "length",
             "seconds": time.perf_counter() - started,
@@ -260,4 +250,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

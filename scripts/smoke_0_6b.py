@@ -163,8 +163,7 @@ def main() -> None:
         str(k): generate(reloaded, tokenizer2, marker_ids2, tokenized, k) for k in (0, 2)
     }
     deterministic = all(
-        before_reload[key]["token_ids"] == after_reload[key]["token_ids"]
-        for key in before_reload
+        before_reload[key]["token_ids"] == after_reload[key]["token_ids"] for key in before_reload
     )
     if not deterministic:
         raise RuntimeError("save/reload changed greedy latent generation")

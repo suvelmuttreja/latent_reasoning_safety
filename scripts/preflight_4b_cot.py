@@ -64,9 +64,10 @@ def main() -> None:
     config = yaml.safe_load(config_path.read_text())
     if any(config["forbidden_changes"].values()):
         raise ValueError("a forbidden preflight change is enabled")
-    if config["micro_batch_size"] * config["gradient_accumulation_steps"] != config[
-        "effective_batch_size"
-    ]:
+    if (
+        config["micro_batch_size"] * config["gradient_accumulation_steps"]
+        != config["effective_batch_size"]
+    ):
         raise ValueError("micro-batch and accumulation do not match effective batch size")
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
@@ -135,7 +136,9 @@ def main() -> None:
 
     accumulation = config["gradient_accumulation_steps"]
     micro_batch = config["memory_micro_batch_size"]
-    worst_indices = sorted(range(len(records)), key=lambda i: lengths[i], reverse=True)[:micro_batch]
+    worst_indices = sorted(range(len(records)), key=lambda i: lengths[i], reverse=True)[
+        :micro_batch
+    ]
     worst_indices *= accumulation
     torch.cuda.empty_cache()
     torch.cuda.reset_peak_memory_stats()

@@ -18,10 +18,7 @@ def validate_authorization(config: dict, stage: int, fallback_ack: str, gate_ack
             raise ValueError("the registered approval-latency fallback trigger is not acknowledged")
         return
     if branch == "explicit_cot" and stage == 1:
-        if (
-            status == "time_pressure_early_cot_stage1_authorized"
-            and gate_ack == EARLY_COT_ACK
-        ):
+        if status == "time_pressure_early_cot_stage1_authorized" and gate_ack == EARLY_COT_ACK:
             return
     if branch in {"coconut_skip0", "explicit_cot"} and stage >= 1:
         if status != "inline_gate_passed" or gate_ack != INLINE_GATE_ACK:

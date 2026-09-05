@@ -168,9 +168,7 @@ def main() -> None:
     cot_state = torch.load(cot_path, map_location="cpu", weights_only=True, mmap=True)
     coconut_state = torch.load(coconut_path, map_location="cpu", weights_only=True, mmap=True)
     endpoint_keys = sorted(key for key in cot_state if key.startswith("base_causallm."))
-    if set(endpoint_keys) != {
-        key for key in coconut_state if key.startswith("base_causallm.")
-    }:
+    if set(endpoint_keys) != {key for key in coconut_state if key.startswith("base_causallm.")}:
         raise ValueError("CoT and Coconut endpoint parameter keys differ")
 
     per_parameter = []
@@ -193,9 +191,7 @@ def main() -> None:
             cot = cot_state[checkpoint_key]
             coconut = coconut_state[checkpoint_key]
             base, cot, coconut, comparison = comparable_views(base, cot, coconut)
-            moments = tensor_moments(
-                base, cot, coconut, chunk_elements=args.chunk_elements
-            )
+            moments = tensor_moments(base, cot, coconut, chunk_elements=args.chunk_elements)
             group = group_name(base_key)
             component = component_name(base_key)
             add_moments(grouped[group], moments)
@@ -230,10 +226,13 @@ def main() -> None:
         "code_revision": git_revision(),
         "mismatched_vocabulary_matrices_compare_common_token_id_prefix_only": True,
         "excluded_parameters": excluded,
-        "overall": summarize("overall", {
-            key: sum(float(row.get(key, 0)) for row in grouped.values())
-            for key in ("elements", "base_sq", "cot_sq", "coconut_sq", "cross")
-        }),
+        "overall": summarize(
+            "overall",
+            {
+                key: sum(float(row.get(key, 0)) for row in grouped.values())
+                for key in ("elements", "base_sq", "cot_sq", "coconut_sq", "cross")
+            },
+        ),
         "layers": layer_rows,
         "components": component_rows,
         "parameters": per_parameter,

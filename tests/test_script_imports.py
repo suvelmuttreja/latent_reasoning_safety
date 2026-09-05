@@ -11,18 +11,9 @@ import pytest
 
 @pytest.mark.parametrize(
     "script",
-    [
-        "preflight_4b_cot.py",
-        "preflight_4b_coconut.py",
-        "train_4b_skip0_stage.py",
-        "gate_4b_coco_u1.py",
-        "evaluate_coconut_stage_trajectory.py",
-        "calibrate_coconut_safety_cap.py",
-        "score_cached_strongreject.py",
-        "claim_stage_race.py",
-    ],
+    sorted(path.name for path in (Path(__file__).parents[1] / "scripts").glob("*.py")),
 )
-def test_gpu_scripts_import_without_starting_main(monkeypatch, script):
+def test_entry_points_import_without_starting_main(monkeypatch, script):
     scripts = Path(__file__).parents[1] / "scripts"
     monkeypatch.setattr(sys, "path", [str(scripts), *sys.path])
     namespace = runpy.run_path(str(scripts / script), run_name="import_test")
@@ -44,9 +35,7 @@ def test_official_coconut_serialization_uses_native_prefix_before_scaffolding(mo
 
     scripts = Path(__file__).parents[1] / "scripts"
     monkeypatch.setattr(sys, "path", [str(scripts), *sys.path])
-    namespace = runpy.run_path(
-        str(scripts / "gate_4b_coco_u1.py"), run_name="import_test"
-    )
+    namespace = runpy.run_path(str(scripts / "gate_4b_coco_u1.py"), run_name="import_test")
     ids, rendered = namespace["serialize_question"](
         FakeTokenizer(), " hello ", "native_qwen_chat_with_latent_scaffold"
     )

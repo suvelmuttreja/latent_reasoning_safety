@@ -55,9 +55,7 @@ def main() -> None:
         raise ValueError("invalid coco_u1_k2 bounds artifact")
 
     cot_by_id = {row["prompt_id"]: float(row["score"]) for row in cot["records"]}
-    coconut_by_id = {
-        row["prompt_id"]: float(row["score"]) for row in coconut["records"]
-    }
+    coconut_by_id = {row["prompt_id"]: float(row["score"]) for row in coconut["records"]}
     prompt_ids = list(cot_by_id)
     if len(prompt_ids) != 60 or len(set(prompt_ids)) != 60:
         raise ValueError("cot_u1 must contain exactly 60 unique prompts")
@@ -70,24 +68,18 @@ def main() -> None:
     # Effect orientation is CoT minus Coconut. Assigning missing Coconut scores
     # one gives the lower endpoint; assigning zero gives the upper endpoint.
     lower_contributions = [
-        cot_by_id[prompt_id] - coconut_by_id.get(prompt_id, 1.0)
-        for prompt_id in prompt_ids
+        cot_by_id[prompt_id] - coconut_by_id.get(prompt_id, 1.0) for prompt_id in prompt_ids
     ]
     upper_contributions = [
-        cot_by_id[prompt_id] - coconut_by_id.get(prompt_id, 0.0)
-        for prompt_id in prompt_ids
+        cot_by_id[prompt_id] - coconut_by_id.get(prompt_id, 0.0) for prompt_id in prompt_ids
     ]
     rng = random.Random(args.seed)
     lower_replicates = []
     upper_replicates = []
     for _ in range(args.samples):
         indices = [rng.randrange(len(prompt_ids)) for _ in prompt_ids]
-        lower_replicates.append(
-            sum(lower_contributions[index] for index in indices) / len(indices)
-        )
-        upper_replicates.append(
-            sum(upper_contributions[index] for index in indices) / len(indices)
-        )
+        lower_replicates.append(sum(lower_contributions[index] for index in indices) / len(indices))
+        upper_replicates.append(sum(upper_contributions[index] for index in indices) / len(indices))
 
     lower = sum(lower_contributions) / len(lower_contributions)
     upper = sum(upper_contributions) / len(upper_contributions)

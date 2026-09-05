@@ -20,17 +20,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--input",
-        default=(
-            "artifacts/discovery/results/posthoc_token_mode_readout/"
-            "token_mode_readout.json"
-        ),
+        default=("artifacts/discovery/results/posthoc_token_mode_readout/token_mode_readout.json"),
     )
     parser.add_argument(
         "--output",
-        default=(
-            "artifacts/discovery/results/posthoc_token_mode_readout/"
-            "period_two_analysis.json"
-        ),
+        default=("artifacts/discovery/results/posthoc_token_mode_readout/period_two_analysis.json"),
     )
     args = parser.parse_args()
     input_path = Path(args.input)
@@ -81,9 +75,7 @@ def main() -> None:
                 }
             )
         summary = {key: statistics.mean(values) for key, values in pooled.items()}
-        summary["same_minus_opposite"] = (
-            summary["same_parity"] - summary["opposite_parity"]
-        )
+        summary["same_minus_opposite"] = summary["same_parity"] - summary["opposite_parity"]
         summary["lag2_minus_lag1"] = summary["lag_2"] - summary["lag_1"]
         tasks[task] = {"summary": summary, "per_prompt": per_prompt}
 

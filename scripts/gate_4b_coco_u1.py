@@ -50,9 +50,7 @@ def serialize_question(tokenizer, prompt: str, serialization: str) -> tuple[list
 
 
 def generate(model, tokenizer, markers, prompt: str, k: int, settings: dict, seed: int):
-    prefix_ids, rendered_prefix = serialize_question(
-        tokenizer, prompt, settings["serialization"]
-    )
+    prefix_ids, rendered_prefix = serialize_question(tokenizer, prompt, settings["serialization"])
     scaffold_kind = settings.get("scaffold_kind", "coconut_latent")
     if scaffold_kind == "coconut_latent":
         scaffold = build_coconut_question(prefix_ids, markers, k)
@@ -116,9 +114,7 @@ def evaluate_capability(model, tokenizer, markers, records, settings: dict, seed
             "examples": len(outputs),
             "correct": correct,
             "accuracy": correct / len(outputs),
-            "mean_generated_tokens": statistics.mean(
-                row["generated_tokens"] for row in outputs
-            ),
+            "mean_generated_tokens": statistics.mean(row["generated_tokens"] for row in outputs),
             "truncated": sum(int(row["truncated"]) for row in outputs),
             "outputs": outputs,
         }
@@ -129,8 +125,7 @@ def evaluate_capability(model, tokenizer, markers, records, settings: dict, seed
         high_rows = by_k[high]["outputs"]
         result.update(
             {
-                "accuracy_delta_high_minus_low": by_k[high]["accuracy"]
-                - by_k[low]["accuracy"],
+                "accuracy_delta_high_minus_low": by_k[high]["accuracy"] - by_k[low]["accuracy"],
                 "paired_prediction_changed": sum(
                     left["predicted_answer"] != right["predicted_answer"]
                     for left, right in zip(low_rows, high_rows, strict=True)
@@ -329,11 +324,7 @@ def main() -> None:
     (output_dir / "gate_result.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(
         json.dumps(
-            {
-                key: value
-                for key, value in summary.items()
-                if key not in {"capability"}
-            },
+            {key: value for key, value in summary.items() if key not in {"capability"}},
             indent=2,
         )
     )

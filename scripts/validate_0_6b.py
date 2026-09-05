@@ -35,9 +35,7 @@ from mats_latent_safety.serialization import (
 
 
 def load_model(config: dict, device: torch.device):
-    tokenizer = AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(config["model_id"], revision=config["model_revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
     markers = ensure_latent_tokens(tokenizer)
@@ -101,9 +99,7 @@ def train_stage(model, tokenizer, markers, examples, stage: int, config: dict, o
             )
             output = model(**batch)
             if output.loss is None or not torch.isfinite(output.loss):
-                raise RuntimeError(
-                    f"non-finite loss at stage {stage}, examples {example_indices}"
-                )
+                raise RuntimeError(f"non-finite loss at stage {stage}, examples {example_indices}")
             (output.loss / accumulation).backward()
             losses.append(float(output.loss.detach().float().cpu()))
             supervised_tokens += sum(int(record["supervised_tokens"]) for record in records)
@@ -186,9 +182,10 @@ def main() -> None:
     config = yaml.safe_load(Path(args.config).read_text())
     if any(config["forbidden_changes"].values()):
         raise ValueError("a forbidden method change is enabled")
-    if config["micro_batch_size"] * config["gradient_accumulation_steps"] != config[
-        "effective_batch_size"
-    ]:
+    if (
+        config["micro_batch_size"] * config["gradient_accumulation_steps"]
+        != config["effective_batch_size"]
+    ):
         raise ValueError("micro-batch and accumulation do not match effective batch size")
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
@@ -199,7 +196,9 @@ def main() -> None:
     model, tokenizer, markers = load_model(config, device)
     source = pd.read_parquet(args.gsm_train).iloc[: config["train_examples"]]
     examples = [clean_gsm8k_row(str(row.question), str(row.answer)) for _, row in source.iterrows()]
-    eval_rows = json.loads(Path(args.eval_manifest).read_text())["records"][: config["eval_examples"]]
+    eval_rows = json.loads(Path(args.eval_manifest).read_text())["records"][
+        : config["eval_examples"]
+    ]
     optimizer = torch.optim.AdamW(
         model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"]
     )
@@ -215,8 +214,12 @@ def main() -> None:
         stage_results.append(stage_result)
 
     evaluations = {
-        "k0": evaluate(model, tokenizer, markers, eval_rows, 0, config["generation_max_new_tokens"]),
-        "k6": evaluate(model, tokenizer, markers, eval_rows, 6, config["generation_max_new_tokens"]),
+        "k0": evaluate(
+            model, tokenizer, markers, eval_rows, 0, config["generation_max_new_tokens"]
+        ),
+        "k6": evaluate(
+            model, tokenizer, markers, eval_rows, 6, config["generation_max_new_tokens"]
+        ),
     }
     final_checkpoint = output_dir / "checkpoint_stage3.pt"
     del optimizer, model

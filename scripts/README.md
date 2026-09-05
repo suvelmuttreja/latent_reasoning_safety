@@ -6,6 +6,13 @@ submissions that actually ran on Discovery; the table at the end maps each one
 to its job name, entry point, and config so a log in `artifacts/discovery/logs/`
 can be traced back to the exact command.
 
+For executable setup and reanalysis commands, see [reproduction](../docs/reproduction.md).
+The historical job scripts retain the original cluster paths and run settings.
+
+## Repository verification
+
+- [`verify_repository.py`](verify_repository.py): Check frozen evidence hashes, structured files, documentation links, shell syntax, and numerical reproduction without model access.
+
 ## Environment and data setup
 
 - `audit_public_checkpoint.py`: Audit a gated public wrapper state dict before any strict=False load.
@@ -14,13 +21,13 @@ can be traced back to the exact command.
 - `capture_hf_cache_metadata.py`: Persist resolved HF cache revisions and byte counts without reading tokens.
 - `capture_public_cards.py`: Capture pinned Costco model cards after manual approval lands.
 - `check_hf_access.py`: Non-secret HF identity, revision, and one-byte read-access audit.
-- `clone_vendor.sh`: Clone/fetch exact ignored upstream references into the home1 checkout.
+- `clone_vendor.sh`: Clone/fetch exact ignored upstream references into the current checkout.
 - `copy_compact_stage_results.sh`: Copy a finished stage's compact JSON/metrics records from scratch1 to home1.
 - `discovery_env.sh`: Shared environment for Discovery jobs. Source; do not execute directly.
 - `hf_durability_smoke.py`: Verify private HF checkpoint-repository upload and clean download.
 - `inspect_processed_data.py`: Render the first 20 canonical clean-GSM8K records for required inspection.
 - `prepare_discovery_data.sh`: Download only public, regenerable source data to scratch1 and verify hashes.
-- `sync.sh`: Sync canonical local code to home1, or durable result copies back from scratch1.
+- `sync.sh`: Export committed code without local credentials or Git metadata, or pull compact evidence from scratch1.
 
 ## Session S1: smoke tests, validation, preflights, M0 calibration
 

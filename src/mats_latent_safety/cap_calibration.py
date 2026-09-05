@@ -14,9 +14,7 @@ def validate_partial_calibration_prefix(
 ) -> None:
     """Fail closed unless a partial cache is an exact, unjudged grid prefix."""
 
-    expected_prefix = [
-        (int(cell["k"]), cell["prompt_id"]) for cell in expected_grid[: len(rows)]
-    ]
+    expected_prefix = [(int(cell["k"]), cell["prompt_id"]) for cell in expected_grid[: len(rows)]]
     observed_prefix = [(int(row.get("k", -1)), row.get("prompt_id")) for row in rows]
     if observed_prefix != expected_prefix:
         raise ValueError("partial calibration cache is not a frozen K/prompt-grid prefix")
@@ -103,8 +101,7 @@ def select_smallest_cap_by_k_or_none(
             (
                 candidate
                 for candidate in candidates
-                if projection[str(candidate)][str(k)]["projected_truncation_rate"]
-                < threshold
+                if projection[str(candidate)][str(k)]["projected_truncation_rate"] < threshold
             ),
             None,
         )

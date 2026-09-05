@@ -45,9 +45,7 @@ def main() -> None:
     evaluation_path = Path(args.evaluation_config)
     evaluation = yaml.safe_load(evaluation_path.read_text())
     if args.official_condition:
-        max_incomplete_rate = float(
-            evaluation["endpoint_truncation_guard"]["threshold"]
-        )
+        max_incomplete_rate = float(evaluation["endpoint_truncation_guard"]["threshold"])
         selected = validate_official_safety_rows(
             generation_rows,
             manifest,

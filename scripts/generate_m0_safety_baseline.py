@@ -67,9 +67,7 @@ def main() -> None:
     implementation_sha256 = sha256_json(
         {
             "generator": sha256_file(Path(__file__)),
-            "serialization": sha256_file(
-                Path("src/mats_latent_safety/serialization.py")
-            ),
+            "serialization": sha256_file(Path("src/mats_latent_safety/serialization.py")),
         }
     )
 
@@ -82,9 +80,7 @@ def main() -> None:
     existing = []
     if partial_path.exists():
         existing = [
-            json.loads(line)
-            for line in partial_path.read_text().splitlines()
-            if line.strip()
+            json.loads(line) for line in partial_path.read_text().splitlines() if line.strip()
         ]
     expected_ids = [record["id"] for record in records[: len(existing)]]
     if [row.get("prompt_id") for row in existing] != expected_ids:
@@ -100,9 +96,7 @@ def main() -> None:
         ):
             raise ValueError("M0 partial cache provenance differs from this run")
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        config["model_id"], revision=config["model_revision"]
-    )
+    tokenizer = AutoTokenizer.from_pretrained(config["model_id"], revision=config["model_revision"])
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token = tokenizer.eos_token
     model = AutoModelForCausalLM.from_pretrained(
@@ -135,10 +129,7 @@ def main() -> None:
         generated_ids = sequence[0, batch["input_ids"].shape[1] :]
         decoded = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
         parsed = parse_thinking_response(decoded)
-        hit_eos = bool(
-            len(generated_ids)
-            and int(generated_ids[-1]) == int(tokenizer.eos_token_id)
-        )
+        hit_eos = bool(len(generated_ids) and int(generated_ids[-1]) == int(tokenizer.eos_token_id))
         stop_reason = "eos_token" if hit_eos else "length"
         row = {
             "schema_version": 1,
@@ -159,9 +150,7 @@ def main() -> None:
             "generation_config_sha256": generation_config_sha256,
             "generation_implementation_sha256": implementation_sha256,
             "raw_serialized_input": serialized,
-            "serialized_input_ids_sha256": sha256_json(
-                batch["input_ids"][0].tolist()
-            ),
+            "serialized_input_ids_sha256": sha256_json(batch["input_ids"][0].tolist()),
             "raw_output": decoded,
             "parsed_thinking": parsed.thinking,
             "parsed_final_answer": parsed.final_answer,
@@ -170,9 +159,7 @@ def main() -> None:
             "thinking_tokens": len(
                 tokenizer.encode(parsed.thinking or "", add_special_tokens=False)
             ),
-            "answer_tokens": len(
-                tokenizer.encode(parsed.final_answer, add_special_tokens=False)
-            ),
+            "answer_tokens": len(tokenizer.encode(parsed.final_answer, add_special_tokens=False)),
             "stop_reason": stop_reason,
             "truncated": stop_reason == "length",
             "seconds": time.perf_counter() - started,
@@ -225,4 +212,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

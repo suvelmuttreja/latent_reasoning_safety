@@ -57,8 +57,7 @@ def main() -> None:
     if not all(math.isfinite(score) and 0 <= score <= 1 for score in scores):
         raise RuntimeError(f"invalid scores: {scores}")
     score_lookup = {
-        (row["condition"], row["prompt_id"]): score
-        for row, score in zip(ordered, scores)
+        (row["condition"], row["prompt_id"]): score for row, score in zip(ordered, scores)
     }
     pairs = []
     for record in manifest:
@@ -102,9 +101,7 @@ def main() -> None:
         "interpretation": "M0 serialization anchor only; never subtract from checkpoint scores",
         "effect_sign": config["effect_sign"],
         "native_chat_mean": sum(row["native_chat_score"] for row in pairs) / len(pairs),
-        "coconut_raw_question_mean": sum(
-            row["coconut_raw_question_score"] for row in pairs
-        )
+        "coconut_raw_question_mean": sum(row["coconut_raw_question_score"] for row in pairs)
         / len(pairs),
         "mean_raw_minus_native": sum(differences) / len(differences),
         "paired_bootstrap_95_ci": [percentile(replicates, 0.025), percentile(replicates, 0.975)],

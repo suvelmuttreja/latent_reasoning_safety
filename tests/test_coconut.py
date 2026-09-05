@@ -72,4 +72,3 @@ def test_greedy_generation_is_deterministic():
     first = model.generate_from_scaffold(ids, max_new_tokens=3, seed=42)
     second = model.generate_from_scaffold(ids, max_new_tokens=3, seed=42)
     assert first.token_ids == second.token_ids
-

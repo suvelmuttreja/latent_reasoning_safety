@@ -47,21 +47,62 @@ fig, ax = plt.subplots(figsize=(6.7, 3.1))
 # K=0 bars
 for i in range(3):
     if k0_point[i] is not None:
-        ax.bar(x[i] - w / 2, k0_point[i], width=w, color=GREY, label="Latents off (K=0)" if i == 0 else None)
-        ax.text(x[i] - w / 2, k0_point[i] + 1.5, f"{k0_point[i]:.1f}%", ha="center", va="bottom", fontsize=9, color=GREY)
+        ax.bar(
+            x[i] - w / 2,
+            k0_point[i],
+            width=w,
+            color=GREY,
+            label="Latents off (K=0)" if i == 0 else None,
+        )
+        ax.text(
+            x[i] - w / 2,
+            k0_point[i] + 1.5,
+            f"{k0_point[i]:.1f}%",
+            ha="center",
+            va="bottom",
+            fontsize=9,
+            color=GREY,
+        )
     else:
         lo, hi = k0_bound
         ax.bar(x[i] - w / 2, lo, width=w, color=GREY, alpha=0.35)
-        ax.bar(x[i] - w / 2, hi - lo, bottom=lo, width=w, color="none", edgecolor=GREY, hatch="///", linewidth=1.0)
+        ax.bar(
+            x[i] - w / 2,
+            hi - lo,
+            bottom=lo,
+            width=w,
+            color="none",
+            edgecolor=GREY,
+            hatch="///",
+            linewidth=1.0,
+        )
         ax.plot([x[i] - w / 2], [k0_parser], marker="o", color=GREY, markersize=4)
-        ax.text(x[i] - w / 2, hi + 1.5, f"{lo:.0f}–{hi:.0f}%\n(49.5% parser)", ha="center", va="bottom", fontsize=8.5, color=GREY)
+        ax.text(
+            x[i] - w / 2,
+            hi + 1.5,
+            f"{lo:.0f}–{hi:.0f}%\n(49.5% parser)",
+            ha="center",
+            va="bottom",
+            fontsize=8.5,
+            color=GREY,
+        )
     ax.text(x[i] - w / 2, -9, k0_stops[i], ha="center", va="top", fontsize=7.5, color="#8B0000")
 
 # trained-K bars
 ax.bar(x + w / 2, trained, width=w, color=ORANGE, label="Latents on (trained K)")
 for i in range(3):
-    ax.text(x[i] + w / 2, trained[i] + 1.5, f"{trained[i]:.1f}%", ha="center", va="bottom", fontsize=9, color=ORANGE)
-    ax.text(x[i] + w / 2, -9, trained_stops[i], ha="center", va="top", fontsize=7.5, color="#8B0000")
+    ax.text(
+        x[i] + w / 2,
+        trained[i] + 1.5,
+        f"{trained[i]:.1f}%",
+        ha="center",
+        va="bottom",
+        fontsize=9,
+        color=ORANGE,
+    )
+    ax.text(
+        x[i] + w / 2, -9, trained_stops[i], ha="center", va="top", fontsize=7.5, color="#8B0000"
+    )
 
 ax.axhline(92.0, color=BLUE, linewidth=1.0, linestyle="--")
 ax.text(-0.45, 93.5, "Explicit CoT u3: 92.0%", ha="left", va="bottom", fontsize=8.5, color=BLUE)
@@ -70,7 +111,9 @@ ax.set_xticks(x)
 ax.set_xticklabels(stages)
 ax.set_ylim(0, 105)
 ax.set_ylabel("GSM8K-200 exact match")
-ax.set_title("Coconut checkpoints with the latents on versus off (same weights)", loc="left", pad=26)
+ax.set_title(
+    "Coconut checkpoints with the latents on versus off (same weights)", loc="left", pad=26
+)
 ax.grid(axis="y", color="#E8E8E8", linewidth=0.7)
 ax.set_axisbelow(True)
 ax.legend(loc="lower right", bbox_to_anchor=(1.0, 1.0), frameon=False, fontsize=8.5, ncol=2)

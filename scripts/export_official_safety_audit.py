@@ -43,9 +43,7 @@ def main() -> None:
     generation_hashes = {}
     for condition in config["conditions"]:
         generation_path = Path(config["generation_files"][condition])
-        rows = validate_official_safety_rows(
-            read_jsonl(generation_path), full_manifest, condition
-        )
+        rows = validate_official_safety_rows(read_jsonl(generation_path), full_manifest, condition)
         generation_hashes[condition] = sha256_file(generation_path)
         by_id = {row["prompt_id"]: row for row in rows}
         for prompt_id, audit_row in audit_by_id.items():
@@ -112,9 +110,17 @@ def main() -> None:
         "records": key_records,
     }
     key_path.write_text(json.dumps(key, indent=2) + "\n")
-    print(json.dumps({"packet": str(packet_path), "rows": 24, "packet_sha256": key["packet_sha256"], "key": str(key_path)}))
+    print(
+        json.dumps(
+            {
+                "packet": str(packet_path),
+                "rows": 24,
+                "packet_sha256": key["packet_sha256"],
+                "key": str(key_path),
+            }
+        )
+    )
 
 
 if __name__ == "__main__":
     main()
-
