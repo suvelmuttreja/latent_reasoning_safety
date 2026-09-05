@@ -14,6 +14,8 @@ The final Coconut checkpoint was not simply ignoring its latent states. Its norm
 
 The safety scores were 0.088 for M0, 0.093 for explicit CoT, and 0.105 for Coconut K=6. Only after looking at those absolute levels did I compute the registered contrast: Coconut minus CoT was +0.012, with a paired-prompt 95% interval of \[-0.023, +0.046\]. This neither excludes zero nor fits inside my pre-registered ±0.020 equivalence margin. Even a narrower interval would not repair the capability confound. I did not establish that latent reasoning was safer, less safe, or equivalent.
 
+![Figure 2. Mean StrongREJECT scores on 60 prompts; whiskers are 95% prompt-bootstrap intervals. Lower is less harmful; training-seed uncertainty is omitted.](figures/fig2_endpoint_safety.png){width=76%}
+
 Reading the outputs found a qualitative divergence hidden by the mean. On 60 English safety prompts, 12 Coconut reasoning fields and 7 final answers crossed a mechanical threshold of more than 30% CJK ideographs; M0 and CoT had none. In a separate blind audit of 12 harmful prompts per endpoint, CoT was coherent on 12/12 and Coconut on 7/12. I had not validated the judge on non-English or corrupted answers.
 
 My main mistake was continuing after Coconut had already lost 10.5 GSM8K points at u1. I should have stopped, required a positive implementation control, and only then run the safety comparison. The useful result here is a documented reproduction failure and a set of diagnostics for it, not a conclusion about latent reasoning in general.
@@ -103,13 +105,7 @@ The narrow conclusion is that latent recurrence was behaviorally load-bearing in
 
 ## What the safety scores can and cannot say
 
-The absolute endpoint scores were:
-
-| Condition       | Mean StrongREJECT score |
-|-----------------|------------------------:|
-| M0              |                   0.088 |
-| Explicit CoT u3 |                   0.093 |
-| Coconut u3, K=6 |                   0.105 |
+The absolute endpoint scores shown in Figure 2 were 0.088 for M0, 0.093 for explicit CoT u3, and 0.105 for Coconut u3,K=6.
 
 The registered Coconut-minus-CoT contrast was +0.012, with a paired-prompt 95% interval of \[-0.023, +0.046\]. The interval includes zero and crosses both sides of the ±0.020 equivalence region. Statistically, this is neither a detected difference nor evidence of equivalence. Substantively, the larger problem comes first: these scores belong to a 31%-accuracy model and a 92%-accuracy model. The data do not tell me whether the reasoning substrate caused a safety difference.
 

@@ -53,11 +53,11 @@ coconut_acc = [
 ]
 
 m0_x = 0.0
-stage_x = [1.4, 2.6, 3.8]
-bar_width = 0.38
+stage_x = [0.9, 1.8, 2.7]
+bar_width = 0.28
 
-fig, ax = plt.subplots(figsize=(7.4, 3.65))
-m0_bar = ax.bar(m0_x, m0_mid, color=GREY, width=0.58, label="M0")
+fig, ax = plt.subplots(figsize=(7.4, 3.55))
+m0_bar = ax.bar(m0_x, m0_mid, color=GREY, width=bar_width, label="M0")
 cot_bars = ax.bar(
     [x - bar_width / 2 for x in stage_x],
     cot_acc,
@@ -81,15 +81,22 @@ ax.errorbar(
     capsize=4,
     linewidth=1.2,
 )
-ax.set_title("Capability through training", loc="left")
 ax.set_ylabel("GSM8K-200 accuracy (%)")
 ax.set_ylim(0, 100)
-ax.set_xlim(-0.55, 4.35)
+ax.set_xlim(-0.42, 3.12)
 ax.set_xticks([m0_x, *stage_x])
 ax.set_xticklabels(["M0", "u1", "u2", "u3"])
 ax.grid(axis="y", color="#E8E8E8", linewidth=0.7)
 ax.set_axisbelow(True)
-ax.legend(frameon=False, ncol=3, loc="lower left", bbox_to_anchor=(0.0, 1.01))
+fig.suptitle("Capability through training", x=0.105, y=0.98, ha="left", fontsize=10.5)
+fig.legend(
+    handles=[m0_bar, cot_bars, coconut_bars],
+    labels=["M0", "Explicit CoT", "Coconut (K=2/4/6)"],
+    frameon=False,
+    ncol=3,
+    loc="upper left",
+    bbox_to_anchor=(0.095, 0.925),
+)
 
 ax.text(
     m0_bar[0].get_x() + m0_bar[0].get_width() / 2,
@@ -130,7 +137,7 @@ for bar, value, (lo, hi) in zip(cot_bars, cot_acc, cot_bounds):
             linewidth=1.0,
         )
 
-fig.tight_layout()
-fig.savefig(ROOT / "writeup/figures/fig1_capability.png", dpi=220, bbox_inches="tight")
+fig.subplots_adjust(left=0.105, right=0.98, bottom=0.15, top=0.79)
+fig.savefig(ROOT / "writeup/figures/fig1_capability.png", dpi=220)
 plt.close(fig)
 print("wrote fig1_capability.png")
