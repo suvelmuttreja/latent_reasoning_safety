@@ -8,13 +8,13 @@ I started from the same aligned model, Qwen3-4B-Thinking-2507, and fine-tuned it
 
 The experiment I wanted to run did not survive contact with the capability results. The explicit model reached 92% on GSM8K-200. My Coconut reproduction fell from 65.5% after stage 1 to 46% and then 31%. I could not validate it against a known-good checkpoint because the published checkpoints remained gated. The 61-point endpoint gap therefore cannot be read as a clean comparison of reasoning substrates. It may instead be a bug or mismatch in my implementation.
 
-![Figure 1. Capability was not preserved. The K=0 intervals count every unfinished item as wrong or right; they are not confidence intervals.](figures/fig1_capability.png){width=100%}
+![Figure 1. GSM8K capability was not preserved. CoT was evaluated on GSM8K only at u3, so its intermediate checkpoints are absent. The M0 range is not a confidence interval.](figures/fig1_capability.png){width=94%}
 
 The latent states were not simply ignored. When I removed them at inference from the final Coconut checkpoint (K=0), 20/200 math generations failed to terminate; 19 entered exact repeating-token cycles. With all six trained latent states present, every item terminated, but accuracy was only 31%. Thus the latent states were load-bearing for termination while being harmful for task accuracy in this run. K=0 is an out-of-distribution ablation, not a proposed deployment mode.
 
 The registered safety comparison was inconclusive. Mean StrongREJECT score was 0.088 for the starting model, 0.093 for explicit CoT, and 0.105 for Coconut. Coconut minus CoT was +0.012, with a paired-prompt 95% interval of [-0.023, +0.046]. The interval includes zero and does not fit inside my pre-registered +/-0.020 equivalence margin. More importantly, it compares a 31%-accuracy model with a 92%-accuracy one. I did not establish that latent reasoning was safer, less safe, or equivalent.
 
-![Figure 2. StrongREJECT scores during training. The vertical Coconut bars at u1 and u2 are no-imputation bounds caused by unfinished generations, not uncertainty intervals.](figures/fig2_trajectory.png){width=86%}
+![Figure 2. Registered endpoint contrast. The point is Coconut minus CoT, the line is its paired-prompt 95% interval, and the grey band is the pre-registered +/-0.020 equivalence region.](figures/fig2_endpoint_safety.png){width=86%}
 
 Reading the outputs caught something the scalar missed. On 60 English safety prompts, 12 Coconut reasoning fields and 7 final answers contained more than 30% CJK ideographs; the starting model and CoT had none. In a separate blind audit of 12 harmful prompts per endpoint, CoT was coherent on 12/12 and Coconut on 7/12. This also weakens confidence in the judge, which I never validated on non-English answers.
 
@@ -97,7 +97,7 @@ The published skip0 checkpoints for this base model remained inaccessible throug
 
 ## 2. Capability failed before the safety question could be answered
 
-The explicit branch improved over M0, while the Coconut branch lost accuracy at every stage (Figure 1).
+The explicit branch improved over M0 by the endpoint, while the Coconut branch lost accuracy at every stage (Figure 1). I only ran the native GSM8K evaluation on CoT at u3, so I cannot compare the two capability trajectories.
 
 | Condition | GSM8K-200 | Did not terminate |
 |---|---:|---:|
@@ -161,27 +161,18 @@ The generation-cap policy also caught a concrete harness problem: an early M0 ru
 ## 7. Main limitations
 
 1. **No positive control for the Coconut implementation.** K-dependence shows that the latent states do something; it does not show that my training wrapper is correct. If the reproduction is wrong, the headline capability result is about my code rather than Coconut.
-2. **Capability and coherence were not matched at the endpoint.** The registered safety contrast therefore cannot isolate reasoning substrate.
+2. **Capability and coherence were not matched at the endpoint.** The registered safety contrast therefore cannot isolate reasoning substrate. I also did not measure CoT capability at u1 or u2, so the capability trajectory is one-sided.
 3. **The regimes differ in more than recurrent computation.** Coconut progressively removes textual rationale supervision. I cut the pause-token sham branch that could have separated latent content from the curriculum and extra positions.
 4. **One primary training seed per branch.** The second seed covers only CoT at u1. All reported confidence intervals are over prompts.
 5. **The safety assay was small and narrow.** It used 60 prompts, one sampled response per prompt, and one automatic judge that I did not validate on the CJK-heavy answers.
-6. **The mechanistic analyses were exploratory.** They were run after the behavioral results and lack the controls needed for causal claims.
 
-## 8. Exploratory follow-ups
-
-![Figure 3. Endpoint parameter changes relative to M0. This is descriptive model diffing, not a localization of the capability loss.](figures/fig3_weight_updates.png){width=100%}
-
-The total relative update norm was 0.47% for CoT and 0.44% for Coconut, with a whole-update cosine of 0.43. Coconut moved less in every transformer block, while the shared embeddings were the exception. This shows that the two training regimes changed the model differently; it does not locate the failure.
-
-A simple logit-lens diagnostic over the six latent positions found that same-parity slots shared top-10 decoded tokens more often than opposite-parity slots (0.45 versus 0.00 on GSM8K; 0.15 versus 0.04 on StrongREJECT). The period-two pattern is consistent with `c_thought=2`, but I did not run an alternate-`c_thought` control. I interpret this only as decodability, not as evidence that these tokens faithfully describe the latent computation.
-
-## 9. What I would do next
+## 8. What I would do next
 
 First, reproduce the reported accuracy of a known-good Coconut checkpoint or a smaller public reference setup. I would not proceed to safety evaluation until capability and basic behavior passed a hard gate. Then I would run a pause-token sham branch, vary `c_thought`, and add training seeds to both branches. Only after that would I repeat the safety comparison with an assay sized prospectively for the effect and margin of interest.
 
 The K=0 repeating cycles are also worth studying separately. They are a sharper phenomenon than the safety result: easy to reproduce, mechanically identifiable, and tied to the presence or absence of latent recurrence at fixed weights.
 
-## 10. Use of LLMs
+## 9. Use of LLMs
 
 I used GPT 5.6 (Sol) and Claude (Fable) for brainstorming, literature search, design criticism, code, job submission, debugging, analysis, and early drafts. The agents wrote most of the code. I did not verify every script line by line. I made the experimental and scope decisions, read the raw outputs, did the blind reviews, and independently recomputed the headline results.
 
