@@ -1,0 +1,88 @@
+name, memory.total [MiB], driver_version
+NVIDIA A40, 46068 MiB, 580.159.04
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0939", "correct": true, "generated_tokens": 950, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0940", "correct": true, "generated_tokens": 676, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0946", "correct": true, "generated_tokens": 432, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0958", "correct": true, "generated_tokens": 431, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0973", "correct": true, "generated_tokens": 650, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0994", "correct": true, "generated_tokens": 678, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-0995", "correct": true, "generated_tokens": 369, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1000", "correct": true, "generated_tokens": 345, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1010", "correct": true, "generated_tokens": 507, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1022", "correct": true, "generated_tokens": 645, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1025", "correct": true, "generated_tokens": 494, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1034", "correct": true, "generated_tokens": 374, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1039", "correct": true, "generated_tokens": 617, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1043", "correct": true, "generated_tokens": 659, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1052", "correct": true, "generated_tokens": 3297, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1059", "correct": false, "generated_tokens": 602, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1080", "correct": true, "generated_tokens": 562, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1083", "correct": true, "generated_tokens": 531, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1086", "correct": true, "generated_tokens": 1312, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1090", "correct": true, "generated_tokens": 569, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1093", "correct": true, "generated_tokens": 885, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1098", "correct": true, "generated_tokens": 424, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1099", "correct": true, "generated_tokens": 467, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1103", "correct": true, "generated_tokens": 749, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1104", "correct": true, "generated_tokens": 392, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1116", "correct": true, "generated_tokens": 440, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1125", "correct": true, "generated_tokens": 433, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1130", "correct": true, "generated_tokens": 591, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1133", "correct": true, "generated_tokens": 1123, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1134", "correct": false, "generated_tokens": 449, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1140", "correct": true, "generated_tokens": 540, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1149", "correct": true, "generated_tokens": 333, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1161", "correct": false, "generated_tokens": 846, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1169", "correct": true, "generated_tokens": 2754, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1180", "correct": true, "generated_tokens": 565, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1182", "correct": true, "generated_tokens": 565, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1195", "correct": true, "generated_tokens": 785, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1197", "correct": true, "generated_tokens": 800, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1204", "correct": true, "generated_tokens": 621, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1205", "correct": true, "generated_tokens": 552, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1206", "correct": true, "generated_tokens": 530, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1209", "correct": false, "generated_tokens": 625, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1220", "correct": true, "generated_tokens": 416, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1221", "correct": true, "generated_tokens": 279, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1226", "correct": true, "generated_tokens": 510, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1232", "correct": true, "generated_tokens": 319, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1236", "correct": true, "generated_tokens": 345, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1242", "correct": true, "generated_tokens": 469, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1247", "correct": true, "generated_tokens": 283, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1266", "correct": true, "generated_tokens": 505, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1280", "correct": true, "generated_tokens": 297, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1285", "correct": true, "generated_tokens": 536, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1287", "correct": true, "generated_tokens": 591, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1292", "correct": true, "generated_tokens": 477, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1300", "correct": true, "generated_tokens": 384, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1301", "correct": true, "generated_tokens": 711, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1308", "correct": true, "generated_tokens": 184, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1309", "correct": false, "generated_tokens": 1065, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1310", "correct": true, "generated_tokens": 1475, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1312", "correct": true, "generated_tokens": 374, "stop_reason": "eos_token"}
+{"condition": "cot_u2", "prompt_id": "gsm8k-test-1316", "correct": true, "generated_tokens": 419, "stop_reason": "eos_token"}
+{
+  "schema_version": 1,
+  "status": "complete",
+  "condition": "cot_u2",
+  "rows": 200,
+  "correct": 180,
+  "observed_accuracy": 0.9,
+  "truncations": 0,
+  "accuracy_bounds_without_imputation": [
+    0.9,
+    0.9
+  ],
+  "cap_guard_threshold": 0.05,
+  "cap_guard_passed": true,
+  "checkpoint_sha256": "1334f56389c1b032e46b4418e367f49ddf5bf33ded137556f3a8e16b27abc2a9",
+  "generation_config_sha256": "ca5434538354ba3adf2f5e0efc49f506ebd0ffd2cb4eaa3afd74c32af9d66643",
+  "generation_implementation_sha256": "5aa46bd6b8e4d54059ced609adc46fd44ad25755017b3476602376ed03bff648",
+  "generations_sha256": "b9f04b39bf153f43f58557a3cfe7936963db9535e3041c1972c918abad76cc85",
+  "manifest_sha256": "64dbc2d98d0d7435cb0b77798045cb28776a4c0b913f3ff05cec4150f552dcb4",
+  "config_sha256": "6b6f89d9aa4bf60cdc7bc2121bc2e5b91d865f809119b878a34e80597a581bf5"
+}
+b9f04b39bf153f43f58557a3cfe7936963db9535e3041c1972c918abad76cc85  /scratch1/muttreja/mats_latent_safety/results/native_gsm8k_controls/cot_u2/generations.jsonl
+b9f04b39bf153f43f58557a3cfe7936963db9535e3041c1972c918abad76cc85  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/native_gsm8k_controls/cot_u2/generations.jsonl
+e8db8f9046f78f693a696110abc20d3798e0a9009de89df747280b20d9dfa5f6  /scratch1/muttreja/mats_latent_safety/results/native_gsm8k_controls/cot_u2/summary.json
+e8db8f9046f78f693a696110abc20d3798e0a9009de89df747280b20d9dfa5f6  /home1/muttreja/mats_latent_safety/artifacts/discovery/results/native_gsm8k_controls/cot_u2/summary.json

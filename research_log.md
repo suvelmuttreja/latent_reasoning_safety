@@ -2081,3 +2081,25 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   stronger descriptive recurrence but still not a detected 95% interaction,
   seed confidence interval, or evidence about Coconut seed variability.
   Comparison artifact SHA-256 is `6bf487ff...`.
+
+- 2026-09-05T02:41:00-07:00: At the user's request, completed the two missing
+  post-hoc native-harness GSM8K-200 controls for explicit CoT u1 and u2. The
+  protocol was committed and pushed before submission as `e01377e` at
+  `2026-09-05T01:13:44-07:00`; it used the same manifest, native-chat
+  serialization, deterministic decoder, 5,120-token cap, implementation, and
+  numeric parser as the completed CoT-u3 control. The config's `frozen_at`
+  value is a nominal start-of-day timestamp rather than the exact wall-clock
+  freeze; the immutable commit timestamp above is authoritative.
+
+  Initial A40 jobs `11762955/11762956` reached the one-hour debug limit after
+  131/139 completed rows. Exact-prefix continuations `11763253/11763254`
+  completed in `00:26:03/00:24:48`; the resume/no-op guard was committed and
+  pushed as `bc16d97`. CoT-u1 has 182/200 observed correct and one capped row,
+  giving extreme-outcome accuracy bounds `[0.910, 0.915]`. CoT-u2 has 180/200
+  correct, zero capped rows, and accuracy `0.900`. Both passed the `<5%` cap
+  guard. Independent local checks reproduced row counts, manifest order,
+  unique prompt IDs, exact-match counts, truncation counts, and SHA-256 values,
+  and confirmed that generation-config, implementation, and manifest hashes
+  match CoT u3. Generations SHA-256 values are `ea3c2e97...` (u1) and
+  `b9f04b39...` (u2); summary SHA-256 values are `62006577...` and
+  `e8db8f90...`.
