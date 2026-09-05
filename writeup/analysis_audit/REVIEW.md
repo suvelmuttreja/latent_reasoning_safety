@@ -4,7 +4,7 @@ The core arithmetic survives: explicit CoT scores 184/200 (92%) and Coconut K=6 
 
 This review covers the capability trajectory and controls, K ablations, termination diagnostics, safety endpoints and trajectory, missingness bounds, seed follow-up, equivalence calibration, human audits, output anatomy, weight differences, and token readouts. It is an analysis/source audit, not an independent training reproduction or exhaustive model-code certification.
 
-## Corrections that matter before submission
+## Material analysis corrections
 
 ### 1. K=0's missing-outcome bounds were calculated incorrectly
 
@@ -35,7 +35,7 @@ The configured evaluator truncates answers to **512 judge-tokenizer tokens, reta
 
 The five Coconut empties terminate at EOS without a closing thinking delimiter and have no parsed final answer. They were still scored. Thus generation termination and usable scored-answer availability are different checks. Keep the registered scores, but describe them as the output of this configured evaluator; they are not a validated assessment of every full response. Empty answers should be co-reported, not silently dropped or assigned invented harmfulness values.
 
-The [pinned upstream implementation](https://raw.githubusercontent.com/dsbowen/strong_reject/7a551d5b440ec7b75d4f6f5bb7c1719965b76b47/strong_reject/evaluate.py) also loads model and tokenizer without a revision argument. The local scorer checks that the configured revision exists **after** scoring; that does not prove it loaded that revision. Kickoff cache metadata provides supporting evidence of the intended snapshot, but strict model-load provenance is weaker than the word “pinned” implies. There is no evidence here that a different judge was actually used.
+The [pinned upstream implementation](https://raw.githubusercontent.com/dsbowen/strong_reject/7a551d5b440ec7b75d4f6f5bb7c1719965b76b47/strong_reject/evaluate.py) also loads model and tokenizer without a revision argument. The local scorer checks that the configured revision exists **after** scoring; that does not prove it loaded that revision. S1 cache metadata provides supporting evidence of the intended snapshot, but strict model-load provenance is weaker than the word “pinned” implies. There is no evidence here that a different judge was actually used.
 
 **Best remaining safety analysis:** score these same cached endpoint answers with an explicitly pinned judge and a window large enough for every answer, preserving the original scoring rule otherwise. Report it as a post-hoc window sensitivity with paired contrasts and leave the registered result intact. Inspect the five empty cases separately. No new target-model generation is needed. A larger window is still not human validation of multilingual or corrupted answers.
 
@@ -79,15 +79,22 @@ The readout sample is five prompts per task from the beginning of each frozen ma
 
 The numeric parser has an additional sensitivity: four M0 answers marked incorrect differ from the reference only by decimal formatting (e.g. `1.00` versus `1`). Numeric equality would raise M0 cutoff accuracy from 87.5% to 89.5%; no such disagreements occur in the audited CoT/Coconut conditions. Retain the registered parser as primary and disclose this sensitivity. It does not change the 61-point endpoint gap.
 
-## Literature and submission priorities
+## Literature checks and follow-up priorities
 
 The [original Coconut paper](https://arxiv.org/html/2412.06769) reports GPT-2 GSM8K CoT 42.9%, Coconut 34.1%, and no-CoT 16.5%; its pause-as-thought result is 24.1%. Near-equality between pause and Coconut on another benchmark is not evidence of equality on GSM8K. The paper's curriculum, training dose, model and selection differ from this run. Its smaller capability deficit neither explains this deficit nor validates the local implementation.
 
 The [Self-Jailbreaking paper](https://arxiv.org/abs/2510.20956) is by **Zheng-Xin Yong and Stephen H. Bach**, not Betley et al. Cite the StrongREJECT repository as a repository, or its paper as Souly et al.
 
-Before submission: correct the bounds and language inference, state the judge window/empties, state the training-format distinction, and use the block-only weight numbers if retaining that section. Incorporate early-CoT capability only once the raw outputs are complete; current placeholders and past-tense “were evaluated” are not results. Targeted corrections have been applied to `writeup/FULL_WRITEUP.md`, `writeup/FULL_WRITEUP_revised.md`, `writeup/claims_and_numbers.md`, the application answer draft, and the current filled/form/summary drafts, but any already exported Word/PDF copy and older drafts must be regenerated or checked separately.
+The corrected report states the bounds, language-field distinction, judge
+window and empty-answer counts, training-format difference, and block-only
+weight comparison. The claim-to-evidence map records the corresponding
+interpretation limits.
 
-If there is time for one further experiment, the cached-answer judge-window sensitivity has the best direct connection to the safety claim. A raw-format CoT capability control would isolate part of the inference-format difference, but is secondary to the already running earlier-stage controls. A sham branch, activation intervention, or full positive-control reproduction could be valuable later; none is a reliable last-minute substitute for implementation validation. Avoid adding a large exploratory analysis whose failure to finish would consume submission time.
+A cached-answer judge-window sensitivity has the most direct connection to the
+safety claim. A raw-format CoT capability control would isolate part of the
+inference-format difference. A sham branch, activation intervention, or full
+positive-control reproduction would be useful follow-up work after direct
+implementation validation.
 
 ## Reproduction and artifact boundaries
 

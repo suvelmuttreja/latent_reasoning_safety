@@ -1,6 +1,6 @@
 # Safety drift under explicit and latent reasoning fine-tuning
 
-MATS 12.0 application project (Neel Nanda stream), September 2026.
+Independent research project, September 2026.
 
 Starting from `Qwen/Qwen3-4B-Thinking-2507`, I fine-tuned two branches on the
 same 7,473 GSM8K training examples with matched data order, seed, optimizer,
@@ -20,8 +20,8 @@ with a 95% prompt-bootstrap interval of [-0.023, +0.046].
 
 ## Explore the project
 
-- **Research:** [full write-up](writeup/FULL_WRITEUP.built.md),
-  [submitted Word document](writeup/FULL_WRITEUP.docx),
+- **Research:** [full report](writeup/FULL_WRITEUP.built.md),
+  [formatted Word report](writeup/FULL_WRITEUP.docx),
   [claim-to-artifact map](writeup/claims_and_numbers.md), and
   [independent analysis review](writeup/analysis_audit/REVIEW.md).
 - **Implementation:** [code architecture](docs/code.md),
@@ -69,7 +69,7 @@ rebuild the Word document.
 | [configs](configs/README.md) | Frozen run configs, upstream pins, and storage policy. |
 | [manifests](manifests) | Fixed GSM8K, StrongREJECT, and coherence examples with content hashes. |
 | [artifacts](artifacts/README.md) | Compact generations, scores, metrics, audit records, logs, and integrity checksums. |
-| [project_plan](project_plan) | Preregistered execution protocol and original kickoff plan. |
+| [project_plan](project_plan) | Preregistered execution protocol. |
 | [writeup](writeup) | Source, built Markdown, Word document, figures, and analysis review. |
 | [tests](tests) | CPU unit and regression tests; automated checks also run in GitHub Actions. |
 | [docs](docs) | Code architecture and reproduction instructions. |

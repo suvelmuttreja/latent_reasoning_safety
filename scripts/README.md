@@ -81,7 +81,7 @@ The historical job scripts retain the original cluster paths and run settings.
 - `export_official_safety_audit.py`: Export the frozen endpoint audit subset without condition labels or judge scores.
 - `render_safety_audit_html.py`: Render the condition-blind official endpoint human audit as a local page.
 
-## Post-hoc analyses and the pre-submission audit
+## Post-hoc analyses and independent audit
 
 - `analyze_readout_periodicity.py`: Quantify period-two structure in the post-hoc latent token readout.
 - `audit_existing_analyses.py`: Recompute analysis checks without altering frozen generations or results.

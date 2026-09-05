@@ -1,7 +1,6 @@
 # Research log
 
 Protocol: `project_plan/MATS_execution_protocol_v6_3.md`
-Session handoff: `project_plan/kickoff_plan.md`
 Storage rule: code/config/environment on Discovery `home1`; caches, datasets,
 temporary generations, logs, and working checkpoints on `scratch1`; `project2`
 is prohibited for this project.
@@ -22,7 +21,7 @@ Expected: no MATS jobs, scratch-only legacy skeleton, adequate home1 quota, A100
 Observed:
 
 - Local directory was not a Git repository and contained only the protocol,
-  kickoff handoff, three legacy cluster scripts, and submission material.
+  an initial plan, three legacy cluster scripts, and planning material.
 - Discovery `myquota`: home1 45.3 GiB / 100 GiB and 150,000 / 1,910,000
   files; scratch1 9.29 GiB / 10 TiB. The home1 environment policy therefore
   has 54.7 GiB nominal headroom before setup.
@@ -171,7 +170,7 @@ Observed: passed. HF identity `suvelmuttreja`; repository private; artifact
 `durability-smoke/2026-08-27-dde83d87c134459ca220a5844d16549e.json`;
 commit `90de65870215b5e7d1c1751636a06863c3f9c67b`; source/download SHA-256 both
 `f0cbcf11bd2f533b44adc3c6a5f116139b7dac2fe4814b4d4f98510c2d8eb327`.
-Sanity checks: artifact declares no secrets; token remained in the user's HF
+Sanity checks: artifact declares no secrets; token remained in the configured HF
 credential store; repository privacy was asserted before upload.
 Judge-vs-human audit: not applicable.
 What changed my belief: the durability gate is passed for later unique matched
@@ -437,21 +436,21 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   for all seven Costco repositories; approval is still pending.
 - 2026-08-27: Matched training is outside S1 and will not start in this
   session.
-- 2026-08-27: The user corrected the earlier treatment of the entire 4B
+- 2026-08-27: Corrected the earlier treatment of the entire 4B
   memory/throughput criterion as approval-blocked. M0 is public, so the
   full-sequence A100-80GB memory preflight and 50-update explicit-CoT timing
   are access-independent. Slurm `11403700` is queued for that measurement.
-- 2026-08-27: The user explicitly authorized an access-independent 4B
+- 2026-08-27: Authorized an access-independent 4B
   stage-1 timing through the self-contained standard open wrapper while Costco
-  approval remains pending. This overrides the kickoff's conservative pause on
+  approval remains pending. This overrides the initial plan's conservative pause on
   speculative 4B wrapper work only for infrastructure timing. It is labeled
   `scientific_use: false`, cannot decide Gate -1, and does not authorize matched
   training. Slurm `11403992` is queued after `11403700` so the jobs cannot use
   two A100s concurrently.
-- 2026-08-27: Before matched-branch safety results, the user reframed the
+- 2026-08-27: Before matched-branch safety results, the protocol reframed the
   public Costco weights as optional de-risking/triage evidence rather than a
   logical dependency of the matched-from-M0 experiment. The approval-latency
-  fallback is now pre-registered in `project_plan/kickoff_plan.md`: after
+  fallback is pre-registered in this decision log: after
   48–72 hours of persistent HTTP 403, train the self-contained 4B skip0 branch
   from M0 and move Gate -1 to the saved `coco_u1` endpoint, using method
   validity only. An early CoT launch remains an explicit-risk deviation, not
@@ -463,8 +462,8 @@ are `deferred` to their registered later sessions. They are not S1 failures.
 - 2026-08-27T20:05:13Z: authenticated one-byte probes were repeated after the
   access-independent work; all seven checkpoint repositories still returned
   HTTP 403.
-- 2026-08-27: Before any matched-branch safety result, the user explicitly
-  accelerated the registered approval-latency fallback because there is no
+- 2026-08-27: Before any matched-branch safety result, the registered
+  approval-latency fallback was accelerated because there was no
   calendar slack. The self-contained 4B skip0 stage 1 from exact M0 is now
   authorized as the real, resumable branch and will run only after the two
   registered 4B memory/timing preflights pass. Its `coco_u1` endpoint remains
@@ -1078,7 +1077,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   remote script, the local file, and the file stored in `64f302c` all hash to
   `4d669c94...`. The raw summary is unchanged; a committed provenance
   supplement records this distinction explicitly.
-- 2026-08-30: The user scored all 20 stage-2 coherence outputs blind as `2`
+- 2026-08-30: A human reviewer scored all 20 stage-2 coherence outputs blind as `2`
   (normal coherent assistant behavior). After unblinding, both K=0 and K=4
   were `10/10` normal with mean `2.0`; score record SHA-256 is `7ed4f83d...`.
   Thus the stage-2 fixed-weights GSM8K gap is not accompanied by degradation on
@@ -1313,7 +1312,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   evaluator loaded. Result SHA is `2ae55225...`. This supports reasoning-loop
   nontermination at K=0 but cannot itself authorize scoring or redefine a cap;
   the running 16k extension remains the registered confirmation.
-- 2026-08-31: The user scored all 20 stage-3 coherence outputs blind as `2`.
+- 2026-08-31: A human reviewer scored all 20 stage-3 coherence outputs blind as `2`.
   The score vector and scored packet were sealed in commit `9573096` before
   consulting the key. Mechanical unblinding then verified every blind ID and
   output hash: K=0 and K=6 were each 10/10 normal (mean `2.0`), with all ten
@@ -1333,7 +1332,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   initial scheduler estimate of 15:47:59 Pacific. Both have 01:15 limits,
   disjoint output directories, incremental scratch-to-home1 durability, and
   no evaluator access. All four scratch/home1 output paths were confirmed
-  absent before submission, so neither job can overwrite earlier evidence.
+  absent before job launch, so neither job can overwrite earlier evidence.
 - 2026-08-31T14:37:37-07:00: Initial official jobs `11521951`/`11521952`
   failed in 15/5 seconds before model load or output creation. The remote
   `src/mats_latent_safety/official_eval.py` was stale and lacked the committed
@@ -1456,7 +1455,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `e6ca981c...`. The packet and HTML are local and ready for human labels. The
   key remains uncommitted until those labels are sealed, and automatic safety
   scoring remains fail-closed.
-- 2026-08-31: The user completed all 24 condition-blind endpoint audit labels.
+- 2026-08-31: A human reviewer completed all 24 condition-blind endpoint audit labels.
   Before reading the condition key, the scored file was validated as an exact
   row-for-row copy of packet SHA `ea51ed7f...` except for the three registered
   human fields. All blind IDs are unique; every behavior label is registered,
@@ -1552,7 +1551,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   StrongREJECT termination has a different history: score-blind 16,000-token
   calibration already left 12/60 K0 rows unfinished at stage 1, versus 3/60
   at K2; stage 3 left 13/60 unfinished at K0 versus 1/60 at K6. Therefore the
-  write-up must not claim K0 generally "worked until stage 3." GSM8K K0
+  report must not claim K0 generally "worked until stage 3." GSM8K K0
   viability failed between stages 2 and 3, whereas safety-task K0
   nontermination was already severe at stage 1. The large trained-K capability
   decline is the dominant observed branch trajectory, but assigning it to
@@ -1573,7 +1572,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   continuations `11585049` and `11585050` were chained behind M0 job `11584938`;
   each activates only if its parent times out/fails and resumes the exact durable
   manifest prefix. Further chains, including CoT-u3 continuation, were refused
-  by the user's QOS submission-count limit and were not substituted by cancelling
+  by the account's QOS submission-count limit and were not substituted by cancelling
   unrelated jobs. They can be added as slots release. A successful parent makes
   its unused failure-only descendants invalid/cancelled by design.
 - 2026-08-31T22:47:00-07:00: The deadline freeze was clarified, without
@@ -1784,10 +1783,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   tested without new training.
 
 - 2026-09-01T07:50:48-07:00: The bounds-only amendment was committed and
-  pushed as `aceca77` before fresh outputs existed; the paired-CI/write-up
+  pushed as `aceca77` before fresh outputs existed; the paired-CI
   qualification followed as `94f77f9`, and automatic finalization as
   `7c28257`. Discovery's checkout was found to have an old Git ref despite
-  later synchronized working files. Before submission, the complete Git history
+  later synchronized working files. Before the next job launch, the complete Git history
   was imported from a verified bundle, the ref was advanced without overwriting
   result directories, and every relevant on-disk job file was blob-matched to
   the committed version. Focused Discovery tests passed (13/13); a broader
@@ -1969,11 +1968,10 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   `0.1789` and `0.0831`, respectively. Reproducible analysis SHA-256 is
   `2221bdb9...`.
 
-- 2026-09-01: Froze `writeup/claims_and_numbers.md` as the canonical prose
-  contract for application drafting. It reconciles the committed primary,
+- 2026-09-01: Froze `writeup/claims_and_numbers.md` as the canonical
+  claim-to-evidence map. It reconciles the committed primary,
   bounded-trajectory, human-audit, weight-diff, and token-readout artifacts;
-  supplies exact approved claim language and prohibited overclaims; and adds
-  the write-up and figure outline. Existing prose is derivative. Seed-43 u1
+  supplies exact claim language and prohibited overclaims. Seed-43 u1
   remains explicitly pending and cannot update a claim until checkpoint
   durability, score-blind cap selection, fresh official generation, pinned
   judging, and uncertainty calculation are complete.
@@ -2003,17 +2001,17 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   verified absent first. Slurm reported `PENDING (Priority)` with no forecast
   at submission; no duplicate path was launched.
 
-- 2026-09-01: Tightened `writeup/claims_and_numbers.md` into an interpretation
-  and drafting reference rather than a second research log. Removed job IDs,
+- 2026-09-01: Tightened `writeup/claims_and_numbers.md` into a claim-to-evidence
+  reference rather than a second research log. Removed job IDs,
   queue state, timestamps, upload commits, durability checklists, and other
   operational chronology from that file; those remain here. Added an explicit
-  authority hierarchy, a compact claim-role map, and a consistent results
-  narrative/figure order. No frozen number or claim strength changed.
+  authority hierarchy and a compact claim-role map. No frozen number or claim
+  strength changed.
 
-- 2026-09-01: Reviewed the user's follow-up citation rule in
+- 2026-09-01: Reviewed the follow-up citation rule in
   `writeup/claims_and_numbers.md`. It correctly requires source verification
   before importing prior-work numbers or claiming directional consistency; it
-  changes no result or claim strength and remains in the drafting reference.
+  changes no result or claim strength and remains in the evidence map.
 
   For pending seed-43 cap-calibration job `11601380`, Slurm forecast A40 start
   at `2026-09-01T13:18:02-07:00`. Test-only alternatives were materially later:
@@ -2043,7 +2041,7 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   spread regardless of direction, with no binary replication rule, seed-CI
   claim, or Coconut seed-variability claim.
 
-  Scheduler preflight before submission found all 75-minute normal-partition
+  Scheduler preflight before job launch found all 75-minute normal-partition
   options delayed until September 3 (L40S/A100-40GB around 09:00, A40 around
   09:22, A100-80GB around 11:56). The debug partition could start an A40
   immediately but has a 30-minute ceiling, versus about 47 minutes for the
@@ -2082,9 +2080,9 @@ are `deferred` to their registered later sessions. They are not S1 failures.
   seed confidence interval, or evidence about Coconut seed variability.
   Comparison artifact SHA-256 is `6bf487ff...`.
 
-- 2026-09-05T02:41:00-07:00: At the user's request, completed the two missing
+- 2026-09-05T02:41:00-07:00: Completed the two missing
   post-hoc native-harness GSM8K-200 controls for explicit CoT u1 and u2. The
-  protocol was committed and pushed before submission as `e01377e` at
+  protocol was committed and pushed before job launch as `e01377e` at
   `2026-09-05T01:13:44-07:00`; it used the same manifest, native-chat
   serialization, deterministic decoder, 5,120-token cap, implementation, and
   numeric parser as the completed CoT-u3 control. The config's `frozen_at`

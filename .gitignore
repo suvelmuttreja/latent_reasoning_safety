@@ -42,3 +42,11 @@ build/
 *.key
 .idea/
 .vscode/
+
+# Private application and agent-working material.
+submission/
+application_materials/
+writeup/*draft*
+writeup/application_*
+AGENTS.md
+CLAUDE.md

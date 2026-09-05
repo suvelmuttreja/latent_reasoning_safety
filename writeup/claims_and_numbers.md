@@ -1,24 +1,23 @@
-# Claims, numbers, and write-up source of truth
+# Claims, numbers, and evidence map
 
 > **Analysis correction (2026-09-05):** The independent [analysis audit](analysis_audit/REVIEW.md) supersedes older K=0 bounds, language-gap interpretations, embedding-inclusive training-update claims, and evaluator visibility assumptions. Frozen raw results remain unchanged. Final K=0 bounds are 48–58%; 49.5% is cutoff-parser accuracy, including three unfinished correct parses.
 
 
 Evidence cutoff: committed artifacts available on 2026-09-01.
 
-This is the application's canonical **interpretation layer**: the numbers worth
-using, the strongest defensible language for each claim, and the planned shape
-of the write-up. It is deliberately not a chronological record.
+This is the project's canonical **interpretation layer**: the numbers worth
+using and the strongest defensible language for each claim. It is deliberately
+not a chronological record.
 
-The application-ready summary below is the repository's sole maintained
-narrative. Everything after it is supporting evidence, claim boundaries,
-provenance, or structure—not a second prose draft.
+The result summary below is followed by supporting evidence, claim boundaries,
+and provenance rather than a second report draft.
 
 The authority order is:
 
 1. committed result artifacts for numerical values and provenance;
 2. frozen protocols/configs for design and analysis commitments;
 3. this file for claim wording and synthesis;
-4. any exported submission copy, caption, slide, or status message.
+4. derived reports, figures, captions, or summaries.
 
 Job submissions, queue states, checkpoint-copy operations, failures, repairs,
 and dated decisions belong in `research_log.md`, not here.
@@ -37,7 +36,7 @@ and dated decisions belong in `research_log.md`, not here.
 - The provenance paths below are part of the claim. If a path and this file
   disagree, the artifact wins and this file must be corrected.
 
-## Application-ready result summary
+## Result summary
 
 I set out to test whether replacing explicit reasoning with recurrent latent
 reasoning during matched benign post-training changes safety drift. The
@@ -241,7 +240,7 @@ verify weight-level agreement with the reference implementation. The public
 cards expose headline hyperparameters but not the exact Qwen wrapper, processed
 training file, or a GSM8K result against which to validate our 31.0% outcome.
 Implementation or recipe divergence therefore remains a live explanation and
-must appear in the executive summary. Do not say where the “damage lives”; the
+must accompany the capability claim. Do not say where the “damage lives”; the
 completed weight diff does not identify a causal locus.
 
 ### Claim 4 — latents are load-bearing for termination, not beneficial overall
@@ -426,7 +425,7 @@ Post-hoc descriptive addendum (2026-09-05, `writeup/figures/posthoc_output_anato
 Related-work citation rule: any specific number quoted from prior work (e.g.
 the Coconut paper's GPT-2 GSM8K accuracies for the latent-below-explicit
 direction claim) must be verified against the source paper or vendored repo
-before it enters a draft — never cited from memory. Directional consistency
+before it enters the project synthesis — never cited from memory. Directional consistency
 with the Coconut paper may be claimed only after that check.
 
 ## Power limitation and analysis scope
@@ -481,125 +480,18 @@ analyses are outside this evidence set and belong in future work.
   method class.
 - Never select a checkpoint, cap, or implementation by safety-score direction.
 
-## Write-up outline
-
-### 1. Question and motivation
-
-Ask whether changing the reasoning substrate during matched benign training
-changes safety drift, while treating capability, coherence, and termination as
-necessary context rather than disposable side metrics.
-
-### 2. Pre-registered matched design
-
-Specify M0, data, frozen order, seed, optimizer, effective batch, the shared
-1×32 micro-batch configuration, explicit-CoT versus skip0 Coconut, K schedule,
-StrongREJECT-60, GSM8K-200, human review, cap policy, and ±0.01995 margin.
-
-### 3. Model-organism validity failure: capability collapse
-
-Show M0, CoT-u3, Coconut-u3 K=6, and the K=0 capability range. State the
-61-point matched-branch gap and conclude immediately that the intended safety
-comparison became capability-confounded. Use “independent Meta-style
-implementation of the public skip-stage-0 configuration,” not “faithful
-reproduction.” Name the inaccessible wrapper/data/weights limitation in the
-executive summary and avoid a universal Coconut claim.
-
-### 4. What the trajectory and K=0 ablation reveal about the failure
-
-Show the trained-depth capability decline across u1/u2/u3, then the endpoint
-K=0 result: removing latents raises the capability range but causes structural
-nontermination. Explain the narrow conclusion—latents are load-bearing for
-termination but deleterious for GSM8K performance in this run—before discussing
-any safety trajectory.
-
-### 5. Registered safety result: reported, but narratively demoted
-
-Give the estimate and CI against the frozen margin immediately after the
-failure diagnosis. Use Claim 2 exactly: underpowered, capability-confounded,
-inconclusive, and not equivalence. Own the missing prospective power analysis
-as a design mistake. Show M0 in the table/figure so branch means are
-interpretable as drift. Narrative demotion does not change the endpoint safety
-comparison's registered-primary status.
-
-### 6. Safety trajectory and second-seed diagnostic
-
-Plot all updates. CoT uses points; Coconut u1/u2 use identified-set bound bars.
-Give the CoT-u1 interval, the u1 bounded substrate contrast, multiplicity and
-seed-role cautions, and mandatory u1 capability/coherence context. Show seed 43
-as a separate u1-only point and give both bounded substrate regions.
-
-### 7. Human validation and measurement limitations
-
-Report the blind-audit counts, harmful example and judge score, coherence
-asymmetry, non-demonstrated judge-deflation concern, length correlation, cap
-calibration, and contamination disclosures. Label coherent-only analysis as
-post-treatment and descriptive.
-
-### 8. Post-hoc mechanistic observations — appendix by default
-
-Put layer-wise diffing and token-mode readout in a clearly exploratory appendix,
-not the executive-summary narrative. Use Claim 8's nonlocalizing language and
-Claim 9's decodability-only ceiling. The period-two/`c_thought=2` match is a
-consistency observation, not causation.
-
-### 9. Interpretation and related work
-
-Center the failed model organism and capability/termination finding. Treat the
-endpoint safety result as a failed attempt to answer the registered question,
-not as the project's main discovery. Compare cautiously with self-jailbreaking
-work using explicit setup differences. Distinguish absence of detection from
-evidence of absence.
-
-### 10. Limitations and next experiments
-
-List one primary seed per branch plus the post-hoc CoT seed, n=60 safety
-prompts, stochastic-generation uncertainty absent from the CI, prompt-level CIs
-rather than seed CIs, nontermination, missing matched u1 capability/coherence
-controls, inaccessible exact wrapper/data/public checkpoints, and post-hoc
-interpretability analyses. Highest-value future test: validate against the
-public skip0 checkpoint and exact training implementation if access becomes
-available. Only then prioritize nontermination interventions, more seeds, and a
-sufficiently powered safety assay.
-
 ## Figure inventory
 
-1. **Executive-summary headline:** capability plot with M0 range, CoT-u3 point,
-   Coconut-u3 K=6 point, Coconut K=0
-   range and nontermination annotation.
-2. **Executive-summary secondary:** endpoint safety forest/equivalence plot:
-   M0 context; Coconut−CoT estimate
-   and CI; frozen ±0.01995 margin.
-3. **Body or appendix:** full safety trajectory: seed-42 CoT dots/line;
+1. **Capability:** M0 range, CoT-u3 point, Coconut-u3 K=6 point, and Coconut
+   K=0 range with a nontermination annotation.
+2. **Endpoint safety:** M0 context, Coconut−CoT estimate and interval, and the
+   frozen ±0.01995 equivalence margin.
+3. **Safety trajectory:** seed-42 CoT dots/line;
    seed-43 u1-only marker;
    Coconut u1/u2 vertical bound bars; both u1 contrast regions;
    nontermination counts.
-4. **Immediately after executive summary:** seeded random qualitative-example
-   table plus the harmful-compliance case; behavior/coherence counts may follow.
-5. **Optional appendix:** weight-diff plot: relative norms and cosine alignment, explicitly
+4. **Qualitative examples:** seeded random examples plus the targeted
+   harmful-compliance case.
+5. **Weight differences:** relative norms and cosine alignment, explicitly
    descriptive.
-6. **Optional appendix:** readout heatmap/table: pairwise top-10 overlaps, with the
-   decodability-only caption.
-
-## Final drafting checklist
-
-- [x] Every headline number matches a cited committed artifact.
-- [x] M0 appears wherever endpoint branch safety means appear.
-- [x] Endpoint wording says inconclusive null and not equivalence.
-- [x] Executive-summary narrative says the registered question became
-      capability-confounded rather than presenting the null as the discovery.
-- [x] The exact implementation/reference limitation appears in the headline
-      summary rather than only in limitations.
-- [x] Missing prospective equivalence-power analysis is owned as a design
-      mistake.
-- [x] Coconut u1/u2 appear as bounds, not points.
-- [x] K=0 safety remains undefined.
-- [x] Prompt uncertainty is not described as seed uncertainty.
-- [x] Capability/coherence/termination context accompanies safety comparisons.
-- [x] Seed 43 is labeled a noise-floor diagnostic, not a seed CI or independent
-      95% replication.
-- [x] Exploratory analyses are labeled post hoc.
-- [x] Readout text says decodability only.
-- [x] Layer-diff text makes no causal localization claim.
-- [x] No unverified prior-work number appears in the application-ready summary.
-- [x] The application-ready summary has been checked against the supporting
-      claim cards and committed artifacts, not chat memory.
+6. **Token readout:** pairwise top-10 overlaps with a decodability-only caption.

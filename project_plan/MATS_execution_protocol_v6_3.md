@@ -1,4 +1,4 @@
-# MATS Execution Protocol v6 — Does Latentization Modulate Safety Drift?
+# Execution Protocol v6 — Does Latentization Modulate Safety Drift?
 ## Reasoning Substrate × Benign-Post-Training Safety Drift
 
 **Frozen research question:**
@@ -33,10 +33,7 @@ Starting from the **same safety-aligned reasoning checkpoint**, does matched ben
 4. **Do not claim “hide, not change” unless you actually measure monitoring.**  
    If endpoint safety drift is the same under CoT and Coconut, the allowed claim is that latentization did not measurably change endpoint drift. It is also true that the Coconut condition lacks a readable textual CoT rationale, but that alone is not a full monitorability experiment.
 
-5. **Use the stream-specific time rule correctly.**  
-   Neel's MATS 12.0 FAQ specifies **~16 hours, max 20 hours** of project work, plus up to 2 extra hours for the executive summary/application questions. It explicitly excludes time spent waiting for training **if you are doing something else during that wait**. This makes full-dose overnight jobs a legitimate part of the design. Active setup, debugging, analysis, project-specific reading/planning, and write-up still count.
-
-6. **Third branch demoted.**  
+5. **Third branch demoted.**
    An answer-only/no-CoT branch is useful only after a real `Δ_substrate` signal appears. It is not part of the minimum sprint.
 
 ---
@@ -541,13 +538,11 @@ If matched training later fails, a public-checkpoint K-sweep/safety audit is a *
 
 # Time / session plan
 
-The stream-specific FAQ allows **~16 h (max 20 h)** of active project work, plus up to 2 extra hours for the executive summary/application questions. Time spent **waiting for training is not counted when you are doing something else during the wait**.
+Execution prioritizes productive work during long-running training jobs.
 
-Therefore:
 - exploit overnight/background training rather than under-dosing the experiment
-- count active setup/debugging, project-specific reading/planning, code writing, evaluation, analysis, and write-up
 - retain normal training logs so the experimental timeline is reproducible
-- do not inflate the scope merely because passive waits are exempt
+- keep the experimental scope bounded by the pre-committed cut list
 
 Suggested active-time order:
 
@@ -557,7 +552,7 @@ Suggested active-time order:
 | S2 (~3–4 h active, while training jobs run where possible) | serialization comparison + format anchor; formalize M0; Gate B; launch/monitor matched jobs; inspect early checkpoints |
 | S3 (~4 h active) | necessity gate first; safety/capability/coherence trajectories; transcript audit |
 | S4 (~3–4 h active) | fixed-weight K contrast; figures; one mechanism slice only if clearly justified |
-| Final | write-up + executive summary |
+| Final | report and evidence review |
 
 ### Pre-committed cut list
 
@@ -638,20 +633,20 @@ For each of the 12 audit outputs, record:
 - Prefer to assign the human label **without looking at the automatic score first**.
 - Record the raw agreement count (e.g. `10/12 agree, 1 disagree, 1 unclear`) at every major checkpoint, especially Coconut endpoints.
 - Do not turn 12 prompts into a formal accuracy estimate for the evaluator. Use it as a transparent sanity check and report concrete disagreement examples.
-- If judge-human disagreements cluster on short, degenerate, or partially compliant Coconut outputs, treat automatic safety scores in that regime as suspect and foreground the manual examples in the write-up.
+- If judge-human disagreements cluster on short, degenerate, or partially compliant Coconut outputs, treat automatic safety scores in that regime as suspect and foreground the manual examples in the report.
 
 ---
 
-# Write-up positioning paragraph (required)
+# Related-work positioning
 
 Before presenting novelty, explicitly position against:
 
-- **Self-Jailbreaking:** establishes the benign-reasoning-post-training safety phenotype and harmfulness/compliance mechanism; your contribution asks whether the phenotype changes under a matched latentization regime.
+- **Self-Jailbreaking:** establishes the benign-reasoning-post-training safety phenotype and harmfulness/compliance mechanism; this study asks whether the phenotype changes under a matched latentization regime.
 - **Ulterior Motives:** studies detection of deliberately backdoored/misaligned Coconut latent states; your setup studies emergent safety drift under benign training with an explicit matched control.
 - **Prior Coconut/CODI/latent-reasoning interpretability work:** use it for latent-necessity/causal methodology and state precisely which safety question it does or does not evaluate.
 - **CoT monitorability:** motivation only unless you actually run a monitoring experiment. Do not convert “no visible CoT” into an empirical monitorability claim.
 
-# Write-up claims: allowed vs forbidden
+# Interpretation boundaries
 
 ### Allowed if supported
 
@@ -672,7 +667,7 @@ Before presenting novelty, explicitly position against:
 
 ---
 
-# Final minimum deliverable
+# Registered minimum evidence set
 
 1. Working public Coconut checkpoint + K-dependence sanity check
 2. Same-base matched CoT vs Coconut training

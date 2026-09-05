@@ -59,7 +59,7 @@ pandoc writeup/FULL_WRITEUP.built.md --resource-path=writeup -o /tmp/writeup_raw
 uv run --no-sync python writeup/format_full_writeup.py /tmp/writeup_raw.docx /tmp/FULL_WRITEUP.docx
 ```
 
-The submitted [Word document](../writeup/FULL_WRITEUP.docx) is already included.
+The formatted [Word report](../writeup/FULL_WRITEUP.docx) is already included.
 
 ## Regenerate source data and manifests
 
